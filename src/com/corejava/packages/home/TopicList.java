@@ -5,7 +5,13 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -22,17 +28,17 @@ import net.miginfocom.swing.MigLayout;
 public class TopicList {
 	private JPanel topicListPanel = new JPanel();
 	private JScrollPane topicScrollPane;
-	
+
 	private TopicLearnArea topicLearnArea;
 	private TopicTitleBox topicTitleBox;
-	
+
 	private ArrayList<JButton> allTopicButtons = new ArrayList<JButton>();
-	
+
 	public TopicList(TopicTitleBox topicTitleBox, TopicLearnArea topicLearnArea) {
 		this.topicLearnArea = topicLearnArea; //Used to open file on button click
 		this.topicTitleBox = topicTitleBox;
 	}
-	
+
 	//Generates the scroll panel for which the topics will be displayed,
 	//loads the topics onto the scrollpanel
 	public JPanel Generate() {
@@ -43,12 +49,16 @@ public class TopicList {
 		this.generateTopicButtons();
 		return topicListPanel;
 	}
-	
+
 	public void generateTopicButtons() {
 		File directory = new File(Main.getDirectory());
-		File[] listOfAllTopics = directory.listFiles(); // Get array of all topic files
-		
-		for (File topic : listOfAllTopics) {
+		File[] unsortedTopics = directory.listFiles(); // Get array of all topic files
+		ArrayList<File> sortedTopics = new ArrayList<File>(); //Modifiable arraylist of files
+		for(File topic : unsortedTopics) {
+			sortedTopics.add(topic);
+		}
+		Collections.sort(sortedTopics); //Sort all of the topics by numerical order
+		for (File topic : sortedTopics) {
 			if (topic.isFile() && topic.exists()) {
 				String arr[] = topic.getName().toString().split("\\.", 2);
 				String topicName = arr[0]; // Title of the topic
@@ -84,5 +94,4 @@ public class TopicList {
 		button.setFont(new Font(FN.MAIN.getFN(), Font.BOLD, FS.SIDE_TEXT.getFS()));
 		return(button);
 	}
-
 }

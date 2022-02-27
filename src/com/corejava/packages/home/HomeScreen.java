@@ -28,7 +28,7 @@ public class HomeScreen extends JFrame{
 	public HomeScreen() {
 		contentPane.setLayout(
 				new MigLayout(
-						"debug",
+						"",
 						"[fill,30%!][fill,grow]", // width, column
 						"[][fill,10%!][fill,grow]")); // height, row
 		

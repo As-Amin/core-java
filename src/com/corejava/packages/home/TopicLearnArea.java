@@ -20,7 +20,7 @@ public class TopicLearnArea {
 		textArea = new JTextPane();
 		scrollArea = new JScrollPane(textArea);
 		scrollArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		textArea.setFont(new Font(FN.MAIN.getFN(), Font.PLAIN, FS.NOTE_TEXT.getFS()));
+		textArea.setFont(new Font(FN.MAIN.getFN(), Font.PLAIN, FS.TOPIC_TEXT.getFS()));
 		textArea.setBackground(Colors.DARK2_BACKGROUND_SECONDARY.getColor());
 		textArea.setEditable(false);
 		return scrollArea;

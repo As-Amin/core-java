@@ -7,12 +7,11 @@ public enum FS {
 
   // Left side panel
   SIDE_LOGO(20),
-  SIDE_TEXT(18),
-  SIDE_INPUT(20),
+  SIDE_TEXT(14),
 
-  // Working area panel
-  NOTE_TITLE(35),
-  NOTE_TEXT(18),
+  // Learning area panel
+  TOPIC_TITLE(28),
+  TOPIC_TEXT(18),
 
   // Login screen
   LOGIN_LOGO(37),
