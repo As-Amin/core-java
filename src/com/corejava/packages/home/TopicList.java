@@ -5,56 +5,49 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.corejava.packages.colors.Colors;
 import com.corejava.packages.fonts.FN;
 import com.corejava.packages.fonts.FS;
-import com.corejava.packages.colors.DarkModeColors;
 
-public class LeftPanel {
+import net.miginfocom.swing.MigLayout;
 
-	private JPanel leftPanel = new JPanel();
-	private JScrollPane leftPanelScrollPane;
-	private JLabel logoLabel;
+public class TopicList {
+	private JPanel topicListPanel = new JPanel();
+	private JScrollPane topicScrollPane;
+	
+	private TopicLearnArea topicLearnArea;
+	private TopicTitleBox topicTitleBox;
+	
 	private ArrayList<JButton> allTopicButtons = new ArrayList<JButton>();
 	
-	public JPanel GetLeftPanel() {
-		return leftPanel;
+	public TopicList(TopicTitleBox topicTitleBox, TopicLearnArea topicLearnArea) {
+		this.topicLearnArea = topicLearnArea; //Used to open file on button click
+		this.topicTitleBox = topicTitleBox;
 	}
-
+	
 	//Generates the scroll panel for which the topics will be displayed,
 	//loads the topics onto the scrollpanel
-	public JScrollPane GenerateTopicScroll() {
-		leftPanelScrollPane = new JScrollPane(leftPanel);
-		leftPanelScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		leftPanelScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
+	public JPanel Generate() {
+		topicListPanel.setLayout(new MigLayout("wrap"));
+		topicScrollPane = new JScrollPane(topicListPanel);
+		topicScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		topicScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
 		this.generateTopicButtons();
-		return leftPanelScrollPane;
+		return topicListPanel;
 	}
-
-	public JLabel GenerateLogo() {
-		logoLabel = new JLabel(Main.getAppName());
-		logoLabel.setForeground(DarkModeColors.DARK3_THEME_COLOR.getColor());
-		logoLabel.setFont(new Font(FN.LOGO.getFN(), Font.BOLD, FS.SIDE_LOGO.getFS()));
-		return logoLabel;
-	}
-
-	private void generateTopicButtons() {
+	
+	public void generateTopicButtons() {
 		File directory = new File(Main.getDirectory());
 		File[] listOfAllTopics = directory.listFiles(); // Get array of all topic files
-
+		
 		for (File topic : listOfAllTopics) {
 			if (topic.isFile() && topic.exists()) {
 				String arr[] = topic.getName().toString().split("\\.", 2);
@@ -62,7 +55,7 @@ public class LeftPanel {
 
 				if (topicName.length() > 0) {
 					JButton topicNameButton = new JButton(" " + topicName);
-					leftPanel.add(configureButton(topicNameButton),  "gapy 10");
+					topicListPanel.add(configureButton(topicNameButton),  "gapy 10, w 90%!");
 					allTopicButtons.add(topicNameButton);
 
 					// Add an action listener to all topics buttons
@@ -73,10 +66,10 @@ public class LeftPanel {
 										button.setForeground(null);
 										button.setBorder(null);
 									}
-									topicNameButton.setForeground(DarkModeColors.DARK3_THEME_COLOR.getColor());
-									topicNameButton.setBorder(BorderFactory.createMatteBorder(0, 3, 0, 0, DarkModeColors.DARK3_THEME_COLOR.getColor()));
-									//setWorkingAreaToVisible(); // Make working area visible
-									//notepad.OpenFile(note, noteName);
+									topicNameButton.setForeground(Colors.DARK3_THEME_COLOR.getColor());
+									topicNameButton.setBorder(BorderFactory.createMatteBorder(0, 3, 0, 0, Colors.DARK3_THEME_COLOR.getColor()));
+									topicTitleBox.SetTitleBox(topicName);
+									topicLearnArea.OpenFile(topic, topicName);
 								}
 							});
 				}

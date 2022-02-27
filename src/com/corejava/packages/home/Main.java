@@ -1,15 +1,7 @@
 package com.corejava.packages.home;
 
-import java.io.File;
-import java.io.IOException;
-
-import org.apache.commons.configuration.PropertiesConfiguration;
-import org.apache.commons.io.FileUtils;
-
-import com.corejava.packages.colors.DarkModeColors;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 
 public class Main {
 	private static final String APP_NAME = "CoreJava";

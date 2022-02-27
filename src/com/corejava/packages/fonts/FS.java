@@ -6,7 +6,7 @@ public enum FS {
   MENU_BAR(14),
 
   // Left side panel
-  SIDE_LOGO(33),
+  SIDE_LOGO(20),
   SIDE_TEXT(18),
   SIDE_INPUT(20),
 
