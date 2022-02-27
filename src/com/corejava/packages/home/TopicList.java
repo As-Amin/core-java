@@ -54,20 +54,17 @@ public class TopicList {
 		File directory = new File(Main.getDirectory());
 		File[] unsortedTopics = directory.listFiles(); // Get array of all topic files
 		ArrayList<File> sortedTopics = new ArrayList<File>(); //Modifiable arraylist of files
-		for(File topic : unsortedTopics) {
+		for (File topic : unsortedTopics) {
 			sortedTopics.add(topic);
 		}
-		Collections.sort(sortedTopics); //Sort all of the topics by numerical order
 		for (File topic : sortedTopics) {
 			if (topic.isFile() && topic.exists()) {
-				String arr[] = topic.getName().toString().split("\\.", 2);
-				String topicName = arr[0]; // Title of the topic
-
-				if (topicName.length() > 0) {
-					JButton topicNameButton = new JButton(" " + topicName);
+				String topicAndFileType[] = topic.getName().toString().split("\\.", 2);
+				String numberAndTopic[] = topicAndFileType[0].split("\\)", 2);
+				if (numberAndTopic[1].length() > 0) {
+					JButton topicNameButton = new JButton(" " + numberAndTopic[0] + ")" + numberAndTopic[1]);
 					topicListPanel.add(configureButton(topicNameButton),  "gapy 10, w 90%!");
 					allTopicButtons.add(topicNameButton);
-
 					// Add an action listener to all topics buttons
 					topicNameButton.addActionListener(
 							new ActionListener() {
@@ -78,8 +75,8 @@ public class TopicList {
 									}
 									topicNameButton.setForeground(Colors.DARK3_THEME_COLOR.getColor());
 									topicNameButton.setBorder(BorderFactory.createMatteBorder(0, 3, 0, 0, Colors.DARK3_THEME_COLOR.getColor()));
-									topicTitleBox.SetTitleBox(topicName);
-									topicLearnArea.OpenFile(topic, topicName);
+									topicTitleBox.SetTitleBox(numberAndTopic[1]);
+									topicLearnArea.OpenFile(topicAndFileType[0]);
 								}
 							});
 				}

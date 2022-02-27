@@ -26,7 +26,7 @@ public class TopicLearnArea {
 		return scrollArea;
 	}
 
-	public void OpenFile(File fileToOpen, String fileName) {
+	public void OpenFile(String fileName) {
 		ClearAll();
 		try {
 			FileReader fr =

@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import com.corejava.packages.colors.Colors;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -30,15 +33,22 @@ public class HomeScreen extends JFrame{
 				new MigLayout(
 						"",
 						"[fill,30%!][fill,grow]", // width, column
-						"[][fill,10%!][fill,grow]")); // height, row
+						"[fill,grow][]")); // height, row
 		
 		//Left panel
+		contentPane.add(topicList.Generate(), "cell 0 0");
 		contentPane.add(logo.Generate(), "cell 0 1");
-		contentPane.add(topicList.Generate(), "cell 0 2");
-	    
+		
 		//Right panel
-	    contentPane.add(topicTitleBox.Generate(), "cell 1 1");
-		contentPane.add(topicLearnArea.Generate(), "cell 1 2");
+		JPanel rightPanel = new JPanel();
+		rightPanel.setLayout(new MigLayout(
+				"", 
+				"[fill,grow]", // width, column
+				"[fill,10%!][fill,grow]")); // height, row
+		//rightPanel.setBackground(Colors.DARK2_BACKGROUND_SECONDARY.getColor());
+		rightPanel.add(topicTitleBox.Generate(), "cell 0 0");
+	    rightPanel.add(topicLearnArea.Generate(), "cell 0 1");
+		contentPane.add(rightPanel, "cell 1 0 2 2");
 		
 		setupFrame();
 	}
