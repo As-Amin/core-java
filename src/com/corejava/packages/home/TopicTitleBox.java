@@ -1,9 +1,6 @@
 package com.corejava.packages.home;
 
 import java.awt.Font;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 
 import javax.swing.JTextField;
 
