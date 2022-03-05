@@ -10,7 +10,7 @@ import net.miginfocom.swing.MigLayout;
 
 public class HomeScreen extends JFrame {
 	private int panelWidth = 700;
-	private int panelHeight = 200;
+	private int panelHeight = 500;
 	private JFrame frame = this;
 	private Container contentPane = frame.getContentPane();
 	// Right panel
@@ -42,10 +42,12 @@ public class HomeScreen extends JFrame {
 
 	/** Setups the frame i.e. Size, Re-sizable, Location */
 	private void setupFrame() {
+		frame.pack();
 		frame.setLocation(1000, 300);
 		frame.setMinimumSize(new Dimension(panelWidth, panelHeight));
+		frame.setSize(new Dimension(panelWidth, panelHeight));
+		frame.setResizable(false);
 		frame.setVisible(true);
-		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane.requestFocusInWindow();
 	}
