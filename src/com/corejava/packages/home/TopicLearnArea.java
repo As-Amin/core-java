@@ -29,15 +29,14 @@ public class TopicLearnArea {
 	public void OpenFile(String fileName) {
 		ClearAll();
 		try {
-			FileReader fr =
-				new FileReader(new File(Main.getDirectory(), fileName + ".txt"));
+			FileReader fr = new FileReader(new File(Main.getDirectory(), fileName + ".txt"));
 			textArea.read(fr, "textArea");
 			fr.close();
 		} catch (IOException IOE) {
 			textArea.setText("Topic not found");
 		}
 	}
-	
+
 	public void ClearAll() {
 		textArea.setText(null);
 	}

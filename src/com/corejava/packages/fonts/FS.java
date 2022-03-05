@@ -11,7 +11,7 @@ public enum FS {
 
   // Learning area panel
   TOPIC_TITLE(28),
-  TOPIC_TEXT(18),
+  TOPIC_TEXT(16),
 
   // Login screen
   LOGIN_LOGO(37),

@@ -10,7 +10,7 @@ import com.corejava.packages.fonts.FS;
 
 public class Logo {
 	private JLabel logoLabel;
-	
+
 	public JLabel Generate() {
 		logoLabel = new JLabel(' ' + Main.getAppName());
 		logoLabel.setForeground(Colors.DARK3_THEME_COLOR.getColor());

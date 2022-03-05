@@ -19,12 +19,12 @@ public class TopicTitleBox {
 		topicNameArea.setEditable(false);
 		return topicNameArea;
 	}
-	
+
 	public void SetTitleBox(String noteName) {
 		ClearAll();
 		topicNameArea.setText(noteName);
 	}
-	
+
 	public void ClearAll() {
 		topicNameArea.setText(null);
 	}
