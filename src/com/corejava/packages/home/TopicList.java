@@ -130,7 +130,7 @@ public class TopicList {
 	private JLabel configureDifficultyLabel(JLabel label) {
 		label.setHorizontalAlignment(SwingConstants.LEFT);
 		label.setForeground(Colors.DARK5_DIFFICULTY_COLOR.getColor());
-		label.setBorder(BorderFactory.createMatteBorder(0, 3, 0, 0,
+		label.setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0,
 				Colors.DARK5_DIFFICULTY_COLOR.getColor()));
 		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_TEXT.getFS()));
 		return (label);
@@ -138,7 +138,7 @@ public class TopicList {
 
 	private JLabel configureSectionLabel(JLabel label) {
 		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setForeground(Colors.DARK6_SECTION_COLOR.getColor());
+		// label.setForeground(Colors.DARK6_SECTION_COLOR.getColor());
 		label.setBorder(
 				BorderFactory.createMatteBorder(0, 3, 0, 0, Colors.DARK6_SECTION_COLOR.getColor()));
 		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_TEXT.getFS()));
