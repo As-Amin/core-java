@@ -6,17 +6,13 @@ public enum FS {
   MENU_BAR(14),
 
   // Left side panel
-  SIDE_LOGO(20),
-  SIDE_TEXT(14),
+  SIDE_LOGO(20), SIDE_HEADING(16), SIDE_TEXT(14),
 
   // Learning area panel
-  TOPIC_TITLE(28),
-  TOPIC_TEXT(16),
+  TOPIC_TITLE(28), TOPIC_TEXT(16),
 
   // Login screen
-  LOGIN_LOGO(37),
-  LOGIN_TEXT(15),
-  LOGIN_INPUT(20);
+  LOGIN_LOGO(37), LOGIN_TEXT(15), LOGIN_INPUT(20);
 
   private final int fontSize;
 

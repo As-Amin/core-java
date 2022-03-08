@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -61,36 +62,40 @@ public class TopicList {
 				String topicNumber = numberAndTopic[0];
 				String topicName = numberAndTopic[1].substring(1);
 				String fileType = topicAndFileType[1];
-				if (fileType.toLowerCase().equals("difficulty")) {
+				if (fileType.equalsIgnoreCase("difficulty")) {
 					// Get rid of the 'a' or 'z' (first character) as this is used only to
 					// prioritise the file in the directory order.
-					JLabel topicSectionLabel = new JLabel(" Level: " + topicName.substring(1));
+					JLabel topicSectionLabel = new JLabel(topicName.substring(1));
 					topicListPanel.add(configureDifficultyLabel(topicSectionLabel),
-							"hmin 30, grow");
+							"hmin 50, grow");
 				}
-				if (fileType.toLowerCase().equals("section")) {
+				if (fileType.equalsIgnoreCase("section")) {
 					// Get rid of the 'a' or 'z' (first character) as this is used only to
 					// prioritise the file in the directory order.
-					JLabel topicSectionLabel = new JLabel(" " + topicName.substring(1));
+					JLabel topicSectionLabel = new JLabel(topicName.substring(1));
 					topicListPanel.add(configureSectionLabel(topicSectionLabel), "hmin 30, grow");
 				}
-				if (fileType.toLowerCase().equals("topic")) {
+				if (fileType.equalsIgnoreCase("json")) {
 					JButton topicNameButton = new JButton(" " + topicNumber + ") " + topicName);
 					topicListPanel.add(configureButton(topicNameButton), "hmin 30, grow");
 					allTopicButtons.add(topicNameButton);
 					// Add an action listener to all topics buttons
 					topicNameButton.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
+						public void actionPerformed(ActionEvent event) {
 							for (JButton button : allTopicButtons) {
-								button.setForeground(Colors.DARK4_FADEDTEXT_COLOR.getColor());
+								button.setForeground(Colors.DARK5_FADEDTEXT_COLOR.getColor());
 								button.setBorder(null);
 							}
-							topicNameButton.setForeground(null);
+							topicNameButton.setForeground(Colors.DARK3_THEME_COLOR.getColor());
 							topicNameButton.setBorder(BorderFactory.createMatteBorder(0, 3, 0, 0,
 									Colors.DARK3_THEME_COLOR.getColor()));
 							// Remove initial space from the title
 							topicTitleBox.SetTitleBox(topicName);
-							topicLearnArea.OpenFile((topicNumber + ") " + topicName), fileType);
+							try {
+								topicLearnArea.OpenFile((topicNumber + ") " + topicName), fileType);
+							} catch (IOException IOE) {
+								IOE.printStackTrace();
+							}
 						}
 					});
 				}
@@ -121,7 +126,7 @@ public class TopicList {
 	private JButton configureButton(JButton button) {
 		button.setHorizontalAlignment(SwingConstants.LEFT);
 		button.setBorder(null);
-		button.setForeground(Colors.DARK4_FADEDTEXT_COLOR.getColor());
+		button.setForeground(Colors.DARK5_FADEDTEXT_COLOR.getColor());
 		button.setBackground(null);
 		button.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_TEXT.getFS()));
 		return (button);
@@ -129,19 +134,16 @@ public class TopicList {
 
 	private JLabel configureDifficultyLabel(JLabel label) {
 		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setForeground(Colors.DARK5_DIFFICULTY_COLOR.getColor());
-		label.setBorder(BorderFactory.createMatteBorder(1, 0, 1, 0,
-				Colors.DARK5_DIFFICULTY_COLOR.getColor()));
-		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_TEXT.getFS()));
+		label.setForeground(Colors.DARK4_THEME_SECONDARY_COLOR.getColor());
+		label.setBorder(BorderFactory.createMatteBorder(5, 0, 5, 0,
+				Colors.DARK4_THEME_SECONDARY_COLOR.getColor()));
+		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_HEADING.getFS()));
 		return (label);
 	}
 
 	private JLabel configureSectionLabel(JLabel label) {
 		label.setHorizontalAlignment(SwingConstants.LEFT);
-		// label.setForeground(Colors.DARK6_SECTION_COLOR.getColor());
-		label.setBorder(
-				BorderFactory.createMatteBorder(0, 3, 0, 0, Colors.DARK6_SECTION_COLOR.getColor()));
-		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_TEXT.getFS()));
+		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_HEADING.getFS()));
 		return (label);
 	}
 }
