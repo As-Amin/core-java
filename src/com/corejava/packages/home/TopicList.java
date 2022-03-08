@@ -1,6 +1,5 @@
 package com.corejava.packages.home;
 
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +9,7 @@ import java.util.Collections;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
@@ -40,7 +40,8 @@ public class TopicList {
 		// "gapy 10, w 90%!"
 		JScrollPane topicScrollPane = new JScrollPane(topicListPanel);
 		topicScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		topicScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
+		topicScrollPane.getVerticalScrollBar().setUnitIncrement(10);
+		// topicScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
 		this.generateTopicButtons();
 		return topicScrollPane;
 	}
@@ -53,15 +54,29 @@ public class TopicList {
 			unsortedTopicsList.add(topic);
 		}
 		ArrayList<File> sortedTopics = sortTopics(unsortedTopicsList);
-
-		for (File topic : sortedTopics) {
-			if (topic.isFile() && topic.exists()) {
-				String topicAndFileType[] = topic.getName().split("\\.", 2);
+		for (File topicFile : sortedTopics) {
+			if (topicFile.isFile() && topicFile.exists()) {
+				String topicAndFileType[] = topicFile.getName().split("\\.", 2);
 				String numberAndTopic[] = topicAndFileType[0].split("\\)", 2);
-				if (numberAndTopic[1].length() > 0) {
-					JButton topicNameButton =
-							new JButton(" " + numberAndTopic[0] + ")" + numberAndTopic[1]);
-					topicListPanel.add(configureButton(topicNameButton), "hmin 30");
+				String topicNumber = numberAndTopic[0];
+				String topicName = numberAndTopic[1].substring(1);
+				String fileType = topicAndFileType[1];
+				if (fileType.toLowerCase().equals("difficulty")) {
+					// Get rid of the 'a' or 'z' (first character) as this is used only to
+					// prioritise the file in the directory order.
+					JLabel topicSectionLabel = new JLabel(" Level: " + topicName.substring(1));
+					topicListPanel.add(configureDifficultyLabel(topicSectionLabel),
+							"hmin 30, grow");
+				}
+				if (fileType.toLowerCase().equals("section")) {
+					// Get rid of the 'a' or 'z' (first character) as this is used only to
+					// prioritise the file in the directory order.
+					JLabel topicSectionLabel = new JLabel(" " + topicName.substring(1));
+					topicListPanel.add(configureSectionLabel(topicSectionLabel), "hmin 30, grow");
+				}
+				if (fileType.toLowerCase().equals("topic")) {
+					JButton topicNameButton = new JButton(" " + topicNumber + ") " + topicName);
+					topicListPanel.add(configureButton(topicNameButton), "hmin 30, grow");
 					allTopicButtons.add(topicNameButton);
 					// Add an action listener to all topics buttons
 					topicNameButton.addActionListener(new ActionListener() {
@@ -73,8 +88,9 @@ public class TopicList {
 							topicNameButton.setForeground(null);
 							topicNameButton.setBorder(BorderFactory.createMatteBorder(0, 3, 0, 0,
 									Colors.DARK3_THEME_COLOR.getColor()));
-							topicTitleBox.SetTitleBox(numberAndTopic[0] + ")" + numberAndTopic[1]);
-							topicLearnArea.OpenFile(topicAndFileType[0]);
+							// Remove initial space from the title
+							topicTitleBox.SetTitleBox(topicName);
+							topicLearnArea.OpenFile((topicNumber + ") " + topicName), fileType);
 						}
 					});
 				}
@@ -91,7 +107,6 @@ public class TopicList {
 				String topicAndFileType1[] = sortedTopics.get(j).getName().split("\\.", 2);
 				String numberAndTopic1[] = topicAndFileType1[0].split("\\)", 2);
 				int first = Integer.parseInt(numberAndTopic1[0]);
-
 				String topicAndFileType2[] = sortedTopics.get(j + 1).getName().split("\\.", 2);
 				String numberAndTopic2[] = topicAndFileType2[0].split("\\)", 2);
 				int second = Integer.parseInt(numberAndTopic2[0]);
@@ -108,7 +123,25 @@ public class TopicList {
 		button.setBorder(null);
 		button.setForeground(Colors.DARK4_FADEDTEXT_COLOR.getColor());
 		button.setBackground(null);
-		button.setFont(new Font(FN.MAIN.getFN(), Font.BOLD, FS.SIDE_TEXT.getFS()));
+		button.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_TEXT.getFS()));
 		return (button);
+	}
+
+	private JLabel configureDifficultyLabel(JLabel label) {
+		label.setHorizontalAlignment(SwingConstants.LEFT);
+		label.setForeground(Colors.DARK5_DIFFICULTY_COLOR.getColor());
+		label.setBorder(BorderFactory.createMatteBorder(0, 3, 0, 0,
+				Colors.DARK5_DIFFICULTY_COLOR.getColor()));
+		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_TEXT.getFS()));
+		return (label);
+	}
+
+	private JLabel configureSectionLabel(JLabel label) {
+		label.setHorizontalAlignment(SwingConstants.LEFT);
+		label.setForeground(Colors.DARK6_SECTION_COLOR.getColor());
+		label.setBorder(
+				BorderFactory.createMatteBorder(0, 3, 0, 0, Colors.DARK6_SECTION_COLOR.getColor()));
+		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_TEXT.getFS()));
+		return (label);
 	}
 }

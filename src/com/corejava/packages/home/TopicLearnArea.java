@@ -20,16 +20,17 @@ public class TopicLearnArea {
 		textArea = new JTextPane();
 		scrollArea = new JScrollPane(textArea);
 		scrollArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		textArea.setFont(new Font(FN.MAIN.getFN(), Font.PLAIN, FS.TOPIC_TEXT.getFS()));
+		textArea.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
 		textArea.setBackground(Colors.DARK2_BACKGROUND_SECONDARY.getColor());
 		textArea.setEditable(false);
 		return scrollArea;
 	}
 
-	public void OpenFile(String fileName) {
+	public void OpenFile(String fileName, String fileType) {
 		ClearAll();
 		try {
-			FileReader fr = new FileReader(new File(Main.getDirectory(), fileName + ".txt"));
+			FileReader fr =
+					new FileReader(new File(Main.getDirectory(), fileName + '.' + fileType));
 			textArea.read(fr, "textArea");
 			fr.close();
 		} catch (IOException IOE) {
