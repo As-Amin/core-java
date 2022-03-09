@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -33,19 +34,21 @@ import net.miginfocom.swing.MigLayout;
 import com.corejava.packages.colors.Colors;
 import com.corejava.packages.fonts.FN;
 import com.corejava.packages.fonts.FS;
+import com.corejava.packages.quiz.TextQuiz;
+import com.corejava.packages.quiz.TrueFalseQuiz;
 
 public class TopicLearnArea {
 	private JScrollPane scrollArea;
-	private JTextPane textArea;
+	private JTextPane textPane;
 	private JSONObject jsonObject;
 
 	public JScrollPane Generate() {
-		textArea = new JTextPane();
-		scrollArea = new JScrollPane(textArea);
+		textPane = new JTextPane();
+		scrollArea = new JScrollPane(textPane);
 		scrollArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		textArea.setBackground(Colors.BACKGROUND_SECONDARY.getColor());
-		textArea.setContentType("text/html");
-		textArea.setEditable(false);
+		textPane.setBackground(Colors.BACKGROUND_SECONDARY.getColor());
+		textPane.setContentType("text/html");
+		textPane.setEditable(false);
 		return scrollArea;
 	}
 
@@ -53,7 +56,7 @@ public class TopicLearnArea {
 		ClearAll();
 		generateJSONObject(fileName, fileType);
 		parseJsonFile();
-		textArea.setCaretPosition(0); // Scroll to the top after adding components
+		textPane.setCaretPosition(0); // Scroll to the top after adding components
 	}
 
 	private void generateJSONObject(String fileName, String fileType) throws IOException {
@@ -135,7 +138,8 @@ public class TopicLearnArea {
 						// Append question
 						appendText(question, Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
 								FN.NOTO.getFN(), true);
-						appendTextQuiz(answer);
+						TextQuiz textQuiz = new TextQuiz(answer, textPane);
+						textQuiz.Generate();
 					}
 				}
 			}
@@ -158,7 +162,8 @@ public class TopicLearnArea {
 						String answer = allTrueOrFalseQuizzes.getJSONObject(i).getString("answer");
 						appendText(question, Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
 								FN.NOTO.getFN(), true);
-						appendTrueOrFalseQuiz(answer);
+						TrueFalseQuiz trueFalseQuiz = new TrueFalseQuiz(answer, textPane);
+						trueFalseQuiz.Generate();
 					}
 				}
 			}
@@ -169,8 +174,8 @@ public class TopicLearnArea {
 
 	private void appendText(String str, Color color, int fontSize, String fontName,
 			Boolean isQuestion) throws BadLocationException {
-		StyledDocument document = (StyledDocument) textArea.getDocument();
-		Style style = textArea.addStyle("", null);
+		StyledDocument document = (StyledDocument) textPane.getDocument();
+		Style style = textPane.addStyle("", null);
 		StyleConstants.setFontFamily(style, fontName);
 		StyleConstants.setFontSize(style, fontSize);
 		StyleConstants.setBold(style, true);
@@ -184,7 +189,7 @@ public class TopicLearnArea {
 	}
 
 	private void appendImage(String url) throws BadLocationException, IOException {
-		StyledDocument document = (StyledDocument) textArea.getDocument();
+		StyledDocument document = (StyledDocument) textPane.getDocument();
 		BufferedImage BI = ImageIO.read(new File(Main.getImagesDirectory() + url));
 		ImageIcon image = new ImageIcon(BI);
 		Style style = document.addStyle("", null);
@@ -193,89 +198,7 @@ public class TopicLearnArea {
 		document.insertString(document.getLength(), "\n\n", null);
 	}
 
-	private void appendTextQuiz(String answer) throws BadLocationException {
-		StyledDocument document = (StyledDocument) textArea.getDocument();
-
-		JPanel panel = new JPanel();
-		panel.setBackground(null);
-		panel.setLayout(new MigLayout());
-
-		JTextField answerField = new JTextField();
-		answerField.putClientProperty("JTextField.placeholderText", "Your answer here...");
-		answerField.setBackground(Colors.BACKGROUND.getColor());
-		answerField.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
-		panel.add(answerField, "wmin 70%, grow");
-
-		JButton submit = new JButton("Submit");
-		submit.setForeground(Colors.WHITE.getColor());
-		submit.setBackground(Colors.THEME.getColor());
-		submit.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
-		panel.add(submit, "shrink");
-
-		textArea.insertComponent(panel);
-		document.insertString(document.getLength(), "\n\n", null);
-
-		submit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				// If the answer contains the text that is in the answer string from the JSON
-				// file, it is correct.
-				if (answerField.getText().equalsIgnoreCase(answer)) {
-					System.out.println("Correct");
-				} else {
-					System.out.println("Hey wrong answer");
-				}
-			}
-		});
-	}
-
-	private void appendTrueOrFalseQuiz(String answer) throws BadLocationException {
-		StyledDocument document = (StyledDocument) textArea.getDocument();
-
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setBackground(null);
-		buttonPanel.setLayout(new MigLayout());
-
-		JButton trueButton = new JButton("True");
-		trueButton.setForeground(Colors.WHITE.getColor());
-		trueButton.setBackground(Colors.THEME.getColor());
-		trueButton.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
-		buttonPanel.add(trueButton);
-
-		JButton falseButton = new JButton("False");
-		falseButton.setForeground(Colors.WHITE.getColor());
-		falseButton.setBackground(Colors.THEME.getColor());
-		falseButton.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
-		buttonPanel.add(falseButton);
-
-		textArea.insertComponent(buttonPanel);
-		document.insertString(document.getLength(), "\n\n", null);
-
-		trueButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				// If the answer contains the text that is in the answer string from the JSON
-				// file, it is correct.
-				if (trueButton.getText().equalsIgnoreCase(answer)) {
-					System.out.println("Correct");
-				} else {
-					System.out.println("Hey wrong answer");
-				}
-			}
-		});
-
-		falseButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				// If the answer contains the text that is in the answer string from the JSON
-				// file, it is correct.
-				if (falseButton.getText().equalsIgnoreCase(answer)) {
-					System.out.println("Correct");
-				} else {
-					System.out.println("Hey wrong answer");
-				}
-			}
-		});
-	}
-
 	public void ClearAll() {
-		textArea.setText(null);
+		textPane.setText(null);
 	}
 }
