@@ -22,5 +22,12 @@
             "url": "/1/1.png",
             "caption": "(The official logo for Java)"
         }
+    ],
+    "textQuiz": [
+        {
+            "number": "3",
+            "question": "Q1: Are you ready to start learning Java?",
+            "answer": "Yes"
+        }
     ]
 }
