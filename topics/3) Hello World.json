@@ -1,1 +1,22 @@
-This is an introduction to Java
+{
+    "paragraphs": [
+        {
+            "number": "1",
+            "subheading": "Setup Java on your machine",
+            "content": "Java is an object-oriented high level programming language that is based on the C and C++ programming languages. Java is fast, secure and reliable and is used to develop applications used on desktops, laptops, servers, mobile phones and more! The platform is owned by the Oracle Corporation. "
+        },
+        {
+            "number": "2",
+            "subheading": "Setup your preferred IDE on your machine",
+            "content": ""
+        },
+        {
+            "number": "3",
+            "subheading": "Program your first Java application!",
+            "content": ""
+        }
+    ],
+    "images": [],
+    "textQuiz": [],
+    "trueOrFalseQuiz": []
+}

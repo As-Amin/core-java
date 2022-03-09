@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -85,8 +86,12 @@ public class TopicLearnArea {
 				int number = Integer.parseInt(allParagraphs.getJSONObject(i).getString("number"));
 				String subheading = allParagraphs.getJSONObject(i).getString("subheading");
 				String paragraphContent = allParagraphs.getJSONObject(i).getString("content");
-				appendSubheading(subheading);
-				appendParagraphContent(paragraphContent);
+				// Append subheading
+				appendText(subheading, Colors.PINK.getColor(), FS.TOPIC_TEXT.getFS(),
+						FN.NOTO.getFN(), false);
+				// Append paragraph
+				appendText(paragraphContent, Colors.WHITE.getColor(), FS.TOPIC_TEXT.getFS(),
+						FN.NOTO.getFN(), false);
 				parseJsonImages(number); // Display the image with the same number below paragraph
 				parseJsonTextQuiz(number);
 				parseJsonTrueOrFalseQuiz(number);
@@ -99,13 +104,17 @@ public class TopicLearnArea {
 	private void parseJsonImages(int paragraphNumber) throws IOException {
 		try {
 			JSONArray allImages = jsonObject.getJSONArray("images");
-			for (int i = 0; i < allImages.length(); i++) {
-				int number = Integer.parseInt(allImages.getJSONObject(i).getString("number"));
-				if (number == paragraphNumber) {
-					String url = allImages.getJSONObject(i).getString("url");
-					String caption = allImages.getJSONObject(i).getString("caption");
-					appendImage(url);
-					appendImageCaption(caption);
+			if (allImages.length() != 0) {
+				for (int i = 0; i < allImages.length(); i++) {
+					int number = Integer.parseInt(allImages.getJSONObject(i).getString("number"));
+					if (number == paragraphNumber) {
+						String url = allImages.getJSONObject(i).getString("url");
+						String caption = allImages.getJSONObject(i).getString("caption");
+						appendImage(url);
+						// Append caption
+						appendText(caption, Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
+								FN.CONSOLAS.getFN(), false);
+					}
 				}
 			}
 		} catch (Exception e) {
@@ -116,31 +125,41 @@ public class TopicLearnArea {
 	private void parseJsonTextQuiz(int paragraphNumber) throws IOException {
 		try {
 			JSONArray allTextQuizzes = jsonObject.getJSONArray("textQuiz");
-			for (int i = 0; i < allTextQuizzes.length(); i++) {
-				int number = Integer.parseInt(allTextQuizzes.getJSONObject(i).getString("number"));
-				if (number == paragraphNumber) {
-					String question = allTextQuizzes.getJSONObject(i).getString("question");
-					String answer = allTextQuizzes.getJSONObject(i).getString("answer");
-					appendQuestion(question);
-					appendTextQuiz(answer);
+			if (allTextQuizzes.length() != 0) {
+				for (int i = 0; i < allTextQuizzes.length(); i++) {
+					int number =
+							Integer.parseInt(allTextQuizzes.getJSONObject(i).getString("number"));
+					if (number == paragraphNumber) {
+						String question = allTextQuizzes.getJSONObject(i).getString("question");
+						String answer = allTextQuizzes.getJSONObject(i).getString("answer");
+						// Append question
+						appendText(question, Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
+								FN.NOTO.getFN(), true);
+						appendTextQuiz(answer);
+					}
 				}
 			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
+
 
 	private void parseJsonTrueOrFalseQuiz(int paragraphNumber) throws IOException {
 		try {
 			JSONArray allTrueOrFalseQuizzes = jsonObject.getJSONArray("trueOrFalseQuiz");
-			for (int i = 0; i < allTrueOrFalseQuizzes.length(); i++) {
-				int number = Integer
-						.parseInt(allTrueOrFalseQuizzes.getJSONObject(i).getString("number"));
-				if (number == paragraphNumber) {
-					String question = allTrueOrFalseQuizzes.getJSONObject(i).getString("question");
-					String answer = allTrueOrFalseQuizzes.getJSONObject(i).getString("answer");
-					appendQuestion(question);
-					appendTrueOrFalseQuiz(answer);
+			if (allTrueOrFalseQuizzes.length() != 0) {
+				for (int i = 0; i < allTrueOrFalseQuizzes.length(); i++) {
+					int number = Integer
+							.parseInt(allTrueOrFalseQuizzes.getJSONObject(i).getString("number"));
+					if (number == paragraphNumber) {
+						String question =
+								allTrueOrFalseQuizzes.getJSONObject(i).getString("question");
+						String answer = allTrueOrFalseQuizzes.getJSONObject(i).getString("answer");
+						appendText(question, Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
+								FN.NOTO.getFN(), true);
+						appendTrueOrFalseQuiz(answer);
+					}
 				}
 			}
 		} catch (Exception e) {
@@ -148,37 +167,20 @@ public class TopicLearnArea {
 		}
 	}
 
-	private void appendSubheading(String str) throws BadLocationException {
+	private void appendText(String str, Color color, int fontSize, String fontName,
+			Boolean isQuestion) throws BadLocationException {
 		StyledDocument document = (StyledDocument) textArea.getDocument();
 		Style style = textArea.addStyle("", null);
-		StyleConstants.setFontFamily(style, FN.NOTO.getFN());
-		StyleConstants.setFontSize(style, FS.TOPIC_TEXT.getFS());
+		StyleConstants.setFontFamily(style, fontName);
+		StyleConstants.setFontSize(style, fontSize);
 		StyleConstants.setBold(style, true);
-		StyleConstants.setForeground(style, Colors.PINK.getColor());
+		StyleConstants.setForeground(style, color);
 		document.insertString(document.getLength(), str, style);
-		document.insertString(document.getLength(), "\n\n", null);
-	}
-
-	private void appendParagraphContent(String str) throws BadLocationException {
-		StyledDocument document = (StyledDocument) textArea.getDocument();
-		Style style = textArea.addStyle("", null);
-		StyleConstants.setFontFamily(style, FN.NOTO.getFN());
-		StyleConstants.setFontSize(style, FS.TOPIC_TEXT.getFS());
-		StyleConstants.setBold(style, true);
-		StyleConstants.setForeground(style, Colors.WHITE.getColor());
-		document.insertString(document.getLength(), str, style);
-		document.insertString(document.getLength(), "\n\n", null);
-	}
-
-	private void appendImageCaption(String str) throws BadLocationException {
-		StyledDocument document = (StyledDocument) textArea.getDocument();
-		Style style = textArea.addStyle("", null);
-		StyleConstants.setFontFamily(style, FN.CONSOLAS.getFN());
-		StyleConstants.setFontSize(style, FS.TOPIC_TEXT.getFS());
-		StyleConstants.setBold(style, true);
-		StyleConstants.setForeground(style, Colors.YELLOW.getColor());
-		document.insertString(document.getLength(), str, style);
-		document.insertString(document.getLength(), "\n\n\n", null);
+		if (isQuestion == true) {
+			document.insertString(document.getLength(), "\n", null);
+		} else {
+			document.insertString(document.getLength(), "\n\n", null);
+		}
 	}
 
 	private void appendImage(String url) throws BadLocationException, IOException {
@@ -189,17 +191,6 @@ public class TopicLearnArea {
 		StyleConstants.setIcon(style, image);
 		document.insertString(document.getLength(), "String", style);
 		document.insertString(document.getLength(), "\n\n", null);
-	}
-
-	private void appendQuestion(String question) throws BadLocationException {
-		StyledDocument document = (StyledDocument) textArea.getDocument();
-		Style style = textArea.addStyle("", null);
-		StyleConstants.setFontFamily(style, FN.NOTO.getFN());
-		StyleConstants.setFontSize(style, FS.TOPIC_TEXT.getFS());
-		StyleConstants.setBold(style, true);
-		StyleConstants.setForeground(style, Colors.YELLOW.getColor());
-		document.insertString(document.getLength(), question, style);
-		document.insertString(document.getLength(), "\n", null);
 	}
 
 	private void appendTextQuiz(String answer) throws BadLocationException {
@@ -258,6 +249,7 @@ public class TopicLearnArea {
 
 		textArea.insertComponent(buttonPanel);
 		document.insertString(document.getLength(), "\n\n", null);
+
 		trueButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				// If the answer contains the text that is in the answer string from the JSON

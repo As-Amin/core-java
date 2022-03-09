@@ -46,7 +46,7 @@ public class HomeScreen extends JFrame {
 		frame.setLocation(1000, 300);
 		frame.setMinimumSize(new Dimension(panelWidth, panelHeight));
 		frame.setSize(new Dimension(panelWidth, panelHeight));
-		frame.setResizable(false);
+		frame.setResizable(true);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane.requestFocusInWindow();
