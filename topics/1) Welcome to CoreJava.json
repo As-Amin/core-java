@@ -26,8 +26,8 @@
     "textQuiz": [
         {
             "number": "3",
-            "question": "Are you ready to start learning Java?",
-            "answer": "Yes"
+            "question": "What programming language are you ready to start learning?",
+            "answer": "Java"
         }
     ],
     "trueOrFalseQuiz": [

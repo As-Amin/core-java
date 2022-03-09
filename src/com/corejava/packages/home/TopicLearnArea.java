@@ -2,17 +2,20 @@ package com.corejava.packages.home;
 
 import java.io.BufferedReader;
 import java.io.File;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
 import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -20,8 +23,11 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import net.miginfocom.swing.MigLayout;
 
 import com.corejava.packages.colors.Colors;
 import com.corejava.packages.fonts.FN;
@@ -193,32 +199,36 @@ public class TopicLearnArea {
 		StyleConstants.setBold(style, true);
 		StyleConstants.setForeground(style, Colors.YELLOW.getColor());
 		document.insertString(document.getLength(), question, style);
-		document.insertString(document.getLength(), "\n\n", null);
+		document.insertString(document.getLength(), "\n", null);
 	}
 
 	private void appendTextQuiz(String answer) throws BadLocationException {
 		StyledDocument document = (StyledDocument) textArea.getDocument();
-		JTextField answerArea = new JTextField();
-		answerArea.setBackground(Colors.BACKGROUND.getColor());
-		answerArea.setForeground(Colors.WHITE.getColor());
-		answerArea.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
-		textArea.insertComponent(answerArea);
-		document.insertString(document.getLength(), "\n\n", null);
+
+		JPanel panel = new JPanel();
+		panel.setBackground(null);
+		panel.setLayout(new MigLayout());
+
+		JTextField answerField = new JTextField();
+		answerField.putClientProperty("JTextField.placeholderText", "Your answer here...");
+		answerField.setBackground(Colors.BACKGROUND.getColor());
+		answerField.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
+		panel.add(answerField, "wmin 70%, grow");
 
 		JButton submit = new JButton("Submit");
-		submit.setBorder(null);
 		submit.setForeground(Colors.WHITE.getColor());
 		submit.setBackground(Colors.THEME.getColor());
-		submit.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Colors.THEME.getColor()));
 		submit.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
-		textArea.insertComponent(submit);
+		panel.add(submit, "shrink");
+
+		textArea.insertComponent(panel);
 		document.insertString(document.getLength(), "\n\n", null);
 
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				// If the answer contains the text that is in the answer string from the JSON
 				// file, it is correct.
-				if (answerArea.getText().toLowerCase().indexOf(answer.toLowerCase()) != -1) {
+				if (answerField.getText().equalsIgnoreCase(answer)) {
 					System.out.println("Correct");
 				} else {
 					System.out.println("Hey wrong answer");
@@ -229,24 +239,25 @@ public class TopicLearnArea {
 
 	private void appendTrueOrFalseQuiz(String answer) throws BadLocationException {
 		StyledDocument document = (StyledDocument) textArea.getDocument();
+
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBackground(null);
+		buttonPanel.setLayout(new MigLayout());
+
 		JButton trueButton = new JButton("True");
-		trueButton.setBorder(null);
 		trueButton.setForeground(Colors.WHITE.getColor());
 		trueButton.setBackground(Colors.THEME.getColor());
-		trueButton.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Colors.THEME.getColor()));
 		trueButton.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
-		textArea.insertComponent(trueButton);
-		document.insertString(document.getLength(), "\n\n", null);
+		buttonPanel.add(trueButton);
 
 		JButton falseButton = new JButton("False");
-		falseButton.setBorder(null);
 		falseButton.setForeground(Colors.WHITE.getColor());
 		falseButton.setBackground(Colors.THEME.getColor());
-		falseButton.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Colors.THEME.getColor()));
 		falseButton.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
-		textArea.insertComponent(falseButton);
-		document.insertString(document.getLength(), "\n\n", null);
+		buttonPanel.add(falseButton);
 
+		textArea.insertComponent(buttonPanel);
+		document.insertString(document.getLength(), "\n\n", null);
 		trueButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				// If the answer contains the text that is in the answer string from the JSON
