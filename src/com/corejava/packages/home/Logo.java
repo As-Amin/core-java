@@ -13,7 +13,7 @@ public class Logo {
 
 	public JLabel Generate() {
 		logoLabel = new JLabel(" " + Main.getAppName());
-		logoLabel.setForeground(Colors.DARK3_THEME_COLOR.getColor());
+		logoLabel.setForeground(Colors.THEME.getColor());
 		logoLabel.setFont(new Font(FN.CONSOLAS.getFN(), Font.BOLD, FS.SIDE_LOGO.getFS()));
 		return logoLabel;
 	}

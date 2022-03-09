@@ -3,7 +3,7 @@
         {
             "number": "1",
             "subheading": "What is CoreJava?",
-            "content": "CoreJava is a desktop app designed specifically to teach the core fundamentals of the Java programming language. We have specifically selected the topics that we believe contribute to the core fundamentals to progress as a Java programmer and on completion of the topics list, you should be in the position to be confident programming your own Java applications from scratch."
+            "content": "CoreJava is a desktop app created in Java using the Swing framework, designed specifically to teach the core fundamentals of the Java programming language. We have specifically selected the topics that we believe contribute to the core fundamentals to progress as a Java programmer and on completion of the topics list, you should be in the position to be confident programming your own Java applications from scratch."
         },
         {
             "number": "2",
@@ -20,14 +20,21 @@
         {
             "number": "1",
             "url": "/1/1.png",
-            "caption": "(The official logo for Java)"
+            "caption": "('The official logo for Java')"
         }
     ],
     "textQuiz": [
         {
             "number": "3",
-            "question": "Q1: Are you ready to start learning Java?",
+            "question": "Are you ready to start learning Java?",
             "answer": "Yes"
+        }
+    ],
+    "trueOrFalseQuiz": [
+        {
+            "number": "2",
+            "question": "True or false: CoreJava is created in Java.",
+            "answer": "True"
         }
     ]
 }

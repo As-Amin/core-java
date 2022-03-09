@@ -76,12 +76,12 @@ public class TopicList {
 					topicNameButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent event) {
 							for (JButton button : allTopicButtons) {
-								button.setForeground(Colors.DARK5_FADED_WHITE_COLOR.getColor());
+								button.setForeground(Colors.FADED_WHITE.getColor());
 								button.setBorder(null);
 							}
 							topicNameButton.setForeground(null);
 							topicNameButton.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
-									Colors.DARK3_THEME_COLOR.getColor()));
+									Colors.THEME.getColor()));
 							try {
 								topicTitleBox.SetTitleBox(topicName);
 								topicLearnArea.OpenFile((topicNumber + ") " + topicName), fileType);
@@ -118,7 +118,7 @@ public class TopicList {
 	private JButton configureButton(JButton button) {
 		button.setHorizontalAlignment(SwingConstants.LEFT);
 		button.setBorder(null);
-		button.setForeground(Colors.DARK5_FADED_WHITE_COLOR.getColor());
+		button.setForeground(Colors.FADED_WHITE.getColor());
 		button.setBackground(null);
 		button.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_TEXT.getFS()));
 		return (button);
@@ -126,9 +126,8 @@ public class TopicList {
 
 	private JLabel configureSectionLabel(JLabel label) {
 		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setForeground(Colors.DARK4_PINK_COLOR.getColor());
-		label.setBorder(
-				BorderFactory.createMatteBorder(0, 0, 0, 0, Colors.DARK4_PINK_COLOR.getColor()));
+		label.setForeground(Colors.PINK.getColor());
+		label.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Colors.PINK.getColor()));
 		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_HEADING.getFS()));
 		return (label);
 	}

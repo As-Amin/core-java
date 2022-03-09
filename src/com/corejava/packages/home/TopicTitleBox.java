@@ -14,7 +14,7 @@ public class TopicTitleBox {
 	public JTextField Generate() {
 		topicNameArea = new JTextField();
 		topicNameArea.setBackground(null);
-		topicNameArea.setForeground(Colors.DARK3_THEME_COLOR.getColor());
+		topicNameArea.setForeground(Colors.THEME.getColor());
 		topicNameArea.setFont(new Font(FN.CONSOLAS.getFN(), Font.BOLD, FS.TOPIC_TITLE.getFS()));
 		topicNameArea.setEditable(false);
 		return topicNameArea;
