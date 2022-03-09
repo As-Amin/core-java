@@ -48,7 +48,7 @@ public class TopicList {
 	}
 
 	public void generateTopicButtons() {
-		File directory = new File(Main.getDirectory());
+		File directory = new File(Main.getTopicsDirectory());
 		File[] unsortedTopicsArray = directory.listFiles(); // Get array of all topic files
 		ArrayList<File> unsortedTopicsList = new ArrayList<File>(); // Modifiable arraylist of files
 		for (File topic : unsortedTopicsArray) {
@@ -62,17 +62,10 @@ public class TopicList {
 				String topicNumber = numberAndTopic[0];
 				String topicName = numberAndTopic[1].substring(1);
 				String fileType = topicAndFileType[1];
-				if (fileType.equalsIgnoreCase("difficulty")) {
-					// Get rid of the 'a' or 'z' (first character) as this is used only to
-					// prioritise the file in the directory order.
-					JLabel topicSectionLabel = new JLabel(topicName.substring(1));
-					topicListPanel.add(configureDifficultyLabel(topicSectionLabel),
-							"hmin 50, grow");
-				}
 				if (fileType.equalsIgnoreCase("section")) {
 					// Get rid of the 'a' or 'z' (first character) as this is used only to
 					// prioritise the file in the directory order.
-					JLabel topicSectionLabel = new JLabel(topicName.substring(1));
+					JLabel topicSectionLabel = new JLabel("" + topicName.substring(1));
 					topicListPanel.add(configureSectionLabel(topicSectionLabel), "hmin 30, grow");
 				}
 				if (fileType.equalsIgnoreCase("json")) {
@@ -86,12 +79,11 @@ public class TopicList {
 								button.setForeground(Colors.DARK5_FADEDTEXT_COLOR.getColor());
 								button.setBorder(null);
 							}
-							topicNameButton.setForeground(Colors.DARK3_THEME_COLOR.getColor());
-							topicNameButton.setBorder(BorderFactory.createMatteBorder(0, 3, 0, 0,
+							topicNameButton.setForeground(null);
+							topicNameButton.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
 									Colors.DARK3_THEME_COLOR.getColor()));
-							// Remove initial space from the title
-							topicTitleBox.SetTitleBox(topicName);
 							try {
+								topicTitleBox.SetTitleBox(topicName);
 								topicLearnArea.OpenFile((topicNumber + ") " + topicName), fileType);
 							} catch (IOException IOE) {
 								IOE.printStackTrace();
@@ -132,17 +124,11 @@ public class TopicList {
 		return (button);
 	}
 
-	private JLabel configureDifficultyLabel(JLabel label) {
-		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setForeground(Colors.DARK4_THEME_SECONDARY_COLOR.getColor());
-		label.setBorder(BorderFactory.createMatteBorder(5, 0, 5, 0,
-				Colors.DARK4_THEME_SECONDARY_COLOR.getColor()));
-		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_HEADING.getFS()));
-		return (label);
-	}
-
 	private JLabel configureSectionLabel(JLabel label) {
 		label.setHorizontalAlignment(SwingConstants.LEFT);
+		label.setForeground(Colors.DARK4_THEME_SECONDARY_COLOR.getColor());
+		label.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0,
+				Colors.DARK4_THEME_SECONDARY_COLOR.getColor()));
 		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_HEADING.getFS()));
 		return (label);
 	}

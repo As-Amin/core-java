@@ -5,9 +5,10 @@ import java.awt.Color;
 public enum Colors {
   DARK1_BACKGROUND(0, 0, 0), // Same as FlatDarkLaf.properties '@background'
   DARK2_BACKGROUND_SECONDARY(12, 12, 12), // Same as FlatDarkLaf.properties '@backgroundSecondary'
-  DARK3_THEME_COLOR(179, 136, 209), // Same as FlatDarkLaf.properties '@themeColor'
-  DARK4_THEME_SECONDARY_COLOR(143, 188, 187), // Same as '@themeColorSecondary'
-  DARK5_FADEDTEXT_COLOR(136, 139, 144); // For buttons not in focus
+  DARK3_THEME_COLOR(163, 165, 235), // Same as FlatDarkLaf.properties '@themeColor'
+  DARK4_THEME_SECONDARY_COLOR(138, 186, 235), // Same as '@themeColorSecondary'
+  DARK5_FADEDTEXT_COLOR(136, 139, 144), // For buttons not in focus
+  DARK6_TEXT_COLOR(255, 255, 255); // For text
 
   private final int r;
   private final int g;

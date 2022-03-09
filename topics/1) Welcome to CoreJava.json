@@ -1,0 +1,26 @@
+{
+    "paragraphs": [
+        {
+            "number": "1",
+            "subheading": "What is CoreJava?",
+            "content": "CoreJava is a desktop app designed specifically to teach the core fundamentals of the Java programming language. We have specifically selected the topics that we believe contribute to the core fundamentals to progress as a Java programmer and on completion of the topics list, you should be in the position to be confident programming your own Java applications from scratch."
+        },
+        {
+            "number": "2",
+            "subheading": "Why should you use CoreJava?",
+            "content": "CoreJava combines the traditional element of teaching (textbooks) with interactive elements to create the ultimate teaching tool for learning Java. You will be able to access quizzes, examples, images and much more to aid you in your journey to become a proficient Java programmer."
+        },
+        {
+            "number": "3",
+            "subheading": "Get started",
+            "content": "To get started, just click on any of the topics from the left! Select a topic based on your experience and comfort with programming in Java. It is recommended that you start from the beginning if you are new to Java or if you want to refresh your memory on the fundamentals of Java."
+        }
+    ],
+    "images": [
+        {
+            "number": "1",
+            "url": "/1/1.png",
+            "caption": "(The official logo for Java)"
+        }
+    ]
+}
