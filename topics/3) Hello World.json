@@ -2,21 +2,92 @@
     "paragraphs": [
         {
             "number": "1",
-            "subheading": "Setup Java on your machine",
-            "content": "Java is an object-oriented high level programming language that is based on the C and C++ programming languages. Java is fast, secure and reliable and is used to develop applications used on desktops, laptops, servers, mobile phones and more! The platform is owned by the Oracle Corporation. "
+            "subheading": "What is an IDE?",
+            "content": "An IDE (Integrated Development Environment) is software which allows developers to write code with increased efficiency through features such as autocomplete, syntax highlighting etc. and run the code aswell as debug, build, edit and much more.\n\nCoreJava recommends you choose a Java IDE from the following if you are a beginner: Eclipse, IntelliJ or VS Code. CoreJava will guide you through installing the Eclipse IDE but if you want to use another IDE, there are links below guiding you on how to set them up to program in Java!"
         },
         {
             "number": "2",
-            "subheading": "Setup your preferred IDE on your machine",
-            "content": ""
+            "subheading": "Links to download the IDE's",
+            "content": "Eclipse (Free): https://www.eclipse.org/ide/\n\nIntelliJ (Free and paid versions): https://www.jetbrains.com/idea/\n\nVSCode (Free and Open-Source): https://code.visualstudio.com/"
         },
         {
             "number": "3",
+            "subheading": "Setting up the Eclipse IDE on Windows",
+            "content": "1) Click on the link above to download the Eclipse IDE and then click on the 'Download' button in the top right."
+        },
+        {
+            "number": "4",
+            "subheading": "",
+            "content": "2) Click on the 'Download x86_64' button and then click on the 'Download' button."
+        },
+        {
+            "number": "5",
+            "subheading": "",
+            "content": "3) In your file explorer, navigate to where you installed the installer, double click the installer executable file and click on the 'Run' button."
+        },
+        {
+            "number": "6",
+            "subheading": "",
+            "content": "4) Click on 'Eclipse IDE for Java Developers', click 'Install' and then click 'Launch'."
+        },
+        {
+            "number": "7",
+            "subheading": "",
+            "content": "5) Another pop-up should come up asking you to choose your workspace. Click on 'Launch'."
+        },
+        {
+            "number": "8",
+            "subheading": "",
+            "content": "6) Click on 'Create a new Java project'. Where it says 'Project name', type in 'HelloWorld' and click 'Finish' at the bottom."
+        },
+        {
+            "number": "9",
+            "subheading": "",
+            "content": "7) Right click on your project name in the package explorer on the left. Click on 'New' and then click 'Class'. Name the class 'Hello World' and select the option 'public static void main(String[] args)'. Then click 'Finish'."
+        },
+        {
+            "number": "10",
             "subheading": "Program your first Java application!",
-            "content": ""
+            "content": "Now you are ready to program your first Java application. Type in 'System.out.println('Hello world')' beneath the comment like below. This line prints out whatever is inside the brackets to the console!\n\nNow, click on the green play button at the top of the IDE. Your console should display 'Hello world'."
+        },
+        {
+            "number": "11",
+            "subheading": "Congratulations!",
+            "content": "You have now succesfully created your first Java application. Although it may be simple, your skills will progressively improve as you learn more Java concepts! Click on the next topic to move on..."
         }
     ],
-    "images": [],
+    "images": [
+        {
+            "number": "4",
+            "url": "/3/TUTORIAL(Eclipse 1).png",
+            "caption": "'Click on this button!'"
+        },
+        {
+            "number": "6",
+            "url": "/3/TUTORIAL(Eclipse 2).png",
+            "caption": "'Click on this button!'"
+        },
+        {
+            "number": "7",
+            "url": "/3/TUTORIAL(Eclipse 3).png",
+            "caption": "'Click on 'Launch'''"
+        },
+        {
+            "number": "8",
+            "url": "/3/TUTORIAL(Eclipse 4).png",
+            "caption": "'Enter 'HelloWorld''"
+        },
+        {
+            "number": "9",
+            "url": "/3/TUTORIAL(Eclipse 5).png",
+            "caption": "'Select the options''"
+        },
+        {
+            "number": "10",
+            "url": "/3/CODE(Hello World).png",
+            "caption": "'Your first program!'"
+        }
+    ],
     "textQuiz": [],
     "trueOrFalseQuiz": []
 }

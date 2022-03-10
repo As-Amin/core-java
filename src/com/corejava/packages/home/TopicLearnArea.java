@@ -106,8 +106,8 @@ public class TopicLearnArea {
 						String caption = allImages.getJSONObject(i).getString("caption");
 						appendImage(url);
 						// Append caption
-						appendText(caption, Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
-								FN.CONSOLAS.getFN(), false);
+						appendText(("Figure " + (i + 1) + ":" + caption), Colors.YELLOW.getColor(),
+								FS.TOPIC_TEXT.getFS(), FN.CONSOLAS.getFN(), false);
 					}
 				}
 			}

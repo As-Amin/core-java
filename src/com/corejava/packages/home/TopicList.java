@@ -43,7 +43,7 @@ public class TopicList {
 		for (File topic : unsortedTopicsArray) {
 			unsortedTopicsList.add(topic);
 		}
-		ArrayList<File> sortedTopics = sortTopics(unsortedTopicsList);
+		ArrayList<File> sortedTopics = sort(unsortedTopicsList);
 		for (File topicFile : sortedTopics) {
 			if (topicFile.isFile() && topicFile.exists()) {
 				String topicAndFileType[] = topicFile.getName().split("\\.", 2);
@@ -85,7 +85,7 @@ public class TopicList {
 		}
 	}
 
-	private ArrayList<File> sortTopics(ArrayList<File> topics) {
+	private ArrayList<File> sort(ArrayList<File> topics) {
 		ArrayList<File> sortedTopics = topics;
 		// Bubble sort the topics list by the number before the close bracket
 		int n = sortedTopics.size();
