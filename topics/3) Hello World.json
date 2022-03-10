@@ -59,32 +59,32 @@
     "images": [
         {
             "number": "4",
-            "url": "/3/TUTORIAL(Eclipse 1).png",
+            "url": "/Hello World/TUTORIAL(Eclipse 1).png",
             "caption": "'Click on this button!'"
         },
         {
             "number": "6",
-            "url": "/3/TUTORIAL(Eclipse 2).png",
+            "url": "/Hello World/TUTORIAL(Eclipse 2).png",
             "caption": "'Click on this button!'"
         },
         {
             "number": "7",
-            "url": "/3/TUTORIAL(Eclipse 3).png",
-            "caption": "'Click on 'Launch'''"
+            "url": "/Hello World/TUTORIAL(Eclipse 3).png",
+            "caption": "'Select your directory.'"
         },
         {
             "number": "8",
-            "url": "/3/TUTORIAL(Eclipse 4).png",
-            "caption": "'Enter 'HelloWorld''"
+            "url": "/Hello World/TUTORIAL(Eclipse 4).png",
+            "caption": "'Enter project name.'"
         },
         {
             "number": "9",
-            "url": "/3/TUTORIAL(Eclipse 5).png",
-            "caption": "'Select the options''"
+            "url": "/Hello World/TUTORIAL(Eclipse 5).png",
+            "caption": "'Select your project options.'"
         },
         {
             "number": "10",
-            "url": "/3/CODE(Hello World).png",
+            "url": "/Hello World/CODE(Hello World).png",
             "caption": "'Your first program!'"
         }
     ],

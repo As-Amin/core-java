@@ -43,18 +43,17 @@ public class TopicLearnArea {
 		return scrollArea;
 	}
 
-	public void OpenFile(String fileName, String fileType) throws IOException {
+	public void OpenFile(String fileName) throws IOException {
 		ClearAll();
-		generateJSONObject(fileName, fileType);
+		generateJSONObject(fileName);
 		parseJsonFile();
 		textPane.setCaretPosition(0); // Scroll to the top after adding components
 	}
 
-	private void generateJSONObject(String fileName, String fileType) throws IOException {
+	private void generateJSONObject(String fileName) throws IOException {
 		BufferedReader br = null;
 		try {
-			br = Files.newBufferedReader(
-					Paths.get(Main.getTopicsDirectory(), fileName + '.' + fileType));
+			br = Files.newBufferedReader(Paths.get(Main.getTopicsDirectory(), fileName));
 		} catch (NullPointerException NPE) {
 			// Null pointer exception
 			throw new NullPointerException();
@@ -81,11 +80,15 @@ public class TopicLearnArea {
 				String subheading = allParagraphs.getJSONObject(i).getString("subheading");
 				String paragraphContent = allParagraphs.getJSONObject(i).getString("content");
 				// Append subheading
-				appendText(subheading, Colors.PINK.getColor(), FS.TOPIC_TEXT.getFS(),
-						FN.NOTO.getFN(), false);
+				if (subheading.length() != 0) {
+					appendText(subheading, Colors.PINK.getColor(), FS.TOPIC_TEXT.getFS(),
+							FN.NOTO.getFN(), false);
+				}
 				// Append paragraph
-				appendText(paragraphContent, Colors.WHITE.getColor(), FS.TOPIC_TEXT.getFS(),
-						FN.NOTO.getFN(), false);
+				if (paragraphContent.length() != 0) {
+					appendText(paragraphContent, Colors.WHITE.getColor(), FS.TOPIC_TEXT.getFS(),
+							FN.NOTO.getFN(), false);
+				}
 				parseJsonImages(number); // Display the image with the same number below paragraph
 				parseJsonTextQuiz(number);
 				parseJsonTrueOrFalseQuiz(number);
@@ -106,8 +109,11 @@ public class TopicLearnArea {
 						String caption = allImages.getJSONObject(i).getString("caption");
 						appendImage(url);
 						// Append caption
-						appendText(("Figure " + (i + 1) + ":" + caption), Colors.YELLOW.getColor(),
-								FS.TOPIC_TEXT.getFS(), FN.CONSOLAS.getFN(), false);
+						if (caption.length() != 0) {
+							appendText(("Figure " + (i + 1) + ": " + caption),
+									Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
+									FN.CONSOLAS.getFN(), false);
+						}
 					}
 				}
 			}
@@ -127,8 +133,10 @@ public class TopicLearnArea {
 						String question = allTextQuizzes.getJSONObject(i).getString("question");
 						String answer = allTextQuizzes.getJSONObject(i).getString("answer");
 						// Append question
-						appendText(question, Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
-								FN.NOTO.getFN(), true);
+						if (question.length() != 0) {
+							appendText(question, Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
+									FN.NOTO.getFN(), true);
+						}
 						TextQuiz textQuiz = new TextQuiz(answer, textPane);
 						textQuiz.Generate();
 					}
@@ -150,8 +158,10 @@ public class TopicLearnArea {
 						String question =
 								allTrueOrFalseQuizzes.getJSONObject(i).getString("question");
 						String answer = allTrueOrFalseQuizzes.getJSONObject(i).getString("answer");
-						appendText(question, Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
-								FN.NOTO.getFN(), true);
+						if (question.length() != 0) {
+							appendText(question, Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
+									FN.NOTO.getFN(), true);
+						}
 						TrueFalseQuiz trueFalseQuiz = new TrueFalseQuiz(answer, textPane);
 						trueFalseQuiz.Generate();
 					}

@@ -32,77 +32,87 @@ public class TopicList {
 		JScrollPane topicScrollPane = new JScrollPane(topicListPanel);
 		topicScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		topicScrollPane.getVerticalScrollBar().setUnitIncrement(10);
-		this.generateTopicButtons();
+		this.generateButtonsAndLabels();
 		return topicScrollPane;
 	}
 
-	public void generateTopicButtons() {
+	public void generateButtonsAndLabels() {
 		File directory = new File(Main.getTopicsDirectory());
-		File[] unsortedTopicsArray = directory.listFiles(); // Get array of all topic files
-		ArrayList<File> unsortedTopicsList = new ArrayList<File>(); // Modifiable arraylist of files
-		for (File topic : unsortedTopicsArray) {
-			unsortedTopicsList.add(topic);
+		File[] unsortedArray = directory.listFiles(); // Get array of all topic files
+		ArrayList<File> unsortedList = new ArrayList<File>(); // Modifiable arraylist of files
+		for (File file : unsortedArray) {
+			unsortedList.add(file);
 		}
-		ArrayList<File> sortedTopics = sort(unsortedTopicsList);
-		for (File topicFile : sortedTopics) {
-			if (topicFile.isFile() && topicFile.exists()) {
-				String topicAndFileType[] = topicFile.getName().split("\\.", 2);
-				String numberAndTopic[] = topicAndFileType[0].split("\\)", 2);
-				String topicNumber = numberAndTopic[0];
-				String topicName = numberAndTopic[1].substring(1);
-				String fileType = topicAndFileType[1];
-				if (fileType.equalsIgnoreCase("section")) {
-					// Get rid of the 'a' or 'z' (first character) as this is used only to
-					// prioritise the file in the directory order.
-					JLabel topicSectionLabel = new JLabel("" + topicName.substring(1));
-					topicListPanel.add(configureSectionLabel(topicSectionLabel), "hmin 30, grow");
-				}
-				if (fileType.equalsIgnoreCase("json")) {
-					JButton topicNameButton = new JButton(" " + topicNumber + ") " + topicName);
-					topicListPanel.add(configureButton(topicNameButton), "hmin 30, grow");
-					allTopicButtons.add(topicNameButton);
-					// Add an action listener to all topics buttons
-					topicNameButton.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent event) {
-							for (JButton button : allTopicButtons) {
-								button.setForeground(Colors.FADED_WHITE.getColor());
-								button.setBorder(null);
-							}
-							topicNameButton.setForeground(null);
-							topicNameButton.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
-									Colors.THEME.getColor()));
-							try {
-								HomeScreen.topicTitleBox.SetTitleBox(topicName);
-								HomeScreen.topicLearnArea.OpenFile((topicNumber + ") " + topicName),
-										fileType);
-							} catch (IOException IOE) {
-								IOE.printStackTrace();
-							}
+		ArrayList<File> sortedList = sort(unsortedList);
+		for (File file : sortedList) {
+			int number = getTopicNumber(file);
+			String name = getTopicName(file);
+			String fileType = getFileType(file);
+
+			if (fileType.equalsIgnoreCase("section")) {
+				// Get rid of the 'a' or 'z' (first character) as this is used only to
+				// prioritise the file in the directory order.
+				JLabel topicSectionLabel = new JLabel(name.substring(1));
+				topicListPanel.add(configureSectionLabel(topicSectionLabel), "hmin 30, grow");
+			}
+			if (fileType.equalsIgnoreCase("json")) {
+				JButton button = new JButton(" " + number + ") " + name);
+				topicListPanel.add(configureButton(button), "hmin 30, grow");
+				allTopicButtons.add(button);
+				// Add an action listener to all topics buttons
+				button.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent event) {
+						for (JButton button : allTopicButtons) {
+							button.setForeground(Colors.FADED_WHITE.getColor());
+							button.setBorder(null);
 						}
-					});
-				}
+						button.setForeground(null);
+						button.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
+								Colors.THEME.getColor()));
+						try {
+							HomeScreen.topicTitleBox.SetTitleBox(name);
+							HomeScreen.topicLearnArea.OpenFile(file.getName());
+						} catch (IOException IOE) {
+							IOE.printStackTrace();
+						}
+					}
+				});
 			}
 		}
 	}
 
-	private ArrayList<File> sort(ArrayList<File> topics) {
-		ArrayList<File> sortedTopics = topics;
-		// Bubble sort the topics list by the number before the close bracket
-		int n = sortedTopics.size();
+	/*
+	 * Bubble sort the topics list by the number before the close bracket
+	 */
+	private ArrayList<File> sort(ArrayList<File> unsortedList) {
+		ArrayList<File> sortedList = unsortedList;
+		int n = sortedList.size();
 		for (int i = 0; i < n - 1; i++) {
 			for (int j = 0; j < n - i - 1; j++) {
-				String topicAndFileType1[] = sortedTopics.get(j).getName().split("\\.", 2);
-				String numberAndTopic1[] = topicAndFileType1[0].split("\\)", 2);
-				int first = Integer.parseInt(numberAndTopic1[0]);
-				String topicAndFileType2[] = sortedTopics.get(j + 1).getName().split("\\.", 2);
-				String numberAndTopic2[] = topicAndFileType2[0].split("\\)", 2);
-				int second = Integer.parseInt(numberAndTopic2[0]);
-				if (first > second) {
-					Collections.swap(sortedTopics, j, j + 1);
+				int topicNumberFirst = getTopicNumber(sortedList.get(j));
+				int topicNumberSecond = getTopicNumber(sortedList.get(j + 1));
+				if (topicNumberFirst > topicNumberSecond) {
+					Collections.swap(sortedList, j, j + 1);
 				}
 			}
 		}
-		return sortedTopics;
+		return sortedList;
+	}
+
+	private int getTopicNumber(File file) {
+		String numberTopic[] = file.getName().split("\\)", 2);
+		return Integer.parseInt(numberTopic[0]);
+	}
+
+	private String getTopicName(File file) {
+		String topicAndFileType[] = file.getName().split("\\.", 2);
+		String numberTopic[] = topicAndFileType[0].split("\\) ", 2);
+		return numberTopic[1];
+	}
+
+	private String getFileType(File file) {
+		String topicFileType[] = file.getName().split("\\.", 2);
+		return topicFileType[1];
 	}
 
 	private JButton configureButton(JButton button) {
