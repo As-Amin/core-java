@@ -1,5 +1,8 @@
 package com.corejava.packages.home;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
 
@@ -11,7 +14,6 @@ public class Main {
 	public static void main(String[] args) {
 		FlatLaf.registerCustomDefaultsSource("com.corejava.packages.themes");
 		FlatDarkLaf.install();
-
 		try {
 			@SuppressWarnings("unused")
 			HomeScreen homeScreen = new HomeScreen();

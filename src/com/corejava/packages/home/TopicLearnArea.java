@@ -7,19 +7,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import java.awt.Font;
 import java.awt.image.BufferedImage;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.Color;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
@@ -28,8 +21,6 @@ import javax.swing.text.StyledDocument;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import net.miginfocom.swing.MigLayout;
 
 import com.corejava.packages.colors.Colors;
 import com.corejava.packages.fonts.FN;
@@ -147,7 +138,6 @@ public class TopicLearnArea {
 			System.out.println(e);
 		}
 	}
-
 
 	private void parseJsonTrueOrFalseQuiz(int paragraphNumber) throws IOException {
 		try {

@@ -2,6 +2,7 @@ package com.corejava.packages.home;
 
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,12 +14,13 @@ public class HomeScreen extends JFrame {
 	private int panelHeight = 500;
 	private JFrame frame = this;
 	private Container contentPane = frame.getContentPane();
-	// Right panel
-	TopicTitleBox topicTitleBox = new TopicTitleBox();
-	TopicLearnArea topicLearnArea = new TopicLearnArea();
+	// Right panel - public and global because needs to be modified by different
+	// classes and functions outside of this one i.e. TopicList
+	public static TopicTitleBox topicTitleBox = new TopicTitleBox();
+	public static TopicLearnArea topicLearnArea = new TopicLearnArea();
 	// Left panel
-	Logo logo = new Logo();
-	TopicList topicList = new TopicList(topicTitleBox, topicLearnArea);
+	private Logo logo = new Logo();
+	private TopicList topicList = new TopicList();
 
 	public HomeScreen() {
 		contentPane.setLayout(new MigLayout("", "[fill,30%!][fill,grow]", // width, column

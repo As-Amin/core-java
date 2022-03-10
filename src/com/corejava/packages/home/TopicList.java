@@ -23,26 +23,15 @@ import net.miginfocom.swing.MigLayout;
 
 public class TopicList {
 	private JPanel topicListPanel = new JPanel();
-
-	private TopicLearnArea topicLearnArea;
-	private TopicTitleBox topicTitleBox;
-
 	private ArrayList<JButton> allTopicButtons = new ArrayList<JButton>();
-
-	public TopicList(TopicTitleBox topicTitleBox, TopicLearnArea topicLearnArea) {
-		this.topicLearnArea = topicLearnArea; // Used to open file on button click
-		this.topicTitleBox = topicTitleBox;
-	}
 
 	// Generates the scroll panel for which the topics will be displayed,
 	// loads the topics onto the scrollpanel
 	public JScrollPane Generate() {
 		topicListPanel.setLayout(new MigLayout("wrap"));
-		// "gapy 10, w 90%!"
 		JScrollPane topicScrollPane = new JScrollPane(topicListPanel);
 		topicScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		topicScrollPane.getVerticalScrollBar().setUnitIncrement(10);
-		// topicScrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));
 		this.generateTopicButtons();
 		return topicScrollPane;
 	}
@@ -83,8 +72,9 @@ public class TopicList {
 							topicNameButton.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
 									Colors.THEME.getColor()));
 							try {
-								topicTitleBox.SetTitleBox(topicName);
-								topicLearnArea.OpenFile((topicNumber + ") " + topicName), fileType);
+								HomeScreen.topicTitleBox.SetTitleBox(topicName);
+								HomeScreen.topicLearnArea.OpenFile((topicNumber + ") " + topicName),
+										fileType);
 							} catch (IOException IOE) {
 								IOE.printStackTrace();
 							}
