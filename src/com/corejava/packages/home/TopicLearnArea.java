@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
-
+import javax.swing.text.BadLocationException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -65,145 +65,107 @@ public class TopicLearnArea {
 		try {
 			JSONArray allParagraphs = jsonObject.getJSONArray("paragraphs");
 			for (int i = 0; i < allParagraphs.length(); i++) {
-				int number = Integer.parseInt(allParagraphs.getJSONObject(i).getString("number"));
 				String subheading = allParagraphs.getJSONObject(i).getString("subheading");
 				String paragraphContent = allParagraphs.getJSONObject(i).getString("content");
 				// Append subheading
 				if (subheading.length() != 0) {
-					TextPaneText textPaneText = new TextPaneText(textPane, subheading,
+					TextPaneText textPaneSubheading = new TextPaneText(textPane, subheading,
 							Colors.PINK.getColor(), FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), false);
-					textPaneText.Generate();
+					textPaneSubheading.Generate();
 				}
-				// Append paragraph
+				// Append paragraph content
 				if (paragraphContent.length() != 0) {
-					TextPaneText textPaneText = new TextPaneText(textPane, paragraphContent,
+					TextPaneText textPaneParagraph = new TextPaneText(textPane, paragraphContent,
 							Colors.WHITE.getColor(), FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), false);
-					textPaneText.Generate();
+					textPaneParagraph.Generate();
 				}
-				parseJsonImages(number); // Display the image with the same number below paragraph
-				parseJsonTextQuiz(number);
-				parseJsonTrueOrFalseQuiz(number);
-				parseMultipleChoiceQuiz(number);
+				parseImages(allParagraphs.getJSONObject(i).getJSONArray("images"));
+				parseTextQuiz(allParagraphs.getJSONObject(i).getJSONArray("textQuiz"));
+				parseTrueFalseQuiz(allParagraphs.getJSONObject(i).getJSONArray("trueFalseQuiz"));
+				parseMultipleChoiceQuiz(
+						allParagraphs.getJSONObject(i).getJSONArray("multipleChoiceQuiz"));
 			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 
-	private void parseJsonImages(int paragraphNumber) throws IOException {
-		try {
-			JSONArray allImages = jsonObject.getJSONArray("images");
-			if (allImages.length() != 0) {
-				for (int i = 0; i < allImages.length(); i++) {
-					int number = Integer.parseInt(allImages.getJSONObject(i).getString("number"));
-					if (number == paragraphNumber) {
-						String url = allImages.getJSONObject(i).getString("url");
-						String caption = allImages.getJSONObject(i).getString("caption");
-						TextPaneImage image = new TextPaneImage(url, textPane);
-						image.Generate();
-						// Append caption
-						if (caption.length() != 0) {
-							TextPaneText textPaneText = new TextPaneText(textPane,
-									("Figure " + (i + 1) + ": " + caption),
-									Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
-									FN.CONSOLAS.getFN(), false);
-							textPaneText.Generate();
-						}
-					}
-				}
-			}
-		} catch (Exception e) {
-			System.out.println(e);
+	private void parseImages(JSONArray imagesArray) throws BadLocationException, IOException {
+		// Convert images array contents to string array lists (image urls and captions)
+		ArrayList<String> imagesUrlList = new ArrayList<String>();
+		ArrayList<String> captionsList = new ArrayList<String>();
+		for (int j = 0; j < imagesArray.length(); j++) {
+			imagesUrlList.add(imagesArray.getJSONObject(j).getString("url"));
+			captionsList.add(imagesArray.getJSONObject(j).getString("caption"));
+		}
+		// Append images and captions
+		for (int j = 0; j < imagesUrlList.size(); j++) {
+			TextPaneImage textPaneImage = new TextPaneImage(imagesUrlList.get(j), textPane);
+			textPaneImage.Generate();
+			TextPaneText textPaneCaption = new TextPaneText(textPane,
+					("Caption: " + captionsList.get(j)), Colors.YELLOW.getColor(),
+					FS.TOPIC_TEXT.getFS(), FN.CONSOLAS.getFN(), false);
+			textPaneCaption.Generate();
 		}
 	}
 
-	private void parseJsonTextQuiz(int paragraphNumber) throws IOException {
-		try {
-			JSONArray allTextQuizzes = jsonObject.getJSONArray("textQuiz");
-			if (allTextQuizzes.length() != 0) {
-				for (int i = 0; i < allTextQuizzes.length(); i++) {
-					int number =
-							Integer.parseInt(allTextQuizzes.getJSONObject(i).getString("number"));
-					if (number == paragraphNumber) {
-						String question = allTextQuizzes.getJSONObject(i).getString("question");
-						String answer = allTextQuizzes.getJSONObject(i).getString("answer");
-						// Append question
-						if (question.length() != 0) {
-							TextPaneText textPaneText =
-									new TextPaneText(textPane, question, Colors.YELLOW.getColor(),
-											FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), true);
-							textPaneText.Generate();
-							TextQuiz textQuiz = new TextQuiz(answer, textPane);
-							textQuiz.Generate();
-						}
-					}
-				}
-			}
-		} catch (Exception e) {
-			System.out.println(e);
+	private void parseTextQuiz(JSONArray textQuizArray) throws BadLocationException, IOException {
+		ArrayList<String> questionList = new ArrayList<String>();
+		ArrayList<String> answerList = new ArrayList<String>();
+		for (int j = 0; j < textQuizArray.length(); j++) {
+			questionList.add(textQuizArray.getJSONObject(j).getString("question"));
+			answerList.add(textQuizArray.getJSONObject(j).getString("answer"));
+		}
+		// Append text quiz question and text quiz
+		for (int j = 0; j < questionList.size(); j++) {
+			TextPaneText textPaneQuestion = new TextPaneText(textPane, questionList.get(j),
+					Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), true);
+			textPaneQuestion.Generate();
+			TextQuiz textQuiz = new TextQuiz(answerList.get(j), textPane);
+			textQuiz.Generate();
 		}
 	}
 
-	private void parseJsonTrueOrFalseQuiz(int paragraphNumber) throws IOException {
-		try {
-			JSONArray allTrueOrFalseQuizzes = jsonObject.getJSONArray("trueOrFalseQuiz");
-			if (allTrueOrFalseQuizzes.length() != 0) {
-				for (int i = 0; i < allTrueOrFalseQuizzes.length(); i++) {
-					int number = Integer
-							.parseInt(allTrueOrFalseQuizzes.getJSONObject(i).getString("number"));
-					if (number == paragraphNumber) {
-						String question =
-								allTrueOrFalseQuizzes.getJSONObject(i).getString("question");
-						String answer = allTrueOrFalseQuizzes.getJSONObject(i).getString("answer");
-						if (question.length() != 0) {
-							TextPaneText textPaneText =
-									new TextPaneText(textPane, question, Colors.YELLOW.getColor(),
-											FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), true);
-							textPaneText.Generate();
-							TrueFalseQuiz trueFalseQuiz = new TrueFalseQuiz(answer, textPane);
-							trueFalseQuiz.Generate();
-						}
-					}
-				}
-			}
-		} catch (Exception e) {
-			System.out.println(e);
+	private void parseTrueFalseQuiz(JSONArray trueFalseQuizArray)
+			throws BadLocationException, IOException {
+		ArrayList<String> questionList = new ArrayList<String>();
+		ArrayList<String> answerList = new ArrayList<String>();
+		for (int j = 0; j < trueFalseQuizArray.length(); j++) {
+			questionList.add(trueFalseQuizArray.getJSONObject(j).getString("question"));
+			answerList.add(trueFalseQuizArray.getJSONObject(j).getString("answer"));
+		}
+		// Append text quiz question and text quiz
+		for (int j = 0; j < questionList.size(); j++) {
+			TextPaneText textPaneQuestion = new TextPaneText(textPane, questionList.get(j),
+					Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), true);
+			textPaneQuestion.Generate();
+			TrueFalseQuiz trueFalseQuiz = new TrueFalseQuiz(answerList.get(j), textPane);
+			trueFalseQuiz.Generate();
 		}
 	}
 
-	private void parseMultipleChoiceQuiz(int paragraphNumber) throws IOException {
-		try {
-			JSONArray allMultipleChoiceQuizzes = jsonObject.getJSONArray("multipleChoiceQuiz");
-			if (allMultipleChoiceQuizzes.length() != 0) {
-				for (int i = 0; i < allMultipleChoiceQuizzes.length(); i++) {
-					int number = Integer.parseInt(
-							allMultipleChoiceQuizzes.getJSONObject(i).getString("number"));
-					if (number == paragraphNumber) {
-						String question =
-								allMultipleChoiceQuizzes.getJSONObject(i).getString("question");
-						JSONArray optionsArray =
-								allMultipleChoiceQuizzes.getJSONObject(i).getJSONArray("options");
-						ArrayList<String> optionsList = new ArrayList<String>();
-						String answer =
-								allMultipleChoiceQuizzes.getJSONObject(i).getString("answer");
-						for (int j = 0; j < optionsArray.length(); j++) {
-							optionsList.add(optionsArray.getJSONObject(j).getString("option"));
-						}
-						if (question.length() != 0) {
-							TextPaneText textPaneText =
-									new TextPaneText(textPane, question, Colors.YELLOW.getColor(),
-											FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), true);
-							textPaneText.Generate();
-							MultipleChoiceQuiz multipleChoiceQuiz =
-									new MultipleChoiceQuiz(optionsList, answer, textPane);
-							multipleChoiceQuiz.Generate();
-						}
-
-					}
-				}
+	private void parseMultipleChoiceQuiz(JSONArray multipleChoiceQuizArray)
+			throws BadLocationException, IOException {
+		ArrayList<String> questionList = new ArrayList<String>();
+		ArrayList<String> optionsList = new ArrayList<String>();
+		ArrayList<String> answerList = new ArrayList<String>();
+		for (int j = 0; j < multipleChoiceQuizArray.length(); j++) {
+			questionList.add(multipleChoiceQuizArray.getJSONObject(j).getString("question"));
+			answerList.add(multipleChoiceQuizArray.getJSONObject(j).getString("answer"));
+			JSONArray optionsArray =
+					multipleChoiceQuizArray.getJSONObject(j).getJSONArray("options");
+			for (int k = 0; k < optionsArray.length(); k++) {
+				optionsList.add(optionsArray.getJSONObject(k).getString("option"));
 			}
-		} catch (Exception e) {
-			System.out.println(e);
+		}
+		// Append text quiz question and text quiz
+		for (int j = 0; j < questionList.size(); j++) {
+			TextPaneText textPaneQuestion = new TextPaneText(textPane, questionList.get(j),
+					Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), true);
+			textPaneQuestion.Generate();
+			MultipleChoiceQuiz multipleChoiceQuiz =
+					new MultipleChoiceQuiz(optionsList, answerList.get(j), textPane);
+			multipleChoiceQuiz.Generate();
 		}
 	}
 

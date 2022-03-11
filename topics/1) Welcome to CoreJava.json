@@ -1,41 +1,43 @@
 {
     "paragraphs": [
         {
-            "number": "1",
             "subheading": "What is CoreJava?",
-            "content": "CoreJava is a desktop app created in Java using the Swing framework, designed specifically to teach the core fundamentals of the Java programming language. We have specifically selected the topics that we believe contribute to the core fundamentals to progress as a Java programmer and on completion of the topics list, you should be in the position to be confident programming your own Java applications from scratch."
+            "content": "CoreJava is a desktop app created in Java using the Swing framework, designed specifically to teach the core fundamentals of the Java programming language. We have specifically selected the topics that we believe contribute to the core fundamentals to progress as a Java programmer and on completion of the topics list, you should be in the position to be confident programming your own Java applications from scratch.",
+            "images": [
+                {
+                    "url": "/Welcome to CoreJava/IMAGE(Java Logo).png",
+                    "caption": "'The official logo for Java' (Source: https://www.java.com/en/)"
+                }
+            ],
+            "textQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
         },
         {
-            "number": "2",
             "subheading": "Why should you use CoreJava?",
-            "content": "CoreJava combines the traditional element of teaching (textbooks) with interactive elements to create the ultimate teaching tool for learning Java. You will be able to access quizzes, examples, images and much more to aid you in your journey to become a proficient Java programmer."
+            "content": "CoreJava combines the traditional element of teaching (textbooks) with interactive elements to create the ultimate teaching tool for learning Java. You will be able to access quizzes, examples, images and much more to aid you in your journey to become a proficient Java programmer.",
+            "images": [],
+            "textQuiz": [],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: CoreJava is created in Java.",
+                    "answer": "True"
+                }
+            ],
+            "multipleChoiceQuiz": []
         },
         {
-            "number": "3",
             "subheading": "Get started",
-            "content": "To get started, just click on any of the topics from the left! Select a topic based on your experience and comfort with programming in Java. It is recommended that you start from the beginning if you are new to Java or if you want to refresh your memory on the fundamentals of Java."
+            "content": "To get started, just click on any of the topics from the left! Select a topic based on your experience and comfort with programming in Java. It is recommended that you start from the beginning if you are new to Java or if you want to refresh your memory on the fundamentals of Java.",
+            "images": [],
+            "textQuiz": [
+                {
+                    "question": "What programming language are you ready to start learning?",
+                    "answer": "Java"
+                }
+            ],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
         }
-    ],
-    "images": [
-        {
-            "number": "1",
-            "url": "/Welcome to CoreJava/IMAGE(Java Logo).png",
-            "caption": "'The official logo for Java' (Source: https://www.java.com/en/)"
-        }
-    ],
-    "textQuiz": [
-        {
-            "number": "3",
-            "question": "What programming language are you ready to start learning?",
-            "answer": "Java"
-        }
-    ],
-    "trueOrFalseQuiz": [
-        {
-            "number": "2",
-            "question": "True or false: CoreJava is created in Java.",
-            "answer": "True"
-        }
-    ],
-    "multipleChoiceQuiz": []
+    ]
 }

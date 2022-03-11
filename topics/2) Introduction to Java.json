@@ -1,38 +1,39 @@
 {
     "paragraphs": [
         {
-            "number": "1",
             "subheading": "What is Java?",
-            "content": "Java is an object-oriented high level programming language that is based on the C and C++ programming languages. Java is fast, secure and reliable and is used to develop applications used on desktops, laptops, servers, mobile phones and more!\n\nThe platform is owned by the Oracle Corporation and the primary reason for why it is so popular is because it can be run on a wide variety of computing platforms, has a long history (released 1996) and the same code can be executed on various machines and systems."
+            "content": "Java is an object-oriented high level programming language that is based on the C and C++ programming languages. Java is fast, secure and reliable and is used to develop applications used on desktops, laptops, servers, mobile phones and more!\n\nThe platform is owned by the Oracle Corporation and the primary reason for why it is so popular is because it can be run on a wide variety of computing platforms, has a long history (released 1996) and the same code can be executed on various machines and systems.",
+            "images": [],
+            "textQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [
+                {
+                    "question": "What programming language is Java based on?",
+                    "options": [
+                        {
+                            "option": "JavaScript"
+                        },
+                        {
+                            "option": "Python"
+                        },
+                        {
+                            "option": "C#"
+                        },
+                        {
+                            "option": "C & C++"
+                        }
+                    ],
+                    "answer": "C & C++"
+                }
+            ]
         },
         {
-            "number": "2",
             "subheading": "Where is Java used?",
-            "content": ""
-        }
-    ],
-    "images": [],
-    "textQuiz": [],
-    "trueOrFalseQuiz": [],
-    "multipleChoiceQuiz": [
-        {
-            "number": "1",
-            "question": "What programming language is Java based on?",
-            "options": [
-                {
-                    "option": "JavaScript"
-                },
-                {
-                    "option": "Python"
-                },
-                {
-                    "option": "C#"
-                },
-                {
-                    "option": "C & C++"
-                }
-            ],
-            "answer": "C & C++"
+            "content": "",
+            "images": [],
+            "textQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
         }
     ]
 }

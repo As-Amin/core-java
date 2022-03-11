@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 
 public class HomeScreen extends JFrame {
-	private int panelWidth = 700;
-	private int panelHeight = 500;
+	private int panelWidth = 750;
+	private int panelHeight = 550;
 	private JFrame frame = this;
 	private Container contentPane = frame.getContentPane();
 	// Right panel - public and global because needs to be modified by different
