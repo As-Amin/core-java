@@ -70,8 +70,9 @@ public class TopicLearnArea {
 				String paragraphContent = allParagraphs.getJSONObject(i).getString("content");
 				// Append subheading
 				if (subheading.length() != 0) {
-					Text textPaneSubheading = new Text(textPane, subheading, Colors.PINK.getColor(),
-							FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), false);
+					Text textPaneSubheading =
+							new Text(textPane, subheading, Colors.THEME_SECONDARY.getColor(),
+									FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), false);
 					textPaneSubheading.Generate();
 				}
 				// Append paragraph content

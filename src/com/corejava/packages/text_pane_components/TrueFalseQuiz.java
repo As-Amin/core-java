@@ -69,7 +69,6 @@ public class TrueFalseQuiz {
 
     private JButton configureButton(JButton button) {
         button.setForeground(Colors.WHITE.getColor());
-        button.setBackground(Colors.THEME.getColor());
         button.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
         return button;
     }

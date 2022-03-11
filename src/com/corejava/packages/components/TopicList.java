@@ -26,6 +26,7 @@ import net.miginfocom.swing.MigLayout;
 public class TopicList {
 	private JPanel topicListPanel = new JPanel();
 	private ArrayList<JButton> allTopicButtons = new ArrayList<JButton>();
+	private final char fileNumberSeperator = ')';
 
 	// Generates the scroll panel for which the topics will be displayed,
 	// loads the topics onto the scrollpanel
@@ -43,26 +44,23 @@ public class TopicList {
 		Arrays.sort(files, NameFileComparator.NAME_COMPARATOR);
 		for (File section : files) {
 			String sectionName = getTopicName(section);
-			JLabel topicSectionLabel = new JLabel(sectionName);
-			topicListPanel.add(configureSectionLabel(topicSectionLabel), "hmin 30, grow");
-
+			JLabel sectionLabel = new JLabel(sectionName);
+			topicListPanel.add(configureLabel(sectionLabel), "hmin 30, grow");
 			for (File topic : section.listFiles()) {
 				String topicName = getTopicName(topic);
-
-				JButton button = new JButton(" " + topicName);
-				topicListPanel.add(configureButton(button), "hmin 30, grow");
-				allTopicButtons.add(button);
-
-				button.addActionListener(new ActionListener() {
+				JButton topicButton = new JButton(" " + topicName);
+				topicListPanel.add(configureButton(topicButton), "hmin 30, grow");
+				allTopicButtons.add(topicButton);
+				topicButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent event) {
-						for (JButton button : allTopicButtons) {
-							button.setForeground(Colors.FADED_WHITE.getColor());
-							button.setBorder(null);
-						}
-						button.setForeground(null);
-						button.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
-								Colors.THEME.getColor()));
 						try {
+							for (JButton button : allTopicButtons) {
+								button.setForeground(Colors.FADED_WHITE.getColor());
+								button.setBorder(null);
+							}
+							topicButton.setForeground(null);
+							topicButton.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
+									Colors.THEME.getColor()));
 							Home.topicTitleBox.SetTitleBox(topicName);
 							Home.topicLearnArea.OpenFile(topic);
 						} catch (IOException IOE) {
@@ -76,7 +74,7 @@ public class TopicList {
 
 	private String getTopicName(File file) {
 		String topicAndFileType[] = file.getName().split("\\.", 2);
-		String numberTopic[] = topicAndFileType[0].split("\\) ", 2);
+		String numberTopic[] = topicAndFileType[0].split("\\" + fileNumberSeperator + " ", 2);
 		return numberTopic[1];
 	}
 
@@ -89,9 +87,9 @@ public class TopicList {
 		return (button);
 	}
 
-	private JLabel configureSectionLabel(JLabel label) {
+	private JLabel configureLabel(JLabel label) {
 		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setForeground(Colors.PINK.getColor());
+		label.setForeground(Colors.THEME_SECONDARY.getColor());
 		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_HEADING.getFS()));
 		return (label);
 	}
