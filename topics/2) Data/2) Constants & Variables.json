@@ -27,7 +27,7 @@
             "images": [
                 {
                     "url": "/Constants & Variables/CODE(Static Variable).png",
-                    "caption": "'A public static string variable declared in the Main class.'"
+                    "caption": "'A static string variable declared in a class.'"
                 },
                 {
                     "url": "/Constants & Variables/OUTPUT(Static Variable).png",
@@ -53,11 +53,11 @@
         },
         {
             "subheading": "Constants",
-            "content": "A constant in Java is like a variable but it cannot be changed after runtime (read-only). To declare a variable as a constant, just add the 'final' keyword before declaring the variable like below!",
+            "content": "A constant in Java is like a variable but it cannot be changed after runtime (read-only). To declare a variable as a constant, just add the 'final' keyword before declaring the variable like below!\n\nThe syntax to declare final static variables is in uppercase characters with words seperated with underscores.",
             "images": [
                 {
                     "url": "/Constants & Variables/CODE(Final Constant).png",
-                    "caption": "'An instance constant (constantInt) and a static constant (constantStr) declared in a class.'"
+                    "caption": "'A static final string declared in a class.'"
                 }
             ],
             "textQuiz": [],

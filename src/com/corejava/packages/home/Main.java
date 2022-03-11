@@ -40,3 +40,12 @@ public class Main {
  * public void ExampleMethod() { // Print the boolean variable to the console
  * System.out.println(isInstance); } }
  */
+
+/*
+ * public class ExampleClass { // Declare a static variable (String) static String staticStr =
+ * "This is a static variable"; }
+ * 
+ * public class AnotherExampleClass { public void AnotherExampleMethod() { // Print the static
+ * variable to the console System.out.println(ExampleClass.staticStr); } }
+ */
+
