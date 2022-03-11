@@ -14,13 +14,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.corejava.packages.colors.Colors;
+import com.corejava.packages.components.MultipleChoiceQuiz;
+import com.corejava.packages.components.TextPaneImage;
+import com.corejava.packages.components.TextPaneText;
+import com.corejava.packages.components.TextQuiz;
+import com.corejava.packages.components.TrueFalseQuiz;
 import com.corejava.packages.fonts.FN;
 import com.corejava.packages.fonts.FS;
-import com.corejava.packages.learn_content.TextPaneImage;
-import com.corejava.packages.learn_content.TextPaneText;
-import com.corejava.packages.learn_content.MultipleChoiceQuiz;
-import com.corejava.packages.learn_content.TextQuiz;
-import com.corejava.packages.learn_content.TrueFalseQuiz;
 
 public class TopicLearnArea {
 	private JScrollPane scrollArea;

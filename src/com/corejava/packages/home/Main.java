@@ -13,11 +13,10 @@ public class Main {
 		FlatDarkLaf.install();
 		try {
 			@SuppressWarnings("unused")
-			HomeScreen homeScreen = new HomeScreen();
+			SetupFrame homeScreen = new SetupFrame();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public static String getAppName() {

@@ -1,11 +1,9 @@
-package com.corejava.packages.learn_content;
+package com.corejava.packages.components;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -15,51 +13,58 @@ import com.corejava.packages.fonts.FN;
 import com.corejava.packages.fonts.FS;
 import net.miginfocom.swing.MigLayout;
 
-public class MultipleChoiceQuiz {
-    private ArrayList<String> options;
+public class TrueFalseQuiz {
     private String answer;
     private JTextPane textPane;
 
-    public MultipleChoiceQuiz(ArrayList<String> options, String answer, JTextPane textPane) {
-        this.options = options;
+    public TrueFalseQuiz(String answer, JTextPane textPane) {
         this.answer = answer;
         this.textPane = textPane;
     }
 
     public void Generate() throws BadLocationException {
-        appendMultipleChoiceQuiz();
+        appendTrueFalseQuiz();
     }
 
-    private void appendMultipleChoiceQuiz() throws BadLocationException {
+    private void appendTrueFalseQuiz() throws BadLocationException {
         StyledDocument document = (StyledDocument) textPane.getDocument();
 
         JPanel panel = new JPanel();
         panel.setBackground(null);
         panel.setLayout(new MigLayout());
 
-        JComboBox<String> optionsComboBox = new JComboBox(options.toArray());
-        panel.add(configureComboBox(optionsComboBox));
+        JButton trueButton = new JButton("True");
+        panel.add(panel.add(configureButton(trueButton)));
 
-        JButton submitButton = new JButton("Submit");
-        panel.add(panel.add(configureButton(submitButton)));
+        JButton falseButton = new JButton("False");
+        panel.add(panel.add(configureButton(falseButton)));
 
         textPane.insertComponent(panel);
         document.insertString(document.getLength(), "\n\n", null);
 
-        submitButton.addActionListener(new ActionListener() {
+        trueButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                if (answer.equalsIgnoreCase(optionsComboBox.getSelectedItem().toString())) {
+                // If the answer contains the text that is in the answer string from the JSON
+                // file, it is correct.
+                if (answer.equalsIgnoreCase("true")) {
                     System.out.println("Correct");
                 } else {
                     System.out.println("Hey wrong answer");
                 }
             }
         });
-    }
 
-    private JComboBox<String> configureComboBox(JComboBox<String> comboBox) {
-        comboBox.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
-        return comboBox;
+        falseButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                // If the answer contains the text that is in the answer string from the JSON
+                // file, it is correct.
+                if (answer.equalsIgnoreCase("false")) {
+                    System.out.println("Correct");
+                } else {
+                    System.out.println("Hey wrong answer");
+                }
+            }
+        });
     }
 
     private JButton configureButton(JButton button) {

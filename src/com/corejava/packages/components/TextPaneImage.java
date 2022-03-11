@@ -1,4 +1,4 @@
-package com.corejava.packages.learn_content;
+package com.corejava.packages.components;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;

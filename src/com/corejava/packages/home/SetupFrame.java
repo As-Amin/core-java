@@ -5,10 +5,10 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
+import com.corejava.packages.components.Logo;
 import net.miginfocom.swing.MigLayout;
 
-public class HomeScreen extends JFrame {
+public class SetupFrame extends JFrame {
 	private int panelWidth = 750;
 	private int panelHeight = 550;
 	private JFrame frame = this;
@@ -21,7 +21,7 @@ public class HomeScreen extends JFrame {
 	private Logo logo = new Logo();
 	private TopicList topicList = new TopicList();
 
-	public HomeScreen() {
+	public SetupFrame() {
 		contentPane.setLayout(new MigLayout("", "[fill,30%!][fill,grow]", // width, column
 				"[fill,grow][]")); // height, row
 

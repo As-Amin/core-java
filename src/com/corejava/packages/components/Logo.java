@@ -1,4 +1,4 @@
-package com.corejava.packages.home;
+package com.corejava.packages.components;
 
 import java.awt.Font;
 
@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import com.corejava.packages.colors.Colors;
 import com.corejava.packages.fonts.FN;
 import com.corejava.packages.fonts.FS;
+import com.corejava.packages.home.Main;
 
 public class Logo {
 	private JLabel logoLabel;

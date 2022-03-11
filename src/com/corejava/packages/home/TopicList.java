@@ -70,8 +70,8 @@ public class TopicList {
 						button.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
 								Colors.THEME.getColor()));
 						try {
-							HomeScreen.topicTitleBox.SetTitleBox(name);
-							HomeScreen.topicLearnArea.OpenFile(file.getName());
+							SetupFrame.topicTitleBox.SetTitleBox(name);
+							SetupFrame.topicLearnArea.OpenFile(file.getName());
 						} catch (IOException IOE) {
 							IOE.printStackTrace();
 						}
@@ -127,7 +127,6 @@ public class TopicList {
 	private JLabel configureSectionLabel(JLabel label) {
 		label.setHorizontalAlignment(SwingConstants.LEFT);
 		label.setForeground(Colors.PINK.getColor());
-		label.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Colors.PINK.getColor()));
 		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_HEADING.getFS()));
 		return (label);
 	}

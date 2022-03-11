@@ -1,4 +1,4 @@
-package com.corejava.packages.learn_content;
+package com.corejava.packages.components;
 
 import java.awt.Color;
 import javax.swing.JTextPane;
