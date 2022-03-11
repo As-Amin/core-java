@@ -1,7 +1,7 @@
 package com.corejava.packages.components;
 
 import java.io.BufferedReader;
-
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -38,17 +38,17 @@ public class TopicLearnArea {
 		return scrollArea;
 	}
 
-	public void OpenFile(String fileName) throws IOException {
+	public void OpenFile(File topicFile) throws IOException {
 		ClearAll();
-		generateJSONObject(fileName);
+		generateJSONObject(topicFile);
 		parseJsonFile();
 		textPane.setCaretPosition(0); // Scroll to the top after adding components
 	}
 
-	private void generateJSONObject(String fileName) throws IOException {
+	private void generateJSONObject(File topicFile) throws IOException {
 		BufferedReader br = null;
 		try {
-			br = Files.newBufferedReader(Paths.get(Main.getTopicsDirectory(), fileName));
+			br = Files.newBufferedReader(topicFile.toPath());
 		} catch (NullPointerException NPE) {
 			throw new NullPointerException();
 		}

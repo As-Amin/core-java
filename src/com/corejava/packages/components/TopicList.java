@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -20,6 +20,7 @@ import com.corejava.packages.fonts.FN;
 import com.corejava.packages.fonts.FS;
 import com.corejava.packages.home.Home;
 import com.corejava.packages.home.Main;
+import org.apache.commons.io.comparator.NameFileComparator;
 import net.miginfocom.swing.MigLayout;
 
 public class TopicList {
@@ -37,30 +38,21 @@ public class TopicList {
 		return topicScrollPane;
 	}
 
-	public void generateButtonsAndLabels() {
-		File directory = new File(Main.getTopicsDirectory());
-		File[] unsortedArray = directory.listFiles(); // Get array of all topic files
-		ArrayList<File> unsortedList = new ArrayList<File>(); // Modifiable arraylist of files
-		for (File file : unsortedArray) {
-			unsortedList.add(file);
-		}
-		ArrayList<File> sortedList = sort(unsortedList);
-		for (File file : sortedList) {
-			int number = getTopicNumber(file);
-			String name = getTopicName(file);
-			String fileType = getFileType(file);
+	private void generateButtonsAndLabels() {
+		File[] files = new File(Main.getTopicsDirectory()).listFiles();
+		Arrays.sort(files, NameFileComparator.NAME_COMPARATOR);
+		for (File section : files) {
+			String sectionName = getTopicName(section);
+			JLabel topicSectionLabel = new JLabel(sectionName);
+			topicListPanel.add(configureSectionLabel(topicSectionLabel), "hmin 30, grow");
 
-			if (fileType.equalsIgnoreCase("section")) {
-				// Get rid of the 'a' or 'z' (first character) as this is used only to
-				// prioritise the file in the directory order.
-				JLabel topicSectionLabel = new JLabel(name.substring(1));
-				topicListPanel.add(configureSectionLabel(topicSectionLabel), "hmin 30, grow");
-			}
-			if (fileType.equalsIgnoreCase("json")) {
-				JButton button = new JButton(" " + number + ") " + name);
+			for (File topic : section.listFiles()) {
+				String topicName = getTopicName(topic);
+
+				JButton button = new JButton(" " + topicName);
 				topicListPanel.add(configureButton(button), "hmin 30, grow");
 				allTopicButtons.add(button);
-				// Add an action listener to all topics buttons
+
 				button.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent event) {
 						for (JButton button : allTopicButtons) {
@@ -71,8 +63,8 @@ public class TopicList {
 						button.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
 								Colors.THEME.getColor()));
 						try {
-							Home.topicTitleBox.SetTitleBox(name);
-							Home.topicLearnArea.OpenFile(file.getName());
+							Home.topicTitleBox.SetTitleBox(topicName);
+							Home.topicLearnArea.OpenFile(topic);
 						} catch (IOException IOE) {
 							IOE.printStackTrace();
 						}
@@ -82,38 +74,10 @@ public class TopicList {
 		}
 	}
 
-	/*
-	 * Bubble sort the topics list by the number before the close bracket
-	 */
-	private ArrayList<File> sort(ArrayList<File> unsortedList) {
-		ArrayList<File> sortedList = unsortedList;
-		int n = sortedList.size();
-		for (int i = 0; i < n - 1; i++) {
-			for (int j = 0; j < n - i - 1; j++) {
-				int topicNumberFirst = getTopicNumber(sortedList.get(j));
-				int topicNumberSecond = getTopicNumber(sortedList.get(j + 1));
-				if (topicNumberFirst > topicNumberSecond) {
-					Collections.swap(sortedList, j, j + 1);
-				}
-			}
-		}
-		return sortedList;
-	}
-
-	private int getTopicNumber(File file) {
-		String numberTopic[] = file.getName().split("\\)", 2);
-		return Integer.parseInt(numberTopic[0]);
-	}
-
 	private String getTopicName(File file) {
 		String topicAndFileType[] = file.getName().split("\\.", 2);
 		String numberTopic[] = topicAndFileType[0].split("\\) ", 2);
 		return numberTopic[1];
-	}
-
-	private String getFileType(File file) {
-		String topicFileType[] = file.getName().split("\\.", 2);
-		return topicFileType[1];
 	}
 
 	private JButton configureButton(JButton button) {

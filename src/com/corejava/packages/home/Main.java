@@ -30,7 +30,6 @@ public class Main {
 	public static String getImagesDirectory() {
 		return IMAGES_DIRECTORY;
 	}
-
 }
 
 /*
