@@ -1,4 +1,4 @@
-package com.corejava.packages.components;
+package com.corejava.packages.text_pane_components;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -12,11 +12,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class TextPaneImage {
+public class Image {
     private String imageURL;
     private JTextPane textPane;
 
-    public TextPaneImage(String imageURL, JTextPane textPane) {
+    public Image(String imageURL, JTextPane textPane) {
         this.imageURL = imageURL;
         this.textPane = textPane;
     }

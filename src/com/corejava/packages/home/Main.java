@@ -13,7 +13,7 @@ public class Main {
 		FlatDarkLaf.install();
 		try {
 			@SuppressWarnings("unused")
-			SetupFrame homeScreen = new SetupFrame();
+			Home homeScreen = new Home();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

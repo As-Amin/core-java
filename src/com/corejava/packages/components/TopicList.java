@@ -1,4 +1,4 @@
-package com.corejava.packages.home;
+package com.corejava.packages.components;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -18,7 +18,8 @@ import javax.swing.SwingConstants;
 import com.corejava.packages.colors.Colors;
 import com.corejava.packages.fonts.FN;
 import com.corejava.packages.fonts.FS;
-
+import com.corejava.packages.home.Home;
+import com.corejava.packages.home.Main;
 import net.miginfocom.swing.MigLayout;
 
 public class TopicList {
@@ -70,8 +71,8 @@ public class TopicList {
 						button.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
 								Colors.THEME.getColor()));
 						try {
-							SetupFrame.topicTitleBox.SetTitleBox(name);
-							SetupFrame.topicLearnArea.OpenFile(file.getName());
+							Home.topicTitleBox.SetTitleBox(name);
+							Home.topicLearnArea.OpenFile(file.getName());
 						} catch (IOException IOE) {
 							IOE.printStackTrace();
 						}

@@ -1,10 +1,11 @@
-package com.corejava.packages.components;
+package com.corejava.packages.text_pane_components;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.StyledDocument;
@@ -13,52 +14,40 @@ import com.corejava.packages.fonts.FN;
 import com.corejava.packages.fonts.FS;
 import net.miginfocom.swing.MigLayout;
 
-public class TrueFalseQuiz {
+public class TextQuiz {
     private String answer;
     private JTextPane textPane;
 
-    public TrueFalseQuiz(String answer, JTextPane textPane) {
+    public TextQuiz(String answer, JTextPane textPane) {
         this.answer = answer;
         this.textPane = textPane;
     }
 
     public void Generate() throws BadLocationException {
-        appendTrueFalseQuiz();
+        appendTextQuiz();
     }
 
-    private void appendTrueFalseQuiz() throws BadLocationException {
+    private void appendTextQuiz() throws BadLocationException {
         StyledDocument document = (StyledDocument) textPane.getDocument();
 
         JPanel panel = new JPanel();
         panel.setBackground(null);
         panel.setLayout(new MigLayout());
 
-        JButton trueButton = new JButton("True");
-        panel.add(panel.add(configureButton(trueButton)));
+        JTextField answerField = new JTextField();
+        panel.add(configureTextField(answerField), "wmin 70%, grow");
 
-        JButton falseButton = new JButton("False");
-        panel.add(panel.add(configureButton(falseButton)));
+        JButton submit = new JButton("Submit");
+        panel.add(configureButton(submit), "shrink");
 
         textPane.insertComponent(panel);
         document.insertString(document.getLength(), "\n\n", null);
 
-        trueButton.addActionListener(new ActionListener() {
+        submit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 // If the answer contains the text that is in the answer string from the JSON
                 // file, it is correct.
-                if (answer.equalsIgnoreCase("true")) {
-                    System.out.println("Correct");
-                } else {
-                    System.out.println("Hey wrong answer");
-                }
-            }
-        });
-
-        falseButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                // If the answer contains the text that is in the answer string from the JSON
-                // file, it is correct.
-                if (answer.equalsIgnoreCase("false")) {
+                if (answerField.getText().equalsIgnoreCase(answer)) {
                     System.out.println("Correct");
                 } else {
                     System.out.println("Hey wrong answer");
@@ -73,4 +62,12 @@ public class TrueFalseQuiz {
         button.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
         return button;
     }
+
+    private JTextField configureTextField(JTextField textField) {
+        textField.putClientProperty("JTextField.placeholderText", "Your answer here...");
+        textField.setBackground(Colors.BACKGROUND.getColor());
+        textField.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
+        return textField;
+    }
+
 }

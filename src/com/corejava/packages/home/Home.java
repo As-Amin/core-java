@@ -6,9 +6,12 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import com.corejava.packages.components.Logo;
+import com.corejava.packages.components.TopicLearnArea;
+import com.corejava.packages.components.TopicList;
+import com.corejava.packages.components.TopicTitleBox;
 import net.miginfocom.swing.MigLayout;
 
-public class SetupFrame extends JFrame {
+public class Home extends JFrame {
 	private int panelWidth = 750;
 	private int panelHeight = 550;
 	private JFrame frame = this;
@@ -21,7 +24,7 @@ public class SetupFrame extends JFrame {
 	private Logo logo = new Logo();
 	private TopicList topicList = new TopicList();
 
-	public SetupFrame() {
+	public Home() {
 		contentPane.setLayout(new MigLayout("", "[fill,30%!][fill,grow]", // width, column
 				"[fill,grow][]")); // height, row
 

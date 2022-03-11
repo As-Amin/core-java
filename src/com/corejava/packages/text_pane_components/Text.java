@@ -1,4 +1,4 @@
-package com.corejava.packages.components;
+package com.corejava.packages.text_pane_components;
 
 import java.awt.Color;
 import javax.swing.JTextPane;
@@ -8,7 +8,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import java.io.IOException;
 
-public class TextPaneText {
+public class Text {
     private JTextPane textPane;
     private String text;
     private Color color;
@@ -16,7 +16,7 @@ public class TextPaneText {
     private String fontName;
     private Boolean isQuestion;
 
-    public TextPaneText(JTextPane textPane, String text, Color color, int fontSize, String fontName,
+    public Text(JTextPane textPane, String text, Color color, int fontSize, String fontName,
             Boolean isQuestion) {
         this.textPane = textPane;
         this.text = text;

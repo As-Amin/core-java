@@ -1,4 +1,4 @@
-package com.corejava.packages.home;
+package com.corejava.packages.components;
 
 import java.awt.Font;
 
