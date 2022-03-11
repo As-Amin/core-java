@@ -1,4 +1,4 @@
-package com.corejava.packages.quiz;
+package com.corejava.packages.learn_content;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,6 @@ import com.corejava.packages.fonts.FS;
 import net.miginfocom.swing.MigLayout;
 
 public class TrueFalseQuiz {
-
     private String answer;
     private JTextPane textPane;
 
@@ -47,7 +46,7 @@ public class TrueFalseQuiz {
             public void actionPerformed(ActionEvent event) {
                 // If the answer contains the text that is in the answer string from the JSON
                 // file, it is correct.
-                if (trueButton.getText().equalsIgnoreCase(answer)) {
+                if (answer.equalsIgnoreCase("true")) {
                     System.out.println("Correct");
                 } else {
                     System.out.println("Hey wrong answer");
@@ -59,7 +58,7 @@ public class TrueFalseQuiz {
             public void actionPerformed(ActionEvent event) {
                 // If the answer contains the text that is in the answer string from the JSON
                 // file, it is correct.
-                if (falseButton.getText().equalsIgnoreCase(answer)) {
+                if (answer.equalsIgnoreCase("false")) {
                     System.out.println("Correct");
                 } else {
                     System.out.println("Hey wrong answer");

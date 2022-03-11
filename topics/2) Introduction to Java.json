@@ -13,5 +13,26 @@
     ],
     "images": [],
     "textQuiz": [],
-    "trueOrFalseQuiz": []
+    "trueOrFalseQuiz": [],
+    "multipleChoiceQuiz": [
+        {
+            "number": "1",
+            "question": "What programming language is Java based on?",
+            "options": [
+                {
+                    "option": "JavaScript"
+                },
+                {
+                    "option": "Python"
+                },
+                {
+                    "option": "C#"
+                },
+                {
+                    "option": "C & C++"
+                }
+            ],
+            "answer": "C & C++"
+        }
+    ]
 }

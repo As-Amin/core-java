@@ -1,23 +1,14 @@
 package com.corejava.packages.home;
 
 import java.io.BufferedReader;
-import java.io.File;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
-import java.awt.image.BufferedImage;
-import java.awt.Color;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -25,8 +16,11 @@ import org.json.JSONObject;
 import com.corejava.packages.colors.Colors;
 import com.corejava.packages.fonts.FN;
 import com.corejava.packages.fonts.FS;
-import com.corejava.packages.quiz.TextQuiz;
-import com.corejava.packages.quiz.TrueFalseQuiz;
+import com.corejava.packages.learn_content.TextPaneImage;
+import com.corejava.packages.learn_content.TextPaneText;
+import com.corejava.packages.learn_content.MultipleChoiceQuiz;
+import com.corejava.packages.learn_content.TextQuiz;
+import com.corejava.packages.learn_content.TrueFalseQuiz;
 
 public class TopicLearnArea {
 	private JScrollPane scrollArea;
@@ -55,7 +49,6 @@ public class TopicLearnArea {
 		try {
 			br = Files.newBufferedReader(Paths.get(Main.getTopicsDirectory(), fileName));
 		} catch (NullPointerException NPE) {
-			// Null pointer exception
 			throw new NullPointerException();
 		}
 		String json = "";
@@ -69,10 +62,6 @@ public class TopicLearnArea {
 	}
 
 	private void parseJsonFile() throws IOException {
-		parseJsonParagraph(); // This method calls the function for images, questions etc.
-	}
-
-	private void parseJsonParagraph() throws IOException {
 		try {
 			JSONArray allParagraphs = jsonObject.getJSONArray("paragraphs");
 			for (int i = 0; i < allParagraphs.length(); i++) {
@@ -81,17 +70,20 @@ public class TopicLearnArea {
 				String paragraphContent = allParagraphs.getJSONObject(i).getString("content");
 				// Append subheading
 				if (subheading.length() != 0) {
-					appendText(subheading, Colors.PINK.getColor(), FS.TOPIC_TEXT.getFS(),
-							FN.NOTO.getFN(), false);
+					TextPaneText textPaneText = new TextPaneText(textPane, subheading,
+							Colors.PINK.getColor(), FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), false);
+					textPaneText.Generate();
 				}
 				// Append paragraph
 				if (paragraphContent.length() != 0) {
-					appendText(paragraphContent, Colors.WHITE.getColor(), FS.TOPIC_TEXT.getFS(),
-							FN.NOTO.getFN(), false);
+					TextPaneText textPaneText = new TextPaneText(textPane, paragraphContent,
+							Colors.WHITE.getColor(), FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), false);
+					textPaneText.Generate();
 				}
 				parseJsonImages(number); // Display the image with the same number below paragraph
 				parseJsonTextQuiz(number);
 				parseJsonTrueOrFalseQuiz(number);
+				parseMultipleChoiceQuiz(number);
 			}
 		} catch (Exception e) {
 			System.out.println(e);
@@ -107,12 +99,15 @@ public class TopicLearnArea {
 					if (number == paragraphNumber) {
 						String url = allImages.getJSONObject(i).getString("url");
 						String caption = allImages.getJSONObject(i).getString("caption");
-						appendImage(url);
+						TextPaneImage image = new TextPaneImage(url, textPane);
+						image.Generate();
 						// Append caption
 						if (caption.length() != 0) {
-							appendText(("Figure " + (i + 1) + ": " + caption),
+							TextPaneText textPaneText = new TextPaneText(textPane,
+									("Figure " + (i + 1) + ": " + caption),
 									Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
 									FN.CONSOLAS.getFN(), false);
+							textPaneText.Generate();
 						}
 					}
 				}
@@ -134,11 +129,13 @@ public class TopicLearnArea {
 						String answer = allTextQuizzes.getJSONObject(i).getString("answer");
 						// Append question
 						if (question.length() != 0) {
-							appendText(question, Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
-									FN.NOTO.getFN(), true);
+							TextPaneText textPaneText =
+									new TextPaneText(textPane, question, Colors.YELLOW.getColor(),
+											FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), true);
+							textPaneText.Generate();
+							TextQuiz textQuiz = new TextQuiz(answer, textPane);
+							textQuiz.Generate();
 						}
-						TextQuiz textQuiz = new TextQuiz(answer, textPane);
-						textQuiz.Generate();
 					}
 				}
 			}
@@ -159,11 +156,13 @@ public class TopicLearnArea {
 								allTrueOrFalseQuizzes.getJSONObject(i).getString("question");
 						String answer = allTrueOrFalseQuizzes.getJSONObject(i).getString("answer");
 						if (question.length() != 0) {
-							appendText(question, Colors.YELLOW.getColor(), FS.TOPIC_TEXT.getFS(),
-									FN.NOTO.getFN(), true);
+							TextPaneText textPaneText =
+									new TextPaneText(textPane, question, Colors.YELLOW.getColor(),
+											FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), true);
+							textPaneText.Generate();
+							TrueFalseQuiz trueFalseQuiz = new TrueFalseQuiz(answer, textPane);
+							trueFalseQuiz.Generate();
 						}
-						TrueFalseQuiz trueFalseQuiz = new TrueFalseQuiz(answer, textPane);
-						trueFalseQuiz.Generate();
 					}
 				}
 			}
@@ -172,30 +171,40 @@ public class TopicLearnArea {
 		}
 	}
 
-	private void appendText(String str, Color color, int fontSize, String fontName,
-			Boolean isQuestion) throws BadLocationException {
-		StyledDocument document = (StyledDocument) textPane.getDocument();
-		Style style = textPane.addStyle("", null);
-		StyleConstants.setFontFamily(style, fontName);
-		StyleConstants.setFontSize(style, fontSize);
-		StyleConstants.setBold(style, true);
-		StyleConstants.setForeground(style, color);
-		document.insertString(document.getLength(), str, style);
-		if (isQuestion == true) {
-			document.insertString(document.getLength(), "\n", null);
-		} else {
-			document.insertString(document.getLength(), "\n\n", null);
-		}
-	}
+	private void parseMultipleChoiceQuiz(int paragraphNumber) throws IOException {
+		try {
+			JSONArray allMultipleChoiceQuizzes = jsonObject.getJSONArray("multipleChoiceQuiz");
+			if (allMultipleChoiceQuizzes.length() != 0) {
+				for (int i = 0; i < allMultipleChoiceQuizzes.length(); i++) {
+					int number = Integer.parseInt(
+							allMultipleChoiceQuizzes.getJSONObject(i).getString("number"));
+					if (number == paragraphNumber) {
+						String question =
+								allMultipleChoiceQuizzes.getJSONObject(i).getString("question");
+						JSONArray optionsArray =
+								allMultipleChoiceQuizzes.getJSONObject(i).getJSONArray("options");
+						ArrayList<String> optionsList = new ArrayList<String>();
+						String answer =
+								allMultipleChoiceQuizzes.getJSONObject(i).getString("answer");
+						for (int j = 0; j < optionsArray.length(); j++) {
+							optionsList.add(optionsArray.getJSONObject(j).getString("option"));
+						}
+						if (question.length() != 0) {
+							TextPaneText textPaneText =
+									new TextPaneText(textPane, question, Colors.YELLOW.getColor(),
+											FS.TOPIC_TEXT.getFS(), FN.NOTO.getFN(), true);
+							textPaneText.Generate();
+							MultipleChoiceQuiz multipleChoiceQuiz =
+									new MultipleChoiceQuiz(optionsList, answer, textPane);
+							multipleChoiceQuiz.Generate();
+						}
 
-	private void appendImage(String url) throws BadLocationException, IOException {
-		StyledDocument document = (StyledDocument) textPane.getDocument();
-		BufferedImage BI = ImageIO.read(new File(Main.getImagesDirectory() + url));
-		ImageIcon image = new ImageIcon(BI);
-		Style style = document.addStyle("", null);
-		StyleConstants.setIcon(style, image);
-		document.insertString(document.getLength(), "String", style);
-		document.insertString(document.getLength(), "\n\n", null);
+					}
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 
 	public void ClearAll() {

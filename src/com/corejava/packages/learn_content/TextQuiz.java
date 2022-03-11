@@ -1,4 +1,4 @@
-package com.corejava.packages.quiz;
+package com.corejava.packages.learn_content;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;

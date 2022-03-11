@@ -36,5 +36,6 @@
             "question": "True or false: CoreJava is created in Java.",
             "answer": "True"
         }
-    ]
+    ],
+    "multipleChoiceQuiz": []
 }
