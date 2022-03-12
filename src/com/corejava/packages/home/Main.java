@@ -10,7 +10,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		FlatLaf.registerCustomDefaultsSource("com.corejava.packages.themes");
-		FlatDarkLaf.install();
+		FlatDarkLaf.setup();
 		try {
 			@SuppressWarnings("unused")
 			Home homeScreen = new Home();

@@ -1,6 +1,7 @@
 package com.corejava.packages.text_pane_components;
 
 import java.awt.Color;
+import javax.swing.JEditorPane;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
@@ -12,17 +13,12 @@ public class Text {
     private JTextPane textPane;
     private String text;
     private Color color;
-    private int fontSize;
-    private String fontName;
     private Boolean isQuestion;
 
-    public Text(JTextPane textPane, String text, Color color, int fontSize, String fontName,
-            Boolean isQuestion) {
+    public Text(JTextPane textPane, String text, Color color, Boolean isQuestion) {
         this.textPane = textPane;
         this.text = text;
         this.color = color;
-        this.fontSize = fontSize;
-        this.fontName = fontName;
         this.isQuestion = isQuestion;
     }
 
@@ -33,9 +29,6 @@ public class Text {
     private void appendText() throws BadLocationException {
         StyledDocument document = (StyledDocument) textPane.getDocument();
         Style style = textPane.addStyle("", null);
-        StyleConstants.setFontFamily(style, fontName);
-        StyleConstants.setFontSize(style, fontSize);
-        StyleConstants.setBold(style, true);
         StyleConstants.setForeground(style, color);
         document.insertString(document.getLength(), text, style);
         if (isQuestion == true) {
@@ -85,27 +78,6 @@ public class Text {
      */
     public void setColor(Color color) {
         this.color = color;
-    }
-
-    /**
-     * @return int return the fontSize
-     */
-    public int getFontSize() {
-        return fontSize;
-    }
-
-    /**
-     * @return String return the fontName
-     */
-    public String getFontName() {
-        return fontName;
-    }
-
-    /**
-     * @param fontName the fontName to set
-     */
-    public void setFontName(String fontName) {
-        this.fontName = fontName;
     }
 
     /**

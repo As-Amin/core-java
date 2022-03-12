@@ -1,14 +1,20 @@
 package com.corejava.packages.components;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
+import javax.swing.SwingConstants;
+import com.corejava.packages.colors.Colors;
+import com.corejava.packages.home.Home;
 import org.apache.commons.io.comparator.NameFileComparator;
 import net.miginfocom.swing.MigLayout;
 
@@ -16,8 +22,6 @@ public class FileScrollView {
 	private JPanel listPanel = new JPanel();
 	private ArrayList<JLabel> allLabels = new ArrayList<JLabel>();
 	private ArrayList<JButton> allButtons = new ArrayList<JButton>();
-	private ArrayList<String> allButtonNames = new ArrayList<String>();
-	private ArrayList<File> allButtonsFiles = new ArrayList<File>();
 
 	private char fileNumberSeperator;
 	private String directory;
@@ -45,7 +49,6 @@ public class FileScrollView {
 			String sectionName = getFileName(section);
 			JLabel label = new JLabel(sectionName);
 			listPanel.add(label, "hmin 30, grow");
-			allLabels.add(label);
 			generateButtons(section);
 		}
 	}
@@ -54,10 +57,27 @@ public class FileScrollView {
 		for (File file : sectionDir.listFiles()) {
 			String fileName = getFileName(file);
 			JButton button = new JButton(" " + fileName);
+			button.setHorizontalAlignment(SwingConstants.LEFT);
+			button.setBorder(null);
 			listPanel.add(button, "hmin 30, grow");
 			allButtons.add(button);
-			allButtonNames.add(fileName);
-			allButtonsFiles.add(file);
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					try {
+						for (JButton resetButton : allButtons) {
+							resetButton.setForeground(Colors.FADED_WHITE.getColor());
+							resetButton.setBorder(null);
+						}
+						button.setForeground(null);
+						button.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
+								Colors.THEME.getColor()));
+						Home.topicTitleBox.SetTitleBox(fileName);
+						Home.topicLearnArea.OpenFile(file);
+					} catch (IOException IOE) {
+						IOE.printStackTrace();
+					}
+				}
+			});
 		}
 	}
 
@@ -149,34 +169,6 @@ public class FileScrollView {
 	 */
 	public void setDirectory(String directory) {
 		this.directory = directory;
-	}
-
-	/**
-	 * @return ArrayList<File> return the allButtonsFiles
-	 */
-	public ArrayList<File> getAllButtonsFiles() {
-		return allButtonsFiles;
-	}
-
-	/**
-	 * @param allButtonsFiles the allButtonsFiles to set
-	 */
-	public void setAllButtonsFiles(ArrayList<File> allButtonsFiles) {
-		this.allButtonsFiles = allButtonsFiles;
-	}
-
-	/**
-	 * @return ArrayList<String> return the allFileNames
-	 */
-	public ArrayList<String> getAllButtonNames() {
-		return allButtonNames;
-	}
-
-	/**
-	 * @param allFileNames the allFileNames to set
-	 */
-	public void setAllButtonNames(ArrayList<String> allFileNames) {
-		this.allButtonNames = allFileNames;
 	}
 
 	/**

@@ -1,6 +1,5 @@
 package com.corejava.packages.text_pane_components;
 
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -9,9 +8,6 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.StyledDocument;
-import com.corejava.packages.colors.Colors;
-import com.corejava.packages.fonts.FN;
-import com.corejava.packages.fonts.FS;
 import net.miginfocom.swing.MigLayout;
 
 public class TextQuiz {
@@ -38,7 +34,7 @@ public class TextQuiz {
         panel.add(configureTextField(answerField), "wmin 70%, grow");
 
         JButton submit = new JButton("Submit");
-        panel.add(configureButton(submit), "shrink");
+        panel.add(submit, "shrink");
 
         textPane.insertComponent(panel);
         document.insertString(document.getLength(), "\n\n", null);
@@ -56,15 +52,8 @@ public class TextQuiz {
         });
     }
 
-    private JButton configureButton(JButton button) {
-        button.setForeground(Colors.WHITE.getColor());
-        button.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
-        return button;
-    }
-
     private JTextField configureTextField(JTextField textField) {
         textField.putClientProperty("JTextField.placeholderText", "Your answer here...");
-        textField.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
         return textField;
     }
 

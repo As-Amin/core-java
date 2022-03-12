@@ -10,8 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.StyledDocument;
-import com.corejava.packages.fonts.FN;
-import com.corejava.packages.fonts.FS;
 import net.miginfocom.swing.MigLayout;
 
 public class MultipleChoiceQuiz {
@@ -37,10 +35,10 @@ public class MultipleChoiceQuiz {
         panel.setLayout(new MigLayout());
 
         JComboBox<String> optionsComboBox = new JComboBox(options.toArray());
-        panel.add(configureComboBox(optionsComboBox));
+        panel.add(optionsComboBox);
 
         JButton submitButton = new JButton("Submit");
-        panel.add(panel.add(configureButton(submitButton)));
+        panel.add(panel.add(submitButton));
 
         textPane.insertComponent(panel);
         document.insertString(document.getLength(), "\n\n", null);
@@ -54,16 +52,6 @@ public class MultipleChoiceQuiz {
                 }
             }
         });
-    }
-
-    private JComboBox<String> configureComboBox(JComboBox<String> comboBox) {
-        comboBox.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
-        return comboBox;
-    }
-
-    private JButton configureButton(JButton button) {
-        button.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
-        return button;
     }
 
     /**

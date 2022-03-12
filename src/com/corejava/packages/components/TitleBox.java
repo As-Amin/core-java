@@ -1,55 +1,56 @@
 package com.corejava.packages.components;
 
-import java.awt.Color;
-import java.awt.Font;
-
-import javax.swing.JTextField;
-import javax.swing.border.Border;
+import javax.swing.JLabel;
 
 public class TitleBox {
-	private JTextField textField = new JTextField();
+	private JLabel textLabel = new JLabel();
 	private String title;
-	private Border border;
-	private Color textColor;
-	private Font font;
 
-	public TitleBox(String title, Border border, Color textColor, Font font) {
+	public TitleBox(String title) {
+		textLabel.putClientProperty("FlatLaf.style", "font: $large.font");
 		this.title = title;
-		this.border = border;
-		this.textColor = textColor;
-		this.font = font;
 	}
 
-	public JTextField Generate() {
+	public JLabel Generate() {
 		SetTitleBox(title);
-		textField.setBorder(border);
-		textField.setForeground(textColor);
-		textField.setFont(font);
-		textField.setEditable(false);
-		return textField;
+		return textLabel;
 	}
 
-	public void SetTitleBox(String noteName) {
+	public void SetTitleBox(String fileName) {
 		ClearAll();
-		textField.setText(noteName);
+		textLabel.setText(fileName);
 	}
 
 	public void ClearAll() {
-		textField.setText(null);
+		textLabel.setText(null);
 	}
 
 	/**
-	 * @return JTextField return the topicNameArea
+	 * @return JLabel return the textLabel
 	 */
-	public JTextField getTopicNameArea() {
-		return textField;
+	public JLabel getTextLabel() {
+		return textLabel;
 	}
 
 	/**
-	 * @param topicNameArea the topicNameArea to set
+	 * @param textLabel the textLabel to set
 	 */
-	public void setTopicNameArea(JTextField topicNameArea) {
-		this.textField = topicNameArea;
+	public void setTextLabel(JLabel textLabel) {
+		this.textLabel = textLabel;
+	}
+
+	/**
+	 * @return String return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 }
