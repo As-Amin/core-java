@@ -27,11 +27,40 @@ public class Image {
 
     private void appendImage() throws BadLocationException, IOException {
         StyledDocument document = (StyledDocument) textPane.getDocument();
-        BufferedImage BI = ImageIO.read(new File(Main.getImagesDirectory() + imageURL));
+        BufferedImage BI = ImageIO.read(new File(Main.IMAGES_DIRECTORY + imageURL));
         ImageIcon image = new ImageIcon(BI);
         Style style = document.addStyle("", null);
         StyleConstants.setIcon(style, image);
         document.insertString(document.getLength(), "String", style);
         document.insertString(document.getLength(), "\n\n", null);
     }
+
+    /**
+     * @return String return the imageURL
+     */
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    /**
+     * @param imageURL the imageURL to set
+     */
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    /**
+     * @return JTextPane return the textPane
+     */
+    public JTextPane getTextPane() {
+        return textPane;
+    }
+
+    /**
+     * @param textPane the textPane to set
+     */
+    public void setTextPane(JTextPane textPane) {
+        this.textPane = textPane;
+    }
+
 }

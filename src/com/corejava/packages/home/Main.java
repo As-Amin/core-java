@@ -4,9 +4,9 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
 
 public class Main {
-	private static final String APP_NAME = "CoreJava";
-	private static final String TOPICS_DIRECTORY = "./topics";
-	private static final String IMAGES_DIRECTORY = "./images";
+	public static final String APP_NAME = "CoreJava";
+	public static final String TOPICS_DIRECTORY = "./topics";
+	public static final String IMAGES_DIRECTORY = "./images";
 
 	public static void main(String[] args) {
 		FlatLaf.registerCustomDefaultsSource("com.corejava.packages.themes");
@@ -17,18 +17,6 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static String getAppName() {
-		return APP_NAME;
-	}
-
-	public static String getTopicsDirectory() {
-		return TOPICS_DIRECTORY;
-	}
-
-	public static String getImagesDirectory() {
-		return IMAGES_DIRECTORY;
 	}
 }
 

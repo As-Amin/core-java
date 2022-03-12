@@ -1,4 +1,4 @@
-package com.corejava.packages.components;
+package com.corejava.packages.home;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -18,8 +18,6 @@ import javax.swing.SwingConstants;
 import com.corejava.packages.colors.Colors;
 import com.corejava.packages.fonts.FN;
 import com.corejava.packages.fonts.FS;
-import com.corejava.packages.home.Home;
-import com.corejava.packages.home.Main;
 import org.apache.commons.io.comparator.NameFileComparator;
 import net.miginfocom.swing.MigLayout;
 
@@ -40,7 +38,7 @@ public class TopicList {
 	}
 
 	private void generateButtonsAndLabels() {
-		File[] files = new File(Main.getTopicsDirectory()).listFiles();
+		File[] files = new File(Main.TOPICS_DIRECTORY).listFiles();
 		Arrays.sort(files, NameFileComparator.NAME_COMPARATOR);
 		for (File section : files) {
 			String sectionName = getTopicName(section);
@@ -93,4 +91,33 @@ public class TopicList {
 		label.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.SIDE_HEADING.getFS()));
 		return (label);
 	}
+
+	/**
+	 * @return JPanel return the topicListPanel
+	 */
+	public JPanel getTopicListPanel() {
+		return topicListPanel;
+	}
+
+	/**
+	 * @param topicListPanel the topicListPanel to set
+	 */
+	public void setTopicListPanel(JPanel topicListPanel) {
+		this.topicListPanel = topicListPanel;
+	}
+
+	/**
+	 * @return ArrayList<JButton> return the allTopicButtons
+	 */
+	public ArrayList<JButton> getAllTopicButtons() {
+		return allTopicButtons;
+	}
+
+	/**
+	 * @param allTopicButtons the allTopicButtons to set
+	 */
+	public void setAllTopicButtons(ArrayList<JButton> allTopicButtons) {
+		this.allTopicButtons = allTopicButtons;
+	}
+
 }

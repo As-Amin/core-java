@@ -1,4 +1,4 @@
-package com.corejava.packages.components;
+package com.corejava.packages.home;
 
 import java.awt.Font;
 
@@ -27,6 +27,21 @@ public class TopicTitleBox {
 
 	public void ClearAll() {
 		topicNameArea.setText(null);
+	}
+
+
+	/**
+	 * @return JTextField return the topicNameArea
+	 */
+	public JTextField getTopicNameArea() {
+		return topicNameArea;
+	}
+
+	/**
+	 * @param topicNameArea the topicNameArea to set
+	 */
+	public void setTopicNameArea(JTextField topicNameArea) {
+		this.topicNameArea = topicNameArea;
 	}
 
 }

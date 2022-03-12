@@ -44,4 +44,82 @@ public class Text {
             document.insertString(document.getLength(), "\n\n", null);
         }
     }
+
+    /**
+     * @return JTextPane return the textPane
+     */
+    public JTextPane getTextPane() {
+        return textPane;
+    }
+
+    /**
+     * @param textPane the textPane to set
+     */
+    public void setTextPane(JTextPane textPane) {
+        this.textPane = textPane;
+    }
+
+    /**
+     * @return String return the text
+     */
+    public String getText() {
+        return text;
+    }
+
+    /**
+     * @param text the text to set
+     */
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    /**
+     * @return Color return the color
+     */
+    public Color getColor() {
+        return color;
+    }
+
+    /**
+     * @param color the color to set
+     */
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    /**
+     * @return int return the fontSize
+     */
+    public int getFontSize() {
+        return fontSize;
+    }
+
+    /**
+     * @return String return the fontName
+     */
+    public String getFontName() {
+        return fontName;
+    }
+
+    /**
+     * @param fontName the fontName to set
+     */
+    public void setFontName(String fontName) {
+        this.fontName = fontName;
+    }
+
+    /**
+     * @return Boolean return the isQuestion
+     */
+    public Boolean isIsQuestion() {
+        return isQuestion;
+    }
+
+    /**
+     * @param isQuestion the isQuestion to set
+     */
+    public void setIsQuestion(Boolean isQuestion) {
+        this.isQuestion = isQuestion;
+    }
+
 }

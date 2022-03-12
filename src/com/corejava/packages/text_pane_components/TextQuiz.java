@@ -68,4 +68,33 @@ public class TextQuiz {
         return textField;
     }
 
+
+    /**
+     * @return String return the answer
+     */
+    public String getAnswer() {
+        return answer;
+    }
+
+    /**
+     * @param answer the answer to set
+     */
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    /**
+     * @return JTextPane return the textPane
+     */
+    public JTextPane getTextPane() {
+        return textPane;
+    }
+
+    /**
+     * @param textPane the textPane to set
+     */
+    public void setTextPane(JTextPane textPane) {
+        this.textPane = textPane;
+    }
+
 }

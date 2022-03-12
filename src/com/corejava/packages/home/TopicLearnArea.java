@@ -1,10 +1,9 @@
-package com.corejava.packages.components;
+package com.corejava.packages.home;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import javax.swing.JScrollPane;
@@ -21,7 +20,6 @@ import com.corejava.packages.text_pane_components.TextQuiz;
 import com.corejava.packages.text_pane_components.TrueFalseQuiz;
 import com.corejava.packages.fonts.FN;
 import com.corejava.packages.fonts.FS;
-import com.corejava.packages.home.Main;
 
 public class TopicLearnArea {
 	private JScrollPane scrollArea;
@@ -173,4 +171,47 @@ public class TopicLearnArea {
 	public void ClearAll() {
 		textPane.setText(null);
 	}
+
+	/**
+	 * @return JScrollPane return the scrollArea
+	 */
+	public JScrollPane getScrollArea() {
+		return scrollArea;
+	}
+
+	/**
+	 * @param scrollArea the scrollArea to set
+	 */
+	public void setScrollArea(JScrollPane scrollArea) {
+		this.scrollArea = scrollArea;
+	}
+
+	/**
+	 * @param textPane the textPane to set
+	 */
+	public void setTextPane(JTextPane textPane) {
+		this.textPane = textPane;
+	}
+
+	/**
+	 * @return JSONObject return the jsonObject
+	 */
+	public JSONObject getJsonObject() {
+		return jsonObject;
+	}
+
+	/**
+	 * @param jsonObject the jsonObject to set
+	 */
+	public void setJsonObject(JSONObject jsonObject) {
+		this.jsonObject = jsonObject;
+	}
+
+	/**
+	 * @return JTextPane return the textPane
+	 */
+	public JTextPane getTextPane() {
+		return textPane;
+	}
+
 }

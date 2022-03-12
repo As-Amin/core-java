@@ -66,4 +66,47 @@ public class MultipleChoiceQuiz {
         button.setFont(new Font(FN.NOTO.getFN(), Font.BOLD, FS.TOPIC_TEXT.getFS()));
         return button;
     }
+
+    /**
+     * @return ArrayList<String> return the options
+     */
+    public ArrayList<String> getOptions() {
+        return options;
+    }
+
+    /**
+     * @param options the options to set
+     */
+    public void setOptions(ArrayList<String> options) {
+        this.options = options;
+    }
+
+    /**
+     * @return String return the answer
+     */
+    public String getAnswer() {
+        return answer;
+    }
+
+    /**
+     * @param answer the answer to set
+     */
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    /**
+     * @return JTextPane return the textPane
+     */
+    public JTextPane getTextPane() {
+        return textPane;
+    }
+
+    /**
+     * @param textPane the textPane to set
+     */
+    public void setTextPane(JTextPane textPane) {
+        this.textPane = textPane;
+    }
+
 }
