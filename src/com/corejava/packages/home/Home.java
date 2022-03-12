@@ -50,7 +50,7 @@ public class Home extends JFrame {
 		frame.setSize(new Dimension(panelWidth, panelHeight));
 		frame.setResizable(true);
 		frame.setVisible(true);
-		frame.setTitle(Main.APP_NAME);
+		frame.setTitle(Main.APP_NAME + ": " + Main.APP_SLOGAN);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane.requestFocusInWindow();
 	}

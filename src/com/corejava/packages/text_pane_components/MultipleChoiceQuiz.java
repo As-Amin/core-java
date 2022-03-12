@@ -1,6 +1,5 @@
 package com.corejava.packages.text_pane_components;
 
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;

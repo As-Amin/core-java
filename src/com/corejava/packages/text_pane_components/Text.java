@@ -1,7 +1,6 @@
 package com.corejava.packages.text_pane_components;
 
 import java.awt.Color;
-import javax.swing.JEditorPane;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
