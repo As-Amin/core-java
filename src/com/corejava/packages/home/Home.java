@@ -26,15 +26,17 @@ public class Home extends JFrame {
 	private FileScrollView topicList = new FileScrollView(Main.TOPICS_DIRECTORY, ')');
 
 	public Home() throws BadLocationException, IOException {
-		contentPane.setLayout(new MigLayout("", "[fill,30%!][fill,grow]", // width, column
-				"[fill,grow]")); // height, row
+		// Topic list panel is fixed according to panel width
+		contentPane.setLayout(
+				new MigLayout("", "[fill," + panelWidth * 0.3 + "!][fill,grow]", "[fill,grow]"));
 
 		contentPane.add(topicList.Generate(), "cell 0 0");
 
 		// Right panel
 		JPanel rightPanel = new JPanel();
+		// Title box is fixed according to panel height
 		rightPanel.setLayout(new MigLayout("", "[fill,grow]", // width, column
-				"[fill,10%!][fill,grow]")); // height, row
+				"[fill," + rightPanel.getHeight() * 0.1 + "]10[fill,grow]")); // height, row
 		rightPanel.add(topicTitleBox.Generate(), "cell 0 0");
 		rightPanel.add(topicLearnArea.Generate(), "cell 0 1");
 		contentPane.add(rightPanel, "cell 1 0 0 2");
@@ -51,7 +53,7 @@ public class Home extends JFrame {
 		frame.setSize(new Dimension(panelWidth, panelHeight));
 		frame.setResizable(true);
 		frame.setVisible(true);
-		frame.setTitle(Main.APP_NAME + ": " + Main.APP_SLOGAN);
+		frame.setTitle(Main.APP_NAME);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane.requestFocusInWindow();
 	}

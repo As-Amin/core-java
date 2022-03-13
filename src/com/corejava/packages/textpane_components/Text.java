@@ -26,6 +26,7 @@ public class Text {
     }
 
     private void appendText() throws BadLocationException {
+        textPane.setContentType("text/plain");
         StyledDocument document = (StyledDocument) textPane.getDocument();
         Style style = textPane.addStyle("", null);
         StyleConstants.setForeground(style, color);

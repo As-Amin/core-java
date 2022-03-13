@@ -11,12 +11,12 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.StyledDocument;
 import net.miginfocom.swing.MigLayout;
 
-public class MultipleChoiceQuiz {
+public class MultipleChoice {
     private ArrayList<String> options;
     private String answer;
     private JTextPane textPane;
 
-    public MultipleChoiceQuiz(ArrayList<String> options, String answer, JTextPane textPane) {
+    public MultipleChoice(ArrayList<String> options, String answer, JTextPane textPane) {
         this.options = options;
         this.answer = answer;
         this.textPane = textPane;
@@ -27,6 +27,7 @@ public class MultipleChoiceQuiz {
     }
 
     private void appendMultipleChoiceQuiz() throws BadLocationException {
+        textPane.setContentType("text/plain");
         StyledDocument document = (StyledDocument) textPane.getDocument();
 
         JPanel panel = new JPanel();

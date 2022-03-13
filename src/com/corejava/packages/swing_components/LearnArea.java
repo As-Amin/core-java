@@ -14,10 +14,10 @@ import org.json.JSONObject;
 
 import com.corejava.packages.colors.Colors;
 import com.corejava.packages.textpane_components.Image;
-import com.corejava.packages.textpane_components.MultipleChoiceQuiz;
+import com.corejava.packages.textpane_components.MultipleChoice;
 import com.corejava.packages.textpane_components.Text;
-import com.corejava.packages.textpane_components.TextQuiz;
-import com.corejava.packages.textpane_components.TrueFalseQuiz;
+import com.corejava.packages.textpane_components.TextQuestion;
+import com.corejava.packages.textpane_components.TrueFalse;
 
 public class LearnArea {
 	private JScrollPane scrollArea;
@@ -29,7 +29,6 @@ public class LearnArea {
 		scrollArea = new JScrollPane(textPane);
 		scrollArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollArea.getVerticalScrollBar().setUnitIncrement(10);
-		textPane.setContentType("text/plain");
 		textPane.setEditable(false);
 		return scrollArea;
 	}
@@ -77,9 +76,9 @@ public class LearnArea {
 					textPaneParagraph.Generate();
 				}
 				parseImages(allParagraphs.getJSONObject(i).getJSONArray("images"));
-				parseTextQuiz(allParagraphs.getJSONObject(i).getJSONArray("textQuiz"));
-				parseTrueFalseQuiz(allParagraphs.getJSONObject(i).getJSONArray("trueFalseQuiz"));
-				parseMultipleChoiceQuiz(
+				parseTextQuestion(allParagraphs.getJSONObject(i).getJSONArray("textQuiz"));
+				parseTrueFalse(allParagraphs.getJSONObject(i).getJSONArray("trueFalseQuiz"));
+				parseMultipleChoice(
 						allParagraphs.getJSONObject(i).getJSONArray("multipleChoiceQuiz"));
 			}
 		} catch (Exception e) {
@@ -105,7 +104,8 @@ public class LearnArea {
 		}
 	}
 
-	private void parseTextQuiz(JSONArray textQuizArray) throws BadLocationException, IOException {
+	private void parseTextQuestion(JSONArray textQuizArray)
+			throws BadLocationException, IOException {
 		ArrayList<String> questionList = new ArrayList<String>();
 		ArrayList<String> answerList = new ArrayList<String>();
 		for (int j = 0; j < textQuizArray.length(); j++) {
@@ -117,12 +117,12 @@ public class LearnArea {
 			Text textPaneQuestion =
 					new Text(textPane, questionList.get(j), Colors.THEME_THIRD.getColor(), true);
 			textPaneQuestion.Generate();
-			TextQuiz textQuiz = new TextQuiz(answerList.get(j), textPane);
+			TextQuestion textQuiz = new TextQuestion(answerList.get(j), textPane);
 			textQuiz.Generate();
 		}
 	}
 
-	private void parseTrueFalseQuiz(JSONArray trueFalseQuizArray)
+	private void parseTrueFalse(JSONArray trueFalseQuizArray)
 			throws BadLocationException, IOException {
 		ArrayList<String> questionList = new ArrayList<String>();
 		ArrayList<String> answerList = new ArrayList<String>();
@@ -135,12 +135,12 @@ public class LearnArea {
 			Text textPaneQuestion =
 					new Text(textPane, questionList.get(j), Colors.THEME_THIRD.getColor(), true);
 			textPaneQuestion.Generate();
-			TrueFalseQuiz trueFalseQuiz = new TrueFalseQuiz(answerList.get(j), textPane);
+			TrueFalse trueFalseQuiz = new TrueFalse(answerList.get(j), textPane);
 			trueFalseQuiz.Generate();
 		}
 	}
 
-	private void parseMultipleChoiceQuiz(JSONArray multipleChoiceQuizArray)
+	private void parseMultipleChoice(JSONArray multipleChoiceQuizArray)
 			throws BadLocationException, IOException {
 		ArrayList<String> questionList = new ArrayList<String>();
 		ArrayList<String> optionsList = new ArrayList<String>();
@@ -159,8 +159,8 @@ public class LearnArea {
 			Text textPaneQuestion =
 					new Text(textPane, questionList.get(j), Colors.THEME_THIRD.getColor(), true);
 			textPaneQuestion.Generate();
-			MultipleChoiceQuiz multipleChoiceQuiz =
-					new MultipleChoiceQuiz(optionsList, answerList.get(j), textPane);
+			MultipleChoice multipleChoiceQuiz =
+					new MultipleChoice(optionsList, answerList.get(j), textPane);
 			multipleChoiceQuiz.Generate();
 		}
 	}

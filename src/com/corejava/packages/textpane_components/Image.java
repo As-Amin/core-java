@@ -26,6 +26,7 @@ public class Image {
     }
 
     private void appendImage() throws BadLocationException, IOException {
+        textPane.setContentType("text/plain");
         StyledDocument document = (StyledDocument) textPane.getDocument();
         BufferedImage BI = ImageIO.read(new File(Main.IMAGES_DIRECTORY + imageURL));
         ImageIcon image = new ImageIcon(BI);

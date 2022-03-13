@@ -9,11 +9,11 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.StyledDocument;
 import net.miginfocom.swing.MigLayout;
 
-public class TrueFalseQuiz {
+public class TrueFalse {
     private String answer;
     private JTextPane textPane;
 
-    public TrueFalseQuiz(String answer, JTextPane textPane) {
+    public TrueFalse(String answer, JTextPane textPane) {
         this.answer = answer;
         this.textPane = textPane;
     }
@@ -23,6 +23,7 @@ public class TrueFalseQuiz {
     }
 
     private void appendTrueFalseQuiz() throws BadLocationException {
+        textPane.setContentType("text/plain");
         StyledDocument document = (StyledDocument) textPane.getDocument();
 
         JPanel panel = new JPanel();
