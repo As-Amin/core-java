@@ -1,4 +1,4 @@
-package com.corejava.packages.components;
+package com.corejava.packages.swing_components;
 
 import javax.swing.JLabel;
 
@@ -7,7 +7,7 @@ public class TitleBox {
 	private String title;
 
 	public TitleBox(String title) {
-		textLabel.putClientProperty("FlatLaf.style", "font: +8 $monospace.font");
+		textLabel.putClientProperty("FlatLaf.style", "font: +6 $medium.font");
 		this.title = title;
 	}
 

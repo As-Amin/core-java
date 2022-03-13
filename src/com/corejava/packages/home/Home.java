@@ -7,9 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.text.BadLocationException;
 import com.corejava.packages.colors.Colors;
-import com.corejava.packages.components.TitleBox;
+import com.corejava.packages.swing_components.FileScrollView;
+import com.corejava.packages.swing_components.LearnArea;
+import com.corejava.packages.swing_components.TitleBox;
 import com.corejava.packages.textpane_components.Text;
-import com.corejava.packages.components.FileScrollView;
 import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
@@ -20,7 +21,7 @@ public class Home extends JFrame {
 	// Right panel - public and global because needs to be modified by different
 	// classes and functions outside of this one i.e. TopicList
 	public static TitleBox topicTitleBox = new TitleBox("Select a topic!");
-	public static TopicLearnArea topicLearnArea = new TopicLearnArea();
+	public static LearnArea topicLearnArea = new LearnArea();
 	// Left panel
 	private FileScrollView topicList = new FileScrollView(Main.TOPICS_DIRECTORY, ')');
 

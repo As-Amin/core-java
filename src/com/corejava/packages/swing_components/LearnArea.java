@@ -1,4 +1,4 @@
-package com.corejava.packages.home;
+package com.corejava.packages.swing_components;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -19,7 +19,7 @@ import com.corejava.packages.textpane_components.Text;
 import com.corejava.packages.textpane_components.TextQuiz;
 import com.corejava.packages.textpane_components.TrueFalseQuiz;
 
-public class TopicLearnArea {
+public class LearnArea {
 	private JScrollPane scrollArea;
 	private JTextPane textPane;
 	private JSONObject jsonObject;
@@ -29,7 +29,6 @@ public class TopicLearnArea {
 		scrollArea = new JScrollPane(textPane);
 		scrollArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollArea.getVerticalScrollBar().setUnitIncrement(10);
-		textPane.setBackground(Colors.BACKGROUND_SECONDARY.getColor());
 		textPane.setContentType("text/plain");
 		textPane.setEditable(false);
 		return scrollArea;

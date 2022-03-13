@@ -1,4 +1,4 @@
-package com.corejava.packages.components;
+package com.corejava.packages.swing_components;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,17 +56,18 @@ public class FileScrollView {
 			String fileName = getFileName(file);
 			JButton button = new JButton(" " + fileName);
 			button.setHorizontalAlignment(SwingConstants.LEFT);
-			button.setBorder(null);
+			button.putClientProperty("FlatLaf.style", "border: null");
 			listPanel.add(button, "hmin 30, grow");
 			allButtons.add(button);
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
 					try {
 						for (JButton resetButton : allButtons) {
-							resetButton.setForeground(null);
-							resetButton.setBorder(null);
+							resetButton.putClientProperty("FlatLaf.style",
+									"foreground: @foreground");
+							resetButton.putClientProperty("FlatLaf.style", "border: null");
 						}
-						button.setForeground(Colors.THEME.getColor());
+						button.putClientProperty("FlatLaf.style", "foreground: @themeColor");
 						button.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
 								Colors.THEME.getColor()));
 						Home.topicTitleBox.SetTitleBox(fileName);
