@@ -5,26 +5,19 @@ import java.awt.Color;
 public enum Colors {
   BACKGROUND(0, 0, 0), // Same as FlatDarkLaf.properties '@background'
   BACKGROUND_SECONDARY(12, 12, 12), // Same as FlatDarkLaf.properties '@backgroundSecondary'
-  THEME(163, 165, 235), // Same as FlatDarkLaf.properties '@themeColor'
-  THEME_SECONDARY(235, 162, 233), // For titles and subheadings
-  WHITE(255, 255, 255), // For text
-  FADED_WHITE(136, 139, 144), // For buttons not in focus
-  YELLOW(235, 203, 139); // For captions and questions
+  THEME(235, 203, 139), // Same as FlatDarkLaf.properties '@themeColor'
+  THEME_SECONDARY(234, 167, 138), // For titles and subheadings
+  THEME_THIRD(173, 234, 138), // For questions, captions
+  WHITE(255, 255, 255); // For text
 
   private final int r;
   private final int g;
   private final int b;
-  private final String rgb;
 
   private Colors(final int r, final int g, final int b) {
     this.r = r;
     this.g = g;
     this.b = b;
-    this.rgb = r + ", " + g + ", " + b;
-  }
-
-  public String getRGB() {
-    return rgb;
   }
 
   public Color getColor() {

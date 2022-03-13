@@ -31,12 +31,10 @@ public class FileScrollView {
 		this.fileNumberSeperator = fileNumberSeperator;
 	}
 
-	// Generates the scroll panel for which the topics will be displayed,
-	// loads the topics onto the scrollpanel
 	public JScrollPane Generate() {
 		listPanel.setLayout(new MigLayout("wrap"));
 		JScrollPane topicScrollPane = new JScrollPane(listPanel);
-		topicScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		topicScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		topicScrollPane.getVerticalScrollBar().setUnitIncrement(10);
 		this.generateLabels();
 		return topicScrollPane;
@@ -65,10 +63,10 @@ public class FileScrollView {
 				public void actionPerformed(ActionEvent event) {
 					try {
 						for (JButton resetButton : allButtons) {
-							resetButton.setForeground(Colors.FADED_WHITE.getColor());
+							resetButton.setForeground(null);
 							resetButton.setBorder(null);
 						}
-						button.setForeground(null);
+						button.setForeground(Colors.THEME.getColor());
 						button.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
 								Colors.THEME.getColor()));
 						Home.topicTitleBox.SetTitleBox(fileName);

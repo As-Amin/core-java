@@ -1,4 +1,4 @@
-package com.corejava.packages.text_pane_components;
+package com.corejava.packages.textpane_components;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

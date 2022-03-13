@@ -8,8 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.text.BadLocationException;
 import com.corejava.packages.colors.Colors;
 import com.corejava.packages.components.TitleBox;
+import com.corejava.packages.textpane_components.Text;
 import com.corejava.packages.components.FileScrollView;
-import com.corejava.packages.text_pane_components.Text;
 import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {

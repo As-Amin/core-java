@@ -13,11 +13,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.corejava.packages.colors.Colors;
-import com.corejava.packages.text_pane_components.MultipleChoiceQuiz;
-import com.corejava.packages.text_pane_components.Image;
-import com.corejava.packages.text_pane_components.Text;
-import com.corejava.packages.text_pane_components.TextQuiz;
-import com.corejava.packages.text_pane_components.TrueFalseQuiz;
+import com.corejava.packages.textpane_components.Image;
+import com.corejava.packages.textpane_components.MultipleChoiceQuiz;
+import com.corejava.packages.textpane_components.Text;
+import com.corejava.packages.textpane_components.TextQuiz;
+import com.corejava.packages.textpane_components.TrueFalseQuiz;
 
 public class TopicLearnArea {
 	private JScrollPane scrollArea;
@@ -27,7 +27,8 @@ public class TopicLearnArea {
 	public JScrollPane Generate() {
 		textPane = new JTextPane();
 		scrollArea = new JScrollPane(textPane);
-		scrollArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollArea.getVerticalScrollBar().setUnitIncrement(10);
 		textPane.setBackground(Colors.BACKGROUND_SECONDARY.getColor());
 		textPane.setContentType("text/plain");
 		textPane.setEditable(false);
@@ -100,7 +101,7 @@ public class TopicLearnArea {
 			Image textPaneImage = new Image(imagesUrlList.get(j), textPane);
 			textPaneImage.Generate();
 			Text textPaneCaption = new Text(textPane, ("Caption: " + captionsList.get(j)),
-					Colors.YELLOW.getColor(), false);
+					Colors.THEME_THIRD.getColor(), false);
 			textPaneCaption.Generate();
 		}
 	}
@@ -115,7 +116,7 @@ public class TopicLearnArea {
 		// Append text quiz question and text quiz
 		for (int j = 0; j < questionList.size(); j++) {
 			Text textPaneQuestion =
-					new Text(textPane, questionList.get(j), Colors.YELLOW.getColor(), true);
+					new Text(textPane, questionList.get(j), Colors.THEME_THIRD.getColor(), true);
 			textPaneQuestion.Generate();
 			TextQuiz textQuiz = new TextQuiz(answerList.get(j), textPane);
 			textQuiz.Generate();
@@ -133,7 +134,7 @@ public class TopicLearnArea {
 		// Append text quiz question and text quiz
 		for (int j = 0; j < questionList.size(); j++) {
 			Text textPaneQuestion =
-					new Text(textPane, questionList.get(j), Colors.YELLOW.getColor(), true);
+					new Text(textPane, questionList.get(j), Colors.THEME_THIRD.getColor(), true);
 			textPaneQuestion.Generate();
 			TrueFalseQuiz trueFalseQuiz = new TrueFalseQuiz(answerList.get(j), textPane);
 			trueFalseQuiz.Generate();
@@ -157,7 +158,7 @@ public class TopicLearnArea {
 		// Append text quiz question and text quiz
 		for (int j = 0; j < questionList.size(); j++) {
 			Text textPaneQuestion =
-					new Text(textPane, questionList.get(j), Colors.YELLOW.getColor(), true);
+					new Text(textPane, questionList.get(j), Colors.THEME_THIRD.getColor(), true);
 			textPaneQuestion.Generate();
 			MultipleChoiceQuiz multipleChoiceQuiz =
 					new MultipleChoiceQuiz(optionsList, answerList.get(j), textPane);

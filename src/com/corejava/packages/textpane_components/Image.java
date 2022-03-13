@@ -1,4 +1,4 @@
-package com.corejava.packages.text_pane_components;
+package com.corejava.packages.textpane_components;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
