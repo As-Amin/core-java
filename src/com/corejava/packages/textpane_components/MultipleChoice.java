@@ -34,7 +34,10 @@ public class MultipleChoice {
         panel.setBackground(null);
         panel.setLayout(new MigLayout());
 
-        JComboBox<String> optionsComboBox = new JComboBox(options.toArray());
+        JComboBox<String> optionsComboBox = new JComboBox<>();
+        for (String item : options) {
+            optionsComboBox.addItem(item);
+        }
         panel.add(optionsComboBox);
 
         JButton submitButton = new JButton("Submit");
