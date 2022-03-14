@@ -12,11 +12,13 @@ import javax.swing.text.BadLocationException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.corejava.packages.colors.Colors;
+import com.corejava.packages.textpane_components.CaptionText;
 import com.corejava.packages.textpane_components.Image;
 import com.corejava.packages.textpane_components.MultipleChoice;
+import com.corejava.packages.textpane_components.QuestionText;
+import com.corejava.packages.textpane_components.SubheadingText;
 import com.corejava.packages.textpane_components.Text;
-import com.corejava.packages.textpane_components.TextQuestion;
+import com.corejava.packages.textpane_components.OpenChoice;
 import com.corejava.packages.textpane_components.TrueFalse;
 
 public class LearnArea {
@@ -65,18 +67,16 @@ public class LearnArea {
 				String paragraphContent = allParagraphs.getJSONObject(i).getString("content");
 				// Append subheading
 				if (subheading.length() != 0) {
-					Text textPaneSubheading = new Text(textPane, subheading,
-							Colors.THEME_SECONDARY.getColor(), false);
+					SubheadingText textPaneSubheading = new SubheadingText(textPane, subheading);
 					textPaneSubheading.Generate();
 				}
 				// Append paragraph content
 				if (paragraphContent.length() != 0) {
-					Text textPaneParagraph =
-							new Text(textPane, paragraphContent, Colors.WHITE.getColor(), false);
+					Text textPaneParagraph = new Text(textPane, paragraphContent);
 					textPaneParagraph.Generate();
 				}
 				parseImages(allParagraphs.getJSONObject(i).getJSONArray("images"));
-				parseTextQuestion(allParagraphs.getJSONObject(i).getJSONArray("textQuiz"));
+				parseTextQuestion(allParagraphs.getJSONObject(i).getJSONArray("openChoiceQuiz"));
 				parseTrueFalse(allParagraphs.getJSONObject(i).getJSONArray("trueFalseQuiz"));
 				parseMultipleChoice(
 						allParagraphs.getJSONObject(i).getJSONArray("multipleChoiceQuiz"));
@@ -98,8 +98,8 @@ public class LearnArea {
 		for (int j = 0; j < imagesUrlList.size(); j++) {
 			Image textPaneImage = new Image(imagesUrlList.get(j), textPane);
 			textPaneImage.Generate();
-			Text textPaneCaption = new Text(textPane, ("Caption: " + captionsList.get(j)),
-					Colors.THEME_THIRD.getColor(), false);
+			CaptionText textPaneCaption =
+					new CaptionText(textPane, ("Caption: " + captionsList.get(j)));
 			textPaneCaption.Generate();
 		}
 	}
@@ -114,10 +114,9 @@ public class LearnArea {
 		}
 		// Append text quiz question and text quiz
 		for (int j = 0; j < questionList.size(); j++) {
-			Text textPaneQuestion =
-					new Text(textPane, questionList.get(j), Colors.THEME_THIRD.getColor(), true);
+			QuestionText textPaneQuestion = new QuestionText(textPane, questionList.get(j));
 			textPaneQuestion.Generate();
-			TextQuestion textQuiz = new TextQuestion(answerList.get(j), textPane);
+			OpenChoice textQuiz = new OpenChoice(answerList.get(j), textPane);
 			textQuiz.Generate();
 		}
 	}
@@ -132,8 +131,7 @@ public class LearnArea {
 		}
 		// Append text quiz question and text quiz
 		for (int j = 0; j < questionList.size(); j++) {
-			Text textPaneQuestion =
-					new Text(textPane, questionList.get(j), Colors.THEME_THIRD.getColor(), true);
+			QuestionText textPaneQuestion = new QuestionText(textPane, questionList.get(j));
 			textPaneQuestion.Generate();
 			TrueFalse trueFalseQuiz = new TrueFalse(answerList.get(j), textPane);
 			trueFalseQuiz.Generate();
@@ -156,8 +154,7 @@ public class LearnArea {
 		}
 		// Append text quiz question and text quiz
 		for (int j = 0; j < questionList.size(); j++) {
-			Text textPaneQuestion =
-					new Text(textPane, questionList.get(j), Colors.THEME_THIRD.getColor(), true);
+			QuestionText textPaneQuestion = new QuestionText(textPane, questionList.get(j));
 			textPaneQuestion.Generate();
 			MultipleChoice multipleChoiceQuiz =
 					new MultipleChoice(optionsList, answerList.get(j), textPane);

@@ -4,7 +4,7 @@
             "subheading": "What is an IDE?",
             "content": "An IDE (Integrated Development Environment) is software which allows developers to write code with increased efficiency through features such as autocomplete, syntax highlighting etc. and run the code aswell as debug, build, edit and much more.\n\nCoreJava recommends you choose a Java IDE from the following if you are a beginner: Eclipse, IntelliJ or VS Code. CoreJava will guide you through installing the Eclipse IDE but if you want to use another IDE, there are links below guiding you on how to set them up to program in Java!",
             "images": [],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -12,7 +12,7 @@
             "subheading": "Links to download the IDE's",
             "content": "Eclipse (Free): https://www.eclipse.org/ide/\n\nIntelliJ (Free and paid versions): https://www.jetbrains.com/idea/\n\nVSCode (Free and Open-Source): https://code.visualstudio.com/",
             "images": [],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -20,7 +20,7 @@
             "subheading": "Setting up the Eclipse IDE on Windows",
             "content": "1) Click on the link above to download the Eclipse IDE and then click on the 'Download' button in the top right.",
             "images": [],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -33,7 +33,7 @@
                     "caption": "'Click on this button!'"
                 }
             ],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -41,7 +41,7 @@
             "subheading": "",
             "content": "3) In your file explorer, navigate to where you installed the installer, double click the installer executable file and click on the 'Run' button.",
             "images": [],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -54,7 +54,7 @@
                     "caption": "'Click on this button!'"
                 }
             ],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -67,7 +67,7 @@
                     "caption": "'Select your directory.'"
                 }
             ],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -80,7 +80,7 @@
                     "caption": "'Enter project name.'"
                 }
             ],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -93,7 +93,7 @@
                     "caption": "'Select your project options.'"
                 }
             ],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -106,7 +106,7 @@
                     "caption": "'Your first program!'"
                 }
             ],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -114,7 +114,7 @@
             "subheading": "Congratulations!",
             "content": "You have now succesfully created your first Java application. Although it may be simple, your skills will progressively improve as you learn more Java concepts! Click on the next topic to move on...",
             "images": [],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         }

@@ -10,20 +10,20 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.StyledDocument;
 import net.miginfocom.swing.MigLayout;
 
-public class TextQuestion {
+public class OpenChoice {
     private String answer;
     private JTextPane textPane;
 
-    public TextQuestion(String answer, JTextPane textPane) {
+    public OpenChoice(String answer, JTextPane textPane) {
         this.answer = answer;
         this.textPane = textPane;
     }
 
     public void Generate() throws BadLocationException {
-        appendTextQuiz();
+        appendOpenChoice();
     }
 
-    private void appendTextQuiz() throws BadLocationException {
+    private void appendOpenChoice() throws BadLocationException {
         textPane.setContentType("text/plain");
         StyledDocument document = (StyledDocument) textPane.getDocument();
 

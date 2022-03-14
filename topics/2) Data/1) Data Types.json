@@ -4,7 +4,7 @@
             "subheading": "What is a data type?",
             "content": "A data type specifies the type of data that is being stored in a variable. In Java, as it is a strongly typed language, all variables must have a specified data type.",
             "images": [],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         }

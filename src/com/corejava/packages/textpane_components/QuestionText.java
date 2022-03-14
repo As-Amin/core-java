@@ -8,11 +8,11 @@ import javax.swing.text.StyledDocument;
 import com.corejava.packages.colors.Colors;
 import java.io.IOException;
 
-public class Text {
+public class QuestionText {
     private JTextPane textPane;
     private String text;
 
-    public Text(JTextPane textPane, String text) {
+    public QuestionText(JTextPane textPane, String text) {
         this.textPane = textPane;
         this.text = text;
     }
@@ -25,8 +25,9 @@ public class Text {
         textPane.setContentType("text/plain");
         StyledDocument document = (StyledDocument) textPane.getDocument();
         Style style = textPane.addStyle("", null);
+        StyleConstants.setForeground(style, Colors.THEME.getColor());
         document.insertString(document.getLength(), text, style);
-        document.insertString(document.getLength(), "\n\n", null);
+        document.insertString(document.getLength(), "\n", null);
     }
 
     /**

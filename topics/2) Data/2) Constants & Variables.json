@@ -4,7 +4,7 @@
             "subheading": "What is a variable in Java?",
             "content": "A variable is a container which stores data specified by a program.\n\nThe data type must be specified in Java as it is a strongly typed language (variables must be specified with a data type) unlike JavaScript which is a loosley typed language.",
             "images": [],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -17,7 +17,7 @@
                     "caption": "'A local variable declared as an integer.'"
                 }
             ],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -34,7 +34,7 @@
                     "caption": "'The output in the console after running the program above.'"
                 }
             ],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -47,7 +47,7 @@
                     "caption": "'Two instance variables declared in the class but outside of a method.'"
                 }
             ],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
@@ -60,7 +60,7 @@
                     "caption": "'A static final string declared in a class.'"
                 }
             ],
-            "textQuiz": [],
+            "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         }
