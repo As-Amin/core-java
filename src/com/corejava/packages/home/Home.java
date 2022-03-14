@@ -17,8 +17,8 @@ import com.corejava.packages.textpane_components.Text;
 import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
-	private int panelWidth = 750;
-	private int panelHeight = 550;
+	private int panelWidth = 720;
+	private int panelHeight = 520;
 	private JFrame frame = this;
 	private Container contentPane = frame.getContentPane();
 
@@ -56,6 +56,11 @@ public class Home extends JFrame {
 		contentPane.add(rightPanel, "cell 1 0 0 2");
 
 		menuBar.Generate();
+
+		// Client properties for LAF
+		rightPanel.putClientProperty("FlatLaf.style", "background: @backgroundSecondary");
+		topicTitleBox.getTextLabel().putClientProperty("FlatLaf.style", "font: $large.font");
+
 		setupFrame();
 		setInitialLearnArea();
 	}

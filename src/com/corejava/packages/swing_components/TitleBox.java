@@ -17,7 +17,6 @@ public class TitleBox {
 
 	public void SetTitleBox(String fileName) {
 		ClearAll();
-		textLabel.putClientProperty("FlatLaf.style", "font: $large.font");
 		textLabel.setText(" " + fileName);
 	}
 

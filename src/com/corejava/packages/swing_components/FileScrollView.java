@@ -55,18 +55,30 @@ public class FileScrollView {
 			String fileName = getFileName(file);
 			JButton button = new JButton(" " + fileName);
 			button.setHorizontalAlignment(SwingConstants.LEFT);
-			button.putClientProperty("FlatLaf.style", "border: null");
+			try {
+				button.putClientProperty("FlatLaf.style", "border: null");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			listPanel.add(button, "hmin 30, grow");
 			allButtons.add(button);
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
 					try {
 						for (JButton resetButton : allButtons) {
-							resetButton.putClientProperty("FlatLaf.style",
-									"foreground: @foreground");
-							resetButton.putClientProperty("FlatLaf.style", "border: null");
+							try {
+								resetButton.putClientProperty("FlatLaf.style",
+										"foreground: @foreground");
+								resetButton.putClientProperty("FlatLaf.style", "border: null");
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
 						}
-						button.putClientProperty("FlatLaf.style", "foreground: @themeColor");
+						try {
+							button.putClientProperty("FlatLaf.style", "foreground: @themeColor");
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 						button.setBorder(BorderFactory.createMatteBorder(0, 5, 0, 0,
 								Colors.THEME.getColor()));
 						Home.topicTitleBox.SetTitleBox(fileName);
