@@ -9,6 +9,7 @@ import javax.swing.text.BadLocationException;
 import com.corejava.packages.colors.Colors;
 import com.corejava.packages.swing_components.FileScrollView;
 import com.corejava.packages.swing_components.LearnArea;
+import com.corejava.packages.swing_components.MenuBar;
 import com.corejava.packages.swing_components.TitleBox;
 import com.corejava.packages.textpane_components.Text;
 import net.miginfocom.swing.MigLayout;
@@ -18,6 +19,7 @@ public class Home extends JFrame {
 	private int panelHeight = 500;
 	private JFrame frame = this;
 	private Container contentPane = frame.getContentPane();
+
 	// Right panel - public and global because needs to be modified by different
 	// classes and functions outside of this one i.e. TopicList
 	public static TitleBox topicTitleBox = new TitleBox("Select a topic!");
@@ -26,6 +28,7 @@ public class Home extends JFrame {
 	private FileScrollView topicList = new FileScrollView(Main.TOPICS_DIRECTORY, ')');
 
 	public Home() throws BadLocationException, IOException {
+		MenuBar menuBar = new MenuBar(frame);
 		// Topic list panel is fixed according to panel width
 		contentPane.setLayout(
 				new MigLayout("", "[fill," + panelWidth * 0.3 + "!][fill,grow]", "[fill,grow]"));
@@ -38,9 +41,10 @@ public class Home extends JFrame {
 		rightPanel.setLayout(new MigLayout("", "[fill,grow]", // width, column
 				"[fill," + rightPanel.getHeight() * 0.1 + "]10[fill,grow]")); // height, row
 		rightPanel.add(topicTitleBox.Generate(), "cell 0 0");
-		rightPanel.add(topicLearnArea.Generate(), "cell 0 1");
+		rightPanel.add(topicLearnArea.Generate(), "cell 0 1, grow");
 		contentPane.add(rightPanel, "cell 1 0 0 2");
 
+		menuBar.Generate();
 		setupFrame();
 		setInitialLearnArea();
 	}
@@ -53,7 +57,7 @@ public class Home extends JFrame {
 		frame.setSize(new Dimension(panelWidth, panelHeight));
 		frame.setResizable(true);
 		frame.setVisible(true);
-		frame.setTitle(Main.APP_NAME);
+		// frame.setTitle(Main.APP_NAME);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane.requestFocusInWindow();
 	}

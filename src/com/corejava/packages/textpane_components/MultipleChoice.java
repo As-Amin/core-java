@@ -34,7 +34,7 @@ public class MultipleChoice {
         panel.setBackground(null);
         panel.setLayout(new MigLayout());
 
-        JComboBox<String> optionsComboBox = new JComboBox<>();
+        JComboBox<String> optionsComboBox = new JComboBox<String>();
         for (String item : options) {
             optionsComboBox.addItem(item);
         }

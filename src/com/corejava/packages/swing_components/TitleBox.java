@@ -7,7 +7,7 @@ public class TitleBox {
 	private String title;
 
 	public TitleBox(String title) {
-		textLabel.putClientProperty("FlatLaf.style", "font: +6 $medium.font");
+		textLabel.putClientProperty("FlatLaf.style", "font: +7 $medium.font");
 		this.title = title;
 	}
 
