@@ -3,8 +3,8 @@ package com.corejava.packages.ui;
 import javax.swing.JLabel;
 
 public class TextBox {
-	private JLabel textLabel = new JLabel();
 	private String text;
+	private JLabel textLabel = new JLabel();
 
 	public TextBox(String text) {
 		this.text = text;
@@ -15,20 +15,8 @@ public class TextBox {
 		return textLabel;
 	}
 
-	public void setText(String newText) {
-		ClearAll();
-		textLabel.setText(" " + newText);
-	}
-
 	public void ClearAll() {
 		textLabel.setText(null);
-	}
-
-	/**
-	 * @return JLabel return the textLabel
-	 */
-	public JLabel getTextLabel() {
-		return textLabel;
 	}
 
 	/**
@@ -36,5 +24,17 @@ public class TextBox {
 	 */
 	public String getText() {
 		return text;
+	}
+
+	public void setText(String newText) {
+		ClearAll();
+		textLabel.setText(" " + newText);
+	}
+
+	/**
+	 * @return JLabel return the textLabel
+	 */
+	public JLabel getTextLabel() {
+		return textLabel;
 	}
 }

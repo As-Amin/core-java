@@ -1,18 +1,25 @@
 package com.corejava.packages.textpane_ui;
 
+import java.awt.Color;
+import java.io.IOException;
+
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
-import java.io.IOException;
 
 public class Text {
-    private JTextPane textPane;
+    private Color foreground;
+    private Boolean isQuestion;
     private String text;
+    private JTextPane textPane;
 
-    public Text(JTextPane textPane, String text) {
-        this.textPane = textPane;
+    public Text(String text, Color foreground, Boolean isQuestion, JTextPane textPane) {
         this.text = text;
+        this.foreground = foreground;
+        this.isQuestion = isQuestion;
+        this.textPane = textPane;
     }
 
     public void Generate() throws BadLocationException, IOException {
@@ -23,8 +30,50 @@ public class Text {
         textPane.setContentType("text/plain");
         StyledDocument document = (StyledDocument) textPane.getDocument();
         Style style = textPane.addStyle("", null);
+        if (foreground != null) {
+            StyleConstants.setForeground(style, foreground);
+        }
         document.insertString(document.getLength(), text, style);
-        document.insertString(document.getLength(), "\n\n", null);
+        if (isQuestion) {
+            document.insertString(document.getLength(), "\n", null);
+        } else {
+            document.insertString(document.getLength(), "\n\n", null);
+        }
+    }
+
+    /**
+     * @return Color return the foreground
+     */
+    public Color getForeground() {
+        return foreground;
+    }
+
+    /**
+     * @return Boolean return the isQuestion
+     */
+    public Boolean isIsQuestion() {
+        return isQuestion;
+    }
+
+    /**
+     * @param isQuestion the isQuestion to set
+     */
+    public void setIsQuestion(Boolean isQuestion) {
+        this.isQuestion = isQuestion;
+    }
+
+    /**
+     * @return String return the text
+     */
+    public String getText() {
+        return text;
+    }
+
+    /**
+     * @param text the text to set
+     */
+    public void setText(String text) {
+        this.text = text;
     }
 
     /**
@@ -41,17 +90,4 @@ public class Text {
         this.textPane = textPane;
     }
 
-    /**
-     * @return String return the text
-     */
-    public String getText() {
-        return text;
-    }
-
-    /**
-     * @param text the text to set
-     */
-    public void setText(String text) {
-        this.text = text;
-    }
 }

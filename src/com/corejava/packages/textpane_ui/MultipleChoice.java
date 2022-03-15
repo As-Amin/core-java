@@ -2,19 +2,20 @@ package com.corejava.packages.textpane_ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.StyledDocument;
+
 import net.miginfocom.swing.MigLayout;
 
 public class MultipleChoice {
-    private List<String> options;
     private String answer;
+    private List<String> options;
     private JTextPane textPane;
 
     public MultipleChoice(List<String> options, String answer, JTextPane textPane) {
@@ -70,6 +71,20 @@ public class MultipleChoice {
      */
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    /**
+     * @return List<String> return the options
+     */
+    public List<String> getOptions() {
+        return options;
+    }
+
+    /**
+     * @param options the options to set
+     */
+    public void setOptions(List<String> options) {
+        this.options = options;
     }
 
     /**

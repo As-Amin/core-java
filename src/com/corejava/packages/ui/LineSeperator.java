@@ -3,8 +3,8 @@ package com.corejava.packages.ui;
 import javax.swing.JSeparator;
 
 public class LineSeperator {
-	private JSeparator seperator = new JSeparator();
 	private int orientation;
+	private JSeparator seperator = new JSeparator();
 
 	public LineSeperator(int orientation) {
 		this.orientation = orientation;
@@ -13,6 +13,13 @@ public class LineSeperator {
 	public JSeparator Generate() {
 		seperator.setOrientation(orientation);
 		return seperator;
+	}
+
+	/**
+	 * @return int return the orientation
+	 */
+	public int getOrientation() {
+		return orientation;
 	}
 
 	/**
@@ -28,4 +35,5 @@ public class LineSeperator {
 	public void setSeperator(JSeparator seperator) {
 		this.seperator = seperator;
 	}
+
 }

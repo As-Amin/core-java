@@ -2,12 +2,14 @@ package com.corejava.packages.textpane_ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.StyledDocument;
+
 import net.miginfocom.swing.MigLayout;
 
 public class OpenChoice {
@@ -57,7 +59,6 @@ public class OpenChoice {
         textField.putClientProperty("JTextField.placeholderText", "Your answer here...");
         return textField;
     }
-
 
     /**
      * @return String return the answer

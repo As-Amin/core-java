@@ -1,32 +1,40 @@
 package com.corejava.packages.ui;
 
-import java.io.BufferedReader;
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
-import javax.swing.SwingConstants;
 import javax.swing.text.BadLocationException;
-import com.corejava.packages.json.JSONParser;
-import com.corejava.packages.textpane_ui.CaptionText;
-import com.corejava.packages.textpane_ui.Image;
-import com.corejava.packages.textpane_ui.MultipleChoice;
-import com.corejava.packages.textpane_ui.OpenChoice;
-import com.corejava.packages.textpane_ui.QuestionText;
-import com.corejava.packages.textpane_ui.SubheadingText;
-import com.corejava.packages.textpane_ui.Text;
-import com.corejava.packages.textpane_ui.TrueFalse;
+
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.corejava.packages.Main;
+import com.corejava.packages.json.JSONParser;
+import com.corejava.packages.textpane_ui.Image;
+import com.corejava.packages.textpane_ui.MultipleChoice;
+import com.corejava.packages.textpane_ui.OpenChoice;
+import com.corejava.packages.textpane_ui.Text;
+import com.corejava.packages.textpane_ui.TrueFalse;
+
 public class LearnArea {
-	private JScrollPane scrollArea;
-	private JTextPane textPane;
+	private Color accentColor;
 	private JSONObject jsonObject;
 	private JSONParser jsonParser;
+	private JScrollPane scrollArea;
+
+	private Color secondaryAccentColor;
+	private JTextPane textPane;
+	private PropertiesConfiguration themeConfig;
+
+	public void ClearAll() {
+		textPane.setText(null);
+	}
 
 	public JScrollPane Generate() {
 		textPane = new JTextPane();
@@ -37,12 +45,32 @@ public class LearnArea {
 		return scrollArea;
 	}
 
-	public void OpenFile(File topicFile) throws IOException {
+	public void OpenFile(File topicFile) throws IOException, ConfigurationException {
 		ClearAll();
+		PropertiesConfiguration themeConfig =
+				new PropertiesConfiguration(Main.THEME_CONFIG_DIRECTORY);
+		accentColor = Color.decode(themeConfig.getProperty("@accentColor").toString());
+		secondaryAccentColor =
+				Color.decode(themeConfig.getProperty("@secondaryAccentColor").toString());
+
 		jsonParser = new JSONParser(topicFile);
 		jsonObject = jsonParser.GenerateJSONObject();
 		parseJsonFile();
 		textPane.setCaretPosition(0); // Scroll to the top after adding components
+	}
+
+	private void parseImages(JSONArray jsonArray)
+			throws BadLocationException, IOException, ConfigurationException {
+		// Convert images array contents to string array lists (image urls and captions)
+		List<String> imagesUrlList = jsonParser.ReadArray(jsonArray, "url");
+		List<String> captionsList = jsonParser.ReadArray(jsonArray, "caption");
+		for (int i = 0; i < imagesUrlList.size(); i++) {
+			Image textPaneImage = new Image(imagesUrlList.get(i), textPane);
+			textPaneImage.Generate();
+			Text textPaneCaption = new Text(("Caption: " + captionsList.get(i)),
+					secondaryAccentColor, false, textPane);
+			textPaneCaption.Generate();
+		}
 	}
 
 	private void parseJsonFile() throws IOException {
@@ -53,12 +81,12 @@ public class LearnArea {
 				String paragraphContent = allParagraphs.getJSONObject(i).getString("content");
 				// Append subheading
 				if (subheading.length() != 0) {
-					SubheadingText textPaneSubheading = new SubheadingText(textPane, subheading);
+					Text textPaneSubheading = new Text(subheading, accentColor, false, textPane);
 					textPaneSubheading.Generate();
 				}
 				// Append paragraph content
 				if (paragraphContent.length() != 0) {
-					Text textPaneParagraph = new Text(textPane, paragraphContent);
+					Text textPaneParagraph = new Text(paragraphContent, null, false, textPane);
 					textPaneParagraph.Generate();
 				}
 				parseImages(allParagraphs.getJSONObject(i).getJSONArray("images"));
@@ -69,41 +97,6 @@ public class LearnArea {
 			}
 		} catch (Exception e) {
 			System.out.println(e);
-		}
-	}
-
-	private void parseImages(JSONArray jsonArray) throws BadLocationException, IOException {
-		// Convert images array contents to string array lists (image urls and captions)
-		List<String> imagesUrlList = jsonParser.ReadArray(jsonArray, "url");
-		List<String> captionsList = jsonParser.ReadArray(jsonArray, "caption");
-		for (int i = 0; i < imagesUrlList.size(); i++) {
-			Image textPaneImage = new Image(imagesUrlList.get(i), textPane);
-			textPaneImage.Generate();
-			CaptionText textPaneCaption =
-					new CaptionText(textPane, ("Caption: " + captionsList.get(i)));
-			textPaneCaption.Generate();
-		}
-	}
-
-	private void parseOpenChoice(JSONArray jsonArray) throws BadLocationException, IOException {
-		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
-		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
-		for (int i = 0; i < questions.size(); i++) {
-			QuestionText textPaneQuestion = new QuestionText(questions.get(i), textPane);
-			textPaneQuestion.Generate();
-			OpenChoice openChoice = new OpenChoice(answers.get(i), textPane);
-			openChoice.Generate();
-		}
-	}
-
-	private void parseTrueFalse(JSONArray jsonArray) throws BadLocationException, IOException {
-		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
-		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
-		for (int i = 0; i < questions.size(); i++) {
-			QuestionText textPaneQuestion = new QuestionText(questions.get(i), textPane);
-			textPaneQuestion.Generate();
-			TrueFalse trueFalseQuiz = new TrueFalse(answers.get(i), textPane);
-			trueFalseQuiz.Generate();
 		}
 	}
 
@@ -118,7 +111,8 @@ public class LearnArea {
 		}
 
 		for (int i = 0; i < questions.size(); i++) {
-			QuestionText textPaneQuestion = new QuestionText(questions.get(i).toString(), textPane);
+			Text textPaneQuestion =
+					new Text(questions.get(i).toString(), secondaryAccentColor, true, textPane);
 			textPaneQuestion.Generate();
 			MultipleChoice multipleChoiceQuiz =
 					new MultipleChoice(options, answers.get(i).toString(), textPane);
@@ -126,36 +120,42 @@ public class LearnArea {
 		}
 	}
 
-	public void ClearAll() {
-		textPane.setText(null);
+	private void parseOpenChoice(JSONArray jsonArray) throws BadLocationException, IOException {
+		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
+		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
+		for (int i = 0; i < questions.size(); i++) {
+			Text textPaneQuestion =
+					new Text(questions.get(i), secondaryAccentColor, true, textPane);
+			textPaneQuestion.Generate();
+			OpenChoice openChoice = new OpenChoice(answers.get(i), textPane);
+			openChoice.Generate();
+		}
+	}
+
+	private void parseTrueFalse(JSONArray jsonArray) throws BadLocationException, IOException {
+		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
+		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
+		for (int i = 0; i < questions.size(); i++) {
+			Text textPaneQuestion =
+					new Text(questions.get(i), secondaryAccentColor, true, textPane);
+			textPaneQuestion.Generate();
+			TrueFalse trueFalseQuiz = new TrueFalse(answers.get(i), textPane);
+			trueFalseQuiz.Generate();
+		}
 	}
 
 	/**
-	 * @return JScrollPane return the scrollArea
+	 * @return Color return the accentColor
 	 */
-	public JScrollPane getScrollArea() {
-		return scrollArea;
+	public Color getAccentColor() {
+		return accentColor;
 	}
 
 	/**
-	 * @param scrollArea the scrollArea to set
+	 * @param accentColor the accentColor to set
 	 */
-	public void setScrollArea(JScrollPane scrollArea) {
-		this.scrollArea = scrollArea;
-	}
-
-	/**
-	 * @return JTextPane return the textPane
-	 */
-	public JTextPane getTextPane() {
-		return textPane;
-	}
-
-	/**
-	 * @param textPane the textPane to set
-	 */
-	public void setTextPane(JTextPane textPane) {
-		this.textPane = textPane;
+	public void setAccentColor(Color accentColor) {
+		this.accentColor = accentColor;
 	}
 
 	/**
@@ -184,6 +184,62 @@ public class LearnArea {
 	 */
 	public void setJsonParser(JSONParser jsonParser) {
 		this.jsonParser = jsonParser;
+	}
+
+	/**
+	 * @return JScrollPane return the scrollArea
+	 */
+	public JScrollPane getScrollArea() {
+		return scrollArea;
+	}
+
+	/**
+	 * @param scrollArea the scrollArea to set
+	 */
+	public void setScrollArea(JScrollPane scrollArea) {
+		this.scrollArea = scrollArea;
+	}
+
+	/**
+	 * @return Color return the secondaryAccentColor
+	 */
+	public Color getSecondaryAccentColor() {
+		return secondaryAccentColor;
+	}
+
+	/**
+	 * @param secondaryAccentColor the secondaryAccentColor to set
+	 */
+	public void setSecondaryAccentColor(Color secondaryAccentColor) {
+		this.secondaryAccentColor = secondaryAccentColor;
+	}
+
+	/**
+	 * @return JTextPane return the textPane
+	 */
+	public JTextPane getTextPane() {
+		return textPane;
+	}
+
+	/**
+	 * @param textPane the textPane to set
+	 */
+	public void setTextPane(JTextPane textPane) {
+		this.textPane = textPane;
+	}
+
+	/**
+	 * @return PropertiesConfiguration return the themeConfig
+	 */
+	public PropertiesConfiguration getThemeConfig() {
+		return themeConfig;
+	}
+
+	/**
+	 * @param themeConfig the themeConfig to set
+	 */
+	public void setThemeConfig(PropertiesConfiguration themeConfig) {
+		this.themeConfig = themeConfig;
 	}
 
 }
