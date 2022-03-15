@@ -8,11 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.text.BadLocationException;
-import com.corejava.packages.swing_components.FileScrollView;
 import com.corejava.packages.swing_components.LearnArea;
 import com.corejava.packages.swing_components.LineSeperator;
+import com.corejava.packages.swing_components.ListFiles;
 import com.corejava.packages.swing_components.MenuBar;
-import com.corejava.packages.swing_components.TitleBox;
+import com.corejava.packages.swing_components.TextBox;
 import com.corejava.packages.textpane_components.Text;
 import net.miginfocom.swing.MigLayout;
 
@@ -26,17 +26,19 @@ public class Home extends JFrame {
 
 	// Right panel - public and global because needs to be modified by different
 	// classes and functions outside of this one i.e. TopicList
-	public static TitleBox topicTitleBox = new TitleBox("Select a topic!");
-	private LineSeperator lineSeperator = new LineSeperator(SwingConstants.HORIZONTAL);
+	public static TextBox topicTitleBox = new TextBox("Select a topic!");
+	private LineSeperator topicTitleSeperator = new LineSeperator(SwingConstants.HORIZONTAL);
 	public static LearnArea topicLearnArea = new LearnArea();
+	public static TextBox sectionTitleBox = new TextBox("Section: Home");
+	private LineSeperator sectionTitleSeperator = new LineSeperator(SwingConstants.HORIZONTAL);
 
 	// Left panel
-	private FileScrollView topicList = new FileScrollView(Main.TOPICS_DIRECTORY, ')');
+	private ListFiles topicList = new ListFiles(Main.TOPICS_DIRECTORY, ')');
 
 	public Home() throws BadLocationException, IOException {
 		// Topic list panel is fixed according to panel width
 		contentPane.setLayout(
-				new MigLayout("", "[fill," + panelWidth * 0.27 + "!]0[fill,grow]", "0[fill,grow]"));
+				new MigLayout("", "[fill," + panelWidth * 0.27 + "!][fill,grow]", "[fill,grow]"));
 
 		JPanel leftPanel = new JPanel();
 		// Title box is fixed according to panel height
@@ -48,11 +50,13 @@ public class Home extends JFrame {
 		JPanel rightPanel = new JPanel();
 		// Title box is fixed according to panel height
 		rightPanel.setLayout(new MigLayout("", "[fill,grow]", // width, column
-				"[fill," + panelHeight * 0.06 + "!][fill, " + panelHeight * 0.01
-						+ "!][fill,grow]")); // height, row
+				"[][fill, " + panelHeight * 0.01 + "!][fill,grow][fill, " + panelHeight * 0.01
+						+ "!][]"));
 		rightPanel.add(topicTitleBox.Generate(), "cell 0 0");
-		rightPanel.add(lineSeperator.Generate(), "cell 0 1");
+		rightPanel.add(topicTitleSeperator.Generate(), "cell 0 1");
 		rightPanel.add(topicLearnArea.Generate(), "cell 0 2");
+		rightPanel.add(sectionTitleSeperator.Generate(), "cell 0 3");
+		rightPanel.add(sectionTitleBox.Generate(), "cell 0 4");
 		contentPane.add(rightPanel, "cell 1 0 0 2");
 
 		menuBar.Generate();
@@ -131,20 +135,6 @@ public class Home extends JFrame {
 	 */
 	public void setContentPane(Container contentPane) {
 		this.contentPane = contentPane;
-	}
-
-	/**
-	 * @return TopicList return the topicList
-	 */
-	public FileScrollView getTopicList() {
-		return topicList;
-	}
-
-	/**
-	 * @param topicList the topicList to set
-	 */
-	public void setTopicList(FileScrollView topicList) {
-		this.topicList = topicList;
 	}
 
 }

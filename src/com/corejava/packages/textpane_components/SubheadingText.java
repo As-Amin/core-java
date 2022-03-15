@@ -25,7 +25,7 @@ public class SubheadingText {
         textPane.setContentType("text/plain");
         StyledDocument document = (StyledDocument) textPane.getDocument();
         Style style = textPane.addStyle("", null);
-        StyleConstants.setForeground(style, Colors.THEME_SECONDARY.getColor());
+        StyleConstants.setForeground(style, Colors.THEME.getColor());
         document.insertString(document.getLength(), text, style);
         document.insertString(document.getLength(), "\n\n", null);
     }
