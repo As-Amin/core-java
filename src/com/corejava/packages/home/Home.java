@@ -31,14 +31,14 @@ public class Home extends JFrame {
 	public static LearnArea topicLearnArea = new LearnArea();
 
 	// Left panel
-	private TextBox listTitleBox = new TextBox("Topics");
+	public static TextBox listTitleBox = new TextBox("Topics");
 	private LineSeperator listTitleSeperator = new LineSeperator(SwingConstants.HORIZONTAL);
 	private ListFiles topicList = new ListFiles(Main.TOPICS_DIRECTORY, ')');
 
 	public Home() throws BadLocationException, IOException {
 		// Topic list panel is fixed according to panel width
 		contentPane.setLayout(
-				new MigLayout("", "0[fill," + panelWidth * 0.3 + "!]0[fill,grow]", "[fill,grow]"));
+				new MigLayout("", "0[fill," + panelWidth * 0.27 + "!]0[fill,grow]", "[fill,grow]"));
 
 		JPanel leftPanel = new JPanel();
 		// Title box is fixed according to panel height

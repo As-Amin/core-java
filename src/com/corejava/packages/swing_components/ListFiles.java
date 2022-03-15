@@ -64,6 +64,7 @@ public class ListFiles {
 					try {
 						Home.topicTitleBox.setText(listPanel.getSelectedValue());
 						Home.topicLearnArea.OpenFile(allFiles.get(listPanel.getSelectedIndex()));
+						Home.listTitleBox.setText(allParentDir.get(listPanel.getSelectedIndex()));
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
