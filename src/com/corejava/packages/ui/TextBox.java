@@ -1,4 +1,4 @@
-package com.corejava.packages.swing_components;
+package com.corejava.packages.ui;
 
 import javax.swing.JLabel;
 

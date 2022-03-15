@@ -1,29 +1,33 @@
-package com.corejava.packages.textpane_components;
+package com.corejava.packages.textpane_ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.StyledDocument;
 import net.miginfocom.swing.MigLayout;
 
-public class OpenChoice {
+public class MultipleChoice {
+    private List<String> options;
     private String answer;
     private JTextPane textPane;
 
-    public OpenChoice(String answer, JTextPane textPane) {
+    public MultipleChoice(List<String> options, String answer, JTextPane textPane) {
+        this.options = options;
         this.answer = answer;
         this.textPane = textPane;
     }
 
     public void Generate() throws BadLocationException {
-        appendOpenChoice();
+        appendMultipleChoiceQuiz();
     }
 
-    private void appendOpenChoice() throws BadLocationException {
+    private void appendMultipleChoiceQuiz() throws BadLocationException {
         textPane.setContentType("text/plain");
         StyledDocument document = (StyledDocument) textPane.getDocument();
 
@@ -31,20 +35,21 @@ public class OpenChoice {
         panel.setBackground(null);
         panel.setLayout(new MigLayout());
 
-        JTextField answerField = new JTextField();
-        panel.add(configureTextField(answerField), "wmin 70%, grow");
+        JComboBox<String> optionsComboBox = new JComboBox<String>();
+        for (Object item : options) {
+            optionsComboBox.addItem(item.toString());
+        }
+        panel.add(optionsComboBox);
 
-        JButton submit = new JButton("Submit");
-        panel.add(submit, "shrink");
+        JButton submitButton = new JButton("Submit");
+        panel.add(panel.add(submitButton));
 
         textPane.insertComponent(panel);
         document.insertString(document.getLength(), "\n\n", null);
 
-        submit.addActionListener(new ActionListener() {
+        submitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                // If the answer contains the text that is in the answer string from the JSON
-                // file, it is correct.
-                if (answerField.getText().equalsIgnoreCase(answer)) {
+                if (answer.equalsIgnoreCase(optionsComboBox.getSelectedItem().toString())) {
                     System.out.println("Correct");
                 } else {
                     System.out.println("Hey wrong answer");
@@ -52,12 +57,6 @@ public class OpenChoice {
             }
         });
     }
-
-    private JTextField configureTextField(JTextField textField) {
-        textField.putClientProperty("JTextField.placeholderText", "Your answer here...");
-        return textField;
-    }
-
 
     /**
      * @return String return the answer

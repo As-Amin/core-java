@@ -1,4 +1,4 @@
-package com.corejava.packages.swing_components;
+package com.corejava.packages.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import com.corejava.packages.home.Main;
+import com.corejava.packages.Main;
 
 public class MenuBar {
     private JFrame frame;

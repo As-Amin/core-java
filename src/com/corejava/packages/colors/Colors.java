@@ -3,8 +3,7 @@ package com.corejava.packages.colors;
 import java.awt.Color;
 
 public enum Colors {
-  THEME(163, 165, 235), // Same as FlatDarkLaf.properties '@themeColor'
-  WHITE(255, 255, 255);
+  WHITE(255, 255, 255), THEME(235, 203, 139);
 
   private final int r;
   private final int g;

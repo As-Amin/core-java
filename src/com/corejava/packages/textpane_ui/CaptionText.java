@@ -1,4 +1,4 @@
-package com.corejava.packages.textpane_components;
+package com.corejava.packages.textpane_ui;
 
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -25,7 +25,7 @@ public class CaptionText {
         textPane.setContentType("text/plain");
         StyledDocument document = (StyledDocument) textPane.getDocument();
         Style style = textPane.addStyle("", null);
-        StyleConstants.setForeground(style, Colors.THEME.getColor());
+        StyleConstants.setForeground(style, Colors.WHITE.getColor());
         document.insertString(document.getLength(), text, style);
         document.insertString(document.getLength(), "\n\n", null);
     }

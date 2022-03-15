@@ -1,4 +1,4 @@
-package com.corejava.packages.textpane_components;
+package com.corejava.packages.textpane_ui;
 
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -8,13 +8,13 @@ import javax.swing.text.StyledDocument;
 import com.corejava.packages.colors.Colors;
 import java.io.IOException;
 
-public class SubheadingText {
+public class QuestionText {
     private JTextPane textPane;
     private String text;
 
-    public SubheadingText(JTextPane textPane, String text) {
-        this.textPane = textPane;
+    public QuestionText(String text, JTextPane textPane) {
         this.text = text;
+        this.textPane = textPane;
     }
 
     public void Generate() throws BadLocationException, IOException {
@@ -27,7 +27,7 @@ public class SubheadingText {
         Style style = textPane.addStyle("", null);
         StyleConstants.setForeground(style, Colors.WHITE.getColor());
         document.insertString(document.getLength(), text, style);
-        document.insertString(document.getLength(), "\n\n", null);
+        document.insertString(document.getLength(), "\n", null);
     }
 
     /**

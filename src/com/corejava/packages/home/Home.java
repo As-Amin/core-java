@@ -3,17 +3,17 @@ package com.corejava.packages.home;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.io.IOException;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.text.BadLocationException;
-import com.corejava.packages.swing_components.LearnArea;
-import com.corejava.packages.swing_components.LineSeperator;
-import com.corejava.packages.swing_components.ListFiles;
-import com.corejava.packages.swing_components.MenuBar;
-import com.corejava.packages.swing_components.TextBox;
-import com.corejava.packages.textpane_components.Text;
+import com.corejava.packages.Main;
+import com.corejava.packages.textpane_ui.Text;
+import com.corejava.packages.ui.LearnArea;
+import com.corejava.packages.ui.LineSeperator;
+import com.corejava.packages.ui.ListFiles;
+import com.corejava.packages.ui.MenuBar;
+import com.corejava.packages.ui.TextBox;
 import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
@@ -37,8 +37,8 @@ public class Home extends JFrame {
 
 	public Home() throws BadLocationException, IOException {
 		// Topic list panel is fixed according to panel width
-		contentPane.setLayout(
-				new MigLayout("", "0[fill," + panelWidth * 0.27 + "!]0[fill,grow]", "[fill,grow]"));
+		contentPane.setLayout(new MigLayout("", "0[fill," + panelWidth * 0.27 + "!]0[fill,grow]0",
+				"0[fill,grow]0"));
 
 		JPanel leftPanel = new JPanel();
 		// Title box is fixed according to panel height
@@ -62,7 +62,6 @@ public class Home extends JFrame {
 		menuBar.Generate();
 
 		// Client properties for LAF
-		rightPanel.putClientProperty("FlatLaf.style", "background: @backgroundSecondary");
 
 		setupFrame();
 		setInitialLearnArea();

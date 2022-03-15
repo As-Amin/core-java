@@ -1,5 +1,6 @@
-package com.corejava.packages.home;
+package com.corejava.packages;
 
+import com.corejava.packages.home.Home;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
 
@@ -7,7 +8,7 @@ public class Main {
 	public static final String APP_NAME = "CoreJava";
 	public static final String APP_SLOGAN = "Learn the fundamentals";
 	public static final String TOPICS_DIRECTORY = "./topics";
-	public static final String IMAGES_DIRECTORY = "./images";
+	public static final String IMAGES_DIRECTORY = "./res";
 
 	public static void main(String[] args) {
 		FlatLaf.registerCustomDefaultsSource("com.corejava.packages.themes");
