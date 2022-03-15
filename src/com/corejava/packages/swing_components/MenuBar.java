@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import com.corejava.packages.home.Main;
 
 public class MenuBar {
     private JFrame frame;
@@ -21,12 +22,16 @@ public class MenuBar {
     }
 
     public void Generate() {
+        AllJMenu.put(Main.APP_NAME, new JMenu(Main.APP_NAME));
         AllJMenu.put("Profile", new JMenu("Profile"));
         AllJMenu.put("Help", new JMenu("Help"));
 
         for (JMenu menu : AllJMenu.values()) {
             menuBar.add(menu);
         }
+
+        // Disable app title button - places the app name first in menu
+        AllJMenu.get(Main.APP_NAME).setEnabled(false);
 
         AllJMenuItems.put("Profile Progress", new JMenuItem("Progress"));
         AllJMenuItems.put("Profile SignOut", new JMenuItem("Sign out"));
