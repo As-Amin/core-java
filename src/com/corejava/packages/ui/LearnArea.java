@@ -59,20 +59,6 @@ public class LearnArea {
 		textPane.setCaretPosition(0); // Scroll to the top after adding components
 	}
 
-	private void parseImages(JSONArray jsonArray)
-			throws BadLocationException, IOException, ConfigurationException {
-		// Convert images array contents to string array lists (image urls and captions)
-		List<String> imagesUrlList = jsonParser.ReadArray(jsonArray, "url");
-		List<String> captionsList = jsonParser.ReadArray(jsonArray, "caption");
-		for (int i = 0; i < imagesUrlList.size(); i++) {
-			Image textPaneImage = new Image(imagesUrlList.get(i), textPane);
-			textPaneImage.Generate();
-			Text textPaneCaption = new Text(("Caption: " + captionsList.get(i)),
-					secondaryAccentColor, false, textPane);
-			textPaneCaption.Generate();
-		}
-	}
-
 	private void parseJsonFile() throws IOException {
 		try {
 			JSONArray allParagraphs = jsonObject.getJSONArray("paragraphs");
@@ -81,7 +67,8 @@ public class LearnArea {
 				String paragraphContent = allParagraphs.getJSONObject(i).getString("content");
 				// Append subheading
 				if (subheading.length() != 0) {
-					Text textPaneSubheading = new Text(subheading, accentColor, false, textPane);
+					Text textPaneSubheading =
+							new Text(subheading, secondaryAccentColor, false, textPane);
 					textPaneSubheading.Generate();
 				}
 				// Append paragraph content
@@ -100,6 +87,20 @@ public class LearnArea {
 		}
 	}
 
+	private void parseImages(JSONArray jsonArray)
+			throws BadLocationException, IOException, ConfigurationException {
+		// Convert images array contents to string array lists (image urls and captions)
+		List<String> imagesUrlList = jsonParser.ReadArray(jsonArray, "url");
+		List<String> captionsList = jsonParser.ReadArray(jsonArray, "caption");
+		for (int i = 0; i < imagesUrlList.size(); i++) {
+			Image textPaneImage = new Image(imagesUrlList.get(i), textPane);
+			textPaneImage.Generate();
+			Text textPaneCaption =
+					new Text(("Caption: " + captionsList.get(i)), accentColor, false, textPane);
+			textPaneCaption.Generate();
+		}
+	}
+
 	private void parseMultipleChoice(JSONArray jsonArray) throws BadLocationException, IOException {
 		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
 		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
@@ -112,7 +113,7 @@ public class LearnArea {
 
 		for (int i = 0; i < questions.size(); i++) {
 			Text textPaneQuestion =
-					new Text(questions.get(i).toString(), secondaryAccentColor, true, textPane);
+					new Text(questions.get(i).toString(), accentColor, true, textPane);
 			textPaneQuestion.Generate();
 			MultipleChoice multipleChoiceQuiz =
 					new MultipleChoice(options, answers.get(i).toString(), textPane);
@@ -124,8 +125,7 @@ public class LearnArea {
 		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
 		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
 		for (int i = 0; i < questions.size(); i++) {
-			Text textPaneQuestion =
-					new Text(questions.get(i), secondaryAccentColor, true, textPane);
+			Text textPaneQuestion = new Text(questions.get(i), accentColor, true, textPane);
 			textPaneQuestion.Generate();
 			OpenChoice openChoice = new OpenChoice(answers.get(i), textPane);
 			openChoice.Generate();
@@ -136,8 +136,7 @@ public class LearnArea {
 		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
 		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
 		for (int i = 0; i < questions.size(); i++) {
-			Text textPaneQuestion =
-					new Text(questions.get(i), secondaryAccentColor, true, textPane);
+			Text textPaneQuestion = new Text(questions.get(i), accentColor, true, textPane);
 			textPaneQuestion.Generate();
 			TrueFalse trueFalseQuiz = new TrueFalse(answers.get(i), textPane);
 			trueFalseQuiz.Generate();

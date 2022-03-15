@@ -1,7 +1,9 @@
 package com.corejava.packages.home;
 
 import java.awt.Container;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Insets;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -16,12 +18,12 @@ import com.corejava.packages.ui.LineSeperator;
 import com.corejava.packages.ui.ListFiles;
 import com.corejava.packages.ui.MenuBar;
 import com.corejava.packages.ui.TextBox;
-
+import com.formdev.flatlaf.FlatClientProperties;
 import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
-	private int frameWidth = 750;
-	private int frameHeight = 550;
+	private int frameWidth = 700;
+	private int frameHeight = 500;
 
 	private JFrame frame = this;
 	private Container contentPane = frame.getContentPane();
@@ -41,23 +43,25 @@ public class Home extends JFrame {
 
 	public Home() throws BadLocationException, IOException {
 		// Topic list panel is fixed according to panel width
-		contentPane.setLayout(new MigLayout("", "0[fill," + frameWidth * 0.27 + "!]0[fill,grow]0",
-				"0[fill,grow]0"));
+		contentPane.setLayout(
+				new MigLayout("", "[fill," + frameWidth * 0.27 + "!][fill,grow]", "[fill,grow]"));
 
 		JPanel leftPanel = new JPanel();
 		// Title box is fixed according to panel height
-		leftPanel.setLayout(new MigLayout("", "[fill,grow]",
-				"[][fill, " + frameHeight * 0.01 + "!][fill,grow]")); // height, row
-		leftPanel.add(listTitleBox.Generate(), "cell 0 0");
-		leftPanel.add(listTitleSeperator.Generate(), "cell 0 1");
-		leftPanel.add(topicList.Generate(), "cell 0 2");
+		// leftPanel.setLayout(new MigLayout("", "0[fill,grow]0",
+		// "0[][fill, " + frameHeight * 0.01 + "!][fill,grow]0")); // height, row
+
+		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0", "0[fill,grow]0")); // height, row
+		// leftPanel.add(listTitleBox.Generate(), "cell 0 0");
+		// leftPanel.add(listTitleSeperator.Generate(), "cell 0 1");
+		leftPanel.add(topicList.Generate(), "cell 0 0");
 		contentPane.add(leftPanel, "cell 0 0");
 
 		// Right panel
 		JPanel rightPanel = new JPanel();
 		// Title box is fixed according to panel height
-		rightPanel.setLayout(new MigLayout("", "[fill,grow]", // width, column
-				"[][fill, " + frameHeight * 0.01 + "!][fill,grow]"));
+		rightPanel.setLayout(new MigLayout("", "0[fill,grow]0", // width, column
+				"0[][fill, " + frameHeight * 0.01 + "!][fill,grow]0"));
 		rightPanel.add(topicTitleBox.Generate(), "cell 0 0");
 		rightPanel.add(topicTitleSeperator.Generate(), "cell 0 1");
 		rightPanel.add(topicLearnArea.Generate(), "cell 0 2");

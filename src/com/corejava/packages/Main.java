@@ -3,7 +3,6 @@ package com.corejava.packages;
 import com.corejava.packages.home.Home;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
@@ -18,26 +17,13 @@ public class Main {
 			"./src/com/corejava/packages/themes/FlatDarkLaf.properties";
 	public static final String APP_CONFIG_DIRECTORY = "./src/config/config.properties";
 
-	public static PropertiesConfiguration APP_CONFIG;
+	public static PropertiesConfiguration APP_CONFIG_OBJECT;
 
 	public static void main(String[] args) throws ConfigurationException {
 		FlatLaf.registerCustomDefaultsSource("com.corejava.packages.themes");
 
-		APP_CONFIG = new PropertiesConfiguration(Main.APP_CONFIG_DIRECTORY);
-		if (APP_CONFIG.getProperty("app.theme").equals("DarkTheme")) {
-			Main.THEME_CONFIG_DIRECTORY =
-					"./src/com/corejava/packages/themes/FlatDarkLaf.properties";
-			FlatDarkLaf.setup();
-		} else if (APP_CONFIG.getProperty("app.theme").equals("LightTheme")) {
-			Main.THEME_CONFIG_DIRECTORY =
-					"./src/com/corejava/packages/themes/FlatLightLaf.properties";
-			FlatLightLaf.setup();
-		} else {
-			Main.THEME_CONFIG_DIRECTORY =
-					"./src/com/corejava/packages/themes/FlatDarkLaf.properties";
-			FlatDarkLaf.setup();
-		}
-
+		APP_CONFIG_OBJECT = new PropertiesConfiguration(Main.APP_CONFIG_DIRECTORY);
+		FlatDarkLaf.setup();
 		try {
 			@SuppressWarnings("unused")
 			Home homeScreen = new Home();

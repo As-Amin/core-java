@@ -26,7 +26,6 @@ public class MenuBar {
     public void Generate() {
         AllJMenu.put(Main.APP_NAME, new JMenu(Main.APP_NAME));
         AllJMenu.put("Profile", new JMenu("Profile"));
-        AllJMenu.put("Theme", new JMenu("Theme"));
         AllJMenu.put("Help", new JMenu("Help"));
 
         for (JMenu menu : AllJMenu.values()) {
@@ -38,9 +37,6 @@ public class MenuBar {
 
         AllJMenuItems.put("Profile Progress", new JMenuItem("Progress"));
         AllJMenuItems.put("Profile SignOut", new JMenuItem("Sign out"));
-
-        AllJMenuItems.put("Theme Dark", new JMenuItem("Dark theme"));
-        AllJMenuItems.put("Theme Light", new JMenuItem("Light theme"));
 
         for (String menuKey : AllJMenu.keySet()) {
             for (String menuItemKey : AllJMenuItems.keySet()) {
@@ -59,9 +55,6 @@ public class MenuBar {
     private void loadAllConfigs() {
         profileProgressConfig();
         profileSignOutConfig();
-
-        darkThemeConfig();
-        lightThemeConfig();
     }
 
     private void profileProgressConfig() {
@@ -76,38 +69,6 @@ public class MenuBar {
         AllJMenuItems.get("Profile SignOut").addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev) {
                 //
-            }
-        });
-    }
-
-    private void darkThemeConfig() {
-        AllJMenuItems.get("Theme Dark").addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
-                try {
-                    Main.APP_CONFIG.setProperty("app.theme", "DarkTheme");
-                    Main.APP_CONFIG.save();
-                    Main.main(new String[] {"dark"});
-                    frame.removeAll();
-                    frame.dispose();
-                } catch (ConfigurationException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    private void lightThemeConfig() {
-        AllJMenuItems.get("Theme Light").addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
-                try {
-                    Main.APP_CONFIG.setProperty("app.theme", "LightTheme");
-                    Main.APP_CONFIG.save();
-                    Main.main(new String[] {"light"});
-                    frame.removeAll();
-                    frame.dispose();
-                } catch (ConfigurationException e) {
-                    e.printStackTrace();
-                }
             }
         });
     }
