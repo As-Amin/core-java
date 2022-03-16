@@ -1,5 +1,6 @@
 package com.corejava.packages;
 
+import java.awt.Color;
 import com.corejava.packages.home.Home;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
@@ -19,10 +20,19 @@ public class Main {
 
 	public static PropertiesConfiguration APP_CONFIG_OBJECT;
 
+	public static Color SECONDARY_ACCENT_COLOR;
+	public static Color ACCENT_COLOR;
+
 	public static void main(String[] args) throws ConfigurationException {
 		FlatLaf.registerCustomDefaultsSource("com.corejava.packages.themes");
-
 		APP_CONFIG_OBJECT = new PropertiesConfiguration(Main.APP_CONFIG_DIRECTORY);
+
+		PropertiesConfiguration themeConfig =
+				new PropertiesConfiguration(Main.THEME_CONFIG_DIRECTORY);
+		ACCENT_COLOR = Color.decode(themeConfig.getProperty("@accentColor").toString());
+		SECONDARY_ACCENT_COLOR =
+				Color.decode(themeConfig.getProperty("@secondaryAccentColor").toString());
+
 		FlatDarkLaf.setup();
 		try {
 			@SuppressWarnings("unused")

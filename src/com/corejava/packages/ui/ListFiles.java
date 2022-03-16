@@ -41,21 +41,21 @@ public class ListFiles {
 		return scrollPane;
 	}
 
-	private void generateButtons(File sectionDir, String sectionName) {
-		for (File file : sectionDir.listFiles()) {
-			String fileName = getFileName(file);
-			model.addElement(fileName);
-			allParentDir.add(sectionName);
-			allFiles.add(file);
-		}
-	}
-
 	private void generateLabels() {
 		File[] files = new File(directory).listFiles();
 		Arrays.sort(files, NameFileComparator.NAME_COMPARATOR);
 		for (File dir : files) {
 			String sectionName = getFileName(dir);
 			generateButtons(dir, sectionName);
+		}
+	}
+
+	private void generateButtons(File sectionDir, String sectionName) {
+		for (File file : sectionDir.listFiles()) {
+			String fileName = getFileName(file);
+			model.addElement(fileName);
+			allParentDir.add(sectionName);
+			allFiles.add(file);
 		}
 	}
 
@@ -66,15 +66,22 @@ public class ListFiles {
 			public void valueChanged(ListSelectionEvent lse) {
 				if (!lse.getValueIsAdjusting()) {
 					try {
-						Home.topicTitleBox.setText(listPanel.getSelectedValue());
+						Home.topicTitleBox.setText("Topic: " + listPanel.getSelectedValue());
+						Home.sectionTitleBox.setText(
+								"Section: " + allParentDir.get(listPanel.getSelectedIndex()));
 						Home.topicLearnArea.OpenFile(allFiles.get(listPanel.getSelectedIndex()));
-						Home.listTitleBox.setText(allParentDir.get(listPanel.getSelectedIndex()));
 					} catch (IOException | ConfigurationException e) {
 						e.printStackTrace();
 					}
 				}
 			}
 		});
+	}
+
+	private String getFileName(File file) {
+		String topicAndFileType[] = file.getName().split("\\.", 2);
+		String numberTopic[] = topicAndFileType[0].split("\\" + fileNumberSeperator + " ", 2);
+		return numberTopic[1];
 	}
 
 	/**
@@ -96,12 +103,6 @@ public class ListFiles {
 	 */
 	public String getDirectory() {
 		return directory;
-	}
-
-	private String getFileName(File file) {
-		String topicAndFileType[] = file.getName().split("\\.", 2);
-		String numberTopic[] = topicAndFileType[0].split("\\" + fileNumberSeperator + " ", 2);
-		return numberTopic[1];
 	}
 
 	/**

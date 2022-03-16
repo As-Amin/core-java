@@ -1,6 +1,5 @@
 package com.corejava.packages.ui;
 
-import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -10,7 +9,6 @@ import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 
 import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.PropertiesConfiguration;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,18 +21,10 @@ import com.corejava.packages.textpane_ui.Text;
 import com.corejava.packages.textpane_ui.TrueFalse;
 
 public class LearnArea {
-	private Color accentColor;
 	private JSONObject jsonObject;
 	private JSONParser jsonParser;
 	private JScrollPane scrollArea;
-
-	private Color secondaryAccentColor;
 	private JTextPane textPane;
-	private PropertiesConfiguration themeConfig;
-
-	public void ClearAll() {
-		textPane.setText(null);
-	}
 
 	public JScrollPane Generate() {
 		textPane = new JTextPane();
@@ -45,14 +35,12 @@ public class LearnArea {
 		return scrollArea;
 	}
 
+	public void ClearAll() {
+		textPane.setText(null);
+	}
+
 	public void OpenFile(File topicFile) throws IOException, ConfigurationException {
 		ClearAll();
-		PropertiesConfiguration themeConfig =
-				new PropertiesConfiguration(Main.THEME_CONFIG_DIRECTORY);
-		accentColor = Color.decode(themeConfig.getProperty("@accentColor").toString());
-		secondaryAccentColor =
-				Color.decode(themeConfig.getProperty("@secondaryAccentColor").toString());
-
 		jsonParser = new JSONParser(topicFile);
 		jsonObject = jsonParser.GenerateJSONObject();
 		parseJsonFile();
@@ -68,7 +56,7 @@ public class LearnArea {
 				// Append subheading
 				if (subheading.length() != 0) {
 					Text textPaneSubheading =
-							new Text(subheading, secondaryAccentColor, false, textPane);
+							new Text(subheading, Main.SECONDARY_ACCENT_COLOR, false, textPane);
 					textPaneSubheading.Generate();
 				}
 				// Append paragraph content
@@ -95,8 +83,8 @@ public class LearnArea {
 		for (int i = 0; i < imagesUrlList.size(); i++) {
 			Image textPaneImage = new Image(imagesUrlList.get(i), textPane);
 			textPaneImage.Generate();
-			Text textPaneCaption =
-					new Text(("Caption: " + captionsList.get(i)), accentColor, false, textPane);
+			Text textPaneCaption = new Text(("Caption: " + captionsList.get(i)), Main.ACCENT_COLOR,
+					false, textPane);
 			textPaneCaption.Generate();
 		}
 	}
@@ -113,7 +101,7 @@ public class LearnArea {
 
 		for (int i = 0; i < questions.size(); i++) {
 			Text textPaneQuestion =
-					new Text(questions.get(i).toString(), accentColor, true, textPane);
+					new Text(questions.get(i).toString(), Main.ACCENT_COLOR, true, textPane);
 			textPaneQuestion.Generate();
 			MultipleChoice multipleChoiceQuiz =
 					new MultipleChoice(options, answers.get(i).toString(), textPane);
@@ -125,7 +113,7 @@ public class LearnArea {
 		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
 		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
 		for (int i = 0; i < questions.size(); i++) {
-			Text textPaneQuestion = new Text(questions.get(i), accentColor, true, textPane);
+			Text textPaneQuestion = new Text(questions.get(i), Main.ACCENT_COLOR, true, textPane);
 			textPaneQuestion.Generate();
 			OpenChoice openChoice = new OpenChoice(answers.get(i), textPane);
 			openChoice.Generate();
@@ -136,25 +124,11 @@ public class LearnArea {
 		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
 		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
 		for (int i = 0; i < questions.size(); i++) {
-			Text textPaneQuestion = new Text(questions.get(i), accentColor, true, textPane);
+			Text textPaneQuestion = new Text(questions.get(i), Main.ACCENT_COLOR, true, textPane);
 			textPaneQuestion.Generate();
 			TrueFalse trueFalseQuiz = new TrueFalse(answers.get(i), textPane);
 			trueFalseQuiz.Generate();
 		}
-	}
-
-	/**
-	 * @return Color return the accentColor
-	 */
-	public Color getAccentColor() {
-		return accentColor;
-	}
-
-	/**
-	 * @param accentColor the accentColor to set
-	 */
-	public void setAccentColor(Color accentColor) {
-		this.accentColor = accentColor;
 	}
 
 	/**
@@ -200,20 +174,6 @@ public class LearnArea {
 	}
 
 	/**
-	 * @return Color return the secondaryAccentColor
-	 */
-	public Color getSecondaryAccentColor() {
-		return secondaryAccentColor;
-	}
-
-	/**
-	 * @param secondaryAccentColor the secondaryAccentColor to set
-	 */
-	public void setSecondaryAccentColor(Color secondaryAccentColor) {
-		this.secondaryAccentColor = secondaryAccentColor;
-	}
-
-	/**
 	 * @return JTextPane return the textPane
 	 */
 	public JTextPane getTextPane() {
@@ -226,19 +186,4 @@ public class LearnArea {
 	public void setTextPane(JTextPane textPane) {
 		this.textPane = textPane;
 	}
-
-	/**
-	 * @return PropertiesConfiguration return the themeConfig
-	 */
-	public PropertiesConfiguration getThemeConfig() {
-		return themeConfig;
-	}
-
-	/**
-	 * @param themeConfig the themeConfig to set
-	 */
-	public void setThemeConfig(PropertiesConfiguration themeConfig) {
-		this.themeConfig = themeConfig;
-	}
-
 }

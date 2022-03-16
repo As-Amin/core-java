@@ -1,24 +1,19 @@
 package com.corejava.packages.home;
 
 import java.awt.Container;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Insets;
 import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.text.BadLocationException;
 
 import com.corejava.packages.Main;
 import com.corejava.packages.textpane_ui.Text;
 import com.corejava.packages.ui.LearnArea;
-import com.corejava.packages.ui.LineSeperator;
 import com.corejava.packages.ui.ListFiles;
 import com.corejava.packages.ui.MenuBar;
 import com.corejava.packages.ui.TextBox;
-import com.formdev.flatlaf.FlatClientProperties;
 import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
@@ -29,31 +24,24 @@ public class Home extends JFrame {
 	private Container contentPane = frame.getContentPane();
 
 	// Left panel
-	public static TextBox listTitleBox = new TextBox("Topics");
-	private LineSeperator listTitleSeperator = new LineSeperator(SwingConstants.HORIZONTAL);
 	private ListFiles topicList = new ListFiles(Main.TOPICS_DIRECTORY, ')');
 
 	// Right panel - public and global because needs to be modified by different
 	// classes and functions outside of this one i.e. TopicList
-	public static TextBox topicTitleBox = new TextBox("Select a topic!");
-	private LineSeperator topicTitleSeperator = new LineSeperator(SwingConstants.HORIZONTAL);
+	public static TextBox topicTitleBox = new TextBox("Topic: None");
+	public static TextBox sectionTitleBox = new TextBox("Section: Home");
 	public static LearnArea topicLearnArea = new LearnArea();
+	public static TextBox topicTipsArea = new TextBox("Tips: Select a topic from the list!");
 
 	private MenuBar menuBar = new MenuBar(frame);
 
 	public Home() throws BadLocationException, IOException {
 		// Topic list panel is fixed according to panel width
 		contentPane.setLayout(
-				new MigLayout("", "[fill," + frameWidth * 0.27 + "!][fill,grow]", "[fill,grow]"));
+				new MigLayout("", "[fill," + frameWidth * 0.25 + "!][fill,grow]", "[fill,grow]"));
 
 		JPanel leftPanel = new JPanel();
-		// Title box is fixed according to panel height
-		// leftPanel.setLayout(new MigLayout("", "0[fill,grow]0",
-		// "0[][fill, " + frameHeight * 0.01 + "!][fill,grow]0")); // height, row
-
 		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0", "0[fill,grow]0")); // height, row
-		// leftPanel.add(listTitleBox.Generate(), "cell 0 0");
-		// leftPanel.add(listTitleSeperator.Generate(), "cell 0 1");
 		leftPanel.add(topicList.Generate(), "cell 0 0");
 		contentPane.add(leftPanel, "cell 0 0");
 
@@ -61,13 +49,20 @@ public class Home extends JFrame {
 		JPanel rightPanel = new JPanel();
 		// Title box is fixed according to panel height
 		rightPanel.setLayout(new MigLayout("", "0[fill,grow]0", // width, column
-				"0[][fill, " + frameHeight * 0.01 + "!][fill,grow]0"));
+				"0[][][fill,grow][]0"));
 		rightPanel.add(topicTitleBox.Generate(), "cell 0 0");
-		rightPanel.add(topicTitleSeperator.Generate(), "cell 0 1");
+		rightPanel.add(sectionTitleBox.Generate(), "cell 0 1");
 		rightPanel.add(topicLearnArea.Generate(), "cell 0 2");
+		rightPanel.add(topicTipsArea.Generate(), "cell 0 3");
 		contentPane.add(rightPanel, "cell 1 0");
 
 		menuBar.Generate();
+
+		// Client properties
+		topicTitleBox.getTextField().putClientProperty("FlatLaf.style",
+				"font: $large.font;" + "foreground: @accentColor;");
+		topicTipsArea.getTextField().putClientProperty("FlatLaf.style",
+				"foreground: @accentColor;");
 
 		setupFrame();
 		setInitialLearnArea();
@@ -81,7 +76,6 @@ public class Home extends JFrame {
 		frame.setSize(new Dimension(frameWidth, frameHeight));
 		frame.setResizable(true);
 		frame.setVisible(true);
-		// frame.setTitle(Main.APP_NAME);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane.requestFocusInWindow();
 	}

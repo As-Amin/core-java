@@ -1,40 +1,40 @@
 package com.corejava.packages.ui;
 
-import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class TextBox {
 	private String text;
-	private JLabel textLabel = new JLabel();
+	private JTextField textField = new JTextField();
 
 	public TextBox(String text) {
 		this.text = text;
+		textField.setEditable(false);
 	}
 
-	public JLabel Generate() {
+	public JTextField Generate() {
 		setText(text);
-		return textLabel;
+		return textField;
 	}
 
 	public void ClearAll() {
-		textLabel.setText(null);
-	}
-
-	/**
-	 * @return String return the text
-	 */
-	public String getText() {
-		return text;
+		textField.setText(null);
 	}
 
 	public void setText(String newText) {
 		ClearAll();
-		textLabel.setText(" " + newText);
+		textField.setText(newText);
+	}
+
+	public void appendText(String newText) {
+		String oldText = textField.getText();
+		ClearAll();
+		textField.setText(oldText + newText);
 	}
 
 	/**
-	 * @return JLabel return the textLabel
+	 * @return JTextField return the textLabel
 	 */
-	public JLabel getTextLabel() {
-		return textLabel;
+	public JTextField getTextField() {
+		return textField;
 	}
 }
