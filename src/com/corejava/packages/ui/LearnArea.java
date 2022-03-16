@@ -20,23 +20,21 @@ import com.corejava.packages.textpane_ui.OpenChoice;
 import com.corejava.packages.textpane_ui.Text;
 import com.corejava.packages.textpane_ui.TrueFalse;
 
-public class LearnArea {
+public class LearnArea extends JTextPane {
 	private JSONObject jsonObject;
 	private JSONParser jsonParser;
 	private JScrollPane scrollArea;
-	private JTextPane textPane;
 
 	public JScrollPane Generate() {
-		textPane = new JTextPane();
-		scrollArea = new JScrollPane(textPane);
+		scrollArea = new JScrollPane(this);
 		scrollArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollArea.getVerticalScrollBar().setUnitIncrement(10);
-		textPane.setEditable(false);
+		this.setEditable(false);
 		return scrollArea;
 	}
 
 	public void ClearAll() {
-		textPane.setText(null);
+		this.setText(null);
 	}
 
 	public void OpenFile(File topicFile) throws IOException, ConfigurationException {
@@ -44,7 +42,7 @@ public class LearnArea {
 		jsonParser = new JSONParser(topicFile);
 		jsonObject = jsonParser.GenerateJSONObject();
 		parseJsonFile();
-		textPane.setCaretPosition(0); // Scroll to the top after adding components
+		this.setCaretPosition(0); // Scroll to the top after adding components
 	}
 
 	private void parseJsonFile() throws IOException {
@@ -56,12 +54,12 @@ public class LearnArea {
 				// Append subheading
 				if (subheading.length() != 0) {
 					Text textPaneSubheading =
-							new Text(subheading, Main.SECONDARY_ACCENT_COLOR, false, textPane);
+							new Text(subheading, Main.SECONDARY_ACCENT_COLOR, false, this);
 					textPaneSubheading.Generate();
 				}
 				// Append paragraph content
 				if (paragraphContent.length() != 0) {
-					Text textPaneParagraph = new Text(paragraphContent, null, false, textPane);
+					Text textPaneParagraph = new Text(paragraphContent, null, false, this);
 					textPaneParagraph.Generate();
 				}
 				parseImages(allParagraphs.getJSONObject(i).getJSONArray("images"));
@@ -81,10 +79,10 @@ public class LearnArea {
 		List<String> imagesUrlList = jsonParser.ReadArray(jsonArray, "url");
 		List<String> captionsList = jsonParser.ReadArray(jsonArray, "caption");
 		for (int i = 0; i < imagesUrlList.size(); i++) {
-			Image textPaneImage = new Image(imagesUrlList.get(i), textPane);
+			Image textPaneImage = new Image(imagesUrlList.get(i), this);
 			textPaneImage.Generate();
-			Text textPaneCaption = new Text(("Caption: " + captionsList.get(i)), Main.ACCENT_COLOR,
-					false, textPane);
+			Text textPaneCaption =
+					new Text(("Caption: " + captionsList.get(i)), Main.ACCENT_COLOR, false, this);
 			textPaneCaption.Generate();
 		}
 	}
@@ -101,10 +99,10 @@ public class LearnArea {
 
 		for (int i = 0; i < questions.size(); i++) {
 			Text textPaneQuestion =
-					new Text(questions.get(i).toString(), Main.ACCENT_COLOR, true, textPane);
+					new Text(questions.get(i).toString(), Main.ACCENT_COLOR, true, this);
 			textPaneQuestion.Generate();
 			MultipleChoice multipleChoiceQuiz =
-					new MultipleChoice(options, answers.get(i).toString(), textPane);
+					new MultipleChoice(options, answers.get(i).toString(), this);
 			multipleChoiceQuiz.Generate();
 		}
 	}
@@ -113,9 +111,9 @@ public class LearnArea {
 		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
 		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
 		for (int i = 0; i < questions.size(); i++) {
-			Text textPaneQuestion = new Text(questions.get(i), Main.ACCENT_COLOR, true, textPane);
+			Text textPaneQuestion = new Text(questions.get(i), Main.ACCENT_COLOR, true, this);
 			textPaneQuestion.Generate();
-			OpenChoice openChoice = new OpenChoice(answers.get(i), textPane);
+			OpenChoice openChoice = new OpenChoice(answers.get(i), this);
 			openChoice.Generate();
 		}
 	}
@@ -124,9 +122,9 @@ public class LearnArea {
 		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
 		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
 		for (int i = 0; i < questions.size(); i++) {
-			Text textPaneQuestion = new Text(questions.get(i), Main.ACCENT_COLOR, true, textPane);
+			Text textPaneQuestion = new Text(questions.get(i), Main.ACCENT_COLOR, true, this);
 			textPaneQuestion.Generate();
-			TrueFalse trueFalseQuiz = new TrueFalse(answers.get(i), textPane);
+			TrueFalse trueFalseQuiz = new TrueFalse(answers.get(i), this);
 			trueFalseQuiz.Generate();
 		}
 	}
@@ -173,17 +171,7 @@ public class LearnArea {
 		this.scrollArea = scrollArea;
 	}
 
-	/**
-	 * @return JTextPane return the textPane
-	 */
 	public JTextPane getTextPane() {
-		return textPane;
-	}
-
-	/**
-	 * @param textPane the textPane to set
-	 */
-	public void setTextPane(JTextPane textPane) {
-		this.textPane = textPane;
+		return this;
 	}
 }

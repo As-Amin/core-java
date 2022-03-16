@@ -4,32 +4,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedHashMap;
 
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import com.corejava.packages.Main;
-import org.apache.commons.configuration.ConfigurationException;
 
-public class MenuBar {
+public class MenuBar extends JMenuBar {
     private LinkedHashMap<String, JMenu> AllJMenu = new LinkedHashMap<String, JMenu>();
     private LinkedHashMap<String, JMenuItem> AllJMenuItems = new LinkedHashMap<String, JMenuItem>();
 
-    private JFrame frame;
-    private JMenuBar menuBar = new JMenuBar();
-
-    public MenuBar(JFrame frame) {
-        this.frame = frame;
-    }
-
-    public void Generate() {
+    public JMenuBar Generate() {
         AllJMenu.put(Main.APP_NAME, new JMenu(Main.APP_NAME));
         AllJMenu.put("Profile", new JMenu("Profile"));
         AllJMenu.put("Help", new JMenu("Help"));
 
         for (JMenu menu : AllJMenu.values()) {
-            menuBar.add(menu);
+            this.add(menu);
         }
 
         // Disable app title button - places the app name first in menu
@@ -49,7 +40,7 @@ public class MenuBar {
         }
 
         loadAllConfigs();
-        frame.setJMenuBar(menuBar);
+        return this;
     }
 
     private void loadAllConfigs() {
@@ -99,34 +90,6 @@ public class MenuBar {
      */
     public void setAllJMenuItems(LinkedHashMap<String, JMenuItem> AllJMenuItems) {
         this.AllJMenuItems = AllJMenuItems;
-    }
-
-    /**
-     * @return JFrame return the frame
-     */
-    public JFrame getFrame() {
-        return frame;
-    }
-
-    /**
-     * @param frame the frame to set
-     */
-    public void setFrame(JFrame frame) {
-        this.frame = frame;
-    }
-
-    /**
-     * @return JMenuBar return the menuBar
-     */
-    public JMenuBar getMenuBar() {
-        return menuBar;
-    }
-
-    /**
-     * @param menuBar the menuBar to set
-     */
-    public void setMenuBar(JMenuBar menuBar) {
-        this.menuBar = menuBar;
     }
 
 }

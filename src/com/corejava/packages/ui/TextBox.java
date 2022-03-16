@@ -2,39 +2,27 @@ package com.corejava.packages.ui;
 
 import javax.swing.JTextField;
 
-public class TextBox {
+public class TextBox extends JTextField {
 	private String text;
-	private JTextField textField = new JTextField();
 
 	public TextBox(String text, Boolean editable) {
 		this.text = text;
-		textField.setEditable(editable);
+		this.setEditable(editable);
 	}
 
 	public JTextField Generate() {
 		setText(text);
-		return textField;
+		return this;
 	}
 
 	public void ClearAll() {
-		textField.setText(null);
-	}
-
-	public void setText(String newText) {
-		ClearAll();
-		textField.setText(newText);
-	}
-
-	public void appendText(String newText) {
-		String oldText = textField.getText();
-		ClearAll();
-		textField.setText(oldText + newText);
+		this.setText(null);
 	}
 
 	/**
-	 * @return JTextField return the textLabel
+	 * @return JTextField return the string
 	 */
 	public JTextField getTextField() {
-		return textField;
+		return this;
 	}
 }

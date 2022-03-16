@@ -3,14 +3,16 @@ package com.corejava.packages.home;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.io.IOException;
-import javax.naming.directory.SearchControls;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.text.BadLocationException;
 
 import com.corejava.packages.Main;
 import com.corejava.packages.textpane_ui.Text;
+import com.corejava.packages.ui.Button;
 import com.corejava.packages.ui.LearnArea;
+import com.corejava.packages.ui.LineSeperator;
 import com.corejava.packages.ui.ListFiles;
 import com.corejava.packages.ui.MenuBar;
 import com.corejava.packages.ui.TextBox;
@@ -20,11 +22,12 @@ public class Home extends JFrame {
 	private int frameWidth = 750;
 	private int frameHeight = 550;
 
-	private JFrame frame = this;
-	private Container contentPane = frame.getContentPane();
+	private Container contentPane = this.getContentPane();
 
 	// Left panel
 	private TextBox searchTopicBox = new TextBox("", true);
+	private Button searchButton = new Button("Search");
+	private LineSeperator searchButtonSeperator = new LineSeperator(SwingConstants.HORIZONTAL);
 	private ListFiles topicList = new ListFiles(Main.TOPICS_DIRECTORY, ')');
 
 	// Right panel - public and global because needs to be modified by different
@@ -34,7 +37,7 @@ public class Home extends JFrame {
 	public static LearnArea topicLearnArea = new LearnArea();
 	public static TextBox topicFeedbackArea = new TextBox("", false);
 
-	private MenuBar menuBar = new MenuBar(frame);
+	private MenuBar menuBar = new MenuBar();
 
 	public Home() throws BadLocationException, IOException {
 		// Topic list panel is fixed according to panel width
@@ -42,9 +45,12 @@ public class Home extends JFrame {
 				new MigLayout("", "[fill," + frameWidth * 0.25 + "!][fill,grow]", "[fill,grow]"));
 
 		JPanel leftPanel = new JPanel();
-		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0", "0[][fill,grow]0")); // height, row
+		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0",
+				"0[][][fill, " + frameHeight * 0.01 + "!][fill,grow]0")); // height, row
 		leftPanel.add(searchTopicBox.Generate(), "cell 0 0");
-		leftPanel.add(topicList.Generate(), "cell 0 1");
+		leftPanel.add(searchButton.Generate(), "cell 0 1");
+		leftPanel.add(searchButtonSeperator.Generate(), "cell 0 2");
+		leftPanel.add(topicList.Generate(), "cell 0 3");
 		contentPane.add(leftPanel, "cell 0 0");
 
 		// Right panel
@@ -58,7 +64,7 @@ public class Home extends JFrame {
 		rightPanel.add(topicFeedbackArea.Generate(), "cell 0 3");
 		contentPane.add(rightPanel, "cell 1 0");
 
-		menuBar.Generate();
+		this.setJMenuBar(menuBar.Generate());
 
 		// Client properties
 		searchTopicBox.getTextField().putClientProperty("JTextField.placeholderText", "Search");
@@ -67,6 +73,7 @@ public class Home extends JFrame {
 		topicFeedbackArea.getTextField().putClientProperty("FlatLaf.style",
 				"foreground: @accentColor;");
 
+		searchTopicBox.getTextField().setToolTipText("Search topics");
 		topicList.getListPanel().setToolTipText("List of all topics");
 		topicTitleBox.getTextField().setToolTipText("Title of the topic");
 		sectionTitleBox.getTextField().setToolTipText("Section of the topic");
@@ -78,13 +85,13 @@ public class Home extends JFrame {
 
 	/** Setups the frame i.e. Size, Re-sizable, Location */
 	private void setupFrame() {
-		frame.pack();
-		frame.setLocation(1000, 300);
-		frame.setMinimumSize(new Dimension(frameWidth, frameHeight));
-		frame.setSize(new Dimension(frameWidth, frameHeight));
-		frame.setResizable(true);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.pack();
+		this.setLocation(1000, 300);
+		this.setMinimumSize(new Dimension(frameWidth, frameHeight));
+		this.setSize(new Dimension(frameWidth, frameHeight));
+		this.setResizable(true);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane.requestFocusInWindow();
 	}
 
@@ -102,24 +109,31 @@ public class Home extends JFrame {
 	}
 
 	/**
-	 * @return JFrame return the frame
+	 * @return int return the frameWidth
 	 */
-	public JFrame getFrame() {
-		return frame;
+	public int getFrameWidth() {
+		return frameWidth;
 	}
 
 	/**
-	 * @return int return the panelHeight
+	 * @param frameWidth the frameWidth to set
 	 */
-	public int getPanelHeight() {
+	public void setFrameWidth(int frameWidth) {
+		this.frameWidth = frameWidth;
+	}
+
+	/**
+	 * @return int return the frameHeight
+	 */
+	public int getFrameHeight() {
 		return frameHeight;
 	}
 
 	/**
-	 * @return int return the panelWidth
+	 * @param frameHeight the frameHeight to set
 	 */
-	public int getPanelWidth() {
-		return frameWidth;
+	public void setFrameHeight(int frameHeight) {
+		this.frameHeight = frameHeight;
 	}
 
 	/**
@@ -130,23 +144,52 @@ public class Home extends JFrame {
 	}
 
 	/**
-	 * @param frame the frame to set
+	 * @return TextBox return the searchTopicBox
 	 */
-	public void setFrame(JFrame frame) {
-		this.frame = frame;
+	public TextBox getSearchTopicBox() {
+		return searchTopicBox;
 	}
 
 	/**
-	 * @param panelHeight the panelHeight to set
+	 * @param searchTopicBox the searchTopicBox to set
 	 */
-	public void setPanelHeight(int panelHeight) {
-		this.frameHeight = panelHeight;
+	public void setSearchTopicBox(TextBox searchTopicBox) {
+		this.searchTopicBox = searchTopicBox;
 	}
 
 	/**
-	 * @param panelWidth the panelWidth to set
+	 * @return Button return the searchButton
 	 */
-	public void setPanelWidth(int panelWidth) {
-		this.frameWidth = panelWidth;
+	public Button getSearchButton() {
+		return searchButton;
 	}
+
+	/**
+	 * @param searchButton the searchButton to set
+	 */
+	public void setSearchButton(Button searchButton) {
+		this.searchButton = searchButton;
+	}
+
+	/**
+	 * @return ListFiles return the topicList
+	 */
+	public ListFiles getTopicList() {
+		return topicList;
+	}
+
+	/**
+	 * @param topicList the topicList to set
+	 */
+	public void setTopicList(ListFiles topicList) {
+		this.topicList = topicList;
+	}
+
+	/**
+	 * @param menuBar the menuBar to set
+	 */
+	public void setMenuBar(MenuBar menuBar) {
+		this.menuBar = menuBar;
+	}
+
 }

@@ -16,7 +16,7 @@ import org.apache.commons.io.comparator.NameFileComparator;
 
 import com.corejava.packages.home.Home;
 
-public class ListFiles {
+public class ListFiles extends JScrollPane {
 	private ArrayList<File> allFiles = new ArrayList<File>();
 	private ArrayList<String> allParentDir = new ArrayList<String>();
 	private String directory;
