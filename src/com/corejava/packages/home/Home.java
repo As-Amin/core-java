@@ -64,6 +64,12 @@ public class Home extends JFrame {
 		topicTipsArea.getTextField().putClientProperty("FlatLaf.style",
 				"foreground: @accentColor;");
 
+		topicList.getListPanel().setToolTipText("List of all topics");
+		topicTitleBox.getTextField().setToolTipText("Title of the topic");
+		sectionTitleBox.getTextField().setToolTipText("Section of the topic");
+		topicLearnArea.getTextPane().setToolTipText("Topic learn area");
+		topicTipsArea.getTextField().setToolTipText("Tips for this topic");
+
 		setupFrame();
 		setInitialLearnArea();
 	}
