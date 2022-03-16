@@ -3,7 +3,7 @@ package com.corejava.packages.home;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.io.IOException;
-
+import javax.naming.directory.SearchControls;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.text.BadLocationException;
@@ -17,21 +17,22 @@ import com.corejava.packages.ui.TextBox;
 import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
-	private int frameWidth = 700;
-	private int frameHeight = 500;
+	private int frameWidth = 750;
+	private int frameHeight = 550;
 
 	private JFrame frame = this;
 	private Container contentPane = frame.getContentPane();
 
 	// Left panel
+	private TextBox searchTopicBox = new TextBox("", true);
 	private ListFiles topicList = new ListFiles(Main.TOPICS_DIRECTORY, ')');
 
 	// Right panel - public and global because needs to be modified by different
 	// classes and functions outside of this one i.e. TopicList
-	public static TextBox topicTitleBox = new TextBox("Topic: None");
-	public static TextBox sectionTitleBox = new TextBox("Section: Home");
+	public static TextBox topicTitleBox = new TextBox("", false);
+	public static TextBox sectionTitleBox = new TextBox("", false);
 	public static LearnArea topicLearnArea = new LearnArea();
-	public static TextBox topicTipsArea = new TextBox("Tips: Select a topic from the list!");
+	public static TextBox topicFeedbackArea = new TextBox("", false);
 
 	private MenuBar menuBar = new MenuBar(frame);
 
@@ -41,8 +42,9 @@ public class Home extends JFrame {
 				new MigLayout("", "[fill," + frameWidth * 0.25 + "!][fill,grow]", "[fill,grow]"));
 
 		JPanel leftPanel = new JPanel();
-		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0", "0[fill,grow]0")); // height, row
-		leftPanel.add(topicList.Generate(), "cell 0 0");
+		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0", "0[][fill,grow]0")); // height, row
+		leftPanel.add(searchTopicBox.Generate(), "cell 0 0");
+		leftPanel.add(topicList.Generate(), "cell 0 1");
 		contentPane.add(leftPanel, "cell 0 0");
 
 		// Right panel
@@ -53,22 +55,22 @@ public class Home extends JFrame {
 		rightPanel.add(topicTitleBox.Generate(), "cell 0 0");
 		rightPanel.add(sectionTitleBox.Generate(), "cell 0 1");
 		rightPanel.add(topicLearnArea.Generate(), "cell 0 2");
-		rightPanel.add(topicTipsArea.Generate(), "cell 0 3");
+		rightPanel.add(topicFeedbackArea.Generate(), "cell 0 3");
 		contentPane.add(rightPanel, "cell 1 0");
 
 		menuBar.Generate();
 
 		// Client properties
+		searchTopicBox.getTextField().putClientProperty("JTextField.placeholderText", "Search");
 		topicTitleBox.getTextField().putClientProperty("FlatLaf.style",
 				"font: $large.font;" + "foreground: @accentColor;");
-		topicTipsArea.getTextField().putClientProperty("FlatLaf.style",
+		topicFeedbackArea.getTextField().putClientProperty("FlatLaf.style",
 				"foreground: @accentColor;");
 
 		topicList.getListPanel().setToolTipText("List of all topics");
 		topicTitleBox.getTextField().setToolTipText("Title of the topic");
 		sectionTitleBox.getTextField().setToolTipText("Section of the topic");
-		topicLearnArea.getTextPane().setToolTipText("Topic learn area");
-		topicTipsArea.getTextField().setToolTipText("Tips for this topic");
+		topicFeedbackArea.getTextField().setToolTipText("Feedback for this topic");
 
 		setupFrame();
 		setInitialLearnArea();
@@ -87,9 +89,16 @@ public class Home extends JFrame {
 	}
 
 	private void setInitialLearnArea() throws BadLocationException, IOException {
-		Text text = new Text("To begin, select a topic from the left side topics list!", null,
-				false, topicLearnArea.getTextPane());
-		text.Generate();
+		topicTitleBox.setText("Topic: Start learning");
+		sectionTitleBox.setText("Section: Home");
+		topicFeedbackArea.setText("Feedback: Select a topic from the list!");
+		Text heading = new Text("Get started", Main.SECONDARY_ACCENT_COLOR, false,
+				topicLearnArea.getTextPane());
+		heading.Generate();
+		Text paragraph = new Text(
+				"To begin, select a topic from the left side topics list! You can use the arrow keys or your cursor. Hover over any part of the screen to see what each section is for.",
+				null, false, topicLearnArea.getTextPane());
+		paragraph.Generate();
 	}
 
 	/**

@@ -6,9 +6,9 @@ public class TextBox {
 	private String text;
 	private JTextField textField = new JTextField();
 
-	public TextBox(String text) {
+	public TextBox(String text, Boolean editable) {
 		this.text = text;
-		textField.setEditable(false);
+		textField.setEditable(editable);
 	}
 
 	public JTextField Generate() {
