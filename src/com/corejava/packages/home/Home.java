@@ -155,15 +155,24 @@ public class Home extends JFrame {
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				topicList.filter(searchTopicBox.getText());
-				topicTitleBox.setText("Topic: Not selected");
-				sectionTitleBox.setText("Section: Not selected");
+				topicLearnArea.clearAll();
+				try {
+					setInitialLearnArea();
+				} catch (BadLocationException | IOException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		resetButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
+				searchTopicBox.clearAll();
 				topicList.reset();
-				topicTitleBox.setText("Topic: Not selected");
-				sectionTitleBox.setText("Section: Not selected");
+				topicLearnArea.clearAll();
+				try {
+					setInitialLearnArea();
+				} catch (BadLocationException | IOException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 	}
