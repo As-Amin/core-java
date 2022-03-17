@@ -18,23 +18,27 @@ public class Main {
 			"./src/com/corejava/packages/themes/FlatDarkLaf.properties";
 	public static final String APP_CONFIG_DIRECTORY = "./src/config/config.properties";
 
-	public static PropertiesConfiguration APP_CONFIG_OBJECT;
+	public static PropertiesConfiguration THEME_CONFIG_OBJECT;
+	public static PropertiesConfiguration APP_CONFIG_OBJECT = null;
 
 	public static Color SECONDARY_ACCENT_COLOR;
 	public static Color ACCENT_COLOR;
 
-	public static void main(String[] args) throws ConfigurationException {
-		FlatLaf.registerCustomDefaultsSource("com.corejava.packages.themes");
-		APP_CONFIG_OBJECT = new PropertiesConfiguration(Main.APP_CONFIG_DIRECTORY);
-
-		PropertiesConfiguration themeConfig =
-				new PropertiesConfiguration(Main.THEME_CONFIG_DIRECTORY);
-		ACCENT_COLOR = Color.decode(themeConfig.getProperty("@accentColor").toString());
-		SECONDARY_ACCENT_COLOR =
-				Color.decode(themeConfig.getProperty("@secondaryAccentColor").toString());
-
-		FlatDarkLaf.setup();
+	public static void main(String[] args) {
 		try {
+			FlatLaf.registerCustomDefaultsSource("com.corejava.packages.themes");
+			THEME_CONFIG_OBJECT = new PropertiesConfiguration(Main.THEME_CONFIG_DIRECTORY);
+			APP_CONFIG_OBJECT = new PropertiesConfiguration(Main.APP_CONFIG_DIRECTORY);
+		} catch (ConfigurationException ce) {
+			ce.printStackTrace();
+		}
+
+		try {
+			// Set the accent color and secondary accent color so text colours can be changed
+			ACCENT_COLOR = Color.decode(THEME_CONFIG_OBJECT.getProperty("@accentColor").toString());
+			SECONDARY_ACCENT_COLOR = Color
+					.decode(THEME_CONFIG_OBJECT.getProperty("@secondaryAccentColor").toString());
+			FlatDarkLaf.setup();
 			@SuppressWarnings("unused")
 			Home homeScreen = new Home();
 		} catch (Exception e) {

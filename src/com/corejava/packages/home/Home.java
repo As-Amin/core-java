@@ -2,11 +2,14 @@ package com.corejava.packages.home;
 
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.text.BadLocationException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import com.corejava.packages.Main;
 import com.corejava.packages.textpane_ui.Text;
@@ -33,9 +36,11 @@ public class Home extends JFrame {
 	private JPanel leftPanel = new JPanel();
 	private double leftPanelWidth = 200;
 	private TextBox searchTopicBox = new TextBox("", true);
-	private Button searchButton = new Button("Search topics");
-	private LineSeperator searchButtonSeperator = new LineSeperator(SwingConstants.HORIZONTAL);
+	private Button searchButton = new Button("Search");
+	private Button resetButton = new Button("Reset");
+	private LineSeperator buttonSeperator = new LineSeperator(SwingConstants.HORIZONTAL);
 	private ListFiles topicList = new ListFiles(Main.TOPICS_DIRECTORY, ')');
+	public static ScrollTextArea topicFeedbackArea = new ScrollTextArea();
 
 	// Right panel components - Public and global because needs to be
 	// modified by different classes and functions outside of this one
@@ -43,9 +48,8 @@ public class Home extends JFrame {
 	public static TextBox topicTitleBox = new TextBox("", false);
 	public static TextBox sectionTitleBox = new TextBox("", false);
 	public static LearnArea topicLearnArea = new LearnArea();
-	public static ScrollTextArea topicFeedbackArea = new ScrollTextArea();
 
-	// The menu bar at the top of the window - Is not apart of the content pane but frame
+	// The menu bar at the top of the window - is not apart of the content pane but frame
 	private MenuBar menuBar = new MenuBar();
 
 	public Home() {
@@ -56,10 +60,18 @@ public class Home extends JFrame {
 		// Left panel - Has its own layout manager so doesnt interfere with right panel
 		// components and easier to manage
 		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0", // width, height
-				"0[][][fill, " + frameHeight * 0.01 + "!][fill,grow][fill,grow]0")); // height, row
+				"0[][][fill, " + frameHeight * 0.01 + "!][fill,grow][fill,grow]0")); // height,
+																						// row
 		leftPanel.add(searchTopicBox.generate(), "cell 0 0");
-		leftPanel.add(searchButton.generate(), "cell 0 1");
-		leftPanel.add(searchButtonSeperator.generate(), "cell 0 2");
+
+		JPanel searchButtonPanel = new JPanel();
+		searchButtonPanel.setLayout(new MigLayout("", "0[fill,grow][fill,grow]0", "0[]0"));
+		searchButtonPanel.add(searchButton.generate(), "cell 0 0");
+		searchButtonPanel.add(resetButton.generate(), "cell 1 0");
+		addButtonListeners();
+
+		leftPanel.add(searchButtonPanel, "cell 0 1");
+		leftPanel.add(buttonSeperator.generate(), "cell 0 2");
 		leftPanel.add(topicList.generate(), "cell 0 3");
 		leftPanel.add(topicFeedbackArea.generate(), "cell 0 4");
 		contentPane.add(leftPanel, "cell 0 0");
@@ -137,6 +149,23 @@ public class Home extends JFrame {
 				"To begin, select a topic from the left side topics list! You can use the arrow keys or your cursor. Hover over any part of the screen to see what each section is for.",
 				null, false, topicLearnArea.getTextPane());
 		paragraph.generate();
+	}
+
+	private void addButtonListeners() {
+		searchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				topicList.filter(searchTopicBox.getText());
+				topicTitleBox.setText("Topic: Not selected");
+				sectionTitleBox.setText("Section: Not selected");
+			}
+		});
+		resetButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				topicList.reset();
+				topicTitleBox.setText("Topic: Not selected");
+				sectionTitleBox.setText("Section: Not selected");
+			}
+		});
 	}
 
 	/**
@@ -221,5 +250,47 @@ public class Home extends JFrame {
 	 */
 	public void setMenuBar(MenuBar menuBar) {
 		this.menuBar = menuBar;
+	}
+
+	/**
+	 * @return JPanel return the leftPanel
+	 */
+	public JPanel getLeftPanel() {
+		return leftPanel;
+	}
+
+	/**
+	 * @param leftPanel the leftPanel to set
+	 */
+	public void setLeftPanel(JPanel leftPanel) {
+		this.leftPanel = leftPanel;
+	}
+
+	/**
+	 * @return double return the leftPanelWidth
+	 */
+	public double getLeftPanelWidth() {
+		return leftPanelWidth;
+	}
+
+	/**
+	 * @param leftPanelWidth the leftPanelWidth to set
+	 */
+	public void setLeftPanelWidth(double leftPanelWidth) {
+		this.leftPanelWidth = leftPanelWidth;
+	}
+
+	/**
+	 * @return JPanel return the rightPanel
+	 */
+	public JPanel getRightPanel() {
+		return rightPanel;
+	}
+
+	/**
+	 * @param rightPanel the rightPanel to set
+	 */
+	public void setRightPanel(JPanel rightPanel) {
+		this.rightPanel = rightPanel;
 	}
 }

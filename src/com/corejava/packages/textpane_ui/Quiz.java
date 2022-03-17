@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -113,6 +114,7 @@ public class Quiz {
                     } else {
                         System.out.println("Hey wrong answer");
                         if (feedbackWrong != null || feedbackWrong.length() != 0) {
+                            System.out.println(answerField.getText());
                             Home.topicFeedbackArea.setFeedbackArea(feedbackWrong);
                         }
                     }
@@ -155,6 +157,7 @@ public class Quiz {
                         System.out.println("Correct");
                         if (feedbackRight != null || feedbackRight.length() != 0) {
                             Home.topicFeedbackArea.setFeedbackArea(feedbackRight);
+                            // JOptionPane.showMessageDialog(null, feedbackRight);
                         }
                     } else {
                         System.out.println("Hey wrong answer");

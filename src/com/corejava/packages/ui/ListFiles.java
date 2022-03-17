@@ -25,6 +25,8 @@ public class ListFiles extends JScrollPane {
 
 	private DefaultListModel<String> model = new DefaultListModel<>();
 
+	private String filterKeyword = "";
+
 	public ListFiles(String directory, char fileNumberSeperator) {
 		this.directory = directory;
 		this.fileNumberSeperator = fileNumberSeperator;
@@ -50,9 +52,13 @@ public class ListFiles extends JScrollPane {
 	private void generateChildStrings(File sectionDir) {
 		for (File file : sectionDir.listFiles()) {
 			String fileName = getFileName(file);
-			model.addElement(fileName);
-			allParentFiles.add(sectionDir);
-			allChildFiles.add(file);
+			if (filterKeyword != null || filterKeyword.length() != 0) {
+				if (fileName.toLowerCase().contains(filterKeyword.toLowerCase())) {
+					model.addElement(fileName);
+					allParentFiles.add(sectionDir);
+					allChildFiles.add(file);
+				}
+			}
 		}
 	}
 
@@ -82,6 +88,23 @@ public class ListFiles extends JScrollPane {
 		return numberTopic[1];
 	}
 
+	public void filter(String keyword) {
+		listPanel.clearSelection();
+		filterKeyword = keyword;
+		allParentFiles.clear();
+		allChildFiles.clear();
+		model.clear();
+		generate();
+	}
+
+	public void reset() {
+		listPanel.clearSelection();
+		filterKeyword = "";
+		allParentFiles.clear();
+		allChildFiles.clear();
+		model.clear();
+		generate();
+	}
 
 	/**
 	 * @return ArrayList<File> return the allParentFiles
