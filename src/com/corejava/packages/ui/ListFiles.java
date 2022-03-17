@@ -1,7 +1,6 @@
 package com.corejava.packages.ui;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -11,21 +10,20 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.io.comparator.NameFileComparator;
 
 import com.corejava.packages.home.Home;
 
 public class ListFiles extends JScrollPane {
-	private ArrayList<File> allFiles = new ArrayList<File>();
-	private ArrayList<String> allParentDir = new ArrayList<String>();
+	private ArrayList<File> allParentFiles = new ArrayList<File>();
+	private ArrayList<File> allChildFiles = new ArrayList<File>();
+
 	private String directory;
 	private char fileNumberSeperator;
 
 	private JList<String> listPanel;
 
 	private DefaultListModel<String> model = new DefaultListModel<>();
-	private JScrollPane scrollPane;
 
 	public ListFiles(String directory, char fileNumberSeperator) {
 		this.directory = directory;
@@ -33,29 +31,29 @@ public class ListFiles extends JScrollPane {
 	}
 
 	public JScrollPane Generate() {
-		this.generateLabels();
-		this.generateListeners();
-		scrollPane = new JScrollPane(listPanel);
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scrollPane.getVerticalScrollBar().setUnitIncrement(10);
-		return scrollPane;
+		generateParentStrings();
+		generateListeners();
+		this.setViewportView(listPanel);
+		this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		this.getVerticalScrollBar().setUnitIncrement(10);
+		return this;
 	}
 
-	private void generateLabels() {
+	private void generateParentStrings() {
 		File[] files = new File(directory).listFiles();
 		Arrays.sort(files, NameFileComparator.NAME_COMPARATOR);
 		for (File dir : files) {
 			String sectionName = getFileName(dir);
-			generateButtons(dir, sectionName);
+			generateChildStrings(dir, sectionName);
 		}
 	}
 
-	private void generateButtons(File sectionDir, String sectionName) {
+	private void generateChildStrings(File sectionDir, String sectionName) {
 		for (File file : sectionDir.listFiles()) {
 			String fileName = getFileName(file);
 			model.addElement(fileName);
-			allParentDir.add(sectionName);
-			allFiles.add(file);
+			allParentFiles.add(file);
+			allChildFiles.add(file);
 		}
 	}
 
@@ -67,10 +65,11 @@ public class ListFiles extends JScrollPane {
 				if (!lse.getValueIsAdjusting()) {
 					try {
 						Home.topicTitleBox.setText("Topic: " + listPanel.getSelectedValue());
-						Home.sectionTitleBox.setText(
-								"Section: " + allParentDir.get(listPanel.getSelectedIndex()));
-						Home.topicLearnArea.OpenFile(allFiles.get(listPanel.getSelectedIndex()));
-					} catch (IOException | ConfigurationException e) {
+						Home.sectionTitleBox.setText("Section: "
+								+ getFileName(allParentFiles.get(listPanel.getSelectedIndex())));
+						Home.topicLearnArea
+								.OpenFile(allChildFiles.get(listPanel.getSelectedIndex()));
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}
@@ -84,18 +83,33 @@ public class ListFiles extends JScrollPane {
 		return numberTopic[1];
 	}
 
+
 	/**
-	 * @return ArrayList<File> return the allFiles
+	 * @return ArrayList<File> return the allParentFiles
 	 */
-	public ArrayList<File> getAllFiles() {
-		return allFiles;
+	public ArrayList<File> getAllParentFiles() {
+		return allParentFiles;
 	}
 
 	/**
-	 * @return ArrayList<String> return the allSections
+	 * @param allParentFiles the allParentFiles to set
 	 */
-	public ArrayList<String> getAllSections() {
-		return allParentDir;
+	public void setAllParentFiles(ArrayList<File> allParentFiles) {
+		this.allParentFiles = allParentFiles;
+	}
+
+	/**
+	 * @return ArrayList<File> return the allChildFiles
+	 */
+	public ArrayList<File> getAllChildFiles() {
+		return allChildFiles;
+	}
+
+	/**
+	 * @param allChildFiles the allChildFiles to set
+	 */
+	public void setAllChildFiles(ArrayList<File> allChildFiles) {
+		this.allChildFiles = allChildFiles;
 	}
 
 	/**
@@ -106,52 +120,17 @@ public class ListFiles extends JScrollPane {
 	}
 
 	/**
-	 * @return char return the fileNumberSeperator
-	 */
-	public char getFileNumberSeperator() {
-		return fileNumberSeperator;
-	}
-
-	/**
-	 * @return JList<String> return the listPanel
-	 */
-	public JList<String> getListPanel() {
-		return listPanel;
-	}
-
-	/**
-	 * @return DefaultListModel<String> return the model
-	 */
-	public DefaultListModel<String> getModel() {
-		return model;
-	}
-
-	/**
-	 * @return JScrollPane return the scrollPane
-	 */
-	public JScrollPane getScrollPane() {
-		return scrollPane;
-	}
-
-	/**
-	 * @param allFiles the allFiles to set
-	 */
-	public void setAllFiles(ArrayList<File> allFiles) {
-		this.allFiles = allFiles;
-	}
-
-	/**
-	 * @param allSections the allSections to set
-	 */
-	public void setAllSections(ArrayList<String> allSections) {
-		this.allParentDir = allSections;
-	}
-
-	/**
 	 * @param directory the directory to set
 	 */
 	public void setDirectory(String directory) {
 		this.directory = directory;
+	}
+
+	/**
+	 * @return char return the fileNumberSeperator
+	 */
+	public char getFileNumberSeperator() {
+		return fileNumberSeperator;
 	}
 
 	/**
@@ -162,6 +141,13 @@ public class ListFiles extends JScrollPane {
 	}
 
 	/**
+	 * @return JList<String> return the listPanel
+	 */
+	public JList<String> getListPanel() {
+		return listPanel;
+	}
+
+	/**
 	 * @param listPanel the listPanel to set
 	 */
 	public void setListPanel(JList<String> listPanel) {
@@ -169,17 +155,17 @@ public class ListFiles extends JScrollPane {
 	}
 
 	/**
+	 * @return DefaultListModel<String> return the model
+	 */
+	public DefaultListModel<String> getModel() {
+		return model;
+	}
+
+	/**
 	 * @param model the model to set
 	 */
 	public void setModel(DefaultListModel<String> model) {
 		this.model = model;
-	}
-
-	/**
-	 * @param scrollPane the scrollPane to set
-	 */
-	public void setScrollPane(JScrollPane scrollPane) {
-		this.scrollPane = scrollPane;
 	}
 
 }

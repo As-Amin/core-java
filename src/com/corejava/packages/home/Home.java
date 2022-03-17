@@ -19,33 +19,40 @@ import com.corejava.packages.ui.TextBox;
 import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
+	// The frame dimensions (the initial size of the window)
 	private int frameWidth = 750;
 	private int frameHeight = 550;
 
+	// The content pane derived from the classes frame - used to
+	// add components created to
 	private Container contentPane = this.getContentPane();
 
-	// Left panel
+	// Left panel components - Initialise the components that will
+	// be displayed on the left side of the screen
 	private TextBox searchTopicBox = new TextBox("", true);
-	private Button searchButton = new Button("Search");
+	private Button searchButton = new Button("Search topics");
 	private LineSeperator searchButtonSeperator = new LineSeperator(SwingConstants.HORIZONTAL);
 	private ListFiles topicList = new ListFiles(Main.TOPICS_DIRECTORY, ')');
 
-	// Right panel - public and global because needs to be modified by different
-	// classes and functions outside of this one i.e. TopicList
+	// Right panel components - Public and global because needs to be
+	// modified by different classes and functions outside of this one
 	public static TextBox topicTitleBox = new TextBox("", false);
 	public static TextBox sectionTitleBox = new TextBox("", false);
 	public static LearnArea topicLearnArea = new LearnArea();
 	public static TextBox topicFeedbackArea = new TextBox("", false);
 
+	// The menu bar at the top of the window - Is not apart of the content pane but frame
 	private MenuBar menuBar = new MenuBar();
 
-	public Home() throws BadLocationException, IOException {
+	public Home() {
 		// Topic list panel is fixed according to panel width
 		contentPane.setLayout(
-				new MigLayout("", "[fill," + frameWidth * 0.25 + "!][fill,grow]", "[fill,grow]"));
+				new MigLayout("", "[fill," + frameWidth * 0.27 + "!][fill,grow]", "[fill,grow]"));
 
+		// Left panel - Has its own layout manager so doesnt interfere with right panel
+		// components and easier to manage
 		JPanel leftPanel = new JPanel();
-		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0",
+		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0", // width, height
 				"0[][][fill, " + frameHeight * 0.01 + "!][fill,grow]0")); // height, row
 		leftPanel.add(searchTopicBox.Generate(), "cell 0 0");
 		leftPanel.add(searchButton.Generate(), "cell 0 1");
@@ -53,34 +60,30 @@ public class Home extends JFrame {
 		leftPanel.add(topicList.Generate(), "cell 0 3");
 		contentPane.add(leftPanel, "cell 0 0");
 
-		// Right panel
+		// Right panel - Just like left panel but different components
 		JPanel rightPanel = new JPanel();
 		// Title box is fixed according to panel height
-		rightPanel.setLayout(new MigLayout("", "0[fill,grow]0", // width, column
-				"0[][][fill,grow][]0"));
+		rightPanel.setLayout(new MigLayout("", "0[fill,grow]0", // Width, column
+				"0[][][fill,grow][]0")); // Height, row
 		rightPanel.add(topicTitleBox.Generate(), "cell 0 0");
 		rightPanel.add(sectionTitleBox.Generate(), "cell 0 1");
 		rightPanel.add(topicLearnArea.Generate(), "cell 0 2");
 		rightPanel.add(topicFeedbackArea.Generate(), "cell 0 3");
 		contentPane.add(rightPanel, "cell 1 0");
 
+		// Add the menu bar, by calling the function in the class which creates
+		// and configures the menu bar.
 		this.setJMenuBar(menuBar.Generate());
 
-		// Client properties
-		searchTopicBox.getTextField().putClientProperty("JTextField.placeholderText", "Search");
-		topicTitleBox.getTextField().putClientProperty("FlatLaf.style",
-				"font: $large.font;" + "foreground: @accentColor;");
-		topicFeedbackArea.getTextField().putClientProperty("FlatLaf.style",
-				"foreground: @accentColor;");
-
-		searchTopicBox.getTextField().setToolTipText("Search topics");
-		topicList.getListPanel().setToolTipText("List of all topics");
-		topicTitleBox.getTextField().setToolTipText("Title of the topic");
-		sectionTitleBox.getTextField().setToolTipText("Section of the topic");
-		topicFeedbackArea.getTextField().setToolTipText("Feedback for this topic");
-
-		setupFrame();
-		setInitialLearnArea();
+		try {
+			setupFrame(); // Setup the frames properties
+			setClientProperties(); // Setup the client theming properties for FlatLaf
+			setToolTips(); // Setup the tooltips for all component objects created
+			setInitialLearnArea(); // Setup the text and components in the learn area when the app
+									// is opened
+		} catch (BadLocationException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/** Setups the frame i.e. Size, Re-sizable, Location */
@@ -95,6 +98,34 @@ public class Home extends JFrame {
 		contentPane.requestFocusInWindow();
 	}
 
+	/**
+	 * Configure custom client properties for theming (FLatLaf). These are unique values and so are
+	 * not added to properties files
+	 */
+	private void setClientProperties() {
+		searchTopicBox.getTextField().putClientProperty("JTextField.placeholderText",
+				"Topic name here...");
+		topicTitleBox.getTextField().putClientProperty("FlatLaf.style",
+				"font: $large.font;" + "foreground: @accentColor;");
+		topicFeedbackArea.getTextField().putClientProperty("FlatLaf.style",
+				"foreground: @accentColor;");
+	}
+
+	/**
+	 * Configure and set the tool tips for components in the content pane
+	 */
+	private void setToolTips() {
+		searchTopicBox.setToolTipText("Search");
+		topicList.getListPanel().setToolTipText("List of all topics");
+		topicTitleBox.setToolTipText("Title of the topic");
+		sectionTitleBox.setToolTipText("Section of the topic");
+		topicFeedbackArea.setToolTipText("Feedback for this topic");
+	}
+
+	/**
+	 * Set the properties of the learn area (right panel). This is so the user sees some
+	 * instructions as soon as they open the app.
+	 */
 	private void setInitialLearnArea() throws BadLocationException, IOException {
 		topicTitleBox.setText("Topic: Start learning");
 		sectionTitleBox.setText("Section: Home");
@@ -191,5 +222,4 @@ public class Home extends JFrame {
 	public void setMenuBar(MenuBar menuBar) {
 		this.menuBar = menuBar;
 	}
-
 }
