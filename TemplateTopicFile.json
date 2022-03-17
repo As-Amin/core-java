@@ -1,0 +1,52 @@
+{
+    "paragraphs": [
+        {
+            "subheading": "",
+            "content": "",
+            "images": [
+                {
+                    "url": "",
+                    "caption": ""
+                }
+            ],
+            "openChoiceQuiz": [
+                {
+                    "question": "",
+                    "answer": "",
+                    "feedbackRight": "Correct!",
+                    "feedbackWrong": "Close but wrong!"
+                }
+            ],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false:",
+                    "answer": "",
+                    "feedbackRight": "Correct!",
+                    "feedbackWrong": "Close but wrong!"
+                }
+            ],
+            "multipleChoiceQuiz": [
+                {
+                    "question": "",
+                    "options": [
+                        {
+                            "option": ""
+                        },
+                        {
+                            "option": ""
+                        },
+                        {
+                            "option": ""
+                        },
+                        {
+                            "option": ""
+                        }
+                    ],
+                    "answer": "",
+                    "feedbackRight": "Correct!",
+                    "feedbackWrong": "Close but wrong!"
+                }
+            ]
+        }
+    ]
+}

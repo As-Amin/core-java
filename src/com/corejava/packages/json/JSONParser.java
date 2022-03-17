@@ -30,7 +30,7 @@ public class JSONParser {
      * 
      * @return JSONObject The JSONObject created whilst parsing the JSON file.
      */
-    public JSONObject GenerateJSONObject() throws IOException {
+    public JSONObject generateJSONObject() throws IOException {
         BufferedReader br = null;
         try {
             br = Files.newBufferedReader(file.toPath());
@@ -56,7 +56,7 @@ public class JSONParser {
      * @param key The key of the line to parse in the JSONArray
      * @return List<String> The JSONArray converted into a list of strings to perform actions with
      */
-    public List<String> ReadArray(JSONArray jsonArray, String key) {
+    public List<String> readArray(JSONArray jsonArray, String key) {
         List<String> list = new ArrayList<String>();
         for (int i = 0; i < jsonArray.length(); i++) {
             list.add(jsonArray.getJSONObject(i).getString(key));
@@ -73,7 +73,7 @@ public class JSONParser {
      * @param index The index of the object to read from the JSONArray
      * @return String The single object from the JSONArray converted into a string
      */
-    public String ReadSingle(JSONArray jsonArray, String key, int index) {
+    public String readSingle(JSONArray jsonArray, String key, int index) {
         return jsonArray.getJSONObject(index).getString(key);
     }
 }

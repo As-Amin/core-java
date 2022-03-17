@@ -21,7 +21,9 @@
             "trueFalseQuiz": [
                 {
                     "question": "True or false: CoreJava is created in Java.",
-                    "answer": "True"
+                    "answer": "True",
+                    "feedbackRight": "Correct! This is a true or false type question - you can either pick true or false.",
+                    "feedbackWrong": "Wrong! CoreJava is created in Java using the Swing library."
                 }
             ],
             "multipleChoiceQuiz": []
@@ -33,7 +35,9 @@
             "openChoiceQuiz": [
                 {
                     "question": "What programming language are you ready to start learning?",
-                    "answer": "Java"
+                    "answer": "Java",
+                    "feedbackRight": "Awesome! This is an open choice type question - you can pick any answer you want!",
+                    "feedbackWrong": "This tool simplifies learning Java so don't be worried! Keep going and you'll see!"
                 }
             ],
             "trueFalseQuiz": [],

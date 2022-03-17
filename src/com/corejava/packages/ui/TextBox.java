@@ -10,12 +10,12 @@ public class TextBox extends JTextField {
 		this.setEditable(editable);
 	}
 
-	public JTextField Generate() {
+	public JTextField generate() {
 		setText(text);
 		return this;
 	}
 
-	public void ClearAll() {
+	public void clearAll() {
 		this.setText(null);
 	}
 

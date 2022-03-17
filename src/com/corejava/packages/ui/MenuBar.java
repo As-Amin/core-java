@@ -14,7 +14,7 @@ public class MenuBar extends JMenuBar {
     private LinkedHashMap<String, JMenu> AllJMenu = new LinkedHashMap<String, JMenu>();
     private LinkedHashMap<String, JMenuItem> AllJMenuItems = new LinkedHashMap<String, JMenuItem>();
 
-    public JMenuBar Generate() {
+    public JMenuBar generate() {
         AllJMenu.put(Main.APP_NAME, new JMenu(Main.APP_NAME));
         AllJMenu.put("Profile", new JMenu("Profile"));
         AllJMenu.put("Help", new JMenu("Help"));

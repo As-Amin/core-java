@@ -23,7 +23,9 @@
                             "option": "C & C++"
                         }
                     ],
-                    "answer": "C & C++"
+                    "answer": "C & C++",
+                    "feedbackRight": "Correct!",
+                    "feedbackWrong": "Close but wrong!"
                 }
             ]
         },

@@ -9,7 +9,7 @@ public class LineSeperator extends JSeparator {
 		this.orientation = orientation;
 	}
 
-	public JSeparator Generate() {
+	public JSeparator generate() {
 		this.setOrientation(orientation);
 		return this;
 	}

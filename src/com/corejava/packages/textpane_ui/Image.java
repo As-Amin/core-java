@@ -33,7 +33,7 @@ public class Image {
      * and converts it to a StyledDocument so that the image file passed into the constructor can be
      * generated and appended to the TextPane
      */
-    public void Generate() {
+    public void generate() {
         try {
             StyledDocument document = (StyledDocument) textPane.getDocument();
             BufferedImage BI = ImageIO.read(imageFile);

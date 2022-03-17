@@ -9,7 +9,7 @@ public class Button extends JButton {
 		this.text = text;
 	}
 
-	public JButton Generate() {
+	public JButton generate() {
 		setText(text);
 		return this;
 	}

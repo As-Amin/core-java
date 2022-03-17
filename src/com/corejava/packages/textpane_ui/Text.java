@@ -22,7 +22,7 @@ public class Text {
         this.textPane = textPane;
     }
 
-    public void Generate() throws BadLocationException, IOException {
+    public void generate() throws BadLocationException, IOException {
         appendText();
     }
 

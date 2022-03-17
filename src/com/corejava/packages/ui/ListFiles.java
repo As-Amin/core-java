@@ -30,7 +30,7 @@ public class ListFiles extends JScrollPane {
 		this.fileNumberSeperator = fileNumberSeperator;
 	}
 
-	public JScrollPane Generate() {
+	public JScrollPane generate() {
 		generateParentStrings();
 		generateListeners();
 		this.setViewportView(listPanel);
@@ -42,17 +42,16 @@ public class ListFiles extends JScrollPane {
 	private void generateParentStrings() {
 		File[] files = new File(directory).listFiles();
 		Arrays.sort(files, NameFileComparator.NAME_COMPARATOR);
-		for (File dir : files) {
-			String sectionName = getFileName(dir);
-			generateChildStrings(dir, sectionName);
+		for (File file : files) {
+			generateChildStrings(file);
 		}
 	}
 
-	private void generateChildStrings(File sectionDir, String sectionName) {
+	private void generateChildStrings(File sectionDir) {
 		for (File file : sectionDir.listFiles()) {
 			String fileName = getFileName(file);
 			model.addElement(fileName);
-			allParentFiles.add(file);
+			allParentFiles.add(sectionDir);
 			allChildFiles.add(file);
 		}
 	}
@@ -68,7 +67,7 @@ public class ListFiles extends JScrollPane {
 						Home.sectionTitleBox.setText("Section: "
 								+ getFileName(allParentFiles.get(listPanel.getSelectedIndex())));
 						Home.topicLearnArea
-								.OpenFile(allChildFiles.get(listPanel.getSelectedIndex()));
+								.openFile(allChildFiles.get(listPanel.getSelectedIndex()));
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

@@ -22,22 +22,22 @@ public class LearnArea extends JTextPane {
 	private JSONParser jsonParser;
 	private JScrollPane scrollArea;
 
-	public JScrollPane Generate() {
+	public JScrollPane generate() {
 		scrollArea = new JScrollPane(this);
 		scrollArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		this.setEditable(false);
 		return scrollArea;
 	}
 
-	public void ClearAll() {
+	public void clearAll() {
 		this.setText(null);
 	}
 
-	public void OpenFile(File topicFile) {
-		ClearAll();
+	public void openFile(File topicFile) {
+		clearAll();
 		try {
 			jsonParser = new JSONParser(topicFile);
-			jsonObject = jsonParser.GenerateJSONObject();
+			jsonObject = jsonParser.generateJSONObject();
 			parseJsonFile();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -55,18 +55,37 @@ public class LearnArea extends JTextPane {
 				if (subheading.length() != 0) {
 					Text textPaneSubheading =
 							new Text(subheading, Main.SECONDARY_ACCENT_COLOR, false, this);
-					textPaneSubheading.Generate();
+					textPaneSubheading.generate();
 				}
 				// Append paragraph content
 				if (paragraphContent.length() != 0) {
 					Text textPaneParagraph = new Text(paragraphContent, null, false, this);
-					textPaneParagraph.Generate();
+					textPaneParagraph.generate();
 				}
-				parseImages(allParagraphs.getJSONObject(i).getJSONArray("images"));
-				parseOpenChoice(allParagraphs.getJSONObject(i).getJSONArray("openChoiceQuiz"));
-				parseTrueFalse(allParagraphs.getJSONObject(i).getJSONArray("trueFalseQuiz"));
-				parseMultipleChoice(
-						allParagraphs.getJSONObject(i).getJSONArray("multipleChoiceQuiz"));
+				try {
+					parseImages(allParagraphs.getJSONObject(i).getJSONArray("images"));
+				} catch (Exception e) {
+					System.out.println("No images found for paragraph " + i);
+				}
+
+				try {
+					parseOpenChoice(allParagraphs.getJSONObject(i).getJSONArray("openChoiceQuiz"));
+				} catch (Exception e) {
+					System.out.println("No open choice quiz found for paragraph " + i);
+				}
+
+				try {
+					parseTrueFalse(allParagraphs.getJSONObject(i).getJSONArray("trueFalseQuiz"));
+				} catch (Exception e) {
+					System.out.println("No true false quiz found for paragraph " + i);
+				}
+
+				try {
+					parseMultipleChoice(
+							allParagraphs.getJSONObject(i).getJSONArray("multipleChoiceQuiz"));
+				} catch (Exception e) {
+					System.out.println("No multiple choice quiz found for paragraph " + i);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -75,16 +94,16 @@ public class LearnArea extends JTextPane {
 
 	private void parseImages(JSONArray jsonArray) {
 		// Convert images array contents to string array lists (image urls and captions)
-		List<String> imagesUrlList = jsonParser.ReadArray(jsonArray, "url");
-		List<String> captionsList = jsonParser.ReadArray(jsonArray, "caption");
+		List<String> imagesUrlList = jsonParser.readArray(jsonArray, "url");
+		List<String> captionsList = jsonParser.readArray(jsonArray, "caption");
 		for (int i = 0; i < imagesUrlList.size(); i++) {
 			try {
 				Image image =
 						new Image(new File(Main.IMAGES_DIRECTORY + imagesUrlList.get(i)), this);
-				image.Generate();
+				image.generate();
 				Text caption = new Text(("Caption: " + captionsList.get(i)), Main.ACCENT_COLOR,
 						false, this);
-				caption.Generate();
+				caption.generate();
 			} catch (BadLocationException | IOException e) {
 				e.printStackTrace();
 			}
@@ -92,22 +111,21 @@ public class LearnArea extends JTextPane {
 	}
 
 	private void parseMultipleChoice(JSONArray jsonArray) {
-		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
-		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
+		List<String> questions = jsonParser.readArray(jsonArray, "question");
+		List<String> answers = jsonParser.readArray(jsonArray, "answer");
 		List<String> options = null;
-
-		for (int i = 0; i < questions.size(); i++) {
-			JSONArray optionsArray = jsonArray.getJSONObject(i).getJSONArray("options");
-			options = jsonParser.ReadArray(optionsArray, "option");
-		} // Try put this with second loop
-
+		List<String> feedbackRights = jsonParser.readArray(jsonArray, "feedbackRight");
+		List<String> feedbackWrongs = jsonParser.readArray(jsonArray, "feedbackWrong");
 		for (int i = 0; i < questions.size(); i++) {
 			try {
+				JSONArray optionsArray = jsonArray.getJSONObject(i).getJSONArray("options");
+				options = jsonParser.readArray(optionsArray, "option");
 				Text question =
 						new Text(questions.get(i).toString(), Main.ACCENT_COLOR, true, this);
-				question.Generate();
+				question.generate();
 				Quiz multipleChoice = new Quiz(this);
-				multipleChoice.GenerateMultipleChoice(options, answers.get(i));
+				multipleChoice.generateMultipleChoice(options, answers.get(i),
+						feedbackRights.get(i), feedbackWrongs.get(i));
 			} catch (BadLocationException | IOException e) {
 				e.printStackTrace();
 			}
@@ -115,14 +133,17 @@ public class LearnArea extends JTextPane {
 	}
 
 	private void parseOpenChoice(JSONArray jsonArray) {
-		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
-		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
+		List<String> questions = jsonParser.readArray(jsonArray, "question");
+		List<String> answers = jsonParser.readArray(jsonArray, "answer");
+		List<String> feedbackRights = jsonParser.readArray(jsonArray, "feedbackRight");
+		List<String> feedbackWrongs = jsonParser.readArray(jsonArray, "feedbackWrong");
 		for (int i = 0; i < questions.size(); i++) {
 			try {
 				Text question = new Text(questions.get(i), Main.ACCENT_COLOR, true, this);
-				question.Generate();
+				question.generate();
 				Quiz openChoice = new Quiz(this);
-				openChoice.GenerateOpenChoice(answers.get(i));
+				openChoice.generateOpenChoice(answers.get(i), feedbackRights.get(i),
+						feedbackWrongs.get(i));
 			} catch (BadLocationException | IOException e) {
 				e.printStackTrace();
 			}
@@ -130,14 +151,17 @@ public class LearnArea extends JTextPane {
 	}
 
 	private void parseTrueFalse(JSONArray jsonArray) {
-		List<String> questions = jsonParser.ReadArray(jsonArray, "question");
-		List<String> answers = jsonParser.ReadArray(jsonArray, "answer");
+		List<String> questions = jsonParser.readArray(jsonArray, "question");
+		List<String> answers = jsonParser.readArray(jsonArray, "answer");
+		List<String> feedbackRights = jsonParser.readArray(jsonArray, "feedbackRight");
+		List<String> feedbackWrongs = jsonParser.readArray(jsonArray, "feedbackWrong");
 		for (int i = 0; i < questions.size(); i++) {
 			try {
 				Text question = new Text(questions.get(i), Main.ACCENT_COLOR, true, this);
-				question.Generate();
+				question.generate();
 				Quiz trueFalse = new Quiz(this);
-				trueFalse.GenerateTrueFalse(answers.get(i));
+				trueFalse.generateTrueFalse(answers.get(i), feedbackRights.get(i),
+						feedbackWrongs.get(i));
 			} catch (BadLocationException | IOException e) {
 				e.printStackTrace();
 			}
