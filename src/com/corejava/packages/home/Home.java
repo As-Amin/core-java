@@ -2,23 +2,24 @@ package com.corejava.packages.home;
 
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
-import javax.swing.text.BadLocationException;
-import java.awt.event.ActionEvent;
+import javax.swing.WindowConstants;
 
 import com.corejava.packages.Main;
 import com.corejava.packages.textpane_ui.Text;
-import com.corejava.packages.ui.ScrollTextPane;
 import com.corejava.packages.ui.LearnArea;
 import com.corejava.packages.ui.ListFiles;
 import com.corejava.packages.ui.MenuBar;
+import com.corejava.packages.ui.ScrollTextPane;
 import com.corejava.packages.ui.TextBox;
+
 import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
@@ -84,15 +85,10 @@ public class Home extends JFrame {
 		// and configures the menu bar.
 		this.setJMenuBar(menuBar.generate());
 
-		try {
-			setupFrame(); // Setup the frames properties
-			setClientProperties(); // Setup the client theming properties for FlatLaf
-			setToolTips(); // Setup the tooltips for all component objects created
-			setInitialLearnArea(); // Setup the text and components in the learn area when the app
-									// is opened
-		} catch (BadLocationException | IOException e) {
-			e.printStackTrace();
-		}
+		setupFrame(); // Setup the frames properties
+		setClientProperties(); // Setup the client theming properties for FlatLaf
+		setToolTips(); // Setup the tooltips for all component objects created
+		setInitialLearnArea(); // Setup the text and components content in the learn area
 	}
 
 	/** Setups the frame i.e. Size, Re-sizable, Location */
@@ -103,7 +99,7 @@ public class Home extends JFrame {
 		this.setSize(new Dimension(frameWidth, frameHeight));
 		this.setResizable(true);
 		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		contentPane.requestFocusInWindow();
 	}
 
@@ -134,7 +130,7 @@ public class Home extends JFrame {
 	 * Set the properties of the learn area (right panel). This is so the user sees some
 	 * instructions as soon as they open the app.
 	 */
-	private void setInitialLearnArea() throws BadLocationException, IOException {
+	private void setInitialLearnArea() {
 		topicTitleBox.setText("Topic: Not selected");
 		sectionTitleBox.setText("Section: Not selected");
 		topicFeedbackArea.setFeedbackArea("When you answer a question, feedback will appear here!");
@@ -149,26 +145,20 @@ public class Home extends JFrame {
 
 	private void addButtonListeners() {
 		searchButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent event) {
 				topicList.filter(searchTopicBox.getText());
 				topicLearnArea.clearAll();
-				try {
-					setInitialLearnArea();
-				} catch (BadLocationException | IOException e) {
-					e.printStackTrace();
-				}
+				setInitialLearnArea();
 			}
 		});
 		resetButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent event) {
 				searchTopicBox.clearAll();
 				topicList.reset();
 				topicLearnArea.clearAll();
-				try {
-					setInitialLearnArea();
-				} catch (BadLocationException | IOException e) {
-					e.printStackTrace();
-				}
+				setInitialLearnArea();
 			}
 		});
 	}
@@ -204,6 +194,7 @@ public class Home extends JFrame {
 	/**
 	 * @param contentPane the contentPane to set
 	 */
+	@Override
 	public void setContentPane(Container contentPane) {
 		this.contentPane = contentPane;
 	}

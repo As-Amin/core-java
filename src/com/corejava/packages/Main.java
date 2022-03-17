@@ -1,11 +1,13 @@
 package com.corejava.packages;
 
 import java.awt.Color;
+
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
+
 import com.corejava.packages.home.Home;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
-import org.apache.commons.configuration.ConfigurationException;
-import org.apache.commons.configuration.PropertiesConfiguration;
 
 public class Main {
 	public static final String APP_NAME = "CoreJava";

@@ -2,13 +2,14 @@ package com.corejava.packages.ui;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+import javax.swing.ScrollPaneConstants;
 
 public class ScrollTextPane extends JTextPane {
 	private JScrollPane scrollArea;
 
 	public JScrollPane generate() {
 		scrollArea = new JScrollPane(this);
-		scrollArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollArea.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		this.setEditable(false);
 		return scrollArea;
 	}

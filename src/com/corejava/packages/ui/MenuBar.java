@@ -3,6 +3,7 @@ package com.corejava.packages.ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedHashMap;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -16,7 +17,6 @@ public class MenuBar extends JMenuBar {
     public JMenuBar generate() {
         AllJMenu.put(Main.APP_NAME, new JMenu(Main.APP_NAME));
         AllJMenu.put("Profile", new JMenu("Profile"));
-        AllJMenu.put("Help", new JMenu("Help"));
 
         for (JMenu menu : AllJMenu.values()) {
             this.add(menu);
@@ -49,7 +49,8 @@ public class MenuBar extends JMenuBar {
 
     private void profileProgressConfig() {
         AllJMenuItems.get("Profile Progress").addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
+            @Override
+			public void actionPerformed(ActionEvent ev) {
                 //
             }
         });
@@ -57,7 +58,8 @@ public class MenuBar extends JMenuBar {
 
     private void profileSignOutConfig() {
         AllJMenuItems.get("Profile SignOut").addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ev) {
+            @Override
+			public void actionPerformed(ActionEvent ev) {
                 //
             }
         });

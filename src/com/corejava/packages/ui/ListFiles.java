@@ -7,6 +7,7 @@ import java.util.Arrays;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -36,7 +37,7 @@ public class ListFiles extends JScrollPane {
 		generateParentStrings();
 		generateListeners();
 		this.setViewportView(listPanel);
-		this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		this.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		this.getVerticalScrollBar().setUnitIncrement(10);
 		return this;
 	}

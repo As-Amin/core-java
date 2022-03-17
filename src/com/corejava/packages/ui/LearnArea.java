@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
-import javax.swing.text.BadLocationException;
+import javax.swing.ScrollPaneConstants;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -25,7 +25,7 @@ public class LearnArea extends JTextPane {
 
 	public JScrollPane generate() {
 		scrollArea = new JScrollPane(this);
-		scrollArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollArea.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		this.setEditable(false);
 		return scrollArea;
 	}

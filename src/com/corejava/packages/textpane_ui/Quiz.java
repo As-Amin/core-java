@@ -6,12 +6,11 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.StyledDocument;
-import com.corejava.packages.home.Home;
+
 import net.miginfocom.swing.MigLayout;
 
 public class Quiz {
@@ -55,7 +54,8 @@ public class Quiz {
             // Add an action listener to the button so the response can be retrieved and compared to
             // the correct answer to determine if correct or incorrect
             submitButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent event) {
+                @Override
+				public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase(optionsBox.getSelectedItem().toString())) {
                         if (feedbackRight != null) {
                             feedbackArea.removeAll();
@@ -104,7 +104,8 @@ public class Quiz {
             // Add an action listener to the button so the response can be retrieved and compared to
             // the correct answer to determine if correct or incorrect
             submitButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent event) {
+                @Override
+				public void actionPerformed(ActionEvent event) {
                     if (answerField.getText().equalsIgnoreCase(answer)) {
                         if (feedbackRight != null) {
                             feedbackArea.removeAll();
@@ -151,7 +152,8 @@ public class Quiz {
             // Add an action listener to the true button so the response can be retrieved and
             // compared to the correct answer to determine if the statement is true
             trueButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent event) {
+                @Override
+				public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase("true")) {
                         if (feedbackRight != null) {
                             feedbackArea.removeAll();
@@ -168,7 +170,8 @@ public class Quiz {
             // Add an action listener to the false button so the response can be retrieved and
             // compared to the correct answer to determine if the statement is false
             falseButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent event) {
+                @Override
+				public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase("false")) {
                         if (feedbackRight != null) {
                             feedbackArea.removeAll();
