@@ -3,7 +3,7 @@ package com.corejava.packages.ui;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
-public class ScrollTextArea extends JTextPane {
+public class ScrollTextPane extends JTextPane {
 	private JScrollPane scrollArea;
 
 	public JScrollPane generate() {

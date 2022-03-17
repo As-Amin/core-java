@@ -1,7 +1,6 @@
 package com.corejava.packages.textpane_ui;
 
 import java.awt.Color;
-import java.io.IOException;
 
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -11,33 +10,42 @@ import javax.swing.text.StyledDocument;
 
 public class Text {
     private Color foreground;
-    private Boolean isQuestion;
     private String text;
     private JTextPane textPane;
 
-    public Text(String text, Color foreground, Boolean isQuestion, JTextPane textPane) {
+    public Text(String text, Color foreground, JTextPane textPane) {
         this.text = text;
         this.foreground = foreground;
-        this.isQuestion = isQuestion;
         this.textPane = textPane;
     }
 
-    public void generate() throws BadLocationException, IOException {
-        appendText();
+    public void generateText() {
+        try {
+            textPane.setContentType("text/plain");
+            StyledDocument document = (StyledDocument) textPane.getDocument();
+            Style style = textPane.addStyle("", null);
+            if (foreground != null) {
+                StyleConstants.setForeground(style, foreground);
+            }
+            document.insertString(document.getLength(), text, style);
+            document.insertString(document.getLength(), "\n\n", null);
+        } catch (BadLocationException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void appendText() throws BadLocationException {
-        textPane.setContentType("text/plain");
-        StyledDocument document = (StyledDocument) textPane.getDocument();
-        Style style = textPane.addStyle("", null);
-        if (foreground != null) {
-            StyleConstants.setForeground(style, foreground);
-        }
-        document.insertString(document.getLength(), text, style);
-        if (isQuestion) {
+    public void generateQuestion() {
+        try {
+            textPane.setContentType("text/plain");
+            StyledDocument document = (StyledDocument) textPane.getDocument();
+            Style style = textPane.addStyle("", null);
+            if (foreground != null) {
+                StyleConstants.setForeground(style, foreground);
+            }
+            document.insertString(document.getLength(), text, style);
             document.insertString(document.getLength(), "\n", null);
-        } else {
-            document.insertString(document.getLength(), "\n\n", null);
+        } catch (BadLocationException e) {
+            e.printStackTrace();
         }
     }
 
@@ -46,20 +54,6 @@ public class Text {
      */
     public Color getForeground() {
         return foreground;
-    }
-
-    /**
-     * @return Boolean return the isQuestion
-     */
-    public Boolean isIsQuestion() {
-        return isQuestion;
-    }
-
-    /**
-     * @param isQuestion the isQuestion to set
-     */
-    public void setIsQuestion(Boolean isQuestion) {
-        this.isQuestion = isQuestion;
     }
 
     /**

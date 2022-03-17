@@ -33,7 +33,7 @@ public class Quiz {
      *        or incorrect is determined
      */
     public void generateMultipleChoice(List<String> options, String answer, String feedbackRight,
-            String feedbackWrong) {
+            String feedbackWrong, JTextPane feedbackArea) {
         try {
             StyledDocument document = (StyledDocument) textPane.getDocument();
             // Create a JPanel to add the multiple choice box and the button to - Uses MigLayout so
@@ -57,15 +57,14 @@ public class Quiz {
             submitButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase(optionsBox.getSelectedItem().toString())) {
-                        // The response is correct
-                        System.out.println("Correct");
-                        if (feedbackRight != null || feedbackRight.length() != 0) {
-                            Home.topicFeedbackArea.setFeedbackArea(feedbackRight);
+                        if (feedbackRight != null) {
+                            feedbackArea.removeAll();
+                            feedbackArea.setText(feedbackRight);
                         }
                     } else {
-                        System.out.println("Hey wrong answer");
-                        if (feedbackWrong != null || feedbackWrong.length() != 0) {
-                            Home.topicFeedbackArea.setFeedbackArea(feedbackWrong);
+                        if (feedbackWrong != null) {
+                            feedbackArea.removeAll();
+                            feedbackArea.setText(feedbackWrong);
                         }
                     }
                 }
@@ -83,7 +82,8 @@ public class Quiz {
      * @param answer The answer to compare the response to so whether or not the answer is correct
      *        or incorrect is determined
      */
-    public void generateOpenChoice(String answer, String feedbackRight, String feedbackWrong) {
+    public void generateOpenChoice(String answer, String feedbackRight, String feedbackWrong,
+            JTextPane feedbackArea) {
         try {
             StyledDocument document = (StyledDocument) textPane.getDocument();
             // Create a JPanel to add the open choice box and the button to - Uses MigLayout so
@@ -106,16 +106,14 @@ public class Quiz {
             submitButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent event) {
                     if (answerField.getText().equalsIgnoreCase(answer)) {
-                        // The response is correct
-                        System.out.println("Correct");
-                        if (feedbackRight != null || feedbackRight.length() != 0) {
-                            Home.topicFeedbackArea.setFeedbackArea(feedbackRight);
+                        if (feedbackRight != null) {
+                            feedbackArea.removeAll();
+                            feedbackArea.setText(feedbackRight);
                         }
                     } else {
-                        System.out.println("Hey wrong answer");
-                        if (feedbackWrong != null || feedbackWrong.length() != 0) {
-                            System.out.println(answerField.getText());
-                            Home.topicFeedbackArea.setFeedbackArea(feedbackWrong);
+                        if (feedbackWrong != null) {
+                            feedbackArea.removeAll();
+                            feedbackArea.setText(feedbackWrong);
                         }
                     }
                 }
@@ -133,7 +131,8 @@ public class Quiz {
      * @param answer The answer to compare the response to so whether or not the answer is correct
      *        or incorrect is determined
      */
-    public void generateTrueFalse(String answer, String feedbackRight, String feedbackWrong) {
+    public void generateTrueFalse(String answer, String feedbackRight, String feedbackWrong,
+            JTextPane feedbackArea) {
         try {
             StyledDocument document = (StyledDocument) textPane.getDocument();
             // Create a JPanel to add the true and false buttons to - Uses MigLayout so
@@ -154,15 +153,14 @@ public class Quiz {
             trueButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase("true")) {
-                        System.out.println("Correct");
-                        if (feedbackRight != null || feedbackRight.length() != 0) {
-                            Home.topicFeedbackArea.setFeedbackArea(feedbackRight);
-                            // JOptionPane.showMessageDialog(null, feedbackRight);
+                        if (feedbackRight != null) {
+                            feedbackArea.removeAll();
+                            feedbackArea.setText(feedbackRight);
                         }
                     } else {
-                        System.out.println("Hey wrong answer");
-                        if (feedbackWrong != null || feedbackWrong.length() != 0) {
-                            Home.topicFeedbackArea.setFeedbackArea(feedbackWrong);
+                        if (feedbackWrong != null) {
+                            feedbackArea.removeAll();
+                            feedbackArea.setText(feedbackWrong);
                         }
                     }
                 }
@@ -172,14 +170,14 @@ public class Quiz {
             falseButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase("false")) {
-                        System.out.println("Correct");
-                        if (feedbackRight != null || feedbackRight.length() != 0) {
-                            Home.topicFeedbackArea.setFeedbackArea(feedbackRight);
+                        if (feedbackRight != null) {
+                            feedbackArea.removeAll();
+                            feedbackArea.setText(feedbackRight);
                         }
                     } else {
-                        System.out.println("Hey wrong answer");
-                        if (feedbackWrong != null || feedbackWrong.length() != 0) {
-                            Home.topicFeedbackArea.setFeedbackArea(feedbackWrong);
+                        if (feedbackWrong != null) {
+                            feedbackArea.removeAll();
+                            feedbackArea.setText(feedbackWrong);
                         }
                     }
                 }

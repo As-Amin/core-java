@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.corejava.packages.Main;
+import com.corejava.packages.home.Home;
 import com.corejava.packages.json.JSONParser;
 import com.corejava.packages.textpane_ui.Image;
 import com.corejava.packages.textpane_ui.Quiz;
@@ -54,13 +55,13 @@ public class LearnArea extends JTextPane {
 				// Append subheading
 				if (subheading.length() != 0) {
 					Text textPaneSubheading =
-							new Text(subheading, Main.SECONDARY_ACCENT_COLOR, false, this);
-					textPaneSubheading.generate();
+							new Text(subheading, Main.SECONDARY_ACCENT_COLOR, this);
+					textPaneSubheading.generateText();
 				}
 				// Append paragraph content
 				if (paragraphContent.length() != 0) {
-					Text textPaneParagraph = new Text(paragraphContent, null, false, this);
-					textPaneParagraph.generate();
+					Text textPaneParagraph = new Text(paragraphContent, null, this);
+					textPaneParagraph.generateText();
 				}
 				try {
 					parseImages(allParagraphs.getJSONObject(i).getJSONArray("images"));
@@ -97,16 +98,10 @@ public class LearnArea extends JTextPane {
 		List<String> imagesUrlList = jsonParser.readArray(jsonArray, "url");
 		List<String> captionsList = jsonParser.readArray(jsonArray, "caption");
 		for (int i = 0; i < imagesUrlList.size(); i++) {
-			try {
-				Image image =
-						new Image(new File(Main.IMAGES_DIRECTORY + imagesUrlList.get(i)), this);
-				image.generate();
-				Text caption = new Text(("Caption: " + captionsList.get(i)), Main.ACCENT_COLOR,
-						false, this);
-				caption.generate();
-			} catch (BadLocationException | IOException e) {
-				e.printStackTrace();
-			}
+			Image image = new Image(new File(Main.IMAGES_DIRECTORY + imagesUrlList.get(i)), this);
+			image.generate();
+			Text caption = new Text(("Caption: " + captionsList.get(i)), Main.ACCENT_COLOR, this);
+			caption.generateText();
 		}
 	}
 
@@ -117,18 +112,13 @@ public class LearnArea extends JTextPane {
 		List<String> feedbackRights = jsonParser.readArray(jsonArray, "feedbackRight");
 		List<String> feedbackWrongs = jsonParser.readArray(jsonArray, "feedbackWrong");
 		for (int i = 0; i < questions.size(); i++) {
-			try {
-				JSONArray optionsArray = jsonArray.getJSONObject(i).getJSONArray("options");
-				options = jsonParser.readArray(optionsArray, "option");
-				Text question =
-						new Text(questions.get(i).toString(), Main.ACCENT_COLOR, true, this);
-				question.generate();
-				Quiz multipleChoice = new Quiz(this);
-				multipleChoice.generateMultipleChoice(options, answers.get(i),
-						feedbackRights.get(i), feedbackWrongs.get(i));
-			} catch (BadLocationException | IOException e) {
-				e.printStackTrace();
-			}
+			JSONArray optionsArray = jsonArray.getJSONObject(i).getJSONArray("options");
+			options = jsonParser.readArray(optionsArray, "option");
+			Text question = new Text(questions.get(i).toString(), Main.ACCENT_COLOR, this);
+			question.generateQuestion();
+			Quiz multipleChoice = new Quiz(this);
+			multipleChoice.generateMultipleChoice(options, answers.get(i), feedbackRights.get(i),
+					feedbackWrongs.get(i), Home.topicFeedbackArea);
 		}
 	}
 
@@ -138,15 +128,11 @@ public class LearnArea extends JTextPane {
 		List<String> feedbackRights = jsonParser.readArray(jsonArray, "feedbackRight");
 		List<String> feedbackWrongs = jsonParser.readArray(jsonArray, "feedbackWrong");
 		for (int i = 0; i < questions.size(); i++) {
-			try {
-				Text question = new Text(questions.get(i), Main.ACCENT_COLOR, true, this);
-				question.generate();
-				Quiz openChoice = new Quiz(this);
-				openChoice.generateOpenChoice(answers.get(i), feedbackRights.get(i),
-						feedbackWrongs.get(i));
-			} catch (BadLocationException | IOException e) {
-				e.printStackTrace();
-			}
+			Text question = new Text(questions.get(i), Main.ACCENT_COLOR, this);
+			question.generateQuestion();
+			Quiz openChoice = new Quiz(this);
+			openChoice.generateOpenChoice(answers.get(i), feedbackRights.get(i),
+					feedbackWrongs.get(i), Home.topicFeedbackArea);
 		}
 	}
 
@@ -156,15 +142,11 @@ public class LearnArea extends JTextPane {
 		List<String> feedbackRights = jsonParser.readArray(jsonArray, "feedbackRight");
 		List<String> feedbackWrongs = jsonParser.readArray(jsonArray, "feedbackWrong");
 		for (int i = 0; i < questions.size(); i++) {
-			try {
-				Text question = new Text(questions.get(i), Main.ACCENT_COLOR, true, this);
-				question.generate();
-				Quiz trueFalse = new Quiz(this);
-				trueFalse.generateTrueFalse(answers.get(i), feedbackRights.get(i),
-						feedbackWrongs.get(i));
-			} catch (BadLocationException | IOException e) {
-				e.printStackTrace();
-			}
+			Text question = new Text(questions.get(i), Main.ACCENT_COLOR, this);
+			question.generateQuestion();
+			Quiz trueFalse = new Quiz(this);
+			trueFalse.generateTrueFalse(answers.get(i), feedbackRights.get(i),
+					feedbackWrongs.get(i), Home.topicFeedbackArea);
 		}
 	}
 

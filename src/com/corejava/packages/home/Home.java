@@ -4,19 +4,18 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.text.BadLocationException;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import com.corejava.packages.Main;
 import com.corejava.packages.textpane_ui.Text;
-import com.corejava.packages.ui.Button;
-import com.corejava.packages.ui.ScrollTextArea;
+import com.corejava.packages.ui.ScrollTextPane;
 import com.corejava.packages.ui.LearnArea;
-import com.corejava.packages.ui.LineSeperator;
 import com.corejava.packages.ui.ListFiles;
 import com.corejava.packages.ui.MenuBar;
 import com.corejava.packages.ui.TextBox;
@@ -36,11 +35,11 @@ public class Home extends JFrame {
 	private JPanel leftPanel = new JPanel();
 	private double leftPanelWidth = 200;
 	private TextBox searchTopicBox = new TextBox("", true);
-	private Button searchButton = new Button("Search");
-	private Button resetButton = new Button("Reset");
-	private LineSeperator buttonSeperator = new LineSeperator(SwingConstants.HORIZONTAL);
+	private JButton searchButton = new JButton("Search");
+	private JButton resetButton = new JButton("Reset");
+	private JSeparator buttonSeperator = new JSeparator(SwingConstants.HORIZONTAL);
 	private ListFiles topicList = new ListFiles(Main.TOPICS_DIRECTORY, ')');
-	public static ScrollTextArea topicFeedbackArea = new ScrollTextArea();
+	public static ScrollTextPane topicFeedbackArea = new ScrollTextPane();
 
 	// Right panel components - Public and global because needs to be
 	// modified by different classes and functions outside of this one
@@ -60,18 +59,15 @@ public class Home extends JFrame {
 		// Left panel - Has its own layout manager so doesnt interfere with right panel
 		// components and easier to manage
 		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0", // width, height
-				"0[][][fill, " + frameHeight * 0.01 + "!][fill,grow][fill,grow]0")); // height,
-																						// row
+				"0[][][fill, " + frameHeight * 0.01 + "!][fill,grow][fill,grow]0")); // height
 		leftPanel.add(searchTopicBox.generate(), "cell 0 0");
-
 		JPanel searchButtonPanel = new JPanel();
 		searchButtonPanel.setLayout(new MigLayout("", "0[fill,grow][fill,grow]0", "0[]0"));
-		searchButtonPanel.add(searchButton.generate(), "cell 0 0");
-		searchButtonPanel.add(resetButton.generate(), "cell 1 0");
+		searchButtonPanel.add(searchButton, "cell 0 0");
+		searchButtonPanel.add(resetButton, "cell 1 0");
 		addButtonListeners();
-
 		leftPanel.add(searchButtonPanel, "cell 0 1");
-		leftPanel.add(buttonSeperator.generate(), "cell 0 2");
+		leftPanel.add(buttonSeperator, "cell 0 2");
 		leftPanel.add(topicList.generate(), "cell 0 3");
 		leftPanel.add(topicFeedbackArea.generate(), "cell 0 4");
 		contentPane.add(leftPanel, "cell 0 0");
@@ -116,7 +112,7 @@ public class Home extends JFrame {
 	 * not added to properties files
 	 */
 	private void setClientProperties() {
-		searchTopicBox.putClientProperty("JTextField.placeholderText", "Topic name here...");
+		searchTopicBox.putClientProperty("JTextField.placeholderText", "Search topics...");
 		topicTitleBox.putClientProperty("FlatLaf.style",
 				"font: $large.font;" + "foreground: @accentColor;");
 		topicFeedbackArea.putClientProperty("FlatLaf.style",
@@ -142,13 +138,13 @@ public class Home extends JFrame {
 		topicTitleBox.setText("Topic: Not selected");
 		sectionTitleBox.setText("Section: Not selected");
 		topicFeedbackArea.setFeedbackArea("When you answer a question, feedback will appear here!");
-		Text heading = new Text("Get started", Main.SECONDARY_ACCENT_COLOR, false,
-				topicLearnArea.getTextPane());
-		heading.generate();
+		Text heading =
+				new Text("Get started", Main.SECONDARY_ACCENT_COLOR, topicLearnArea.getTextPane());
+		heading.generateText();
 		Text paragraph = new Text(
 				"To begin, select a topic from the left side topics list! You can use the arrow keys or your cursor. Hover over any part of the screen to see what each section is for.",
-				null, false, topicLearnArea.getTextPane());
-		paragraph.generate();
+				null, topicLearnArea.getTextPane());
+		paragraph.generateText();
 	}
 
 	private void addButtonListeners() {
@@ -224,20 +220,6 @@ public class Home extends JFrame {
 	 */
 	public void setSearchTopicBox(TextBox searchTopicBox) {
 		this.searchTopicBox = searchTopicBox;
-	}
-
-	/**
-	 * @return Button return the searchButton
-	 */
-	public Button getSearchButton() {
-		return searchButton;
-	}
-
-	/**
-	 * @param searchButton the searchButton to set
-	 */
-	public void setSearchButton(Button searchButton) {
-		this.searchButton = searchButton;
 	}
 
 	/**
