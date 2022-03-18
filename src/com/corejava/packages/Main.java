@@ -1,7 +1,7 @@
 package com.corejava.packages;
 
 import java.awt.Color;
-
+import javax.swing.UIManager;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 

@@ -19,8 +19,8 @@ public class ScrollTextPane extends JTextPane {
 	}
 
 	@Override
-	public void setText(String newText) {
-		super.setText(newText);
+	public void setText(String text) {
+		super.setText(text);
 		this.setCaretPosition(0); // Scroll to the top after adding components
 	}
 

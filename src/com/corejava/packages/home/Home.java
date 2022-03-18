@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
@@ -16,6 +17,7 @@ import com.corejava.packages.Main;
 import com.corejava.packages.textpane_ui.Text;
 import com.corejava.packages.ui.LearnArea;
 import com.corejava.packages.ui.ListFiles;
+import com.corejava.packages.ui.LoadingBar;
 import com.corejava.packages.ui.MenuBar;
 import com.corejava.packages.ui.ScrollTextPane;
 import com.corejava.packages.ui.TextBox;
@@ -35,7 +37,6 @@ public class Home extends JFrame {
 	// be displayed on the left side of the screen
 	private JPanel leftPanel = new JPanel();
 	private double leftPanelWidth = 200;
-	private JPanel searchButtonPanel = new JPanel();
 	private TextBox searchTopicInput = new TextBox("", true);
 	private JButton searchButton = new JButton("Search");
 	private JButton resetButton = new JButton("Reset");
@@ -49,6 +50,7 @@ public class Home extends JFrame {
 	public static TextBox topicTitleBox = new TextBox("", false);
 	public static TextBox sectionTitleBox = new TextBox("", false);
 	public static LearnArea topicLearnArea = new LearnArea();
+	public static LoadingBar loadingBar = new LoadingBar();
 
 	// The menu bar at the top of the window - is not apart of the content pane but frame
 	private MenuBar menuBar = new MenuBar();
@@ -61,8 +63,10 @@ public class Home extends JFrame {
 		// Left panel - Has its own layout manager so doesnt interfere with right panel
 		// components and easier to manage
 		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0", // width, height
-				"0[][][fill, " + frameHeight * 0.01 + "!][fill,grow][fill,grow]0")); // height
-		leftPanel.add(searchTopicInput.generate(), "cell 0 0");
+				"0[][][fill, " + frameHeight * 0.01 + "!][fill,grow][fill, " + frameHeight * 0.15
+						+ "!]0")); // height
+		JPanel searchButtonPanel = new JPanel();
+		leftPanel.add(searchTopicInput, "cell 0 0");
 		searchButtonPanel.setLayout(new MigLayout("", "0[fill,grow][fill,grow]0", "0[]0"));
 		searchButtonPanel.add(searchButton, "cell 0 0");
 		searchButtonPanel.add(resetButton, "cell 1 0");
@@ -75,10 +79,11 @@ public class Home extends JFrame {
 
 		// Right panel - Just like left panel but different components
 		rightPanel.setLayout(new MigLayout("", "0[fill,grow]0", // Width, column
-				"0[][][fill,grow]0")); // Height, row
-		rightPanel.add(topicTitleBox.generate(), "cell 0 0");
-		rightPanel.add(sectionTitleBox.generate(), "cell 0 1");
+				"0[][][fill,grow][]0")); // Height, row
+		rightPanel.add(topicTitleBox, "cell 0 0");
+		rightPanel.add(sectionTitleBox, "cell 0 1");
 		rightPanel.add(topicLearnArea.generate(), "cell 0 2");
+		rightPanel.add(loadingBar, "cell 0 3");
 		contentPane.add(rightPanel, "cell 1 0");
 
 		// Add the menu bar, by calling the function in the class which creates
@@ -88,6 +93,7 @@ public class Home extends JFrame {
 		setupFrame(); // Setup the frames properties
 		setClientProperties(); // Setup the client theming properties for FlatLaf
 		setToolTips(); // Setup the tooltips for all component objects created
+		Home.loadingBar.load();
 		setInitialLearnArea(); // Setup the text and components content in the learn area
 	}
 
