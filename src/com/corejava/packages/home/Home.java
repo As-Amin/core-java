@@ -37,7 +37,7 @@ public class Home extends JFrame {
 	// be displayed on the left side of the screen
 	private JPanel leftPanel = new JPanel();
 	private double leftPanelWidth = 200;
-	private TextBox searchTopicInput = new TextBox("", true);
+	private TextBox searchTopicInput = new TextBox("", "", true);
 	private JButton searchButton = new JButton("Search");
 	private JButton resetButton = new JButton("Reset");
 	private JSeparator buttonSeperator = new JSeparator(SwingConstants.HORIZONTAL);
@@ -47,8 +47,8 @@ public class Home extends JFrame {
 	// Right panel components - Public and global because needs to be
 	// modified by different classes and functions outside of this one
 	private JPanel rightPanel = new JPanel();
-	public static TextBox topicTitleBox = new TextBox("", false);
-	public static TextBox sectionTitleBox = new TextBox("", false);
+	public static TextBox topicTitleBox = new TextBox("Topic: ", "", false);
+	public static TextBox sectionTitleBox = new TextBox("Section: ", "", false);
 	public static LearnArea topicLearnArea = new LearnArea();
 	public static LoadingBar loadingBar = new LoadingBar();
 
@@ -79,11 +79,11 @@ public class Home extends JFrame {
 
 		// Right panel - Just like left panel but different components
 		rightPanel.setLayout(new MigLayout("", "0[fill,grow]0", // Width, column
-				"0[][][fill,grow][]0")); // Height, row
+				"0[][][][fill,grow]0")); // Height, row
 		rightPanel.add(topicTitleBox, "cell 0 0");
 		rightPanel.add(sectionTitleBox, "cell 0 1");
-		rightPanel.add(topicLearnArea.generate(), "cell 0 2");
-		rightPanel.add(loadingBar, "cell 0 3");
+		rightPanel.add(loadingBar, "cell 0 2");
+		rightPanel.add(topicLearnArea.generate(), "cell 0 3");
 		contentPane.add(rightPanel, "cell 1 0");
 
 		// Add the menu bar, by calling the function in the class which creates
@@ -137,8 +137,8 @@ public class Home extends JFrame {
 	 * instructions as soon as they open the app.
 	 */
 	private void setInitialLearnArea() {
-		topicTitleBox.setText("Topic: Not selected");
-		sectionTitleBox.setText("Section: Not selected");
+		topicTitleBox.addToStartingText("Not selected");
+		sectionTitleBox.addToStartingText("Not selected");
 		topicFeedbackArea.setText("When you answer a question, feedback will appear here!");
 		Text heading =
 				new Text("Get started", Main.SECONDARY_ACCENT_COLOR, topicLearnArea.getTextPane());
