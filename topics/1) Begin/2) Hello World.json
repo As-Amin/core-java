@@ -3,7 +3,12 @@
         {
             "subheading": "What is an IDE?",
             "content": "An IDE (Integrated Development Environment) is software which allows developers to write code with increased efficiency through features such as autocomplete, syntax highlighting etc. and run the code aswell as debug, build, edit and much more.\n\nCoreJava recommends you choose a Java IDE from the following if you are a beginner: Eclipse, IntelliJ or VS Code. CoreJava will guide you through installing the Eclipse IDE but if you want to use another IDE, there are links below guiding you on how to set them up to program in Java!",
-            "images": [],
+            "images": [
+                {
+                    "url": "/Hello World/IMAGE(VS Code).png",
+                    "caption": "'VS Code's logo - A free and open source IDE (Source: https://code.visualstudio.com/)'"
+                }
+            ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []

@@ -8,7 +8,7 @@ public class LoadingBar extends JProgressBar {
 		this.setValue(0);
 		try {
 			for (int i = 0; i < 101; i++) {
-				Thread.sleep(10);
+				Thread.sleep(3);
 				this.setValue(i);// Setting value of Progress Bar
 			}
 		} catch (InterruptedException e) {

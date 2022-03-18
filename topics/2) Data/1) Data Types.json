@@ -7,6 +7,139 @@
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Integer data types",
+            "content": "Integer data types store numeric whole numbers (without a decimal).",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Integer data type: Byte",
+            "content": "Byte: A byte is used for a really smaller integer between -128 and 127. Many programmers use this when they are sure the variable stored as a byte will not exceed the maximum byte values. This is generally used to save memory, therefore increasing efficiency.",
+            "images": [
+                {
+                    "url": "/Data Types/CODE(Byte).png",
+                    "caption": "'Examples of a byte'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Integer data type: Short",
+            "content": "Short: A short can store integers larger than a byte but smaller than an int. It can store integers between -32768 and 32767.",
+            "images": [
+                {
+                    "url": "/Data Types/CODE(Short).png",
+                    "caption": "'Example of a short'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Integer data type: Int",
+            "content": "Int: An int is the most commonly used data type for storing integers. It can store integers between -2147483648 and 2147483647 (Pretty large!). Most Java programmers use this when storing any integer type variable.",
+            "images": [
+                {
+                    "url": "/Data Types/CODE(Int).png",
+                    "caption": "'Example of an int'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Integer data type: Long",
+            "content": " Long: A long can store extremely large integers (between -9223372036854775808 and 9223372036854775807). This is only used in the rare occasion that an int is too small to store an integer. The value should end with an 'L' when stored as a long.",
+            "images": [
+                {
+                    "url": "/Data Types/CODE(Long).png",
+                    "caption": "'Example of a long.'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Floating point data types",
+            "content": "Floating point data types store numbers with a decimal.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Floating point data type: Float",
+            "content": "Float: A float is used store store decimal numbers between 3.4e-038 and 3.4e+038 (six to seven digits after the point). The value should end with an 'f' when stored as a float.",
+            "images": [
+                {
+                    "url": "/Data Types/CODE(Float).png",
+                    "caption": "'Example of a float.'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Floating point data type: Double",
+            "content": "Double: A double is used to store floating point numbers between 1.7e-308 and 1.7e+308 (15 digits after the point). The value should end with a 'd' when stored as a double.",
+            "images": [
+                {
+                    "url": "/Data Types/CODE(Double).png",
+                    "caption": "'Example of a double.'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Boolean data types",
+            "content": "Boolean: A boolean stores either true or false. They are primarily used in while loops (covered later).",
+            "images": [
+                {
+                    "url": "/Data Types/CODE(Boolean).png",
+                    "caption": "'Example of two booleans; one true and one false'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Character data types",
+            "content": "Char: A char stores single characters only. The character being stored as a char must be surrounded with single quotation marks.",
+            "images": [
+                {
+                    "url": "/Data Types/CODE(Char).png",
+                    "caption": "'Example of a char'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "String data types",
+            "content": "String: A String essentially combines and stores a list of characters. A String must be surrounded by double quotation marks to indicate its a String and not a char.",
+            "images": [
+                {
+                    "url": "/Data Types/CODE(String).png",
+                    "caption": "'Example of a string'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
         }
     ]
 }
