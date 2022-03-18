@@ -35,7 +35,8 @@ public class Home extends JFrame {
 	// be displayed on the left side of the screen
 	private JPanel leftPanel = new JPanel();
 	private double leftPanelWidth = 200;
-	private TextBox searchTopicBox = new TextBox("", true);
+	private JPanel searchButtonPanel = new JPanel();
+	private TextBox searchTopicInput = new TextBox("", true);
 	private JButton searchButton = new JButton("Search");
 	private JButton resetButton = new JButton("Reset");
 	private JSeparator buttonSeperator = new JSeparator(SwingConstants.HORIZONTAL);
@@ -61,8 +62,7 @@ public class Home extends JFrame {
 		// components and easier to manage
 		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0", // width, height
 				"0[][][fill, " + frameHeight * 0.01 + "!][fill,grow][fill,grow]0")); // height
-		leftPanel.add(searchTopicBox.generate(), "cell 0 0");
-		JPanel searchButtonPanel = new JPanel();
+		leftPanel.add(searchTopicInput.generate(), "cell 0 0");
 		searchButtonPanel.setLayout(new MigLayout("", "0[fill,grow][fill,grow]0", "0[]0"));
 		searchButtonPanel.add(searchButton, "cell 0 0");
 		searchButtonPanel.add(resetButton, "cell 1 0");
@@ -108,7 +108,7 @@ public class Home extends JFrame {
 	 * not added to properties files
 	 */
 	private void setClientProperties() {
-		searchTopicBox.putClientProperty("JTextField.placeholderText", "Search topics...");
+		searchTopicInput.putClientProperty("JTextField.placeholderText", "Search topics...");
 		topicTitleBox.putClientProperty("FlatLaf.style",
 				"font: $large.font;" + "foreground: @accentColor;");
 		topicFeedbackArea.putClientProperty("FlatLaf.style",
@@ -119,7 +119,7 @@ public class Home extends JFrame {
 	 * Configure and set the tool tips for components in the content pane
 	 */
 	private void setToolTips() {
-		searchTopicBox.setToolTipText("Search");
+		searchTopicInput.setToolTipText("Search");
 		topicList.getListPanel().setToolTipText("List of all topics");
 		topicTitleBox.setToolTipText("Title of the topic");
 		sectionTitleBox.setToolTipText("Section of the topic");
@@ -133,7 +133,7 @@ public class Home extends JFrame {
 	private void setInitialLearnArea() {
 		topicTitleBox.setText("Topic: Not selected");
 		sectionTitleBox.setText("Section: Not selected");
-		topicFeedbackArea.setFeedbackArea("When you answer a question, feedback will appear here!");
+		topicFeedbackArea.setText("When you answer a question, feedback will appear here!");
 		Text heading =
 				new Text("Get started", Main.SECONDARY_ACCENT_COLOR, topicLearnArea.getTextPane());
 		heading.generateText();
@@ -147,7 +147,7 @@ public class Home extends JFrame {
 		searchButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				topicList.filter(searchTopicBox.getText());
+				topicList.filter(searchTopicInput.getText());
 				topicLearnArea.clearAll();
 				setInitialLearnArea();
 			}
@@ -155,7 +155,7 @@ public class Home extends JFrame {
 		resetButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-				searchTopicBox.clearAll();
+				searchTopicInput.clearAll();
 				topicList.reset();
 				topicLearnArea.clearAll();
 				setInitialLearnArea();
@@ -203,14 +203,14 @@ public class Home extends JFrame {
 	 * @return TextBox return the searchTopicBox
 	 */
 	public TextBox getSearchTopicBox() {
-		return searchTopicBox;
+		return searchTopicInput;
 	}
 
 	/**
 	 * @param searchTopicBox the searchTopicBox to set
 	 */
 	public void setSearchTopicBox(TextBox searchTopicBox) {
-		this.searchTopicBox = searchTopicBox;
+		this.searchTopicInput = searchTopicBox;
 	}
 
 	/**
