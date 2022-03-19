@@ -2,12 +2,19 @@ package com.corejava.packages.ui;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
-
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.StyledDocument;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -16,6 +23,7 @@ import com.corejava.packages.home.Home;
 import com.corejava.packages.json.JSONParser;
 import com.corejava.packages.textpane_ui.Image;
 import com.corejava.packages.textpane_ui.Quiz;
+import com.corejava.packages.textpane_ui.Table;
 import com.corejava.packages.textpane_ui.Text;
 
 public class LearnArea extends JTextPane {
@@ -63,10 +71,17 @@ public class LearnArea extends JTextPane {
 					Text textPaneParagraph = new Text(paragraphContent, null, this);
 					textPaneParagraph.generateText();
 				}
+
 				try {
 					parseImages(allParagraphs.getJSONObject(i).getJSONArray("images"));
 				} catch (Exception e) {
 					System.out.println("No images found for paragraph " + i);
+				}
+
+				try {
+					parseTables(allParagraphs.getJSONObject(i).getJSONArray("tables"));
+				} catch (Exception e) {
+					System.out.println("No tables found for paragraph " + i);
 				}
 
 				try {
@@ -102,6 +117,40 @@ public class LearnArea extends JTextPane {
 			image.generate();
 			Text caption = new Text(("Caption: " + captionsList.get(i)), Main.ACCENT_COLOR, this);
 			caption.generateText();
+		}
+	}
+
+	private void parseTables(JSONArray jsonArray) {
+		List<String> columnCounts = jsonParser.readArray(jsonArray, "columnCount");
+		// System.out.println(columnCounts);
+		List<String> rows = null;
+		for (int i = 0; i < columnCounts.size(); i++) {
+			JSONArray rowsArray = jsonArray.getJSONObject(i).getJSONArray("rows");
+			rows = jsonParser.readArray(rowsArray, "row");
+			// System.out.println(rows);
+
+			// Split the row cells by comma
+			List<String[]> rowsSplit = new ArrayList<String[]>();
+			for (int j = 0; j < rows.size(); j++) {
+				String rowsSplitCells[] =
+						rows.get(j).split("\\,", Integer.parseInt(columnCounts.get(i)));
+				// ArrayList<String> rowsSplitCellsToList =
+				// new ArrayList<String>(Arrays.asList(rowsSplitCells));
+				rowsSplit.add(rowsSplitCells);
+			}
+			String students[] = {"S1", "S2", "S3", "S4"};
+			System.out.println(rowsSplit);
+			TableModel tableModel =
+					new DefaultTableModel(rowsSplit.toArray(new Object[][] {}), students);
+			JTable table = new JTable(tableModel);
+			this.insertComponent(table);
+			// Table table = new Table(this, rowsSplit.toArray());
+			// String[][] array = rowsSplit.toArray(new String[rowsSplit.size()][]);
+			// System.out.println(array);
+			// String[][] rowsSplitArray = rowsSplit.toArray(new String[rowsSplit.size()][]);
+			// System.out.println(rowsSplitArray);
+			// Table table = new Table(this, rowsSplitArray, students);
+
 		}
 	}
 

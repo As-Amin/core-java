@@ -69,7 +69,7 @@
             "images": [
                 {
                     "url": "/Hello World/TUTORIAL(Eclipse 3).png",
-                    "caption": "'Select your directory.'"
+                    "caption": "'Select your directory'"
                 }
             ],
             "openChoiceQuiz": [],
@@ -82,7 +82,7 @@
             "images": [
                 {
                     "url": "/Hello World/TUTORIAL(Eclipse 4).png",
-                    "caption": "'Enter project name.'"
+                    "caption": "'Enter project name'"
                 }
             ],
             "openChoiceQuiz": [],
@@ -95,7 +95,7 @@
             "images": [
                 {
                     "url": "/Hello World/TUTORIAL(Eclipse 5).png",
-                    "caption": "'Select your project options.'"
+                    "caption": "'Select your project options'"
                 }
             ],
             "openChoiceQuiz": [],
