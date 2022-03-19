@@ -134,23 +134,10 @@ public class LearnArea extends JTextPane {
 			for (int j = 0; j < rows.size(); j++) {
 				String rowsSplitCells[] =
 						rows.get(j).split("\\,", Integer.parseInt(columnCounts.get(i)));
-				// ArrayList<String> rowsSplitCellsToList =
-				// new ArrayList<String>(Arrays.asList(rowsSplitCells));
 				rowsSplit.add(rowsSplitCells);
 			}
 			String students[] = {"S1", "S2", "S3", "S4"};
-			System.out.println(rowsSplit);
-			TableModel tableModel =
-					new DefaultTableModel(rowsSplit.toArray(new Object[][] {}), students);
-			JTable table = new JTable(tableModel);
-			this.insertComponent(table);
-			// Table table = new Table(this, rowsSplit.toArray());
-			// String[][] array = rowsSplit.toArray(new String[rowsSplit.size()][]);
-			// System.out.println(array);
-			// String[][] rowsSplitArray = rowsSplit.toArray(new String[rowsSplit.size()][]);
-			// System.out.println(rowsSplitArray);
-			// Table table = new Table(this, rowsSplitArray, students);
-
+			Table table = new Table(this, rowsSplit.toArray(new Object[][] {}), students);
 		}
 	}
 
