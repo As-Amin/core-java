@@ -114,7 +114,6 @@ public class LearnArea extends JTextPane {
 	}
 
 	private void parseTables(JSONArray jsonArray) {
-		// List<String> columnCounts = jsonParser.readArray(jsonArray, "columnCount");
 		List<String> columns = null;
 		List<String> rows = null;
 
@@ -134,7 +133,7 @@ public class LearnArea extends JTextPane {
 			}
 			// Create the current table object and append to textpane
 			Table table = new Table(this, rowsSplit.toArray(new Object[][] {}),
-					columns.toArray(new String[] {}));
+					columns.toArray(new String[] {}), false);
 			table.generate();
 		}
 	}

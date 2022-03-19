@@ -15,22 +15,37 @@ public class Table {
     private Object[][] rows;
     private String[] columns;
 
-    public Table(JTextPane textPane, Object[][] rows, String[] columns) {
+    private Boolean editable;
+
+    public Table(JTextPane textPane, Object[][] rows, String[] columns, Boolean editable) {
         this.textPane = textPane;
         this.rows = rows;
         this.columns = columns;
+        this.editable = editable;
         textPane.setContentType("text/plain");
     }
 
     public void generate() {
         try {
             StyledDocument document = (StyledDocument) textPane.getDocument();
-            TableModel tableModel = new DefaultTableModel(rows, columns);
+            TableModel tableModel = new DefaultTableModel(rows, columns) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    if (editable == false) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+            };
             table = new JTable(tableModel);
-
+            table.removeEditor();
             table.setPreferredScrollableViewportSize(table.getPreferredSize());
+            if (editable == false) {
 
+            }
             textPane.insertComponent(new JScrollPane(table));
+
             document.insertString(document.getLength(), "\n\n", null);
         } catch (Exception e) {
             e.printStackTrace();
