@@ -121,23 +121,31 @@ public class LearnArea extends JTextPane {
 	}
 
 	private void parseTables(JSONArray jsonArray) {
-		List<String> columnCounts = jsonParser.readArray(jsonArray, "columnCount");
-		// System.out.println(columnCounts);
+		// List<String> columnCounts = jsonParser.readArray(jsonArray, "columnCount");
+		List<String> columns = null;
 		List<String> rows = null;
-		for (int i = 0; i < columnCounts.size(); i++) {
+
+		// Loop each table
+		for (int i = 0; i < jsonArray.length(); i++) {
+			// Parse all columns in current table
+			JSONArray columnsArray = jsonArray.getJSONObject(i).getJSONArray("columns");
+			columns = jsonParser.readArray(columnsArray, "column");
+
+			// Parse all rows in current table
 			JSONArray rowsArray = jsonArray.getJSONObject(i).getJSONArray("rows");
 			rows = jsonParser.readArray(rowsArray, "row");
-			// System.out.println(rows);
 
 			// Split the row cells by comma
 			List<String[]> rowsSplit = new ArrayList<String[]>();
 			for (int j = 0; j < rows.size(); j++) {
-				String rowsSplitCells[] =
-						rows.get(j).split("\\,", Integer.parseInt(columnCounts.get(i)));
+				String rowsSplitCells[] = rows.get(j).split("\\,", columns.size());
 				rowsSplit.add(rowsSplitCells);
 			}
-			String students[] = {"S1", "S2", "S3", "S4"};
-			Table table = new Table(this, rowsSplit.toArray(new Object[][] {}), students);
+
+			// Create the current table object and append to textpane
+			Table table = new Table(this, rowsSplit.toArray(new Object[][] {}),
+					columns.toArray(new String[] {}));
+			table.generate();
 		}
 	}
 

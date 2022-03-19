@@ -17,13 +17,32 @@
             "multipleChoiceQuiz": [],
             "tables": [
                 {
-                    "columnCount": "4",
-                    "rows": [
+                    "columns": [
                         {
-                            "row": "first,second,third,fourth"
+                            "column": "ID"
                         },
                         {
-                            "row": "second,third,fourth,first"
+                            "column": "Name"
+                        },
+                        {
+                            "column": "Age"
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "row": "1,Bob,47"
+                        },
+                        {
+                            "row": "2,Jonah,20"
+                        },
+                        {
+                            "row": "2,Jonah,20"
+                        },
+                        {
+                            "row": "2,Jonah,20"
+                        },
+                        {
+                            "row": "2,Jonah,20"
                         }
                     ]
                 }
