@@ -1,14 +1,11 @@
 package com.corejava.packages.textpane_ui;
 
-import java.awt.Dimension;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.text.StyledDocument;
-import net.miginfocom.swing.MigLayout;
 
 public class Table {
 

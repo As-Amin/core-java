@@ -6,7 +6,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Arrays",
@@ -15,38 +16,7 @@
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": [],
-            "tables": [
-                {
-                    "columns": [
-                        {
-                            "column": "ID"
-                        },
-                        {
-                            "column": "Name"
-                        },
-                        {
-                            "column": "Age"
-                        }
-                    ],
-                    "rows": [
-                        {
-                            "row": "1,Bob,47"
-                        },
-                        {
-                            "row": "2,Jonah,20"
-                        },
-                        {
-                            "row": "2,Jonah,20"
-                        },
-                        {
-                            "row": "2,Jonah,20"
-                        },
-                        {
-                            "row": "2,Jonah,20"
-                        }
-                    ]
-                }
-            ]
+            "tables": []
         },
         {
             "subheading": "List",
@@ -54,7 +24,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "HashMap",
@@ -62,7 +33,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "More data structures",
@@ -70,7 +42,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         }
     ]
 }

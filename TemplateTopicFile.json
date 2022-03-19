@@ -46,6 +46,29 @@
                     "feedbackRight": "Correct!",
                     "feedbackWrong": "Close but wrong!"
                 }
+            ],
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "column": ""
+                        },
+                        {
+                            "column": ""
+                        },
+                        {
+                            "column": ""
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "row": "Text,Text,Text"
+                        },
+                        {
+                            "row": "Text,Text,Text"
+                        }
+                    ]
+                }
             ]
         }
     ]

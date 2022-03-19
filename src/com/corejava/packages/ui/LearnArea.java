@@ -3,18 +3,11 @@ package com.corejava.packages.ui;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.StyledDocument;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -130,18 +123,15 @@ public class LearnArea extends JTextPane {
 			// Parse all columns in current table
 			JSONArray columnsArray = jsonArray.getJSONObject(i).getJSONArray("columns");
 			columns = jsonParser.readArray(columnsArray, "column");
-
 			// Parse all rows in current table
 			JSONArray rowsArray = jsonArray.getJSONObject(i).getJSONArray("rows");
 			rows = jsonParser.readArray(rowsArray, "row");
-
 			// Split the row cells by comma
 			List<String[]> rowsSplit = new ArrayList<String[]>();
 			for (int j = 0; j < rows.size(); j++) {
 				String rowsSplitCells[] = rows.get(j).split("\\,", columns.size());
 				rowsSplit.add(rowsSplitCells);
 			}
-
 			// Create the current table object and append to textpane
 			Table table = new Table(this, rowsSplit.toArray(new Object[][] {}),
 					columns.toArray(new String[] {}));

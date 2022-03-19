@@ -1,1 +1,190 @@
-This is an introduction to Java
+{
+    "paragraphs": [
+        {
+            "subheading": "What is an operator?",
+            "content": "An operator is used to specify how your program should perform operations on values, for example, the '-' operator subtracts one value from another etc. Java has different types of operators, which this topic will cover.",
+            "images": [
+                {
+                    "url": "/Operators/CODE(What Is Operator).png",
+                    "caption": "'Subtraction operator used to perform operations on variables'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "Arithmetic operators",
+            "content": "These are operators which perform mathematical operations.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "column": "Symbol"
+                        },
+                        {
+                            "column": "Name"
+                        },
+                        {
+                            "column": "Description"
+                        },
+                        {
+                            "column": "Example"
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "row": "+,Addition,Add two values,i + j"
+                        },
+                        {
+                            "row": "-,Subtraction,Subtract a value from another,i - j"
+                        },
+                        {
+                            "row": "/,Division,Divide a value by another,i / j"
+                        },
+                        {
+                            "row": "*,Multiplication,Times two values,i * j"
+                        },
+                        {
+                            "row": "%,Modulus,Divides two values and return the remainder,i % j"
+                        },
+                        {
+                            "row": "++,Increment,Add one to the value,i++"
+                        },
+                        {
+                            "row": "--,Decrement,Take one away from the value,i--"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "subheading": "Compare operators",
+            "content": "These are operators which compare values.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "column": "Symbol"
+                        },
+                        {
+                            "column": "Name"
+                        },
+                        {
+                            "column": "Example"
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "row": "==,Equal,i == j"
+                        },
+                        {
+                            "row": "!=,Not equal,i != j"
+                        },
+                        {
+                            "row": "<,Lesser than,i < j"
+                        },
+                        {
+                            "row": ">,Greater than,i > j"
+                        },
+                        {
+                            "row": "<=,Lesser than or equal to,i <= j"
+                        },
+                        {
+                            "row": ">=,Greater than or equal to,i >= j"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "subheading": "Assignment operators",
+            "content": "These are operators which assign variables to a specified value.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "column": "Symbol"
+                        },
+                        {
+                            "column": "Description"
+                        },
+                        {
+                            "column": "Example"
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "row": "=,Equals,i = 10"
+                        },
+                        {
+                            "row": "-=,Subtract value from variable and store,i -= 5"
+                        },
+                        {
+                            "row": "+=,Add value to variable and store,i += 5"
+                        },
+                        {
+                            "row": "/=,Divide variable by value and store,i /= 5"
+                        },
+                        {
+                            "row": "*=,Times variable with value and store,i *= 5"
+                        },
+                        {
+                            "row": "%=,Modulus variable by value and store,i %= 5"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "subheading": "Logical operators",
+            "content": "These are operators which check the logic between values.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "column": "Symbol"
+                        },
+                        {
+                            "column": "Name"
+                        },
+                        {
+                            "column": "Description"
+                        },
+                        {
+                            "column": "Example"
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "row": "&&,And,True if both statements are correct,i < 10 && j < 20"
+                        },
+                        {
+                            "row": "||,Or,True if one statements is correct,i < 10 || j < 20"
+                        },
+                        {
+                            "row": "!,Not,Reverse result (if true, return false and vice verse),!i < j"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
