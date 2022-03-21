@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
+import javax.swing.JOptionPane;
 import com.corejava.packages.Main;
 
 public class MenuBar extends JMenuBar {
@@ -17,6 +17,7 @@ public class MenuBar extends JMenuBar {
     public JMenuBar generate() {
         AllJMenu.put(Main.APP_NAME, new JMenu(Main.APP_NAME));
         AllJMenu.put("Profile", new JMenu("Profile"));
+        AllJMenu.put("Help", new JMenu("Help"));
 
         for (JMenu menu : AllJMenu.values()) {
             this.add(menu);
@@ -27,6 +28,8 @@ public class MenuBar extends JMenuBar {
 
         AllJMenuItems.put("Profile Progress", new JMenuItem("Progress"));
         AllJMenuItems.put("Profile SignOut", new JMenuItem("Sign out"));
+
+        AllJMenuItems.put("Help About", new JMenuItem("About"));
 
         for (String menuKey : AllJMenu.keySet()) {
             for (String menuItemKey : AllJMenuItems.keySet()) {
@@ -43,24 +46,26 @@ public class MenuBar extends JMenuBar {
     }
 
     private void loadAllConfigs() {
-        profileProgressConfig();
-        profileSignOutConfig();
-    }
-
-    private void profileProgressConfig() {
         AllJMenuItems.get("Profile Progress").addActionListener(new ActionListener() {
             @Override
-			public void actionPerformed(ActionEvent ev) {
+            public void actionPerformed(ActionEvent ev) {
                 //
             }
         });
-    }
-
-    private void profileSignOutConfig() {
         AllJMenuItems.get("Profile SignOut").addActionListener(new ActionListener() {
             @Override
-			public void actionPerformed(ActionEvent ev) {
+            public void actionPerformed(ActionEvent ev) {
                 //
+            }
+        });
+        AllJMenuItems.get("Help About").addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev) {
+                JOptionPane.showMessageDialog(null, Main.APP_CONFIG_OBJECT.getProperty("app.name")
+                        + ": " + Main.APP_CONFIG_OBJECT.getProperty("app.slogan") + "\n\n"
+                        + "Version: " + Main.APP_CONFIG_OBJECT.getProperty("app.version") + "\n\n"
+                        + "GitHub: " + Main.APP_CONFIG_OBJECT.getProperty("app.github") + "\n\n",
+                        "About", JOptionPane.PLAIN_MESSAGE);
             }
         });
     }
@@ -92,6 +97,4 @@ public class MenuBar extends JMenuBar {
     public void setAllJMenuItems(LinkedHashMap<String, JMenuItem> AllJMenuItems) {
         this.AllJMenuItems = AllJMenuItems;
     }
-
 }
-

@@ -10,7 +10,7 @@ import com.formdev.flatlaf.FlatLaf;
 
 public class Main {
 	public static final String APP_NAME = "CoreJava";
-	public static final String APP_SLOGAN = "Learn the fundamentals";
+	public static final String APP_SLOGAN = "Learn the fundamentals of Java";
 
 	public static final String IMAGES_DIRECTORY = "./res";
 	public static final String TOPICS_DIRECTORY = "./topics";
