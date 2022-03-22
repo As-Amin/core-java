@@ -52,7 +52,7 @@ public class Home extends JFrame {
 	public static LoadingBar loadingBar = new LoadingBar();
 
 	// The menu bar at the top of the window - is not apart of the content pane but frame
-	private MenuBar menuBar = new MenuBar();
+	private MenuBar menuBar = new MenuBar(true);
 
 	public Home() {
 		// Topic list panel is fixed according to panel width
@@ -69,7 +69,6 @@ public class Home extends JFrame {
 		searchButtonPanel.setLayout(new MigLayout("", "0[fill,grow][fill,grow]0", "0[]0"));
 		searchButtonPanel.add(searchButton, "cell 0 0");
 		searchButtonPanel.add(resetButton, "cell 1 0");
-		addButtonListeners();
 		leftPanel.add(searchButtonPanel, "cell 0 1");
 		leftPanel.add(buttonSeperator, "cell 0 2");
 		leftPanel.add(topicList.generate(), "cell 0 3");
@@ -90,6 +89,7 @@ public class Home extends JFrame {
 		this.setJMenuBar(menuBar.generate());
 
 		setupFrame(); // Setup the frames properties
+		addButtonListeners();
 		setClientProperties(); // Setup the client theming properties for FlatLaf
 		setToolTips(); // Setup the tooltips for all component objects created
 		Home.loadingBar.load();
