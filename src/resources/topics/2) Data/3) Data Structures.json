@@ -1,0 +1,85 @@
+{
+    "paragraphs": [
+        {
+            "subheading": "What is a data structure?",
+            "content": "A data structure organises data in memory. Different data structures store data differently in memory which allows for each data structure allowing programmers to handle the data in different ways. For example, some data structures do not allow for data to be modified after runtime, whereas others do etc.\n\nThere are many data structures in Java, this topic will only cover the most common data structures.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "",
+            "content": "There are many data structures in Java, this topic will only cover the most common data structures.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "Arrays",
+            "content": "Arrays are data structures which store multiple variables of the same data type.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "",
+            "content": "To access the elements of an array, you must call the array by its name followed by square brackets with the index of the element you want to access. Remember: Arrays are zero-indexed in Java meaning the elements indexes start at 0.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "",
+            "content": "Arrays are declared using square brackets after the data type and to place the values and variables in curly brackets (as seen in the example below).",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "",
+            "content": "To change an element of an array, call the element of the array by its index and after the equals symbol, assign the value at that index in the array to the new value of your choice, of the same data type.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "",
+            "content": "Arrays in Java can also have multiple dimensions e.g. 2D, 3D etc. Multidimensional arrays store multiple sets of different datasets of different lengths but of the same data type, in a single array. To declare a multidimensional array, see the example below.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "List",
+            "content": "",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "HashMap",
+            "content": "",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        }
+    ]
+}

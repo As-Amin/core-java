@@ -15,7 +15,7 @@
         },
         {
             "subheading": "What is Java?",
-            "content": "Java is an object-oriented high level programming language that is based on the C and C++ programming languages. Java is fast, secure and reliable and is used to develop applications used on desktops, laptops, servers, mobile phones and more!\n\nThe platform is owned by the Oracle Corporation and the primary reason for why it is so popular is because it can be run on a wide variety of computing platforms, has a long history (released 1996) and the same code can be executed on various machines and systems.",
+            "content": "Java is an object-oriented high level programming language that is based on the C and C++ programming languages. Java is fast, secure and reliable and is used to develop applications used on desktops, laptops, servers, mobile phones and more!",
             "images": [
                 {
                     "url": "/Welcome to CoreJava/IMAGE(Java Platforms).png",
@@ -46,6 +46,14 @@
                     "feedbackWrong": "Wrong! Java is based on the C and C++ programming languages. Many people think JavaScript is related to Java because of their similiar names... They actually have many differences."
                 }
             ]
+        },
+        {
+            "subheading": "",
+            "content": "The platform is owned by the Oracle Corporation and the primary reason for why it is so popular is because it can be run on a wide variety of computing platforms, has a long history (released 1996) and the same code can be executed on various machines and systems.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
         },
         {
             "subheading": "Why should you use CoreJava?",

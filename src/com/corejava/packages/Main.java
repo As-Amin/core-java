@@ -9,8 +9,8 @@ import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
 
 public class Main {
-	public static final String IMAGES_DIRECTORY = "./res";
-	public static final String TOPICS_DIRECTORY = "./topics";
+	public static final String IMAGES_DIRECTORY = "./src/resources/images";
+	public static final String TOPICS_DIRECTORY = "./src/resources/topics";
 
 	public static String THEME_CONFIG_DIRECTORY =
 			"./src/com/corejava/packages/themes/FlatDarkLaf.properties";
@@ -46,8 +46,8 @@ public class Main {
 		try {
 			FlatDarkLaf.setup();
 			@SuppressWarnings("unused")
-			// Home homeScreen = new Home();
-			Login loginScreen = new Login();
+			Home homeScreen = new Home();
+			// Login loginScreen = new Login();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

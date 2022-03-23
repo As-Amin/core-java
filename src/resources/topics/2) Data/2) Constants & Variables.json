@@ -2,7 +2,15 @@
     "paragraphs": [
         {
             "subheading": "What is a variable in Java?",
-            "content": "A variable is a container which stores data specified by a program.\n\nThe data type must be specified in Java as it is a strongly typed language (variables must be specified with a data type) unlike JavaScript which is a loosley typed language.",
+            "content": "A variable is a container which stores data specified by a program.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "",
+            "content": "The data type must be specified in Java as it is a strongly typed language (variables must be specified with a data type) unlike JavaScript which is a loosley typed language.",
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
@@ -23,7 +31,7 @@
         },
         {
             "subheading": "Static variables",
-            "content": "A variable which is declared inside of a class but outside of a method. It can be accessed by any class by calling the class name in which it is declared followed by the variable name.\n\nMost static variables are declared public so that they can be accessed by any class but they can also be declared private. Static variables are usually used to declare constants (covered on this page), but can also be used as variables.",
+            "content": "A variable which is declared inside of a class but outside of a method. It can be accessed by any class by calling the class name in which it is declared followed by the variable name.",
             "images": [
                 {
                     "url": "/Constants & Variables/CODE(Static Variable).png",
@@ -34,6 +42,14 @@
                     "caption": "'The output in the console after running the program above.'"
                 }
             ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "",
+            "content": "Most static variables are declared public so that they can be accessed by any class but they can also be declared private. Static variables are usually used to declare constants (covered on this page), but can also be used as variables.",
+            "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
@@ -53,13 +69,21 @@
         },
         {
             "subheading": "Constants",
-            "content": "A constant in Java is like a variable but it cannot be changed after runtime (read-only). To declare a variable as a constant, just add the 'final' keyword before declaring the variable like below!\n\nThe syntax to declare final static variables is in uppercase characters with words seperated with underscores.",
+            "content": "A constant in Java is like a variable but it cannot be changed after runtime (read-only). To declare a variable as a constant, just add the 'final' keyword before declaring the variable like below!",
             "images": [
                 {
                     "url": "/Constants & Variables/CODE(Final Constant).png",
                     "caption": "'A static final string declared in a class.'"
                 }
             ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "",
+            "content": "The syntax to declare final static variables is in uppercase characters with words seperated with underscores.",
+            "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []

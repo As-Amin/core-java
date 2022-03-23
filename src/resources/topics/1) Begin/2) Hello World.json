@@ -2,13 +2,21 @@
     "paragraphs": [
         {
             "subheading": "What is an IDE?",
-            "content": "An IDE (Integrated Development Environment) is software which allows developers to write code with increased efficiency through features such as autocomplete, syntax highlighting etc. and run the code aswell as debug, build, edit and much more.\n\nCoreJava recommends you choose a Java IDE from the following if you are a beginner: Eclipse, IntelliJ or VS Code. CoreJava will guide you through installing the Eclipse IDE but if you want to use another IDE, there are links below guiding you on how to set them up to program in Java!",
+            "content": "An IDE (Integrated Development Environment) is software which allows developers to write code with increased efficiency through features such as autocomplete, syntax highlighting etc. and run the code aswell as debug, build, edit and much more.iJ or VS Code.",
             "images": [
                 {
                     "url": "/Hello World/IMAGE(VS Code).png",
                     "caption": "'VS Code's logo - A free and open source IDE (Source: https://code.visualstudio.com/)'"
                 }
             ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "",
+            "content": "CoreJava recommends you choose a Java IDE from the following if you are a beginner: Eclipse, IntelliJ or VS Code. CoreJava will guide you through installing the Eclipse IDE but if you want to use another IDE, there are links below guiding you on how to set them up to program in Java!",
+            "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
@@ -104,13 +112,21 @@
         },
         {
             "subheading": "Program your first Java application!",
-            "content": "Now you are ready to program your first Java application. Type in 'System.out.println('Hello world')' beneath the comment like below. This line prints out whatever is inside the brackets to the console!\n\nNow, click on the green play button at the top of the IDE. Your console should display 'Hello world'.",
+            "content": "Now you are ready to program your first Java application. Type in 'System.out.println('Hello world')' beneath the comment like below. This line prints out whatever is inside the brackets to the console!",
             "images": [
                 {
                     "url": "/Hello World/CODE(Hello World).png",
                     "caption": "'Your first program!'"
                 }
             ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "",
+            "content": "Now, click on the green play button at the top of the IDE. Your console should display 'Hello world'.",
+            "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
