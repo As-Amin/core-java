@@ -1,4 +1,4 @@
-package com.corejava.packages.textpane_ui;
+package com.corejava.packages.textpane;
 
 import java.awt.Color;
 

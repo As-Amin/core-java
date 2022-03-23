@@ -1,4 +1,4 @@
-package com.corejava.packages.home;
+package com.corejava.packages.screens;
 
 import java.awt.Container;
 import java.awt.Dimension;
@@ -13,10 +13,9 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 import com.corejava.packages.Main;
-import com.corejava.packages.textpane_ui.Text;
+import com.corejava.packages.textpane.Text;
 import com.corejava.packages.ui.LearnArea;
 import com.corejava.packages.ui.ListFiles;
-import com.corejava.packages.ui.LoadingBar;
 import com.corejava.packages.ui.MenuBar;
 import com.corejava.packages.ui.ScrollTextPane;
 import com.corejava.packages.ui.TextBox;
@@ -49,7 +48,6 @@ public class Home extends JFrame {
 	public static TextBox topicTitleBox = new TextBox("Topic: ", "", false);
 	public static TextBox sectionTitleBox = new TextBox("Section: ", "", false);
 	public static LearnArea topicLearnArea = new LearnArea();
-	public static LoadingBar loadingBar = new LoadingBar();
 
 	// The menu bar at the top of the window - is not apart of the content pane but frame
 	private MenuBar menuBar = new MenuBar(true);
@@ -77,11 +75,10 @@ public class Home extends JFrame {
 
 		// Right panel - Just like left panel but different components
 		rightPanel.setLayout(new MigLayout("", "0[fill,grow]0", // Width, column
-				"0[][][][fill,grow]0")); // Height, row
+				"0[][][fill,grow]0")); // Height, row
 		rightPanel.add(topicTitleBox, "cell 0 0");
 		rightPanel.add(sectionTitleBox, "cell 0 1");
-		rightPanel.add(loadingBar, "cell 0 2");
-		rightPanel.add(topicLearnArea.generate(), "cell 0 3");
+		rightPanel.add(topicLearnArea.generate(), "cell 0 2");
 		contentPane.add(rightPanel, "cell 1 0");
 
 		// Add the menu bar, by calling the function in the class which creates
@@ -92,7 +89,6 @@ public class Home extends JFrame {
 		addButtonListeners();
 		setClientProperties(); // Setup the client theming properties for FlatLaf
 		setToolTips(); // Setup the tooltips for all component objects created
-		Home.loadingBar.load();
 		setInitialLearnArea(); // Setup the text and components content in the learn area
 	}
 

@@ -3,8 +3,8 @@ package com.corejava.packages;
 import java.awt.Color;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
-import com.corejava.packages.account.Login;
-import com.corejava.packages.home.Home;
+import com.corejava.packages.screens.Home;
+import com.corejava.packages.screens.Login;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
 
@@ -46,8 +46,8 @@ public class Main {
 		try {
 			FlatDarkLaf.setup();
 			@SuppressWarnings("unused")
-			Home homeScreen = new Home();
-			// Login loginScreen = new Login();
+			// Home homeScreen = new Home();
+			Login loginScreen = new Login();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

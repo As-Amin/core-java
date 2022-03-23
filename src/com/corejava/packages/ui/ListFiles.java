@@ -10,10 +10,8 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
+import com.corejava.packages.screens.Home;
 import org.apache.commons.io.comparator.NameFileComparator;
-
-import com.corejava.packages.home.Home;
 
 public class ListFiles extends JScrollPane {
 	private ArrayList<File> allParentFiles = new ArrayList<File>();

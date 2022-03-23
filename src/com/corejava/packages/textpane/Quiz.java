@@ -1,4 +1,4 @@
-package com.corejava.packages.textpane_ui;
+package com.corejava.packages.textpane;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -55,7 +55,7 @@ public class Quiz {
             // the correct answer to determine if correct or incorrect
             submitButton.addActionListener(new ActionListener() {
                 @Override
-				public void actionPerformed(ActionEvent event) {
+                public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase(optionsBox.getSelectedItem().toString())) {
                         if (feedbackRight != null) {
                             feedbackArea.removeAll();
@@ -105,7 +105,7 @@ public class Quiz {
             // the correct answer to determine if correct or incorrect
             submitButton.addActionListener(new ActionListener() {
                 @Override
-				public void actionPerformed(ActionEvent event) {
+                public void actionPerformed(ActionEvent event) {
                     if (answerField.getText().equalsIgnoreCase(answer)) {
                         if (feedbackRight != null) {
                             feedbackArea.removeAll();
@@ -153,7 +153,7 @@ public class Quiz {
             // compared to the correct answer to determine if the statement is true
             trueButton.addActionListener(new ActionListener() {
                 @Override
-				public void actionPerformed(ActionEvent event) {
+                public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase("true")) {
                         if (feedbackRight != null) {
                             feedbackArea.removeAll();
@@ -171,7 +171,7 @@ public class Quiz {
             // compared to the correct answer to determine if the statement is false
             falseButton.addActionListener(new ActionListener() {
                 @Override
-				public void actionPerformed(ActionEvent event) {
+                public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase("false")) {
                         if (feedbackRight != null) {
                             feedbackArea.removeAll();

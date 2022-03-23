@@ -12,12 +12,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.corejava.packages.Main;
-import com.corejava.packages.home.Home;
 import com.corejava.packages.json.JSONParser;
-import com.corejava.packages.textpane_ui.Image;
-import com.corejava.packages.textpane_ui.Quiz;
-import com.corejava.packages.textpane_ui.Table;
-import com.corejava.packages.textpane_ui.Text;
+import com.corejava.packages.screens.Home;
+import com.corejava.packages.textpane.Image;
+import com.corejava.packages.textpane.Quiz;
+import com.corejava.packages.textpane.Table;
+import com.corejava.packages.textpane.Text;
 
 public class LearnArea extends JTextPane {
 	private JSONObject jsonObject;
