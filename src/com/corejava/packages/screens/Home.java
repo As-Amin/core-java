@@ -64,7 +64,7 @@ public class Home extends JFrame {
 		// Left panel - Has its own layout manager so doesnt interfere with right panel
 		// components and easier to manage
 		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0", // width, height
-				"0[][]10[fill, " + frameHeight * 0.01 + "!][fill,grow]10[fill, "
+				"0[]10[]10[fill, " + frameHeight * 0.01 + "!][fill,grow]10[fill, "
 						+ frameHeight * 0.01 + "!][fill, " + frameHeight * 0.15 + "!]0")); // height
 		leftPanel.add(searchTopicInput, "cell 0 0");
 		searchButtonPanel.setLayout(new MigLayout("", "0[fill,grow][fill,grow]0", "0[]0"));
@@ -117,11 +117,12 @@ public class Home extends JFrame {
 	 */
 	private void setClientProperties() {
 		leftPanel.putClientProperty(FlatClientProperties.STYLE_CLASS, "roundPanelDark");
+		searchButtonPanel.putClientProperty("FlatLaf.style", "background: @componentBackground");
 		rightPanel.putClientProperty(FlatClientProperties.STYLE_CLASS, "roundPanelLight");
 
 		searchTopicInput.putClientProperty("JTextField.placeholderText", "Search topics...");
-		topicTitleBox.putClientProperty("FlatLaf.style",
-				"font: $large.font;" + "foreground: @accentColor;");
+		searchTopicInput.putClientProperty("FlatLaf.style", "background: @background");
+		topicTitleBox.putClientProperty("FlatLaf.style", "font: $large.font;");
 		topicFeedbackArea.putClientProperty("FlatLaf.style",
 				"background: @componentBackground;" + "foreground: @secondaryAccentColor");
 	}
