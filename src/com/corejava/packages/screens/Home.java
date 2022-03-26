@@ -24,37 +24,34 @@ import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
 	// The frame dimensions (the initial size of the window)
-	private int frameWidth = 800;
-	private int frameHeight = 600;
+	private int frameWidth = 750;
+	private int frameHeight = 550;
 
 	// The content pane derived from the classes frame - used to
 	// add components created to
 	private Container contentPane = this.getContentPane();
 
-	/////////////////////////////////////////////////////////////////////////////
 	// Left panel components - Initialise the components that will
 	// be displayed on the left side of the screen
 	private JPanel leftPanel = new JPanel();
 	private double leftPanelWidth = 200;
-
-	private JPanel searchPanel = new JPanel();
+	private JPanel searchButtonPanel = new JPanel();
 	private TextBox searchTopicInput = new TextBox("", "", true);
 	private JButton searchButton = new JButton("Search");
 	private JButton resetButton = new JButton("Reset");
-
-	private JPanel topicListPanel = new JPanel();
+	private JSeparator buttonSeperator = new JSeparator(SwingConstants.HORIZONTAL);
 	private ListFiles topicList = new ListFiles(Main.TOPICS_DIRECTORY, ')');
-
-	private JPanel topicFeedbackPanel = new JPanel();
+	private JSeparator feedbackSeperator = new JSeparator(SwingConstants.HORIZONTAL);
 	public static ScrollTextPane topicFeedbackArea = new ScrollTextPane();
-	/////////////////////////////////////////////////////////////////////////////
 
 	// Right panel components - Public and global because needs to be
 	// modified by different classes and functions outside of this one
 	private JPanel rightPanel = new JPanel();
 	public static TextBox topicTitleBox = new TextBox("Topic: ", "", false);
-	public static TextBox sectionTitleBox = new TextBox("Section: ", "", false);
+	private JSeparator titleSeperator = new JSeparator(SwingConstants.HORIZONTAL);
 	public static LearnArea topicLearnArea = new LearnArea();
+	public static TextBox sectionTitleBox = new TextBox("Section: ", "", false);
+	private JSeparator sectionSeperator = new JSeparator(SwingConstants.HORIZONTAL);
 
 	// The menu bar at the top of the window - is not apart of the content pane but frame
 	private MenuBar menuBar = new MenuBar(true);
@@ -64,35 +61,31 @@ public class Home extends JFrame {
 		contentPane.setLayout(
 				new MigLayout("", "[fill," + leftPanelWidth + "!][fill,grow]", "[fill,grow]"));
 
-		/////////////////////////////////////////////////////////////////////////////
-		// LEFT PANEL - Has its own layout manager so doesnt interfere with right panel
+		// Left panel - Has its own layout manager so doesnt interfere with right panel
 		// components and easier to manage
 		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0", // width, height
-				"0[][fill,grow][fill, " + frameHeight * 0.15 + "!]0")); // height
-		searchPanel.setLayout(
-				new MigLayout("", "0[fill,grow][fill,grow]0", "0[fill,grow][fill,grow]0"));
-		searchPanel.add(searchTopicInput, "cell 0 0 2 0");
-		searchPanel.add(searchButton, "cell 0 1");
-		searchPanel.add(resetButton, "cell 1 1");
-		leftPanel.add(searchPanel, "cell 0 0");
-
-		topicListPanel.setLayout(new MigLayout("", "0[fill,grow]0", "0[fill,grow]0"));
-		topicListPanel.add(topicList.generate(), "cell 0 0");
-		leftPanel.add(topicListPanel, "cell 0 1");
-
-		topicFeedbackPanel.setLayout(new MigLayout("", "0[fill,grow]0", "0[fill,grow]0"));
-		topicFeedbackPanel.add(topicFeedbackArea.generate(), "cell 0 0");
-		leftPanel.add(topicFeedbackPanel, "cell 0 2");
-
+				"0[][]10[fill, " + frameHeight * 0.01 + "!][fill,grow]10[fill, "
+						+ frameHeight * 0.01 + "!][fill, " + frameHeight * 0.15 + "!]0")); // height
+		leftPanel.add(searchTopicInput, "cell 0 0");
+		searchButtonPanel.setLayout(new MigLayout("", "0[fill,grow][fill,grow]0", "0[]0"));
+		searchButtonPanel.add(searchButton, "cell 0 0");
+		searchButtonPanel.add(resetButton, "cell 1 0");
+		leftPanel.add(searchButtonPanel, "cell 0 1");
+		leftPanel.add(buttonSeperator, "cell 0 2");
+		leftPanel.add(topicList.generate(), "cell 0 3");
+		leftPanel.add(feedbackSeperator, "cell 0 4");
+		leftPanel.add(topicFeedbackArea.generate(), "cell 0 5");
 		contentPane.add(leftPanel, "cell 0 0");
-		/////////////////////////////////////////////////////////////////////////////
 
 		// Right panel - Just like left panel but different components
 		rightPanel.setLayout(new MigLayout("", "0[fill,grow]0", // Width, column
-				"0[][][fill,grow]0")); // Height, row
+				"0[]10[fill, " + frameHeight * 0.01 + "!][fill,grow]10[fill, " + frameHeight * 0.01
+						+ "!][]0")); // Height, row
 		rightPanel.add(topicTitleBox, "cell 0 0");
-		rightPanel.add(sectionTitleBox, "cell 0 1");
+		rightPanel.add(titleSeperator, "cell 0 1");
 		rightPanel.add(topicLearnArea.generate(), "cell 0 2");
+		rightPanel.add(sectionSeperator, "cell 0 3");
+		rightPanel.add(sectionTitleBox, "cell 0 4");
 		contentPane.add(rightPanel, "cell 1 0");
 
 		// Add the menu bar, by calling the function in the class which creates
@@ -123,9 +116,9 @@ public class Home extends JFrame {
 	 * not added to properties files
 	 */
 	private void setClientProperties() {
-		searchPanel.putClientProperty(FlatClientProperties.STYLE_CLASS, "myRoundPanel");
-		topicListPanel.putClientProperty(FlatClientProperties.STYLE_CLASS, "myRoundPanel");
-		topicFeedbackPanel.putClientProperty(FlatClientProperties.STYLE_CLASS, "myRoundPanel");
+		leftPanel.putClientProperty(FlatClientProperties.STYLE_CLASS, "roundPanelDark");
+		rightPanel.putClientProperty(FlatClientProperties.STYLE_CLASS, "roundPanelLight");
+
 		searchTopicInput.putClientProperty("JTextField.placeholderText", "Search topics...");
 		topicTitleBox.putClientProperty("FlatLaf.style",
 				"font: $large.font;" + "foreground: @accentColor;");
