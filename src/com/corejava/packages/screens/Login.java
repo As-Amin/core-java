@@ -13,6 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
+import com.corejava.packages.account.SQLite;
 import com.corejava.packages.ui.MenuBar;
 import com.corejava.packages.ui.TextBox;
 
@@ -38,6 +39,8 @@ public class Login extends JFrame {
 	private JButton signUpButton = new JButton("Don't have an account? Sign up here!");
 
 	private MenuBar menuBar = new MenuBar(false);
+
+	private SQLite sqlite = new SQLite();
 
 	public Login() {
 		contentPane.setLayout(new MigLayout("", "[fill,grow]", "[fill,grow]"));

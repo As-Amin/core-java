@@ -46,8 +46,8 @@ public class Main {
 		try {
 			FlatDarkLaf.setup();
 			@SuppressWarnings("unused")
-			// Home homeScreen = new Home();
-			Login loginScreen = new Login();
+			// Login loginScreen = new Login();
+			Home homeScreen = new Home();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
