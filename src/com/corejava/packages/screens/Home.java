@@ -4,7 +4,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -24,7 +24,7 @@ import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
 	// The frame dimensions (the initial size of the window)
-	private int frameWidth = 750;
+	private int frameWidth = 780;
 	private int frameHeight = 550;
 
 	// The content pane derived from the classes frame - used to
@@ -34,7 +34,7 @@ public class Home extends JFrame {
 	// Left panel components - Initialise the components that will
 	// be displayed on the left side of the screen
 	private JPanel leftPanel = new JPanel();
-	private double leftPanelWidth = 200;
+	private double leftPanelWidth = 220;
 	private JPanel searchButtonPanel = new JPanel();
 	private TextBox searchTopicInput = new TextBox("", "", true);
 	private JButton searchButton = new JButton("Search");
@@ -116,15 +116,15 @@ public class Home extends JFrame {
 	 * not added to properties files
 	 */
 	private void setClientProperties() {
-		leftPanel.putClientProperty(FlatClientProperties.STYLE_CLASS, "roundPanelDark");
-		searchButtonPanel.putClientProperty("FlatLaf.style", "background: @componentBackground");
-		rightPanel.putClientProperty(FlatClientProperties.STYLE_CLASS, "roundPanelLight");
-
 		searchTopicInput.putClientProperty("JTextField.placeholderText", "Search topics...");
 		searchTopicInput.putClientProperty("FlatLaf.style", "background: @background");
 		topicTitleBox.putClientProperty("FlatLaf.style", "font: $large.font;");
 		topicFeedbackArea.putClientProperty("FlatLaf.style",
 				"background: @componentBackground;" + "foreground: @secondaryAccentColor");
+
+		leftPanel.putClientProperty(FlatClientProperties.STYLE_CLASS, "roundPanelDark");
+		searchButtonPanel.putClientProperty("FlatLaf.style", "background: @componentBackground");
+		rightPanel.putClientProperty(FlatClientProperties.STYLE_CLASS, "roundPanelLight");
 	}
 
 	/**

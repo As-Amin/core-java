@@ -29,8 +29,13 @@
         },
         {
             "subheading": "",
-            "content": "To access the elements of an array, you must call the array by its name followed by square brackets with the index of the element you want to access. Remember: Arrays are zero-indexed in Java meaning the elements indexes start at 0.",
-            "images": [],
+            "content": "Arrays are declared using square brackets after the data type and to place the values and variables in curly brackets.",
+            "images": [
+                {
+                    "url": "/Data Structures/CODE(Array Declare).png",
+                    "caption": "'Example of how to declare an array'"
+                }
+            ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": [],
@@ -38,8 +43,13 @@
         },
         {
             "subheading": "",
-            "content": "Arrays are declared using square brackets after the data type and to place the values and variables in curly brackets (as seen in the example below).",
-            "images": [],
+            "content": "To access the elements of an array, you must call the array by its name followed by square brackets with the index of the element you want to access. Remember: Arrays are zero-indexed in Java meaning the elements indexes start at 0.",
+            "images": [
+                {
+                    "url": "/Data Structures/CODE(Array Get).png",
+                    "caption": "'Example of how to get an element from an array'"
+                }
+            ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": [],
@@ -48,7 +58,26 @@
         {
             "subheading": "",
             "content": "To change an element of an array, call the element of the array by its index and after the equals symbol, assign the value at that index in the array to the new value of your choice, of the same data type.",
-            "images": [],
+            "images": [
+                {
+                    "url": "/Data Structures/CODE(Array Set).png",
+                    "caption": "'Example of how to change an element of an array'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "",
+            "content": "You can also access the size of an array. See the example below to see how to do this.",
+            "images": [
+                {
+                    "url": "/Data Structures/CODE(Array Length).png",
+                    "caption": "'Example of how to get the length of an array'"
+                }
+            ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": [],
@@ -57,6 +86,20 @@
         {
             "subheading": "",
             "content": "Arrays in Java can also have multiple dimensions e.g. 2D, 3D etc. Multidimensional arrays store multiple sets of different datasets of different lengths but of the same data type, in a single array. To declare a multidimensional array, see the example below.",
+            "images": [
+                {
+                    "url": "/Data Structures/CODE(Array 2D).png",
+                    "caption": "'Example of how to create a multi dimensional array and access an element'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "ArrayList",
+            "content": "ArrayLists are similar to arrays in that they are data structures which store multiple variables of the same data type however, they are resizeable. Note: ArrayList is not included in Java's default package, it must be imported like the example below.",
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
@@ -64,8 +107,8 @@
             "tables": []
         },
         {
-            "subheading": "List",
-            "content": "",
+            "subheading": "",
+            "content": "To add an element to an array, you must call the ArrayList by its name and call the function 'add()' with the element you want to add to the list in the brackets.",
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
@@ -73,9 +116,42 @@
             "tables": []
         },
         {
-            "subheading": "HashMap",
-            "content": "",
-            "images": [],
+            "subheading": "",
+            "content": "To access the elements of an ArrayList, you must call the ArrayList by its name and call the function 'get()' with the index of the element you want to access in the brackets.",
+            "images": [
+                {
+                    "url": "/Data Structures/CODE(ArrayList Add Get).png",
+                    "caption": "'Example of how to import and declare an ArrayList, add elements and get elements'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "",
+            "content": "To change an element of an ArrayList, call the 'set()' method on the ArrayList, with the first parameter being the index you want to change and the second parameter being the new element.",
+            "images": [
+                {
+                    "url": "/Data Structures/CODE(ArrayList Set).png",
+                    "caption": "'Example of how to modify an element in an ArrayList'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "",
+            "content": "In Java, the ArrayList has much more methods than a regular array. The example below has some examples of these methods.",
+            "images": [
+                {
+                    "url": "/Data Structures/CODE(ArrayList Other).png",
+                    "caption": "'Example of other functions that an ArrayList can do'"
+                }
+            ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": [],

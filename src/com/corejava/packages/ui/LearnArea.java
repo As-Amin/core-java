@@ -109,7 +109,7 @@ public class LearnArea extends JTextPane {
 			Image image = new Image(new File(Main.IMAGES_DIRECTORY + imagesUrlList.get(i)), this);
 			image.generate();
 			Text caption = new Text(("Caption: " + captionsList.get(i)), Main.ACCENT_COLOR, this);
-			caption.generateText();
+			caption.generateCaption();
 		}
 	}
 

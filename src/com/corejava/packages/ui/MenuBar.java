@@ -21,9 +21,6 @@ public class MenuBar extends JMenuBar {
 
     public JMenuBar generate() {
         AllJMenu.put(Main.APP_NAME, new JMenu(Main.APP_NAME));
-        if (isLoggedIn) {
-            AllJMenu.put("Profile", new JMenu("Profile"));
-        }
         AllJMenu.put("Help", new JMenu("Help"));
 
         for (JMenu menu : AllJMenu.values()) {
@@ -33,10 +30,6 @@ public class MenuBar extends JMenuBar {
         // Disable app title button - places the app name first in menu
         AllJMenu.get(Main.APP_NAME).setEnabled(false);
 
-        if (isLoggedIn) {
-            AllJMenuItems.put("Profile Progress", new JMenuItem("Progress"));
-            AllJMenuItems.put("Profile SignOut", new JMenuItem("Sign out"));
-        }
         AllJMenuItems.put("Help About", new JMenuItem("About"));
 
         for (String menuKey : AllJMenu.keySet()) {
@@ -54,20 +47,6 @@ public class MenuBar extends JMenuBar {
     }
 
     private void loadAllConfigs() {
-        if (isLoggedIn) {
-            AllJMenuItems.get("Profile Progress").addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent ev) {
-                    //
-                }
-            });
-            AllJMenuItems.get("Profile SignOut").addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent ev) {
-                    //
-                }
-            });
-        }
         AllJMenuItems.get("Help About").addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {

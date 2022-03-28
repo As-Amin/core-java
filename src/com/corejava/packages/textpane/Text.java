@@ -34,6 +34,22 @@ public class Text {
         }
     }
 
+    public void generateCaption() {
+        try {
+            textPane.setContentType("text/plain");
+            StyledDocument document = (StyledDocument) textPane.getDocument();
+            Style style = textPane.addStyle("", null);
+            if (foreground != null) {
+                StyleConstants.setItalic(style, true);
+                StyleConstants.setForeground(style, foreground);
+            }
+            document.insertString(document.getLength(), text, style);
+            document.insertString(document.getLength(), "\n\n", null);
+        } catch (BadLocationException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void generateQuestion() {
         try {
             textPane.setContentType("text/plain");

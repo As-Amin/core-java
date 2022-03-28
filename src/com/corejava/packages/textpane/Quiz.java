@@ -57,15 +57,12 @@ public class Quiz {
                 @Override
                 public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase(optionsBox.getSelectedItem().toString())) {
-                        if (feedbackRight != null) {
-                            feedbackArea.removeAll();
-                            feedbackArea.setText(feedbackRight);
-                        }
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackRight);
+
                     } else {
-                        if (feedbackWrong != null) {
-                            feedbackArea.removeAll();
-                            feedbackArea.setText(feedbackWrong);
-                        }
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackWrong);
                     }
                 }
             });
@@ -107,15 +104,15 @@ public class Quiz {
                 @Override
                 public void actionPerformed(ActionEvent event) {
                     if (answerField.getText().equalsIgnoreCase(answer)) {
-                        if (feedbackRight != null) {
-                            feedbackArea.removeAll();
-                            feedbackArea.setText(feedbackRight);
-                        }
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackRight);
+
+                    } else if (answerField.getText().length() > 0) {
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackWrong);
                     } else {
-                        if (feedbackWrong != null) {
-                            feedbackArea.removeAll();
-                            feedbackArea.setText(feedbackWrong);
-                        }
+                        feedbackArea.removeAll();
+                        feedbackArea.setText("Enter your answer in the box!");
                     }
                 }
             });
@@ -155,15 +152,12 @@ public class Quiz {
                 @Override
                 public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase("true")) {
-                        if (feedbackRight != null) {
-                            feedbackArea.removeAll();
-                            feedbackArea.setText(feedbackRight);
-                        }
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackRight);
+
                     } else {
-                        if (feedbackWrong != null) {
-                            feedbackArea.removeAll();
-                            feedbackArea.setText(feedbackWrong);
-                        }
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackWrong);
                     }
                 }
             });
@@ -173,15 +167,12 @@ public class Quiz {
                 @Override
                 public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase("false")) {
-                        if (feedbackRight != null) {
-                            feedbackArea.removeAll();
-                            feedbackArea.setText(feedbackRight);
-                        }
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackRight);
+
                     } else {
-                        if (feedbackWrong != null) {
-                            feedbackArea.removeAll();
-                            feedbackArea.setText(feedbackWrong);
-                        }
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackWrong);
                     }
                 }
             });

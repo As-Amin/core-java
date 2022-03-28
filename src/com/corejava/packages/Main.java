@@ -1,6 +1,7 @@
 package com.corejava.packages;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import com.corejava.packages.screens.Home;
@@ -53,21 +54,4 @@ public class Main {
 		}
 	}
 }
-
-/*
- * public class ExampleClass { // Declare a private instance variable (double) private double
- * instanceVariable = 0.5; // Declare a public instance variable (boolean) public Boolean isInstance
- * = true;
- * 
- * public void ExampleMethod() { // Print the boolean variable to the console
- * System.out.println(isInstance); } }
- */
-
-/*
- * public class ExampleClass { // Declare a static variable (String) static String staticStr =
- * "This is a static variable"; }
- * 
- * public class AnotherExampleClass { public void AnotherExampleMethod() { // Print the static
- * variable to the console System.out.println(ExampleClass.staticStr); } }
- */
 
