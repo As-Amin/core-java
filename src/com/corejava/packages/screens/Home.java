@@ -24,7 +24,7 @@ import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
 	// The frame dimensions (the initial size of the window)
-	private int frameWidth = 780;
+	private int frameWidth = 800;
 	private int frameHeight = 550;
 
 	// The content pane derived from the classes frame - used to

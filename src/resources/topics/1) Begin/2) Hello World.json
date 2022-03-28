@@ -19,15 +19,64 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [
+                {
+                    "question": "Which of these is not a feature of an IDE?",
+                    "options": [
+                        {
+                            "option": "Resource monitoring"
+                        },
+                        {
+                            "option": "Code debugger"
+                        },
+                        {
+                            "option": "Creates programs without needing to write code"
+                        },
+                        {
+                            "option": "Code compiling"
+                        }
+                    ],
+                    "answer": "Creates programs without needing to write code",
+                    "feedbackRight": "Correct! IDE's do not create programs for you, you still need to be able to write code.",
+                    "feedbackWrong": "Wrong! The correct answer is 'creates programs without needing to write code'. IDE's have many features however, you still need to be able to write code to create programs."
+                }
+            ]
         },
         {
             "subheading": "Links to download the IDE's",
-            "content": "Eclipse (Free): https://www.eclipse.org/ide/\n\nIntelliJ (Free and paid versions): https://www.jetbrains.com/idea/\n\nVSCode (Free and Open-Source): https://code.visualstudio.com/",
+            "content": "Eclipse (Free and recommended): https://www.eclipse.org/ide/\n\nIntelliJ (Free and paid versions): https://www.jetbrains.com/idea/\n\nVSCode (Free and Open-Source): https://code.visualstudio.com/",
             "images": [],
-            "openChoiceQuiz": [],
+            "openChoiceQuiz": [
+                {
+                    "question": "What does 'IDE' stand for?",
+                    "answer": "Integrated Development Environment",
+                    "feedbackRight": "Correct! The majority of programmers refer to them as IDE's for obvious reasons.",
+                    "feedbackWrong": "Wrong! It stands for 'Integrated Development Environment'."
+                }
+            ],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [
+                {
+                    "question": "Which of the IDE's listed above are you going to use?",
+                    "options": [
+                        {
+                            "option": "Eclipse"
+                        },
+                        {
+                            "option": "IntelliJ"
+                        },
+                        {
+                            "option": "VSCode"
+                        },
+                        {
+                            "option": "Other"
+                        }
+                    ],
+                    "answer": "Eclipse",
+                    "feedbackRight": "Nice! CoreJava recommends using the Eclipse IDE. Keep scrolling to find a tutorial on how to set it up and create your first program...",
+                    "feedbackWrong": "CoreJava recommends using the Eclipse IDE, and includes a tutorial only for Eclipse as of this version however, once you have setup your IDE, skip the process of setting up Eclipse on this page and resume learning!"
+                }
+            ]
         },
         {
             "subheading": "Setting up the Eclipse IDE on Windows",
@@ -127,7 +176,14 @@
             "subheading": "",
             "content": "Now, click on the green play button at the top of the IDE. Your console should display 'Hello world'.",
             "images": [],
-            "openChoiceQuiz": [],
+            "openChoiceQuiz": [
+                {
+                    "question": "Does your program print 'Hello World' too?",
+                    "answer": "Yes",
+                    "feedbackRight": "Great work! You have followed the steps properly and have managed to create your first program, well done!",
+                    "feedbackWrong": "Oh no... Something may have gone wrong in the earlier steps... Ensure you have completed the previous steps properly and haven't missed anything out. Also, check your code to see there are no spelling mistakes."
+                }
+            ],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
         },
