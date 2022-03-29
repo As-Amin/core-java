@@ -8,31 +8,35 @@ import java.util.List;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.corejava.packages.Main;
 import com.corejava.packages.json.JSONParser;
 import com.corejava.packages.screens.Home;
+import com.corejava.packages.textpane.Caption;
 import com.corejava.packages.textpane.Image;
-import com.corejava.packages.textpane.Quiz;
+import com.corejava.packages.textpane.MultipleChoiceQuiz;
+import com.corejava.packages.textpane.OpenChoiceQuiz;
+import com.corejava.packages.textpane.TrueFalseQuiz;
 import com.corejava.packages.textpane.Table;
-import com.corejava.packages.textpane.Text;
+import com.corejava.packages.textpane.PlainText;
+import com.corejava.packages.textpane.Question;
 
-public class LearnArea extends JTextPane {
+public class LearnArea extends JScrollPane {
 	private JSONObject jsonObject;
 	private JSONParser jsonParser;
-	private JScrollPane scrollArea;
+	private JTextPane textPane = new JTextPane();
 
-	public JScrollPane generate() {
-		scrollArea = new JScrollPane(this);
-		scrollArea.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		this.setEditable(false);
-		return scrollArea;
+	public LearnArea() {
+		this.setViewportView(textPane);
+		this.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		textPane.setEditable(false);
 	}
 
 	public void clearAll() {
-		this.setText(null);
+		textPane.setText(null);
 	}
 
 	public void openFile(File topicFile) {
@@ -44,7 +48,7 @@ public class LearnArea extends JTextPane {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.setCaretPosition(0); // Scroll to the top after adding components
+		textPane.setCaretPosition(0); // Scroll to the top after adding components
 	}
 
 	private void parseJsonFile() {
@@ -55,13 +59,12 @@ public class LearnArea extends JTextPane {
 				String paragraphContent = allParagraphs.getJSONObject(i).getString("content");
 				// Append subheading
 				if (subheading.length() != 0) {
-					Text textPaneSubheading = new Text(subheading, Main.ACCENT_COLOR, this);
-					textPaneSubheading.generateText();
+					PlainText textPaneSubheading =
+							new PlainText(subheading, Main.ACCENT_COLOR, textPane);
 				}
 				// Append paragraph content
 				if (paragraphContent.length() != 0) {
-					Text textPaneParagraph = new Text(paragraphContent, null, this);
-					textPaneParagraph.generateText();
+					PlainText textPaneParagraph = new PlainText(paragraphContent, null, textPane);
 				}
 
 				try {
@@ -105,11 +108,10 @@ public class LearnArea extends JTextPane {
 		List<String> imagesUrlList = jsonParser.readArray(jsonArray, "url");
 		List<String> captionsList = jsonParser.readArray(jsonArray, "caption");
 		for (int i = 0; i < imagesUrlList.size(); i++) {
-			Image image = new Image(new File(Main.IMAGES_DIRECTORY + imagesUrlList.get(i)), this);
-			image.generate();
-			Text caption = new Text(("Caption: " + captionsList.get(i)),
-					Main.SECONDARY_ACCENT_COLOR, this);
-			caption.generateCaption();
+			Image image =
+					new Image(new File(Main.IMAGES_DIRECTORY + imagesUrlList.get(i)), textPane);
+			Caption caption = new Caption(("Caption: " + captionsList.get(i)),
+					Main.SECONDARY_ACCENT_COLOR, textPane);
 		}
 	}
 
@@ -132,9 +134,8 @@ public class LearnArea extends JTextPane {
 				rowsSplit.add(rowsSplitCells);
 			}
 			// Create the current table object and append to textpane
-			Table table = new Table(this, rowsSplit.toArray(new Object[][] {}),
+			Table table = new Table(textPane, rowsSplit.toArray(new Object[][] {}),
 					columns.toArray(new String[] {}), false);
-			table.generate();
 		}
 	}
 
@@ -147,12 +148,11 @@ public class LearnArea extends JTextPane {
 		for (int i = 0; i < questions.size(); i++) {
 			JSONArray optionsArray = jsonArray.getJSONObject(i).getJSONArray("options");
 			options = jsonParser.readArray(optionsArray, "option");
-			Text question =
-					new Text(questions.get(i).toString(), Main.SECONDARY_ACCENT_COLOR, this);
-			question.generateQuestion();
-			Quiz multipleChoice = new Quiz(this);
-			multipleChoice.generateMultipleChoice(options, answers.get(i), feedbackRights.get(i),
-					feedbackWrongs.get(i), Home.topicFeedbackArea);
+			Question question = new Question(questions.get(i).toString(),
+					Main.SECONDARY_ACCENT_COLOR, textPane);
+			MultipleChoiceQuiz multipleChoice =
+					new MultipleChoiceQuiz(textPane, options, answers.get(i), feedbackRights.get(i),
+							feedbackWrongs.get(i), Home.topicFeedbackArea);
 		}
 	}
 
@@ -162,11 +162,10 @@ public class LearnArea extends JTextPane {
 		List<String> feedbackRights = jsonParser.readArray(jsonArray, "feedbackRight");
 		List<String> feedbackWrongs = jsonParser.readArray(jsonArray, "feedbackWrong");
 		for (int i = 0; i < questions.size(); i++) {
-			Text question = new Text(questions.get(i), Main.SECONDARY_ACCENT_COLOR, this);
-			question.generateQuestion();
-			Quiz openChoice = new Quiz(this);
-			openChoice.generateOpenChoice(answers.get(i), feedbackRights.get(i),
-					feedbackWrongs.get(i), Home.topicFeedbackArea);
+			Question question =
+					new Question(questions.get(i), Main.SECONDARY_ACCENT_COLOR, textPane);
+			OpenChoiceQuiz openChoice = new OpenChoiceQuiz(textPane, answers.get(i),
+					feedbackRights.get(i), feedbackWrongs.get(i), Home.topicFeedbackArea);
 		}
 	}
 
@@ -176,11 +175,10 @@ public class LearnArea extends JTextPane {
 		List<String> feedbackRights = jsonParser.readArray(jsonArray, "feedbackRight");
 		List<String> feedbackWrongs = jsonParser.readArray(jsonArray, "feedbackWrong");
 		for (int i = 0; i < questions.size(); i++) {
-			Text question = new Text(questions.get(i), Main.SECONDARY_ACCENT_COLOR, this);
-			question.generateQuestion();
-			Quiz trueFalse = new Quiz(this);
-			trueFalse.generateTrueFalse(answers.get(i), feedbackRights.get(i),
-					feedbackWrongs.get(i), Home.topicFeedbackArea);
+			Question question =
+					new Question(questions.get(i), Main.SECONDARY_ACCENT_COLOR, textPane);
+			TrueFalseQuiz trueFalse = new TrueFalseQuiz(textPane, answers.get(i),
+					feedbackRights.get(i), feedbackWrongs.get(i), Home.topicFeedbackArea);
 		}
 	}
 
@@ -213,20 +211,17 @@ public class LearnArea extends JTextPane {
 	}
 
 	/**
-	 * @return JScrollPane return the scrollArea
+	 * @return JTextPane return the textPane
 	 */
-	public JScrollPane getScrollArea() {
-		return scrollArea;
+	public JTextPane getTextPane() {
+		return textPane;
 	}
 
 	/**
-	 * @param scrollArea the scrollArea to set
+	 * @param textPane the textPane to set
 	 */
-	public void setScrollArea(JScrollPane scrollArea) {
-		this.scrollArea = scrollArea;
+	public void setTextPane(JTextPane textPane) {
+		this.textPane = textPane;
 	}
 
-	public JTextPane getTextPane() {
-		return this;
-	}
 }

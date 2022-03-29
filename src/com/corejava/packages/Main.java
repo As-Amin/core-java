@@ -1,12 +1,12 @@
 package com.corejava.packages;
 
 import java.awt.Color;
-import org.apache.commons.configuration.ConfigurationException;
+
 import org.apache.commons.configuration.PropertiesConfiguration;
+
 import com.corejava.packages.screens.Home;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 
 public class Main {
 	public static final String IMAGES_DIRECTORY = "./src/resources/images";

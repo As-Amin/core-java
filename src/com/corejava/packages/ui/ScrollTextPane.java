@@ -4,38 +4,35 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
 
-public class ScrollTextPane extends JTextPane {
-	private JScrollPane scrollArea;
+public class ScrollTextPane extends JScrollPane {
+	private JTextPane textPane = new JTextPane();
 
-	public JScrollPane generate() {
-		scrollArea = new JScrollPane(this);
-		scrollArea.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		this.setEditable(false);
-		return scrollArea;
+	public ScrollTextPane() {
+		this.setViewportView(textPane);
+		this.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		textPane.setEditable(false);
 	}
 
 	public void clearAll() {
-		this.setText(null);
+		textPane.setText(null);
 	}
 
-	@Override
 	public void setText(String text) {
-		super.setText(text);
-		this.setCaretPosition(0); // Scroll to the top after adding components
+		textPane.setText(text);
+		textPane.setCaretPosition(0); // Scroll to the top after adding components
 	}
 
 	/**
-	 * @return JScrollPane return the scrollArea
+	 * @return JTextPane return the textPane
 	 */
-	public JScrollPane getScrollArea() {
-		return scrollArea;
+	public JTextPane getTextPane() {
+		return textPane;
 	}
 
 	/**
-	 * @param scrollArea the scrollArea to set
+	 * @param textPane the textPane to set
 	 */
-	public void setScrollArea(JScrollPane scrollArea) {
-		this.scrollArea = scrollArea;
+	public void setTextPane(JTextPane textPane) {
+		this.textPane = textPane;
 	}
-
 }

@@ -8,33 +8,15 @@ import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
-public class Text {
+public class Caption {
     private Color foreground;
     private String text;
     private JTextPane textPane;
 
-    public Text(String text, Color foreground, JTextPane textPane) {
+    public Caption(String text, Color foreground, JTextPane textPane) {
         this.text = text;
         this.foreground = foreground;
         this.textPane = textPane;
-    }
-
-    public void generateText() {
-        try {
-            textPane.setContentType("text/plain");
-            StyledDocument document = (StyledDocument) textPane.getDocument();
-            Style style = textPane.addStyle("", null);
-            if (foreground != null) {
-                StyleConstants.setForeground(style, foreground);
-            }
-            document.insertString(document.getLength(), text, style);
-            document.insertString(document.getLength(), "\n\n", null);
-        } catch (BadLocationException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void generateCaption() {
         try {
             textPane.setContentType("text/plain");
             StyledDocument document = (StyledDocument) textPane.getDocument();
@@ -45,21 +27,6 @@ public class Text {
             }
             document.insertString(document.getLength(), text, style);
             document.insertString(document.getLength(), "\n\n", null);
-        } catch (BadLocationException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void generateQuestion() {
-        try {
-            textPane.setContentType("text/plain");
-            StyledDocument document = (StyledDocument) textPane.getDocument();
-            Style style = textPane.addStyle("", null);
-            if (foreground != null) {
-                StyleConstants.setForeground(style, foreground);
-            }
-            document.insertString(document.getLength(), text, style);
-            document.insertString(document.getLength(), "\n", null);
         } catch (BadLocationException e) {
             e.printStackTrace();
         }

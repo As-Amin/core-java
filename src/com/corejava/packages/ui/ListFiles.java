@@ -10,8 +10,10 @@ import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import com.corejava.packages.screens.Home;
+
 import org.apache.commons.io.comparator.NameFileComparator;
+
+import com.corejava.packages.screens.Home;
 
 public class ListFiles extends JScrollPane {
 	private ArrayList<File> allParentFiles = new ArrayList<File>();
@@ -29,15 +31,11 @@ public class ListFiles extends JScrollPane {
 	public ListFiles(String directory, char fileNumberSeperator) {
 		this.directory = directory;
 		this.fileNumberSeperator = fileNumberSeperator;
-	}
-
-	public JScrollPane generate() {
 		generateParentStrings();
 		generateListeners();
 		this.setViewportView(listPanel);
 		this.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		this.getVerticalScrollBar().setUnitIncrement(10);
-		return this;
 	}
 
 	private void generateParentStrings() {
@@ -93,7 +91,11 @@ public class ListFiles extends JScrollPane {
 		allParentFiles.clear();
 		allChildFiles.clear();
 		model.clear();
-		generate();
+		generateParentStrings();
+		generateListeners();
+		this.setViewportView(listPanel);
+		this.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		this.getVerticalScrollBar().setUnitIncrement(10);
 	}
 
 	public void reset() {
@@ -102,7 +104,11 @@ public class ListFiles extends JScrollPane {
 		allParentFiles.clear();
 		allChildFiles.clear();
 		model.clear();
-		generate();
+		generateParentStrings();
+		generateListeners();
+		this.setViewportView(listPanel);
+		this.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		this.getVerticalScrollBar().setUnitIncrement(10);
 	}
 
 	/**

@@ -24,17 +24,14 @@ public class Image {
     public Image(File imageFile, JTextPane textPane) {
         this.imageFile = imageFile;
         this.textPane = textPane;
-        // Convert the text pane's content type to plain text
-        textPane.setContentType("text/plain");
-    }
-
-    /**
-     * Converts the TextPane content type to plain text, retrieves the document from the TextPane
-     * and converts it to a StyledDocument so that the image file passed into the constructor can be
-     * generated and appended to the TextPane
-     */
-    public void generate() {
         try {
+            // Convert the text pane's content type to plain text
+            textPane.setContentType("text/plain");
+            /**
+             * Retrieves the document from the TextPane and converts it to a StyledDocument so that
+             * the image file passed into the constructor can be generated and appended to the
+             * TextPane
+             */
             StyledDocument document = (StyledDocument) textPane.getDocument();
             BufferedImage BI = ImageIO.read(imageFile);
             ImageIcon image = new ImageIcon(BI);

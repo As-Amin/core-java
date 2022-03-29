@@ -4,7 +4,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,13 +13,13 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 import com.corejava.packages.Main;
-import com.corejava.packages.textpane.Text;
+import com.corejava.packages.textpane.PlainText;
 import com.corejava.packages.ui.LearnArea;
 import com.corejava.packages.ui.ListFiles;
 import com.corejava.packages.ui.MenuBar;
 import com.corejava.packages.ui.ScrollTextPane;
 import com.corejava.packages.ui.TextBox;
-import com.formdev.flatlaf.FlatClientProperties;
+
 import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
@@ -59,7 +59,7 @@ public class Home extends JFrame {
 	public Home() {
 		// Topic list panel is fixed according to panel width
 		contentPane.setLayout(
-				new MigLayout("", "0[fill," + leftPanelWidth + "!][fill,grow]", "0[fill,grow]0"));
+				new MigLayout("", "0[fill," + leftPanelWidth + "!]0[fill,grow]0", "0[fill,grow]0"));
 
 		// Left panel - Has its own layout manager so doesnt interfere with right panel
 		// components and easier to manage
@@ -72,18 +72,18 @@ public class Home extends JFrame {
 		searchButtonPanel.add(resetButton, "cell 1 0");
 		leftPanel.add(searchButtonPanel, "cell 0 1");
 		leftPanel.add(buttonSeperator, "cell 0 2");
-		leftPanel.add(topicList.generate(), "cell 0 3");
+		leftPanel.add(topicList, "cell 0 3");
 		leftPanel.add(feedbackSeperator, "cell 0 4");
-		leftPanel.add(topicFeedbackArea.generate(), "cell 0 5");
+		leftPanel.add(topicFeedbackArea, "cell 0 5");
 		contentPane.add(leftPanel, "cell 0 0");
 
 		// Right panel - Just like left panel but different components
-		rightPanel.setLayout(new MigLayout("", "0[fill,grow]0", // Width, column
+		rightPanel.setLayout(new MigLayout("", "[fill,grow]", // Width, column
 				"[]10[fill, " + frameHeight * 0.01 + "!][fill,grow]10[fill, " + frameHeight * 0.01
 						+ "!][]")); // Height, row
 		rightPanel.add(topicTitleBox, "cell 0 0");
 		rightPanel.add(titleSeperator, "cell 0 1");
-		rightPanel.add(topicLearnArea.generate(), "cell 0 2");
+		rightPanel.add(topicLearnArea, "cell 0 2");
 		rightPanel.add(sectionSeperator, "cell 0 3");
 		rightPanel.add(sectionTitleBox, "cell 0 4");
 		contentPane.add(rightPanel, "cell 1 0");
@@ -119,7 +119,7 @@ public class Home extends JFrame {
 		searchTopicInput.putClientProperty("JTextField.placeholderText", "Search topics...");
 		searchTopicInput.putClientProperty("FlatLaf.style", "background: @background");
 		topicTitleBox.putClientProperty("FlatLaf.style", "font: $large.font;");
-		topicFeedbackArea.putClientProperty("FlatLaf.style",
+		topicFeedbackArea.getTextPane().putClientProperty("FlatLaf.style",
 				"background: @componentBackground;" + "foreground: @secondaryAccentColor");
 
 		leftPanel.putClientProperty("FlatLaf.style", "background: @componentBackground");
@@ -145,12 +145,11 @@ public class Home extends JFrame {
 		topicTitleBox.addToStartingText("Not selected");
 		sectionTitleBox.addToStartingText("Not selected");
 		topicFeedbackArea.setText("When you answer a question, feedback will appear here!");
-		Text heading = new Text("Get started", Main.ACCENT_COLOR, topicLearnArea.getTextPane());
-		heading.generateText();
-		Text paragraph = new Text(
+		PlainText heading =
+				new PlainText("Get started", Main.ACCENT_COLOR, topicLearnArea.getTextPane());
+		PlainText paragraph = new PlainText(
 				"To begin, select a topic from the left side topics list! You can use the arrow keys or your cursor. Hover over any part of the screen to see what each section is for.",
 				null, topicLearnArea.getTextPane());
-		paragraph.generateText();
 	}
 
 	private void addButtonListeners() {

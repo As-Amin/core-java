@@ -7,14 +7,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.text.StyledDocument;
 
-public class Table {
-
-    private JTable table;
+public class Table extends JTable {
     private JTextPane textPane;
-
     private Object[][] rows;
     private String[] columns;
-
     private Boolean editable;
 
     public Table(JTextPane textPane, Object[][] rows, String[] columns, Boolean editable) {
@@ -22,11 +18,8 @@ public class Table {
         this.rows = rows;
         this.columns = columns;
         this.editable = editable;
-        textPane.setContentType("text/plain");
-    }
-
-    public void generate() {
         try {
+            textPane.setContentType("text/plain");
             StyledDocument document = (StyledDocument) textPane.getDocument();
             TableModel tableModel = new DefaultTableModel(rows, columns) {
                 @Override
@@ -38,14 +31,13 @@ public class Table {
                     }
                 }
             };
-            table = new JTable(tableModel);
-            table.removeEditor();
-            table.setPreferredScrollableViewportSize(table.getPreferredSize());
+            this.setModel(tableModel);
+            this.removeEditor();
+            this.setPreferredScrollableViewportSize(this.getPreferredSize());
             if (editable == false) {
 
             }
-            textPane.insertComponent(new JScrollPane(table));
-
+            textPane.insertComponent(new JScrollPane(this));
             document.insertString(document.getLength(), "\n\n", null);
         } catch (Exception e) {
             e.printStackTrace();

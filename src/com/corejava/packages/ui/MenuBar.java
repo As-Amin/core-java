@@ -3,13 +3,13 @@ package com.corejava.packages.ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedHashMap;
-import javax.swing.JFrame;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+
 import com.corejava.packages.Main;
-import org.apache.commons.configuration.ConfigurationException;
 
 public class MenuBar extends JMenuBar {
     private LinkedHashMap<String, JMenu> AllJMenu = new LinkedHashMap<String, JMenu>();
