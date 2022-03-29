@@ -61,7 +61,7 @@
             "images": [
                 {
                     "url": "/Data Types/CODE(Long).png",
-                    "caption": "'Example of a long.'"
+                    "caption": "'Example of a long'"
                 }
             ],
             "openChoiceQuiz": [],
@@ -82,7 +82,7 @@
             "images": [
                 {
                     "url": "/Data Types/CODE(Float).png",
-                    "caption": "'Example of a float.'"
+                    "caption": "'Example of a float'"
                 }
             ],
             "openChoiceQuiz": [],
@@ -95,7 +95,7 @@
             "images": [
                 {
                     "url": "/Data Types/CODE(Double).png",
-                    "caption": "'Example of a double.'"
+                    "caption": "'Example of a double'"
                 }
             ],
             "openChoiceQuiz": [],

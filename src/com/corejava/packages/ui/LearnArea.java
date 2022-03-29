@@ -55,8 +55,7 @@ public class LearnArea extends JTextPane {
 				String paragraphContent = allParagraphs.getJSONObject(i).getString("content");
 				// Append subheading
 				if (subheading.length() != 0) {
-					Text textPaneSubheading =
-							new Text(subheading, Main.SECONDARY_ACCENT_COLOR, this);
+					Text textPaneSubheading = new Text(subheading, Main.ACCENT_COLOR, this);
 					textPaneSubheading.generateText();
 				}
 				// Append paragraph content
@@ -108,7 +107,8 @@ public class LearnArea extends JTextPane {
 		for (int i = 0; i < imagesUrlList.size(); i++) {
 			Image image = new Image(new File(Main.IMAGES_DIRECTORY + imagesUrlList.get(i)), this);
 			image.generate();
-			Text caption = new Text(("Caption: " + captionsList.get(i)), Main.ACCENT_COLOR, this);
+			Text caption = new Text(("Caption: " + captionsList.get(i)),
+					Main.SECONDARY_ACCENT_COLOR, this);
 			caption.generateCaption();
 		}
 	}
@@ -147,7 +147,8 @@ public class LearnArea extends JTextPane {
 		for (int i = 0; i < questions.size(); i++) {
 			JSONArray optionsArray = jsonArray.getJSONObject(i).getJSONArray("options");
 			options = jsonParser.readArray(optionsArray, "option");
-			Text question = new Text(questions.get(i).toString(), Main.ACCENT_COLOR, this);
+			Text question =
+					new Text(questions.get(i).toString(), Main.SECONDARY_ACCENT_COLOR, this);
 			question.generateQuestion();
 			Quiz multipleChoice = new Quiz(this);
 			multipleChoice.generateMultipleChoice(options, answers.get(i), feedbackRights.get(i),
@@ -161,7 +162,7 @@ public class LearnArea extends JTextPane {
 		List<String> feedbackRights = jsonParser.readArray(jsonArray, "feedbackRight");
 		List<String> feedbackWrongs = jsonParser.readArray(jsonArray, "feedbackWrong");
 		for (int i = 0; i < questions.size(); i++) {
-			Text question = new Text(questions.get(i), Main.ACCENT_COLOR, this);
+			Text question = new Text(questions.get(i), Main.SECONDARY_ACCENT_COLOR, this);
 			question.generateQuestion();
 			Quiz openChoice = new Quiz(this);
 			openChoice.generateOpenChoice(answers.get(i), feedbackRights.get(i),
@@ -175,7 +176,7 @@ public class LearnArea extends JTextPane {
 		List<String> feedbackRights = jsonParser.readArray(jsonArray, "feedbackRight");
 		List<String> feedbackWrongs = jsonParser.readArray(jsonArray, "feedbackWrong");
 		for (int i = 0; i < questions.size(); i++) {
-			Text question = new Text(questions.get(i), Main.ACCENT_COLOR, this);
+			Text question = new Text(questions.get(i), Main.SECONDARY_ACCENT_COLOR, this);
 			question.generateQuestion();
 			Quiz trueFalse = new Quiz(this);
 			trueFalse.generateTrueFalse(answers.get(i), feedbackRights.get(i),

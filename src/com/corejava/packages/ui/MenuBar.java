@@ -3,12 +3,13 @@ package com.corejava.packages.ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedHashMap;
-
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import com.corejava.packages.Main;
+import org.apache.commons.configuration.ConfigurationException;
 
 public class MenuBar extends JMenuBar {
     private LinkedHashMap<String, JMenu> AllJMenu = new LinkedHashMap<String, JMenu>();
@@ -20,7 +21,8 @@ public class MenuBar extends JMenuBar {
     }
 
     public JMenuBar generate() {
-        AllJMenu.put(Main.APP_NAME, new JMenu(Main.APP_NAME));
+        AllJMenu.put(Main.APP_CONFIG_OBJECT.getProperty("app.name").toString(),
+                new JMenu(Main.APP_CONFIG_OBJECT.getProperty("app.name").toString()));
         AllJMenu.put("Help", new JMenu("Help"));
 
         for (JMenu menu : AllJMenu.values()) {
@@ -28,8 +30,7 @@ public class MenuBar extends JMenuBar {
         }
 
         // Disable app title button - places the app name first in menu
-        AllJMenu.get(Main.APP_NAME).setEnabled(false);
-
+        AllJMenu.get(Main.APP_CONFIG_OBJECT.getProperty("app.name")).setEnabled(false);
         AllJMenuItems.put("Help About", new JMenuItem("About"));
 
         for (String menuKey : AllJMenu.keySet()) {
@@ -50,10 +51,10 @@ public class MenuBar extends JMenuBar {
         AllJMenuItems.get("Help About").addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
-                JOptionPane.showMessageDialog(null,
-                        Main.APP_NAME + ": " + Main.APP_SLOGAN + "\n\n" + "Version: "
-                                + Main.APP_VERSION + "\n\n" + "GitHub: "
-                                + Main.APP_CONFIG_OBJECT.getProperty("app.github") + "\n\n",
+                JOptionPane.showMessageDialog(null, Main.APP_CONFIG_OBJECT.getProperty("app.name")
+                        + ": " + Main.APP_CONFIG_OBJECT.getProperty("app.slogan") + "\n\n"
+                        + "Version: " + Main.APP_CONFIG_OBJECT.getProperty("app.version") + "\n\n"
+                        + "GitHub: " + Main.APP_CONFIG_OBJECT.getProperty("app.github") + "\n\n",
                         "About", JOptionPane.INFORMATION_MESSAGE);
             }
         });

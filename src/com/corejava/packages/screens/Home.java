@@ -59,13 +59,13 @@ public class Home extends JFrame {
 	public Home() {
 		// Topic list panel is fixed according to panel width
 		contentPane.setLayout(
-				new MigLayout("", "[fill," + leftPanelWidth + "!][fill,grow]", "[fill,grow]"));
+				new MigLayout("", "0[fill," + leftPanelWidth + "!][fill,grow]", "0[fill,grow]0"));
 
 		// Left panel - Has its own layout manager so doesnt interfere with right panel
 		// components and easier to manage
-		leftPanel.setLayout(new MigLayout("", "0[fill,grow]0", // width, height
-				"0[]10[]10[fill, " + frameHeight * 0.01 + "!][fill,grow]10[fill, "
-						+ frameHeight * 0.01 + "!][fill, " + frameHeight * 0.15 + "!]0")); // height
+		leftPanel.setLayout(new MigLayout("", "[fill,grow]", // width, height
+				"[]10[]10[fill, " + frameHeight * 0.01 + "!][fill,grow]10[fill, "
+						+ frameHeight * 0.01 + "!][fill, " + frameHeight * 0.15 + "!]")); // height
 		leftPanel.add(searchTopicInput, "cell 0 0");
 		searchButtonPanel.setLayout(new MigLayout("", "0[fill,grow][fill,grow]0", "0[]0"));
 		searchButtonPanel.add(searchButton, "cell 0 0");
@@ -79,8 +79,8 @@ public class Home extends JFrame {
 
 		// Right panel - Just like left panel but different components
 		rightPanel.setLayout(new MigLayout("", "0[fill,grow]0", // Width, column
-				"0[]10[fill, " + frameHeight * 0.01 + "!][fill,grow]10[fill, " + frameHeight * 0.01
-						+ "!][]0")); // Height, row
+				"[]10[fill, " + frameHeight * 0.01 + "!][fill,grow]10[fill, " + frameHeight * 0.01
+						+ "!][]")); // Height, row
 		rightPanel.add(topicTitleBox, "cell 0 0");
 		rightPanel.add(titleSeperator, "cell 0 1");
 		rightPanel.add(topicLearnArea.generate(), "cell 0 2");
@@ -122,9 +122,8 @@ public class Home extends JFrame {
 		topicFeedbackArea.putClientProperty("FlatLaf.style",
 				"background: @componentBackground;" + "foreground: @secondaryAccentColor");
 
-		leftPanel.putClientProperty(FlatClientProperties.STYLE_CLASS, "roundPanelDark");
+		leftPanel.putClientProperty("FlatLaf.style", "background: @componentBackground");
 		searchButtonPanel.putClientProperty("FlatLaf.style", "background: @componentBackground");
-		rightPanel.putClientProperty(FlatClientProperties.STYLE_CLASS, "roundPanelLight");
 	}
 
 	/**
@@ -146,8 +145,7 @@ public class Home extends JFrame {
 		topicTitleBox.addToStartingText("Not selected");
 		sectionTitleBox.addToStartingText("Not selected");
 		topicFeedbackArea.setText("When you answer a question, feedback will appear here!");
-		Text heading =
-				new Text("Get started", Main.SECONDARY_ACCENT_COLOR, topicLearnArea.getTextPane());
+		Text heading = new Text("Get started", Main.ACCENT_COLOR, topicLearnArea.getTextPane());
 		heading.generateText();
 		Text paragraph = new Text(
 				"To begin, select a topic from the left side topics list! You can use the arrow keys or your cursor. Hover over any part of the screen to see what each section is for.",
