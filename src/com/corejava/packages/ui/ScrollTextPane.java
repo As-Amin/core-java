@@ -5,7 +5,7 @@ import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
 
 public class ScrollTextPane extends JScrollPane {
-	private JTextPane textPane = new JTextPane();
+	private JTextPane textPane = new JTextPane();;
 
 	public ScrollTextPane() {
 		this.setViewportView(textPane);

@@ -66,8 +66,8 @@ public class ListFiles extends JScrollPane {
 			public void valueChanged(ListSelectionEvent lse) {
 				if (!lse.getValueIsAdjusting()) {
 					try {
-						Home.topicTitleBox.addToStartingText(listPanel.getSelectedValue());
-						Home.sectionTitleBox.addToStartingText(
+						Home.topicTitleBox.setText(listPanel.getSelectedValue());
+						Home.sectionTitleBox.setText(
 								getFileName(allParentFiles.get(listPanel.getSelectedIndex())));
 						Home.topicLearnArea
 								.openFile(allChildFiles.get(listPanel.getSelectedIndex()));

@@ -152,7 +152,7 @@ public class LearnArea extends JScrollPane {
 					Main.SECONDARY_ACCENT_COLOR, textPane);
 			MultipleChoiceQuiz multipleChoice =
 					new MultipleChoiceQuiz(textPane, options, answers.get(i), feedbackRights.get(i),
-							feedbackWrongs.get(i), Home.topicFeedbackArea);
+							feedbackWrongs.get(i), Home.topicFeedbackArea.getTextPane());
 		}
 	}
 
@@ -164,8 +164,9 @@ public class LearnArea extends JScrollPane {
 		for (int i = 0; i < questions.size(); i++) {
 			Question question =
 					new Question(questions.get(i), Main.SECONDARY_ACCENT_COLOR, textPane);
-			OpenChoiceQuiz openChoice = new OpenChoiceQuiz(textPane, answers.get(i),
-					feedbackRights.get(i), feedbackWrongs.get(i), Home.topicFeedbackArea);
+			OpenChoiceQuiz openChoice =
+					new OpenChoiceQuiz(textPane, answers.get(i), feedbackRights.get(i),
+							feedbackWrongs.get(i), Home.topicFeedbackArea.getTextPane());
 		}
 	}
 
@@ -177,8 +178,9 @@ public class LearnArea extends JScrollPane {
 		for (int i = 0; i < questions.size(); i++) {
 			Question question =
 					new Question(questions.get(i), Main.SECONDARY_ACCENT_COLOR, textPane);
-			TrueFalseQuiz trueFalse = new TrueFalseQuiz(textPane, answers.get(i),
-					feedbackRights.get(i), feedbackWrongs.get(i), Home.topicFeedbackArea);
+			TrueFalseQuiz trueFalse =
+					new TrueFalseQuiz(textPane, answers.get(i), feedbackRights.get(i),
+							feedbackWrongs.get(i), Home.topicFeedbackArea.getTextPane());
 		}
 	}
 

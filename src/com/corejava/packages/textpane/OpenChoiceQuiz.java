@@ -25,7 +25,7 @@ public class OpenChoiceQuiz {
      *        or incorrect is determined
      */
     public OpenChoiceQuiz(JTextPane textPane, String answer, String feedbackRight,
-            String feedbackWrong, ScrollTextPane topicFeedbackArea) {
+            String feedbackWrong, JTextPane feedbackArea) {
         this.textPane = textPane;
         try {
             // Convert the text pane's content type to plain text
@@ -52,18 +52,19 @@ public class OpenChoiceQuiz {
                 @Override
                 public void actionPerformed(ActionEvent event) {
                     if (answerField.getText().equalsIgnoreCase(answer)) {
-                        topicFeedbackArea.removeAll();
-                        topicFeedbackArea.setText(feedbackRight);
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackRight);
 
                     } else if (answerField.getText().length() > 0) {
-                        topicFeedbackArea.removeAll();
-                        topicFeedbackArea.setText(feedbackWrong);
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackWrong);
                     } else {
-                        topicFeedbackArea.removeAll();
-                        topicFeedbackArea.setText("Enter your answer in the box!");
+                        feedbackArea.removeAll();
+                        feedbackArea.setText("Enter your answer in the box!");
                     }
                 }
             });
+            feedbackArea.setCaretPosition(0);
         } catch (Exception e) {
             e.printStackTrace();
         }

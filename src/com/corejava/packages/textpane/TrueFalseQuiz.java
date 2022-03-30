@@ -22,7 +22,7 @@ public class TrueFalseQuiz {
      *        or incorrect is determined
      */
     public TrueFalseQuiz(JTextPane textPane, String answer, String feedbackRight,
-            String feedbackWrong, ScrollTextPane topicFeedbackArea) {
+            String feedbackWrong, JTextPane feedbackArea) {
         this.textPane = textPane;
         try {
             // Convert the text pane's content type to plain text
@@ -47,12 +47,12 @@ public class TrueFalseQuiz {
                 @Override
                 public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase("true")) {
-                        topicFeedbackArea.removeAll();
-                        topicFeedbackArea.setText(feedbackRight);
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackRight);
 
                     } else {
-                        topicFeedbackArea.removeAll();
-                        topicFeedbackArea.setText(feedbackWrong);
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackWrong);
                     }
                 }
             });
@@ -62,15 +62,16 @@ public class TrueFalseQuiz {
                 @Override
                 public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase("false")) {
-                        topicFeedbackArea.removeAll();
-                        topicFeedbackArea.setText(feedbackRight);
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackRight);
 
                     } else {
-                        topicFeedbackArea.removeAll();
-                        topicFeedbackArea.setText(feedbackWrong);
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackWrong);
                     }
                 }
             });
+            feedbackArea.setCaretPosition(0);
         } catch (Exception e) {
             e.printStackTrace();
         }

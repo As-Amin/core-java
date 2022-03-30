@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -24,8 +25,8 @@ import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
 	// The frame dimensions (the initial size of the window)
-	private int frameWidth = 800;
-	private int frameHeight = 550;
+	private int frameWidth = 770;
+	private int frameHeight = 530;
 
 	// The content pane derived from the classes frame - used to
 	// add components created to
@@ -36,7 +37,7 @@ public class Home extends JFrame {
 	private JPanel leftPanel = new JPanel();
 	private double leftPanelWidth = 220;
 	private JPanel searchButtonPanel = new JPanel();
-	private TextBox searchTopicInput = new TextBox("", "", true);
+	private TextBox searchTopicInput = new TextBox("", true);
 	private JButton searchButton = new JButton("Search");
 	private JButton resetButton = new JButton("Reset");
 	private JSeparator buttonSeperator = new JSeparator(SwingConstants.HORIZONTAL);
@@ -47,10 +48,10 @@ public class Home extends JFrame {
 	// Right panel components - Public and global because needs to be
 	// modified by different classes and functions outside of this one
 	private JPanel rightPanel = new JPanel();
-	public static TextBox topicTitleBox = new TextBox("Topic: ", "", false);
+	public static TextBox topicTitleBox = new TextBox("Not selected", false);
 	private JSeparator titleSeperator = new JSeparator(SwingConstants.HORIZONTAL);
 	public static LearnArea topicLearnArea = new LearnArea();
-	public static TextBox sectionTitleBox = new TextBox("Section: ", "", false);
+	public static TextBox sectionTitleBox = new TextBox("Not selected", false);
 	private JSeparator sectionSeperator = new JSeparator(SwingConstants.HORIZONTAL);
 
 	// The menu bar at the top of the window - is not apart of the content pane but frame
@@ -120,7 +121,7 @@ public class Home extends JFrame {
 		searchTopicInput.putClientProperty("FlatLaf.style", "background: @background");
 		topicTitleBox.putClientProperty("FlatLaf.style", "font: $large.font;");
 		topicFeedbackArea.getTextPane().putClientProperty("FlatLaf.style",
-				"background: @componentBackground;" + "foreground: @secondaryAccentColor");
+				"background: @componentBackground;" + "foreground: @secondaryAccentColor;");
 
 		leftPanel.putClientProperty("FlatLaf.style", "background: @componentBackground");
 		searchButtonPanel.putClientProperty("FlatLaf.style", "background: @componentBackground");
@@ -134,7 +135,7 @@ public class Home extends JFrame {
 		topicList.getListPanel().setToolTipText("List of all topics");
 		topicTitleBox.setToolTipText("Title of the topic");
 		sectionTitleBox.setToolTipText("Section of the topic");
-		topicFeedbackArea.setToolTipText("Feedback for this topic");
+		topicFeedbackArea.getTextPane().setToolTipText("Feedback for this topic");
 	}
 
 	/**
@@ -142,8 +143,6 @@ public class Home extends JFrame {
 	 * instructions as soon as they open the app.
 	 */
 	private void setInitialLearnArea() {
-		topicTitleBox.addToStartingText("Not selected");
-		sectionTitleBox.addToStartingText("Not selected");
 		topicFeedbackArea.setText("When you answer a question, feedback will appear here!");
 		PlainText heading =
 				new PlainText("Get started", Main.ACCENT_COLOR, topicLearnArea.getTextPane());

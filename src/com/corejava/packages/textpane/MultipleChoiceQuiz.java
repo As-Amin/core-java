@@ -26,7 +26,7 @@ public class MultipleChoiceQuiz {
      *        or incorrect is determined
      */
     public MultipleChoiceQuiz(JTextPane textPane, List<String> options, String answer,
-            String feedbackRight, String feedbackWrong, ScrollTextPane topicFeedbackArea) {
+            String feedbackRight, String feedbackWrong, JTextPane feedbackArea) {
         this.textPane = textPane;
         try {
             // Convert the text pane's content type to plain text
@@ -54,15 +54,15 @@ public class MultipleChoiceQuiz {
                 @Override
                 public void actionPerformed(ActionEvent event) {
                     if (answer.equalsIgnoreCase(optionsBox.getSelectedItem().toString())) {
-                        topicFeedbackArea.removeAll();
-                        topicFeedbackArea.setText(feedbackRight);
-
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackRight);
                     } else {
-                        topicFeedbackArea.removeAll();
-                        topicFeedbackArea.setText(feedbackWrong);
+                        feedbackArea.removeAll();
+                        feedbackArea.setText(feedbackWrong);
                     }
                 }
             });
+            feedbackArea.setCaretPosition(0);
         } catch (Exception e) {
             e.printStackTrace();
         }
