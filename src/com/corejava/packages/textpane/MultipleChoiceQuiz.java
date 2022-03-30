@@ -60,9 +60,9 @@ public class MultipleChoiceQuiz {
                         feedbackArea.removeAll();
                         feedbackArea.setText(feedbackWrong);
                     }
+                    feedbackArea.setCaretPosition(0);
                 }
             });
-            feedbackArea.setCaretPosition(0);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -48,10 +48,10 @@ public class Home extends JFrame {
 	// Right panel components - Public and global because needs to be
 	// modified by different classes and functions outside of this one
 	private JPanel rightPanel = new JPanel();
-	public static TextBox topicTitleBox = new TextBox("Not selected", false);
+	public static TextBox topicTitleBox = new TextBox("", false);
 	private JSeparator titleSeperator = new JSeparator(SwingConstants.HORIZONTAL);
 	public static LearnArea topicLearnArea = new LearnArea();
-	public static TextBox sectionTitleBox = new TextBox("Not selected", false);
+	public static TextBox sectionTitleBox = new TextBox("", false);
 	private JSeparator sectionSeperator = new JSeparator(SwingConstants.HORIZONTAL);
 
 	// The menu bar at the top of the window - is not apart of the content pane but frame
@@ -121,7 +121,7 @@ public class Home extends JFrame {
 		searchTopicInput.putClientProperty("FlatLaf.style", "background: @background");
 		topicTitleBox.putClientProperty("FlatLaf.style", "font: $large.font;");
 		topicFeedbackArea.getTextPane().putClientProperty("FlatLaf.style",
-				"background: @componentBackground;" + "foreground: @secondaryAccentColor;");
+				"background: @componentBackground;" + "foreground: @accentColor;");
 
 		leftPanel.putClientProperty("FlatLaf.style", "background: @componentBackground");
 		searchButtonPanel.putClientProperty("FlatLaf.style", "background: @componentBackground");
@@ -143,6 +143,8 @@ public class Home extends JFrame {
 	 * instructions as soon as they open the app.
 	 */
 	private void setInitialLearnArea() {
+		topicTitleBox.setText("No topic selected");
+		sectionTitleBox.setText("No section selected");
 		topicFeedbackArea.setText("When you answer a question, feedback will appear here!");
 		PlainText heading =
 				new PlainText("Get started", Main.ACCENT_COLOR, topicLearnArea.getTextPane());

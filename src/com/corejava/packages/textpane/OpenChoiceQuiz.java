@@ -62,9 +62,9 @@ public class OpenChoiceQuiz {
                         feedbackArea.removeAll();
                         feedbackArea.setText("Enter your answer in the box!");
                     }
+                    feedbackArea.setCaretPosition(0);
                 }
             });
-            feedbackArea.setCaretPosition(0);
         } catch (Exception e) {
             e.printStackTrace();
         }

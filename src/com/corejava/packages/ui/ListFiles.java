@@ -31,6 +31,10 @@ public class ListFiles extends JScrollPane {
 	public ListFiles(String directory, char fileNumberSeperator) {
 		this.directory = directory;
 		this.fileNumberSeperator = fileNumberSeperator;
+		setupList();
+	}
+
+	private void setupList() {
 		generateParentStrings();
 		generateListeners();
 		this.setViewportView(listPanel);
@@ -86,29 +90,22 @@ public class ListFiles extends JScrollPane {
 	}
 
 	public void filter(String keyword) {
-		listPanel.clearSelection();
 		filterKeyword = keyword;
-		allParentFiles.clear();
-		allChildFiles.clear();
-		model.clear();
-		generateParentStrings();
-		generateListeners();
-		this.setViewportView(listPanel);
-		this.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		this.getVerticalScrollBar().setUnitIncrement(10);
+		clearList();
+		setupList();
 	}
 
 	public void reset() {
-		listPanel.clearSelection();
 		filterKeyword = "";
+		clearList();
+		setupList();
+	}
+
+	private void clearList() {
+		listPanel.clearSelection();
 		allParentFiles.clear();
 		allChildFiles.clear();
 		model.clear();
-		generateParentStrings();
-		generateListeners();
-		this.setViewportView(listPanel);
-		this.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		this.getVerticalScrollBar().setUnitIncrement(10);
 	}
 
 	/**

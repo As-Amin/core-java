@@ -54,6 +54,7 @@ public class TrueFalseQuiz {
                         feedbackArea.removeAll();
                         feedbackArea.setText(feedbackWrong);
                     }
+                    feedbackArea.setCaretPosition(0);
                 }
             });
             // Add an action listener to the false button so the response can be retrieved and
@@ -69,9 +70,9 @@ public class TrueFalseQuiz {
                         feedbackArea.removeAll();
                         feedbackArea.setText(feedbackWrong);
                     }
+                    feedbackArea.setCaretPosition(0);
                 }
             });
-            feedbackArea.setCaretPosition(0);
         } catch (Exception e) {
             e.printStackTrace();
         }
