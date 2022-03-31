@@ -2,7 +2,7 @@
     "paragraphs": [
         {
             "subheading": "What is a data structure?",
-            "content": "A data structure organises data in memory. Different data structures store data differently in memory which allows for each data structure allowing programmers to handle the data in different ways. For example, some data structures do not allow for data to be modified after runtime, whereas others do etc.\n\nThere are many data structures in Java, this topic will only cover the most common data structures.",
+            "content": "A data structure organises data in memory. Different data structures store data differently in memory which allows for each data structure allowing programmers to handle the data in different ways. For example, some data structures do not allow for data to be modified after runtime, whereas others do etc.",
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],

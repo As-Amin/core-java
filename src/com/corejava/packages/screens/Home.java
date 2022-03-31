@@ -119,7 +119,8 @@ public class Home extends JFrame {
 	private void setClientProperties() {
 		searchTopicInput.putClientProperty("JTextField.placeholderText", "Search topics...");
 		searchTopicInput.putClientProperty("FlatLaf.style", "background: @background");
-		topicTitleBox.putClientProperty("FlatLaf.style", "font: $large.font;");
+		topicTitleBox.putClientProperty("FlatLaf.style",
+				"font: $large.font;" + "foreground: @accentColor;");
 		topicFeedbackArea.getTextPane().putClientProperty("FlatLaf.style",
 				"background: @componentBackground;" + "foreground: @accentColor;");
 

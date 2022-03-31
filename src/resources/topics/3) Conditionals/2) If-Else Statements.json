@@ -1,1 +1,73 @@
-This is an introduction to Java
+{
+    "paragraphs": [
+        {
+            "subheading": "What are If-Else statements?",
+            "content": "If-Else statements allow for specific blocks of code to be executed only if a specified condition is either true or false.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "How to create an if statement",
+            "content": "The example below shows how to create an if statement on its own; without an else or else if (covered later in the topic). The if statement is used to specify a block of code which is to be executed only if the condition (in the brackets) is true.",
+            "images": [
+                {
+                    "url": "/Welcome to CoreJava/IMAGE(Java Platforms).png",
+                    "caption": "'Java's countless compatible platforms' (Source: https://manshasoftware.com/services/java-platform/)"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "How to create an else statement",
+            "content": "The example below shows how to create an if statement with an else statement. The else statement is used to execute a block of code (specified within the else curly brackets) only if all of the other conditions are false.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "How to create an else-if statement",
+            "content": "The example below shows how to create an if statement with an else-if statement and an else statement all together!",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "",
+            "content": "The else-if statement is just like a regular if statement with the exception that it specifies a seperate condition in its own brackets.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "",
+            "content": "You can as many else-if statements as you desire whereas, you can only have one if and one else statement.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Tips to remember with If-Else statements",
+            "content": "Remember that the if statement must be the first condition in an If-Else statement block, with the else-if's going after it and the else being the final condition if all the other conditions return false.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "",
+            "content": "Also, else statements and else-if statements within an If-Else block are NOT REQUIRED. You can have an if statement on its own however, you cannot have just an else-if or an else on its own.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        }
+    ]
+}
