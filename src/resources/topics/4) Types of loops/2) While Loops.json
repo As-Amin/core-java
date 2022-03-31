@@ -1,12 +1,12 @@
 {
     "paragraphs": [
         {
-            "subheading": "What are for loops?",
-            "content": "A for loop is used to repeateadly execute a block of code (loop through) a specified amount of times. This is used when the programmer knows how many times to execute the block of code in order to achieve the correct result.",
+            "subheading": "What are while loops?",
+            "content": "A while loop is used to repeateadly execute a block of code (loop through) while a specific condition is met. It is similiar to a for loop but a for loop is used when the programmer knows exactly when to end the loop.",
             "images": [
                 {
-                    "url": "/For Loops/IMAGE(For Loops Cartoon).png",
-                    "caption": "'Source: https://www.istockphoto.com/illustrations/rollercoaster-loop'"
+                    "url": "/While Loops/IMAGE(While Loops Cartoon).png",
+                    "caption": "'Source: https://www.codingal.com/blog/coding-for-kids/loops-in-programming/'"
                 }
             ],
             "openChoiceQuiz": [],
@@ -14,8 +14,8 @@
             "multipleChoiceQuiz": []
         },
         {
-            "subheading": "How to create a for loop",
-            "content": "Look at the example below. Within the brackets after 'for', you can see three statements, all of which are seperated with a semi-colon.",
+            "subheading": "How to create a while loop",
+            "content": "Look at the example below. Within the brackets after 'while', there is a single statement which defines the condition which must be met in order for the loop to execute the block of code in the while loop.",
             "images": [
                 {
                     "url": "/For Loops/CODE(For Loop Ten Times).png",
