@@ -62,7 +62,7 @@
         },
         {
             "subheading": "Integer data type: Long",
-            "content": " Long: A long can store extremely large integers (between -9223372036854775808 and 9223372036854775807). This is only used in the rare occasion that an int is too small to store an integer. The value should end with an 'L' when stored as a long.",
+            "content": "Long: A long can store extremely large integers (between -9223372036854775808 and 9223372036854775807). This is only used in the rare occasion that an int is too small to store an integer. The value should end with an 'L' when stored as a long.",
             "images": [
                 {
                     "url": "/Data Types/CODE(Long).png",
@@ -72,6 +72,69 @@
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Integer questions",
+            "content": "",
+            "images": [],
+            "openChoiceQuiz": [
+                {
+                    "question": "What is the most commonly used integer data type?",
+                    "answer": "int",
+                    "feedbackRight": "Correct! The int data type is used for most data which are integers. This is because it is the perfect middle ground in terms of how big the integer limit is.",
+                    "feedbackWrong": "Wrong! The answer is int. The int data type is used for most data which are integers. This is because it is the perfect middle ground in terms of how big the integer limit is."
+                }
+            ],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: The largest data type to store an integer is int.",
+                    "answer": "False",
+                    "feedbackRight": "Correct! Int is the second largest.",
+                    "feedbackWrong": "Wrong! The largest is in fact long, with int being the second largest."
+                }
+            ],
+            "multipleChoiceQuiz": [
+                {
+                    "question": "What integer data type would most efficiently store the number '3', which will not change?",
+                    "options": [
+                        {
+                            "option": "Byte"
+                        },
+                        {
+                            "option": "Short"
+                        },
+                        {
+                            "option": "Int"
+                        },
+                        {
+                            "option": "Long"
+                        }
+                    ],
+                    "answer": "Byte",
+                    "feedbackRight": "Correct! 3 is a small number and because it is not going to change, it should be stored as a byte as we are sure it won't increase the limits of a byte.",
+                    "feedbackWrong": "Wrong! The answer is byte. You could store it in this data type however, it is not efficient. Also, as the data won't change, we can be sure it won't reach the limits of a byte."
+                },
+                {
+                    "question": "What integer data type would most efficiently store the number '25,000', which will change?",
+                    "options": [
+                        {
+                            "option": "Byte"
+                        },
+                        {
+                            "option": "Short"
+                        },
+                        {
+                            "option": "Int"
+                        },
+                        {
+                            "option": "Long"
+                        }
+                    ],
+                    "answer": "Int",
+                    "feedbackRight": "Correct! Although this number can be stored as a short, it won't be right to do so as it is subject to change (variable), so it may reach the limits of a short.",
+                    "feedbackWrong": "Wrong! The answer is int. A long can also be used but because the likelihood of the number exceeding the limits of an int would be very unlikely, an int is more appropiate and efficient. Although this number can be stored as a short, it won't be right to do so as it is subject to change (variable), so it may reach the limits of a short."
+                }
+            ]
         },
         {
             "subheading": "Floating point data types",
@@ -145,6 +208,70 @@
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "String, character, boolean, floating point questions",
+            "content": "",
+            "images": [],
+            "openChoiceQuiz": [
+                {
+                    "question": "Finish the missing keyword: _____ data = 'a';",
+                    "answer": "char",
+                    "feedbackRight": "Correct! Because the data is only one character and the data is surrounded by singular quotes, it is a char.",
+                    "feedbackWrong": "Wrong! The answer is char. This is because the data is only one character and the data is surrounded by singular quotes."
+                },
+                {
+                    "question": "Finish the missing keyword: _____ data = 30.6d;",
+                    "answer": "double",
+                    "feedbackRight": "Correct! You are doing great!",
+                    "feedbackWrong": "Wrong! The answer is double. This is because the data ends in a 'd' and it has a decimal point."
+                },
+                {
+                    "question": "Finish the missing keyword: _____ data = false;",
+                    "answer": "boolean",
+                    "feedbackRight": "Correct! It is a boolean because booleans are either true or false.",
+                    "feedbackWrong": "Wrong! The answer is boolean. This is because booleans are either true or false."
+                },
+                {
+                    "question": "Finish the missing keyword: _____ data = 30.6f;",
+                    "answer": "float",
+                    "feedbackRight": "Correct! Keep going, you are remembering most of the content on this topic!",
+                    "feedbackWrong": "Wrong! The answer is float. This is because the data ends in a 'f' and it has a decimal point."
+                }
+            ],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: A string can only store words and no numbers.",
+                    "answer": "False",
+                    "feedbackRight": "Correct! A string can store numbers too, but they cannot be operated on.",
+                    "feedbackWrong": "Wrong! Strings can store numbers too, but they cannot be operated on. If you want to store numbers which you want to operate on, store them as an integer data type."
+                }
+            ],
+            "multipleChoiceQuiz": [
+                {
+                    "question": "What data type should I use to store 'Hello'?",
+                    "options": [
+                        {
+                            "option": "Char"
+                        },
+                        {
+                            "option": "String"
+                        },
+                        {
+                            "option": "Boolean"
+                        },
+                        {
+                            "option": "Double"
+                        },
+                        {
+                            "option": "Float"
+                        }
+                    ],
+                    "answer": "String",
+                    "feedbackRight": "Correct! A string is the only possible data type to store the data.",
+                    "feedbackWrong": "Wrong! The answer is string. A string is the only possible data type to store the data."
+                }
+            ]
         }
     ]
 }

@@ -27,7 +27,7 @@
             "multipleChoiceQuiz": []
         },
         {
-            "subheading": "",
+            "subheading": "First statement",
             "content": "The first statement 'int i = 0;' creates the variable that will indicate which iteration the loop is on. 'i' stands for index and commonly used in loops in Java.",
             "images": [
                 {
@@ -40,7 +40,7 @@
             "multipleChoiceQuiz": []
         },
         {
-            "subheading": "",
+            "subheading": "Second statement",
             "content": "The second statement 'i < 10;' specifies the period for the loop to run. If this statement is true, the loop continues. In this case, the loop ends when the index 'i' is bigger than 10.",
             "images": [
                 {
@@ -53,7 +53,7 @@
             "multipleChoiceQuiz": []
         },
         {
-            "subheading": "",
+            "subheading": "Third statement",
             "content": "The third statement 'i++' specifies how much to increment the index by on each iteration of the loop. In this case, it increments by 1 on each loop.",
             "images": [
                 {

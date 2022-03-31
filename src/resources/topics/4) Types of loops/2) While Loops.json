@@ -1,1 +1,69 @@
-This is an introduction to Java
+{
+    "paragraphs": [
+        {
+            "subheading": "What are for loops?",
+            "content": "A for loop is used to repeateadly execute a block of code (loop through) a specified amount of times. This is used when the programmer knows how many times to execute the block of code in order to achieve the correct result.",
+            "images": [
+                {
+                    "url": "/For Loops/IMAGE(For Loops Cartoon).png",
+                    "caption": "'Source: https://www.istockphoto.com/illustrations/rollercoaster-loop'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "How to create a for loop",
+            "content": "Look at the example below. Within the brackets after 'for', you can see three statements, all of which are seperated with a semi-colon.",
+            "images": [
+                {
+                    "url": "/For Loops/CODE(For Loop Ten Times).png",
+                    "caption": "'An example of a for loop'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "",
+            "content": "The first statement 'int i = 0;' creates the variable that will indicate which iteration the loop is on. 'i' stands for index and commonly used in loops in Java.",
+            "images": [
+                {
+                    "url": "/For Loops/CODE(For Loop First Statement).png",
+                    "caption": "'The first statement of a for loop'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "",
+            "content": "The second statement 'i < 10;' specifies the period for the loop to run. If this statement is true, the loop continues. In this case, the loop ends when the index 'i' is bigger than 10.",
+            "images": [
+                {
+                    "url": "/For Loops/CODE(For Loop Second Statement).png",
+                    "caption": "'The second statement of a for loop'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "",
+            "content": "The third statement 'i++' specifies how much to increment the index by on each iteration of the loop. In this case, it increments by 1 on each loop.",
+            "images": [
+                {
+                    "url": "/For Loops/CODE(For Loop Third Statement).png",
+                    "caption": "'The third statement of a for loop'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        }
+    ]
+}
