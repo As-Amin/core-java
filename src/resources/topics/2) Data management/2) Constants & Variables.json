@@ -10,8 +10,13 @@
         },
         {
             "subheading": "",
-            "content": "The data type must be specified in Java as it is a strongly typed language (variables must be specified with a data type) unlike JavaScript which is a loosley typed language.",
-            "images": [],
+            "content": "The data type must be specified in Java as it is a strongly typed language (variables must be specified with a data type) unlike loosley typed languages such as Python or JavaScript.",
+            "images": [
+                {
+                    "url": "/Constants & Variables/IMAGE(Constants & Variables Cartoon).png",
+                    "caption": "'Source: https://programmingwithjava12.blogspot.com/2020/05/types-of-variables-in-java.html'"
+                }
+            ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []

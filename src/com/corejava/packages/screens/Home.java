@@ -25,8 +25,8 @@ import net.miginfocom.swing.MigLayout;
 
 public class Home extends JFrame {
 	// The frame dimensions (the initial size of the window)
-	private int frameWidth = 770;
-	private int frameHeight = 530;
+	private int frameWidth = 800;
+	private int frameHeight = 550;
 
 	// The content pane derived from the classes frame - used to
 	// add components created to
@@ -119,8 +119,7 @@ public class Home extends JFrame {
 	private void setClientProperties() {
 		searchTopicInput.putClientProperty("JTextField.placeholderText", "Search topics...");
 		searchTopicInput.putClientProperty("FlatLaf.style", "background: @background");
-		topicTitleBox.putClientProperty("FlatLaf.style",
-				"font: $large.font;" + "foreground: @accentColor;");
+		topicTitleBox.putClientProperty("FlatLaf.style", "font: $large.font;");
 		topicFeedbackArea.getTextPane().putClientProperty("FlatLaf.style",
 				"background: @componentBackground;" + "foreground: @accentColor;");
 

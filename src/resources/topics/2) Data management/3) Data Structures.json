@@ -12,7 +12,12 @@
         {
             "subheading": "",
             "content": "There are many data structures in Java, this topic will only cover the most common data structures.",
-            "images": [],
+            "images": [
+                {
+                    "url": "/Data Structures/IMAGE(Data Structures Cartoon).png",
+                    "caption": "'Source: http://www.r4d.ch/News/Pages/170609_r4dSkills_DataManagement.aspx'"
+                }
+            ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": [],

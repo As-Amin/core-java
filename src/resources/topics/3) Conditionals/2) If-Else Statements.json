@@ -3,7 +3,12 @@
         {
             "subheading": "What are If-Else statements?",
             "content": "If-Else statements allow for specific blocks of code to be executed only if a specified condition is either true or false.",
-            "images": [],
+            "images": [
+                {
+                    "url": "/If-Else Statements/IMAGE(If-Else Statements Cartoon).png",
+                    "caption": "'Source: https://www.programiz.com/c-programming/c-if-else-statement'"
+                }
+            ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
@@ -11,12 +16,7 @@
         {
             "subheading": "How to create an if statement",
             "content": "The example below shows how to create an if statement on its own; without an else or else if (covered later in the topic). The if statement is used to specify a block of code which is to be executed only if the condition (in the brackets) is true.",
-            "images": [
-                {
-                    "url": "/Welcome to CoreJava/IMAGE(Java Platforms).png",
-                    "caption": "'Java's countless compatible platforms' (Source: https://manshasoftware.com/services/java-platform/)"
-                }
-            ],
+            "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []

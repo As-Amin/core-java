@@ -1,1 +1,46 @@
-This is an introduction to Java
+{
+    "paragraphs": [
+        {
+            "subheading": "What are switch statements?",
+            "content": "Switch statements are similiar to if-else statements in that they allow for specific blocks of code to executed based on whether a specific 'case' (condition) is true or false.",
+            "images": [
+                {
+                    "url": "/Switch Statements/IMAGE(Switch Statements Cartoon).png",
+                    "caption": "'Source: https://www.programiz.com/c-programming/c-switch-case-statement'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "How to create a switch statement",
+            "content": "The example below shows how to create a switch statement. The switch statement specifies a condition (in the brackets) which the switch is based upon. It then specifies multiple 'cases' in which the result of the expression is compared with the value in the cases. If the case matches to the switch expression, the block of code in the case statement is executed. ",
+            "images": [
+                {
+                    "url": "/Switch Statements/IMAGE(Switch Statements Flowchart).png",
+                    "caption": "'A flowchart demonstrating how a switch statement works (Source: https://www.programiz.com/c-programming/c-switch-case-statement)'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Break keyword",
+            "content": "The break keyword is implemented into the switch block and serves the function to exit the switch block when specified. This ensures that no other cases are checked.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        },
+        {
+            "subheading": "Default keyword",
+            "content": "The default keyword is implemented into the switch block and is just like the else statement in an if-else block; it specifies a block of code to be run when no other case has been matched.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": []
+        }
+    ]
+}
