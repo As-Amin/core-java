@@ -15,7 +15,7 @@
         },
         {
             "subheading": "How to create a switch statement",
-            "content": "The example below shows how to create a switch statement. The switch statement specifies a condition (in the brackets) which the switch is based upon. It then specifies multiple 'cases' in which the result of the expression is compared with the value in the cases. If the case matches to the switch expression, the block of code in the case statement is executed. ",
+            "content": "The example below shows how to create a switch statement. The switch statement specifies a condition (in the brackets) which the switch is based upon. It then specifies multiple 'cases' in which the result of the expression is compared with the value in the cases. If the case matches to the switch expression, the block of code in the case statement is executed.",
             "images": [
                 {
                     "url": "/Switch Statements/IMAGE(Switch Statements Flowchart).png",

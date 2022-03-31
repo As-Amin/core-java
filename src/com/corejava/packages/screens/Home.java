@@ -98,6 +98,12 @@ public class Home extends JFrame {
 		setClientProperties(); // Setup the client theming properties for FlatLaf
 		setToolTips(); // Setup the tooltips for all component objects created
 		setInitialLearnArea(); // Setup the text and components content in the learn area
+
+		for (int i = 0; i < 10; i++) {
+			if (i == 3) {
+				System.out.println(i); // Prints '3'
+			}
+		}
 	}
 
 	/** Setups the frame i.e. Size, Re-sizable, Location */
