@@ -6,7 +6,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -14,12 +15,13 @@
             "images": [
                 {
                     "url": "/Constants & Variables/IMAGE(Constants & Variables Cartoon).png",
-                    "caption": "'Source: https://programmingwithjava12.blogspot.com/2020/05/types-of-variables-in-java.html'"
+                    "caption": "'Source: https://bit.ly/36Owdqn'"
                 }
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Local variables",
@@ -32,7 +34,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Static variables",
@@ -49,7 +52,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -57,7 +61,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Instance variables",
@@ -70,7 +75,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Constants",
@@ -83,7 +89,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -91,7 +98,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         }
     ]
 }

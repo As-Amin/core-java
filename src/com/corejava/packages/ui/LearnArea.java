@@ -6,10 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingConstants;
+import javax.swing.text.StyledDocument;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -24,7 +23,6 @@ import com.corejava.packages.textpane.TrueFalseQuiz;
 import com.corejava.packages.textpane.Table;
 import com.corejava.packages.textpane.PlainText;
 import com.corejava.packages.textpane.Question;
-import com.corejava.packages.textpane.Separator;
 import com.corejava.packages.textpane.Subheading;
 
 public class LearnArea extends JScrollPane {
@@ -62,7 +60,12 @@ public class LearnArea extends JScrollPane {
 				String paragraphContent = allParagraphs.getJSONObject(i).getString("content");
 				// Append subheading
 				if (subheading.length() != 0) {
-					Subheading heading = new Subheading(subheading, Main.ACCENT_COLOR, textPane);
+					if (i != 0) {
+						StyledDocument document = (StyledDocument) textPane.getDocument();
+						document.insertString(document.getLength(), "\n", null);
+					}
+					Subheading heading =
+							new Subheading(subheading, Main.ACCENT_COLOR, textPane, true);
 				}
 				// Append paragraph content
 				if (paragraphContent.length() != 0) {
@@ -73,12 +76,6 @@ public class LearnArea extends JScrollPane {
 					parseImages(allParagraphs.getJSONObject(i).getJSONArray("images"));
 				} catch (Exception e) {
 					System.out.println("No images found for paragraph " + i);
-				}
-
-				try {
-					parseTables(allParagraphs.getJSONObject(i).getJSONArray("tables"));
-				} catch (Exception e) {
-					System.out.println("No tables found for paragraph " + i);
 				}
 
 				try {
@@ -98,6 +95,12 @@ public class LearnArea extends JScrollPane {
 							allParagraphs.getJSONObject(i).getJSONArray("multipleChoiceQuiz"));
 				} catch (Exception e) {
 					System.out.println("No multiple choice quiz found for paragraph " + i);
+				}
+
+				try {
+					parseTables(allParagraphs.getJSONObject(i).getJSONArray("tables"));
+				} catch (Exception e) {
+					System.out.println("No tables found for paragraph " + i);
 				}
 			}
 		} catch (Exception e) {
@@ -120,7 +123,6 @@ public class LearnArea extends JScrollPane {
 	private void parseTables(JSONArray jsonArray) {
 		List<String> columns = null;
 		List<String> rows = null;
-
 		// Loop each table
 		for (int i = 0; i < jsonArray.length(); i++) {
 			// Parse all columns in current table

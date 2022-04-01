@@ -11,7 +11,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "How to create a for loop",
@@ -24,7 +25,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "First statement",
@@ -37,7 +39,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Second statement",
@@ -50,7 +53,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Third statement",
@@ -63,7 +67,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         }
     ]
 }

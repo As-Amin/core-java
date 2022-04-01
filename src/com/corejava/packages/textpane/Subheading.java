@@ -13,11 +13,13 @@ public class Subheading {
     private Color foreground;
     private String text;
     private JTextPane textPane;
+    private Boolean largerFontSize;
 
-    public Subheading(String text, Color foreground, JTextPane textPane) {
+    public Subheading(String text, Color foreground, JTextPane textPane, Boolean largerFontSize) {
         this.text = text;
         this.foreground = foreground;
         this.textPane = textPane;
+        this.largerFontSize = largerFontSize;
         try {
             textPane.setContentType("text/plain");
             StyledDocument document = (StyledDocument) textPane.getDocument();
@@ -25,7 +27,9 @@ public class Subheading {
             if (foreground != null) {
                 StyleConstants.setForeground(style, foreground);
             }
-            StyleConstants.setFontSize(style, StyleConstants.getFontSize(style) + 6);
+            if (largerFontSize) {
+                StyleConstants.setFontSize(style, StyleConstants.getFontSize(style) + 6);
+            }
             document.insertString(document.getLength(), text, style);
             document.insertString(document.getLength(), "\n", null);
             JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
@@ -70,4 +74,19 @@ public class Subheading {
     public void setTextPane(JTextPane textPane) {
         this.textPane = textPane;
     }
+
+    /**
+     * @return Boolean return the largerFontSize
+     */
+    public Boolean isLargerFontSize() {
+        return largerFontSize;
+    }
+
+    /**
+     * @param largerFontSize the largerFontSize to set
+     */
+    public void setLargerFontSize(Boolean largerFontSize) {
+        this.largerFontSize = largerFontSize;
+    }
+
 }

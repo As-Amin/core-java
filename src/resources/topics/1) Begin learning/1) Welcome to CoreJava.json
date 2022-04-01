@@ -11,7 +11,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "What is Java?",
@@ -45,7 +46,8 @@
                     "feedbackRight": "Correct! This is a multiple choice question, these will come up throughout the app.",
                     "feedbackWrong": "Wrong! Java is based on the C and C++ programming languages. Many people think JavaScript is related to Java because of their similiar names... They actually have many differences."
                 }
-            ]
+            ],
+            "tables": []
         },
         {
             "subheading": "",
@@ -53,7 +55,45 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "Advantages and disadvantages of Java",
+            "content": "Like every other programming language, Java has pros and cons. These are discussed in the table below.",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "column": "Advantages"
+                        },
+                        {
+                            "column": "Disadvantages"
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "row": "Object Oriented (Allows for reusable code),Slower performance compared to other efficient languages"
+                        },
+                        {
+                            "row": "Extremely stable language,Difficult to use GUI builders (i.e. Swing, JavaFX)"
+                        },
+                        {
+                            "row": "Supports multithreading (Efficient),Memory intensive"
+                        },
+                        {
+                            "row": "Cross platform"
+                        },
+                        {
+                            "row": "Secure language"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "subheading": "Why should you use CoreJava?",
@@ -68,7 +108,8 @@
                     "feedbackWrong": "Wrong! CoreJava is created in Java using the Swing library."
                 }
             ],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Get started",
@@ -83,7 +124,8 @@
                 }
             ],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         }
     ]
 }

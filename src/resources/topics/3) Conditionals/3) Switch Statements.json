@@ -11,7 +11,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "How to create a switch statement",
@@ -28,7 +29,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Break keyword",
@@ -41,7 +43,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Default keyword",
@@ -54,7 +57,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         }
     ]
 }

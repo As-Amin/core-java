@@ -11,7 +11,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "How to create an if statement",
@@ -24,7 +25,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "How to create an else statement",
@@ -37,7 +39,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "How to create an else-if statement",
@@ -50,7 +53,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -58,7 +62,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -66,7 +71,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Tips to remember with If-Else statements",
@@ -74,7 +80,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -82,7 +89,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         }
     ]
 }

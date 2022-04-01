@@ -22,9 +22,9 @@ public class Caption {
             StyledDocument document = (StyledDocument) textPane.getDocument();
             Style style = textPane.addStyle("", null);
             if (foreground != null) {
-                StyleConstants.setItalic(style, true);
                 StyleConstants.setForeground(style, foreground);
             }
+            StyleConstants.setItalic(style, true);
             document.insertString(document.getLength(), text, style);
             document.insertString(document.getLength(), "\n\n", null);
         } catch (BadLocationException e) {

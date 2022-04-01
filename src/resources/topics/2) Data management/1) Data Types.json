@@ -11,7 +11,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Integer data types",
@@ -19,7 +20,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Integer data type: Byte",
@@ -32,7 +34,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Integer data type: Short",
@@ -45,7 +48,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Integer data type: Int",
@@ -58,7 +62,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Integer data type: Long",
@@ -71,7 +76,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Integer questions",
@@ -134,7 +140,8 @@
                     "feedbackRight": "Correct! Although this number can be stored as a short, it won't be right to do so as it is subject to change (variable), so it may reach the limits of a short.",
                     "feedbackWrong": "Wrong! The answer is int. A long can also be used but because the likelihood of the number exceeding the limits of an int would be very unlikely, an int is more appropiate and efficient. Although this number can be stored as a short, it won't be right to do so as it is subject to change (variable), so it may reach the limits of a short."
                 }
-            ]
+            ],
+            "tables": []
         },
         {
             "subheading": "Floating point data types",
@@ -142,7 +149,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Floating point data type: Float",
@@ -155,7 +163,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Floating point data type: Double",
@@ -168,7 +177,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Boolean data types",
@@ -181,7 +191,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Character data types",
@@ -194,7 +205,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "String data types",
@@ -207,7 +219,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "String, character, boolean, floating point questions",
@@ -271,7 +284,8 @@
                     "feedbackRight": "Correct! A string is the only possible data type to store the data.",
                     "feedbackWrong": "Wrong! The answer is string. A string is the only possible data type to store the data."
                 }
-            ]
+            ],
+            "tables": []
         }
     ]
 }

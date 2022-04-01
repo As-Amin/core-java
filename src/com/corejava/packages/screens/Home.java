@@ -52,8 +52,8 @@ public class Home extends JFrame {
 	public static TextBox topicTitleBox = new TextBox("", false);
 	private JSeparator titleSeperator = new JSeparator(SwingConstants.HORIZONTAL);
 	public static LearnArea topicLearnArea = new LearnArea();
-	public static TextBox sectionTitleBox = new TextBox("", false);
 	private JSeparator sectionSeperator = new JSeparator(SwingConstants.HORIZONTAL);
+	public static TextBox sectionTitleBox = new TextBox("", false);
 
 	// The menu bar at the top of the window - is not apart of the content pane but frame
 	private MenuBar menuBar = new MenuBar(true);
@@ -69,10 +69,12 @@ public class Home extends JFrame {
 				"[]10[]10[fill, " + frameHeight * 0.01 + "!][fill,grow]10[fill, "
 						+ frameHeight * 0.01 + "!][fill, " + frameHeight * 0.15 + "!]")); // height
 		leftPanel.add(searchTopicInput, "cell 0 0");
+
 		searchButtonPanel.setLayout(new MigLayout("", "0[fill,grow][fill,grow]0", "0[]0"));
 		searchButtonPanel.add(searchButton, "cell 0 0");
 		searchButtonPanel.add(resetButton, "cell 1 0");
 		leftPanel.add(searchButtonPanel, "cell 0 1");
+
 		leftPanel.add(buttonSeperator, "cell 0 2");
 		leftPanel.add(topicList, "cell 0 3");
 		leftPanel.add(feedbackSeperator, "cell 0 4");
@@ -99,19 +101,6 @@ public class Home extends JFrame {
 		setClientProperties(); // Setup the client theming properties for FlatLaf
 		setToolTips(); // Setup the tooltips for all component objects created
 		setInitialLearnArea(); // Setup the text and components content in the learn area
-
-		int i = 5;
-		switch (i) {
-			case 1:
-				System.out.println(i);
-				break;
-			case 2:
-				System.out.println(i);
-				break;
-			default:
-				// i != any cases, execute default block
-				System.out.println("No cases matched");
-		}
 	}
 
 	/** Setups the frame i.e. Size, Re-sizable, Location */
@@ -160,8 +149,6 @@ public class Home extends JFrame {
 		topicTitleBox.setText("No topic selected");
 		sectionTitleBox.setText("No section selected");
 		topicFeedbackArea.setText("When you answer a question, feedback will appear here!");
-		Subheading heading =
-				new Subheading("Get Started", Main.ACCENT_COLOR, topicLearnArea.getTextPane());
 		PlainText paragraph = new PlainText(
 				"To begin, select a topic from the left side topics list! You can use the arrow keys or your cursor. Hover over any part of the screen to see what each section is for.",
 				null, topicLearnArea.getTextPane());

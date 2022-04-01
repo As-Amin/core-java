@@ -24,7 +24,7 @@ public class Question {
             if (foreground != null) {
                 StyleConstants.setForeground(style, foreground);
             }
-            document.insertString(document.getLength(), text, style);
+            document.insertString(document.getLength(), "Question: " + text, style);
             document.insertString(document.getLength(), "\n", null);
         } catch (BadLocationException e) {
             e.printStackTrace();

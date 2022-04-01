@@ -11,7 +11,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -40,7 +41,8 @@
                     "feedbackRight": "Correct! IDE's do not create programs for you, you still need to be able to write code.",
                     "feedbackWrong": "Wrong! The correct answer is 'creates programs without needing to write code'. IDE's have many features however, you still need to be able to write code to create programs."
                 }
-            ]
+            ],
+            "tables": []
         },
         {
             "subheading": "Links to download the IDE's",
@@ -76,7 +78,8 @@
                     "feedbackRight": "Nice! CoreJava recommends using the Eclipse IDE. Keep scrolling to find a tutorial on how to set it up and create your first program...",
                     "feedbackWrong": "CoreJava recommends using the Eclipse IDE, and includes a tutorial only for Eclipse as of this version however, once you have setup your IDE, skip the process of setting up Eclipse on this page and resume learning!"
                 }
-            ]
+            ],
+            "tables": []
         },
         {
             "subheading": "Setting up the Eclipse IDE on Windows",
@@ -84,7 +87,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -97,7 +101,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -105,7 +110,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -118,7 +124,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -131,7 +138,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -144,7 +152,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -157,7 +166,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Program your first Java application!",
@@ -170,7 +180,8 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "",
@@ -185,7 +196,8 @@
                 }
             ],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         },
         {
             "subheading": "Congratulations!",
@@ -193,7 +205,8 @@
             "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
+            "multipleChoiceQuiz": [],
+            "tables": []
         }
     ]
 }
