@@ -1,19 +1,20 @@
 package com.corejava.packages.textpane;
 
 import java.awt.Color;
-
+import javax.swing.JSeparator;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
-public class PlainText {
+public class Subheading {
     private Color foreground;
     private String text;
     private JTextPane textPane;
 
-    public PlainText(String text, Color foreground, JTextPane textPane) {
+    public Subheading(String text, Color foreground, JTextPane textPane) {
         this.text = text;
         this.foreground = foreground;
         this.textPane = textPane;
@@ -24,7 +25,11 @@ public class PlainText {
             if (foreground != null) {
                 StyleConstants.setForeground(style, foreground);
             }
+            StyleConstants.setFontSize(style, StyleConstants.getFontSize(style) + 6);
             document.insertString(document.getLength(), text, style);
+            document.insertString(document.getLength(), "\n", null);
+            JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
+            textPane.insertComponent(separator);
             document.insertString(document.getLength(), "\n\n", null);
         } catch (BadLocationException e) {
             e.printStackTrace();

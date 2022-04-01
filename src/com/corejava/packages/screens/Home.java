@@ -15,6 +15,7 @@ import javax.swing.WindowConstants;
 
 import com.corejava.packages.Main;
 import com.corejava.packages.textpane.PlainText;
+import com.corejava.packages.textpane.Subheading;
 import com.corejava.packages.ui.LearnArea;
 import com.corejava.packages.ui.ListFiles;
 import com.corejava.packages.ui.MenuBar;
@@ -159,8 +160,8 @@ public class Home extends JFrame {
 		topicTitleBox.setText("No topic selected");
 		sectionTitleBox.setText("No section selected");
 		topicFeedbackArea.setText("When you answer a question, feedback will appear here!");
-		PlainText heading =
-				new PlainText("Get started", Main.ACCENT_COLOR, topicLearnArea.getTextPane());
+		Subheading heading =
+				new Subheading("Get Started", Main.ACCENT_COLOR, topicLearnArea.getTextPane());
 		PlainText paragraph = new PlainText(
 				"To begin, select a topic from the left side topics list! You can use the arrow keys or your cursor. Hover over any part of the screen to see what each section is for.",
 				null, topicLearnArea.getTextPane());

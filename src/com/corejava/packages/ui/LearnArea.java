@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
-
+import javax.swing.SwingConstants;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,6 +24,8 @@ import com.corejava.packages.textpane.TrueFalseQuiz;
 import com.corejava.packages.textpane.Table;
 import com.corejava.packages.textpane.PlainText;
 import com.corejava.packages.textpane.Question;
+import com.corejava.packages.textpane.Separator;
+import com.corejava.packages.textpane.Subheading;
 
 public class LearnArea extends JScrollPane {
 	private JSONObject jsonObject;
@@ -59,12 +62,11 @@ public class LearnArea extends JScrollPane {
 				String paragraphContent = allParagraphs.getJSONObject(i).getString("content");
 				// Append subheading
 				if (subheading.length() != 0) {
-					PlainText textPaneSubheading =
-							new PlainText(subheading, Main.ACCENT_COLOR, textPane);
+					Subheading heading = new Subheading(subheading, Main.ACCENT_COLOR, textPane);
 				}
 				// Append paragraph content
 				if (paragraphContent.length() != 0) {
-					PlainText textPaneParagraph = new PlainText(paragraphContent, null, textPane);
+					PlainText paragraph = new PlainText(paragraphContent, null, textPane);
 				}
 
 				try {
