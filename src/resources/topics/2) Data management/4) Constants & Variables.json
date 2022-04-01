@@ -15,7 +15,7 @@
             "images": [
                 {
                     "url": "/Constants & Variables/IMAGE(Constants & Variables Cartoon).png",
-                    "caption": "'Source: https://bit.ly/36Owdqn'"
+                    "caption": "(Source: https://bit.ly/36Owdqn)"
                 }
             ],
             "openChoiceQuiz": [],
@@ -99,6 +99,56 @@
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "Constants and variables questions",
+            "content": "",
+            "images": [],
+            "openChoiceQuiz": [
+                {
+                    "question": "Finish the missing keyword: '_____ cannot change after runtime.'",
+                    "answer": "constants",
+                    "feedbackRight": "Correct! Constants cannot change after runtime.",
+                    "feedbackWrong": "Wrong! The answer is constants. Constants cannot change after runtime, however, variable can!"
+                }
+            ],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: Local variables are declared inside of a method",
+                    "answer": "True",
+                    "feedbackRight": "Correct! Local variables are declared inside methods, static variables outside of a method, accessible by any outside class (global) and instance variables are declared inside a class but not inside a method.",
+                    "feedbackWrong": "Wrong! The statement is true. Local variables are declared inside methods, static variables outside of a method, accessible by any outside class (global) and instance variables are declared inside a class but not inside a method."
+                },
+                {
+                    "question": "True or false: Instance variables can be accessed by any class as they are global.",
+                    "answer": "False",
+                    "feedbackRight": "Correct! Static variables are global and can be accessed by any class. Instance variables cannot be accessed by any class and they are not global!",
+                    "feedbackWrong": "Wrong! The statement is false. Static variables are global and can be accessed by any class. Instance variables cannot be accessed by any class and they are not global!"
+                }
+            ],
+            "multipleChoiceQuiz": [
+                {
+                    "question": "If I declare a variable with the keyword 'final' before the data type, what type of variable is it?",
+                    "options": [
+                        {
+                            "option": "Instance"
+                        },
+                        {
+                            "option": "Constant"
+                        },
+                        {
+                            "option": "Static"
+                        },
+                        {
+                            "option": "Local"
+                        }
+                    ],
+                    "answer": "Constant",
+                    "feedbackRight": "Correct! Constants are declared with the final keyword.",
+                    "feedbackWrong": "Wrong! The answer is constant. Constants are declared with the final keyword."
+                }
+            ],
             "tables": []
         }
     ]

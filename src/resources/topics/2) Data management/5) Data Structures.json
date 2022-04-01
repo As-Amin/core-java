@@ -15,7 +15,7 @@
             "images": [
                 {
                     "url": "/Data Structures/IMAGE(Data Structures Cartoon).png",
-                    "caption": "'Source: http://www.r4d.ch/News/Pages/170609_r4dSkills_DataManagement.aspx'"
+                    "caption": "(Source: http://www.r4d.ch/News/Pages/170609_r4dSkills_DataManagement.aspx)"
                 }
             ],
             "openChoiceQuiz": [],
@@ -160,6 +160,46 @@
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "Data structures questions",
+            "content": "",
+            "images": [],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: Arrays can be resized after runtime.",
+                    "answer": "False",
+                    "feedbackRight": "Correct! Arrays are fixed in size and cannot be resized after runtime however, elements of an array can change.",
+                    "feedbackWrong": "Wrong! The statement is false. Arrays are fixed in size and cannot be resized after runtime however, elements of an array can change."
+                },
+                {
+                    "question": "True or false: You cannot create a multidimensional ArrayList.",
+                    "answer": "False",
+                    "feedbackRight": "Correct! ArrayLists can be multidimensional just like arrays.",
+                    "feedbackWrong": "Wrong! The statement is false. ArrayLists can be multidimensional just like arrays."
+                }
+            ],
+            "multipleChoiceQuiz": [
+                {
+                    "question": "Which data structure discussed in this topic can store multiple data types?",
+                    "options": [
+                        {
+                            "option": "Array"
+                        },
+                        {
+                            "option": "ArrayList"
+                        },
+                        {
+                            "option": "None"
+                        }
+                    ],
+                    "answer": "None",
+                    "feedbackRight": "Correct! None of the data structures discussed in this topic can store multiple data types.",
+                    "feedbackWrong": "Wrong! The answer is none. None of the data structures discussed in this topic can store multiple data types."
+                }
+            ],
             "tables": []
         }
     ]
