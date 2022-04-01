@@ -16,7 +16,12 @@
         {
             "subheading": "How to create an if statement",
             "content": "The example below shows how to create an if statement on its own; without an else or else if (covered later in the topic). The if statement is used to specify a block of code which is to be executed only if the condition (in the brackets) is true.",
-            "images": [],
+            "images": [
+                {
+                    "url": "/If-Else Statements/CODE(If Statement).png",
+                    "caption": "'Example on how to create an if statement with'"
+                }
+            ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
@@ -24,7 +29,12 @@
         {
             "subheading": "How to create an else statement",
             "content": "The example below shows how to create an if statement with an else statement. The else statement is used to execute a block of code (specified within the else curly brackets) only if all of the other conditions are false.",
-            "images": [],
+            "images": [
+                {
+                    "url": "/If-Else Statements/CODE(If-Else Statement).png",
+                    "caption": "'Example on how to create an if statement with an else clause'"
+                }
+            ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
@@ -32,7 +42,12 @@
         {
             "subheading": "How to create an else-if statement",
             "content": "The example below shows how to create an if statement with an else-if statement and an else statement all together!",
-            "images": [],
+            "images": [
+                {
+                    "url": "/If-Else Statements/CODE(If-Else Else-If Statement).png",
+                    "caption": "'Example on how to create an if statement with an else if and an else clause'"
+                }
+            ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []
