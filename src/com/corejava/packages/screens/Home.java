@@ -15,7 +15,6 @@ import javax.swing.WindowConstants;
 
 import com.corejava.packages.Main;
 import com.corejava.packages.textpane.PlainText;
-import com.corejava.packages.textpane.Heading;
 import com.corejava.packages.ui.LearnArea;
 import com.corejava.packages.ui.ListFiles;
 import com.corejava.packages.ui.MenuBar;

@@ -21,7 +21,29 @@
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": [],
-            "tables": []
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "column": "Variable Type"
+                        },
+                        {
+                            "column": "Description"
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "row": "Local,Declared inside of a method"
+                        },
+                        {
+                            "row": "Static,Can be accessed by any class"
+                        },
+                        {
+                            "row": "Instance,Declared outside of a method but outside of a class"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "subheading": "Local variables",
