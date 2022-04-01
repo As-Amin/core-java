@@ -1,0 +1,147 @@
+{
+    "paragraphs": [
+        {
+            "subheading": "What are the other data types?",
+            "content": "This topic discusses the rest of the most commonly used data types in Java, all of which are designed store completely different types of data.",
+            "images": [
+                {
+                    "url": "/More Data Types/IMAGE(More Data Types Cartoon).png",
+                    "caption": "'Source: https://www.pinclipart.com/maxpin/ioRJhxb/'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "column": "Data type"
+                        },
+                        {
+                            "column": "Description"
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "row": "Boolean,True or false"
+                        },
+                        {
+                            "row": "Char,Single characters"
+                        },
+                        {
+                            "row": "String,List of characters"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "subheading": "Boolean",
+            "content": "A boolean stores either true or false. They are primarily used in while loops (covered later).",
+            "images": [
+                {
+                    "url": "/More Data Types/CODE(Boolean).png",
+                    "caption": "'Example of two booleans; one true and one false'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "Char",
+            "content": "A char stores single characters only. The character being stored as a char must be surrounded with single quotation marks.",
+            "images": [
+                {
+                    "url": "/More Data Types/CODE(Char).png",
+                    "caption": "'Example of a char'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "String",
+            "content": "A String essentially combines and stores a list of characters. A String must be surrounded by double quotation marks to indicate its a String and not a char.",
+            "images": [
+                {
+                    "url": "/More Data Types/CODE(String).png",
+                    "caption": "'Example of a string'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "String, character, boolean and floating point questions",
+            "content": "",
+            "images": [],
+            "openChoiceQuiz": [
+                {
+                    "question": "Finish the missing keyword: _____ data = 'a';",
+                    "answer": "char",
+                    "feedbackRight": "Correct! Because the data is only one character and the data is surrounded by singular quotes, it is a char.",
+                    "feedbackWrong": "Wrong! The answer is char. This is because the data is only one character and the data is surrounded by singular quotes."
+                },
+                {
+                    "question": "Finish the missing keyword: _____ data = 30.6d;",
+                    "answer": "double",
+                    "feedbackRight": "Correct! You are doing great!",
+                    "feedbackWrong": "Wrong! The answer is double. This is because the data ends in a 'd' and it has a decimal point."
+                },
+                {
+                    "question": "Finish the missing keyword: _____ data = false;",
+                    "answer": "boolean",
+                    "feedbackRight": "Correct! It is a boolean because booleans are either true or false.",
+                    "feedbackWrong": "Wrong! The answer is boolean. This is because booleans are either true or false."
+                },
+                {
+                    "question": "Finish the missing keyword: _____ data = 30.6f;",
+                    "answer": "float",
+                    "feedbackRight": "Correct! Keep going, you are remembering most of the content on this topic!",
+                    "feedbackWrong": "Wrong! The answer is float. This is because the data ends in a 'f' and it has a decimal point."
+                }
+            ],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: A string can only store words and no numbers.",
+                    "answer": "False",
+                    "feedbackRight": "Correct! A string can store numbers too, but they cannot be operated on.",
+                    "feedbackWrong": "Wrong! Strings can store numbers too, but they cannot be operated on. If you want to store numbers which you want to operate on, store them as an integer data type."
+                }
+            ],
+            "multipleChoiceQuiz": [
+                {
+                    "question": "What data type should I use to store 'Hello'?",
+                    "options": [
+                        {
+                            "option": "Char"
+                        },
+                        {
+                            "option": "String"
+                        },
+                        {
+                            "option": "Boolean"
+                        },
+                        {
+                            "option": "Double"
+                        },
+                        {
+                            "option": "Float"
+                        }
+                    ],
+                    "answer": "String",
+                    "feedbackRight": "Correct! A string is the only possible data type to store the data.",
+                    "feedbackWrong": "Wrong! The answer is string. A string is the only possible data type to store the data."
+                }
+            ],
+            "tables": []
+        }
+    ]
+}

@@ -15,7 +15,7 @@ import javax.swing.WindowConstants;
 
 import com.corejava.packages.Main;
 import com.corejava.packages.textpane.PlainText;
-import com.corejava.packages.textpane.Subheading;
+import com.corejava.packages.textpane.Heading;
 import com.corejava.packages.ui.LearnArea;
 import com.corejava.packages.ui.ListFiles;
 import com.corejava.packages.ui.MenuBar;
@@ -27,7 +27,7 @@ import net.miginfocom.swing.MigLayout;
 public class Home extends JFrame {
 	// The frame dimensions (the initial size of the window)
 	private int frameWidth = 800;
-	private int frameHeight = 550;
+	private int frameHeight = 600;
 
 	// The content pane derived from the classes frame - used to
 	// add components created to
@@ -69,12 +69,10 @@ public class Home extends JFrame {
 				"[]10[]10[fill, " + frameHeight * 0.01 + "!][fill,grow]10[fill, "
 						+ frameHeight * 0.01 + "!][fill, " + frameHeight * 0.15 + "!]")); // height
 		leftPanel.add(searchTopicInput, "cell 0 0");
-
 		searchButtonPanel.setLayout(new MigLayout("", "0[fill,grow][fill,grow]0", "0[]0"));
 		searchButtonPanel.add(searchButton, "cell 0 0");
 		searchButtonPanel.add(resetButton, "cell 1 0");
 		leftPanel.add(searchButtonPanel, "cell 0 1");
-
 		leftPanel.add(buttonSeperator, "cell 0 2");
 		leftPanel.add(topicList, "cell 0 3");
 		leftPanel.add(feedbackSeperator, "cell 0 4");

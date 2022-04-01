@@ -9,13 +9,13 @@ import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
-public class Subheading {
+public class Heading {
     private Color foreground;
     private String text;
     private JTextPane textPane;
     private Boolean largerFontSize;
 
-    public Subheading(String text, Color foreground, JTextPane textPane, Boolean largerFontSize) {
+    public Heading(String text, Color foreground, JTextPane textPane, Boolean largerFontSize) {
         this.text = text;
         this.foreground = foreground;
         this.textPane = textPane;

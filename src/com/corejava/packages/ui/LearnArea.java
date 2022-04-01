@@ -23,7 +23,7 @@ import com.corejava.packages.textpane.TrueFalseQuiz;
 import com.corejava.packages.textpane.Table;
 import com.corejava.packages.textpane.PlainText;
 import com.corejava.packages.textpane.Question;
-import com.corejava.packages.textpane.Subheading;
+import com.corejava.packages.textpane.Heading;
 
 public class LearnArea extends JScrollPane {
 	private JSONObject jsonObject;
@@ -64,8 +64,7 @@ public class LearnArea extends JScrollPane {
 						StyledDocument document = (StyledDocument) textPane.getDocument();
 						document.insertString(document.getLength(), "\n", null);
 					}
-					Subheading heading =
-							new Subheading(subheading, Main.ACCENT_COLOR, textPane, true);
+					Heading heading = new Heading(subheading, Main.ACCENT_COLOR, textPane, true);
 				}
 				// Append paragraph content
 				if (paragraphContent.length() != 0) {
@@ -229,5 +228,4 @@ public class LearnArea extends JScrollPane {
 	public void setTextPane(JTextPane textPane) {
 		this.textPane = textPane;
 	}
-
 }

@@ -1,0 +1,65 @@
+{
+    "paragraphs": [
+        {
+            "subheading": "What are floating point data types?",
+            "content": "Floating point data types store numbers with a decimal.",
+            "images": [
+                {
+                    "url": "/Floating Point Data Types/IMAGE(Floating Point Data Types Cartoon).png",
+                    "caption": "'Source: https://www.vecteezy.com/vector-art/545484-data-analysis'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": [
+                {
+                    "columns": [
+                        {
+                            "column": "Data type"
+                        },
+                        {
+                            "column": "Description"
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "row": "Float,Between 3.4e-038 and 3.4e+038"
+                        },
+                        {
+                            "row": "Double,Between 1.7e-308 and 1.7e+308"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "subheading": "Float",
+            "content": "A float is used store store decimal numbers between 3.4e-038 and 3.4e+038 (six to seven digits after the point). The value should end with an 'f' when stored as a float.",
+            "images": [
+                {
+                    "url": "/Floating Point Data Types/CODE(Float).png",
+                    "caption": "'Example of a float'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        },
+        {
+            "subheading": "Double",
+            "content": "A double is used to store floating point numbers between 1.7e-308 and 1.7e+308 (15 digits after the point). The value should end with a 'd' when stored as a double.",
+            "images": [
+                {
+                    "url": "/Floating Point Data Types/CODE(Double).png",
+                    "caption": "'Example of a double'"
+                }
+            ],
+            "openChoiceQuiz": [],
+            "trueFalseQuiz": [],
+            "multipleChoiceQuiz": [],
+            "tables": []
+        }
+    ]
+}
