@@ -99,10 +99,10 @@ public class Home extends JFrame {
 		setToolTips(); // Setup the tooltips for all component objects created
 		setInitialLearnArea(); // Setup the text and components content in the learn area
 
-		// Program to print even numbers
+		// Program to print odd numbers
 		// between 1 and 10
-		int i = 2;
-		while (i < 11) {// While condition is true
+		int i = 1;
+		while (i < 11) { // While condition is true
 			System.out.println(i);
 			i = i + 2;
 		}

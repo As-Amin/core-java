@@ -18,8 +18,8 @@
             "content": "Look at the example below. Within the brackets after 'while', there is a single statement which defines the condition which must be met in order for the loop to execute the block of code in the while loop.",
             "images": [
                 {
-                    "url": "/For Loops/CODE(For Loop Ten Times).png",
-                    "caption": "'An example of a for loop'"
+                    "url": "/While Loops/CODE(While Loop Odd Numbers).png",
+                    "caption": "'An example of a while loop printing odd numbers between 1 and 10'"
                 }
             ],
             "openChoiceQuiz": [],
@@ -28,39 +28,8 @@
         },
         {
             "subheading": "",
-            "content": "The first statement 'int i = 0;' creates the variable that will indicate which iteration the loop is on. 'i' stands for index and commonly used in loops in Java.",
-            "images": [
-                {
-                    "url": "/For Loops/CODE(For Loop First Statement).png",
-                    "caption": "'The first statement of a for loop'"
-                }
-            ],
-            "openChoiceQuiz": [],
-            "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
-        },
-        {
-            "subheading": "",
-            "content": "The second statement 'i < 10;' specifies the period for the loop to run. If this statement is true, the loop continues. In this case, the loop ends when the index 'i' is bigger than 10.",
-            "images": [
-                {
-                    "url": "/For Loops/CODE(For Loop Second Statement).png",
-                    "caption": "'The second statement of a for loop'"
-                }
-            ],
-            "openChoiceQuiz": [],
-            "trueFalseQuiz": [],
-            "multipleChoiceQuiz": []
-        },
-        {
-            "subheading": "",
-            "content": "The third statement 'i++' specifies how much to increment the index by on each iteration of the loop. In this case, it increments by 1 on each loop.",
-            "images": [
-                {
-                    "url": "/For Loops/CODE(For Loop Third Statement).png",
-                    "caption": "'The third statement of a for loop'"
-                }
-            ],
+            "content": "Within while loops, you must change the value which is involved in the condition so that the loop actually ends; otherwise the loop will be infinite.",
+            "images": [],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": []

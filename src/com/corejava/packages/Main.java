@@ -19,6 +19,8 @@ public class Main {
 	public static PropertiesConfiguration THEME_CONFIG_OBJECT;
 	public static PropertiesConfiguration APP_CONFIG_OBJECT;
 
+	public static Color BACKGROUND_COLOR;
+	public static Color SECONDARY_BACKGROUND_COLOR;
 	public static Color ACCENT_COLOR;
 	public static Color SECONDARY_ACCENT_COLOR;
 
@@ -34,6 +36,10 @@ public class Main {
 			ACCENT_COLOR = Color.decode(THEME_CONFIG_OBJECT.getProperty("@accentColor").toString());
 			SECONDARY_ACCENT_COLOR = Color
 					.decode(THEME_CONFIG_OBJECT.getProperty("@secondaryAccentColor").toString());
+			BACKGROUND_COLOR =
+					Color.decode(THEME_CONFIG_OBJECT.getProperty("@background").toString());
+			SECONDARY_BACKGROUND_COLOR = Color
+					.decode(THEME_CONFIG_OBJECT.getProperty("@componentBackground").toString());
 
 			@SuppressWarnings("unused")
 			Home homeScreen = new Home();

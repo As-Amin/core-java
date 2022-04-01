@@ -4,13 +4,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
-import javax.print.DocFlavor.URL;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import com.corejava.packages.Main;
 
@@ -39,8 +35,7 @@ public class Image {
             StyledDocument document = (StyledDocument) textPane.getDocument();
             BufferedImage BI = ImageIO.read(imageFile);
             ImageIcon image = new ImageIcon(BI);
-            JLabel label = new JLabel(image, JLabel.LEFT);
-            label.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Main.ACCENT_COLOR));
+            JLabel label = new JLabel(image);
             textPane.insertComponent(label);
             document.insertString(document.getLength(), "\n\n", null);
         } catch (Exception e) {
