@@ -99,13 +99,17 @@ public class Home extends JFrame {
 		setToolTips(); // Setup the tooltips for all component objects created
 		setInitialLearnArea(); // Setup the text and components content in the learn area
 
-		int i = 3;
-		if (i < 5) {
-			System.out.println("Smaller than 5");
-		} else if (i == 5) {
-			System.out.println("Equal to 5");
-		} else {
-			System.out.println("Bigger than 5");
+		int i = 5;
+		switch (i) {
+			case 1:
+				System.out.println(i);
+				break;
+			case 2:
+				System.out.println(i);
+				break;
+			default:
+				// i != any cases, execute default block
+				System.out.println("No cases matched");
 		}
 	}
 
