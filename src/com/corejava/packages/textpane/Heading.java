@@ -1,6 +1,7 @@
 package com.corejava.packages.textpane;
 
 import java.awt.Color;
+
 import javax.swing.JSeparator;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;

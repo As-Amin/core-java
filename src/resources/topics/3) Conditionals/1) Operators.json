@@ -19,8 +19,56 @@
             "content": "These are operators which perform mathematical operations.",
             "images": [],
             "openChoiceQuiz": [],
-            "trueFalseQuiz": [],
-            "multipleChoiceQuiz": [],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: The '++' symbol serves the function of incrementation.",
+                    "answer": "True",
+                    "feedbackRight": "Correct! '++' is used to increment a value.",
+                    "feedbackWrong": "Wrong! '++' is used to increment a value. "
+                }
+            ],
+            "multipleChoiceQuiz": [
+                {
+                    "question": "Which of the arithmetic operators means modulus?",
+                    "options": [
+                        {
+                            "option": "+"
+                        },
+                        {
+                            "option": "/"
+                        },
+                        {
+                            "option": "%"
+                        },
+                        {
+                            "option": "--"
+                        }
+                    ],
+                    "answer": "%",
+                    "feedbackRight": "Correct! Modulus divides two values and return the remainder.",
+                    "feedbackWrong": "Wrong! The correct answer is '%'. Modulus divides two values and return the remainder."
+                },
+                {
+                    "question": "Which of the arithmetic operators means decrement?",
+                    "options": [
+                        {
+                            "option": "-"
+                        },
+                        {
+                            "option": "/"
+                        },
+                        {
+                            "option": "--"
+                        },
+                        {
+                            "option": "++"
+                        }
+                    ],
+                    "answer": "--",
+                    "feedbackRight": "Correct! Decrementing is when you take away one from a value.",
+                    "feedbackWrong": "Wrong! The correct answer is '--'. Decrementing is when you take away one from a value."
+                }
+            ],
             "tables": [
                 {
                     "columns": [
@@ -68,8 +116,56 @@
             "content": "These are operators which compare values.",
             "images": [],
             "openChoiceQuiz": [],
-            "trueFalseQuiz": [],
-            "multipleChoiceQuiz": [],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: The '!=' symbol means equals.",
+                    "answer": "False",
+                    "feedbackRight": "Correct! '!=' means not equals.",
+                    "feedbackWrong": "Wrong! '!=' means not equals and '==' means equals. The '!' symbolises 'not'."
+                }
+            ],
+            "multipleChoiceQuiz": [
+                {
+                    "question": "Which of the comparision operators means greater than?",
+                    "options": [
+                        {
+                            "option": "<"
+                        },
+                        {
+                            "option": ">"
+                        },
+                        {
+                            "option": "=="
+                        },
+                        {
+                            "option": "!="
+                        }
+                    ],
+                    "answer": ">",
+                    "feedbackRight": "Correct! '>' means greater than and '<' means lesser than.",
+                    "feedbackWrong": "Wrong! The correct answer is '>'. '>' means greater than and '<' means lesser than."
+                },
+                {
+                    "question": "Which of the comparision operators means greater than or equal to?",
+                    "options": [
+                        {
+                            "option": "=="
+                        },
+                        {
+                            "option": "!="
+                        },
+                        {
+                            "option": "<="
+                        },
+                        {
+                            "option": ">="
+                        }
+                    ],
+                    "answer": ">=",
+                    "feedbackRight": "Correct! '>=' means greater than or equal to and '<=' means lesser than or equal to.",
+                    "feedbackWrong": "Wrong! The correct answer is '>='.  '>=' means greater than or equal to and '<=' means lesser than or equal to."
+                }
+            ],
             "tables": [
                 {
                     "columns": [
@@ -111,8 +207,56 @@
             "content": "These are operators which assign variables to a specified value.",
             "images": [],
             "openChoiceQuiz": [],
-            "trueFalseQuiz": [],
-            "multipleChoiceQuiz": [],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: The '*=' symbol means to multiply.",
+                    "answer": "False",
+                    "feedbackRight": "Correct! '*=' does mean multiply but it also stores it with the '=' symbol.",
+                    "feedbackWrong": "Wrong! '*=' does mean multiply but it also stores it with the '=' symbol."
+                }
+            ],
+            "multipleChoiceQuiz": [
+                {
+                    "question": "Which of the assignment operators means subtract from a variable and store?",
+                    "options": [
+                        {
+                            "option": "+="
+                        },
+                        {
+                            "option": "/="
+                        },
+                        {
+                            "option": "-="
+                        },
+                        {
+                            "option": "-"
+                        }
+                    ],
+                    "answer": "-=",
+                    "feedbackRight": "Correct! '-=' subtracts from a value and stores it in a variable due to the equals symbol.",
+                    "feedbackWrong": "Wrong! The correct answer is '-='. '-=' subtracts from a value and stores it in a variable due to the equals symbol."
+                },
+                {
+                    "question": "Which of the assignment operators means divide by a variable and store the remainder?",
+                    "options": [
+                        {
+                            "option": "/"
+                        },
+                        {
+                            "option": "%"
+                        },
+                        {
+                            "option": "%="
+                        },
+                        {
+                            "option": "/="
+                        }
+                    ],
+                    "answer": "%=",
+                    "feedbackRight": "Correct! '%' means modulus (get remainder of division) and '=' means store the result.",
+                    "feedbackWrong": "Wrong! The correct answer is '%='. '%' means modulus (get remainder of division) and '=' means store the result."
+                }
+            ],
             "tables": [
                 {
                     "columns": [
@@ -153,7 +297,20 @@
             "subheading": "Logical operators",
             "content": "These are operators which check the logic between values.",
             "images": [],
-            "openChoiceQuiz": [],
+            "openChoiceQuiz": [
+                {
+                    "question": "What does the '&&' operator mean?",
+                    "answer": "AND",
+                    "feedbackRight": "Correct, great work! The '&&' returns true if both statements are true.",
+                    "feedbackWrong": "Sorry, but that's the wrong answer! The correct answer is 'AND' which return true if both statements are true."
+                },
+                {
+                    "question": "What does the '||' operator mean?",
+                    "answer": "OR",
+                    "feedbackRight": "Correct! The '||' returns true if one of two statements is true.",
+                    "feedbackWrong": "Wrong answer! The correct answer is 'OR' which returns true if one of two statements is true."
+                }
+            ],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": [],
             "tables": [
@@ -174,13 +331,13 @@
                     ],
                     "rows": [
                         {
-                            "row": "&&,And,True if both statements are correct,i < 10 && j < 20"
+                            "row": "&&,AND,True if both statements are correct,i < 10 && j < 20"
                         },
                         {
-                            "row": "||,Or,True if one statements is correct,i < 10 || j < 20"
+                            "row": "||,OR,True if one statements is correct,i < 10 || j < 20"
                         },
                         {
-                            "row": "!,Not,Reverse result (if true, return false and vice verse),!i < j"
+                            "row": "!,NOT,Reverse result (if true, return false and vice verse),!i < j"
                         }
                     ]
                 }

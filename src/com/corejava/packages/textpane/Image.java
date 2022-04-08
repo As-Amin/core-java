@@ -8,7 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import javax.swing.text.StyledDocument;
-import com.corejava.packages.Main;
 
 public class Image {
     private File imageFile; // The image file to add to the text pane

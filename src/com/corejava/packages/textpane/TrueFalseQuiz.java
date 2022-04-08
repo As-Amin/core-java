@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.text.StyledDocument;
-import com.corejava.packages.ui.ScrollTextPane;
+
 import net.miginfocom.swing.MigLayout;
 
 public class TrueFalseQuiz {

@@ -2,15 +2,13 @@ package com.corejava.packages.textpane;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.StyledDocument;
-import com.corejava.packages.ui.ScrollTextPane;
+
 import net.miginfocom.swing.MigLayout;
 
 public class OpenChoiceQuiz {

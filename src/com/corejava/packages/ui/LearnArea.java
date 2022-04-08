@@ -9,6 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.text.StyledDocument;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -16,14 +17,14 @@ import com.corejava.packages.Main;
 import com.corejava.packages.json.JSONParser;
 import com.corejava.packages.screens.Home;
 import com.corejava.packages.textpane.Caption;
+import com.corejava.packages.textpane.Heading;
 import com.corejava.packages.textpane.Image;
 import com.corejava.packages.textpane.MultipleChoiceQuiz;
 import com.corejava.packages.textpane.OpenChoiceQuiz;
-import com.corejava.packages.textpane.TrueFalseQuiz;
-import com.corejava.packages.textpane.Table;
 import com.corejava.packages.textpane.PlainText;
 import com.corejava.packages.textpane.Question;
-import com.corejava.packages.textpane.Heading;
+import com.corejava.packages.textpane.Table;
+import com.corejava.packages.textpane.TrueFalseQuiz;
 
 public class LearnArea extends JScrollPane {
 	private JSONObject jsonObject;
@@ -78,6 +79,12 @@ public class LearnArea extends JScrollPane {
 				}
 
 				try {
+					parseTables(allParagraphs.getJSONObject(i).getJSONArray("tables"));
+				} catch (Exception e) {
+					System.out.println("No tables found for paragraph " + i);
+				}
+
+				try {
 					parseOpenChoice(allParagraphs.getJSONObject(i).getJSONArray("openChoiceQuiz"));
 				} catch (Exception e) {
 					System.out.println("No open choice quiz found for paragraph " + i);
@@ -94,12 +101,6 @@ public class LearnArea extends JScrollPane {
 							allParagraphs.getJSONObject(i).getJSONArray("multipleChoiceQuiz"));
 				} catch (Exception e) {
 					System.out.println("No multiple choice quiz found for paragraph " + i);
-				}
-
-				try {
-					parseTables(allParagraphs.getJSONObject(i).getJSONArray("tables"));
-				} catch (Exception e) {
-					System.out.println("No tables found for paragraph " + i);
 				}
 			}
 		} catch (Exception e) {
