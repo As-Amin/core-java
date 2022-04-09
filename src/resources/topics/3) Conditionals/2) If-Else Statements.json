@@ -9,7 +9,14 @@
                     "caption": "(Source: https://www.programiz.com/c-programming/c-if-else-statement)"
                 }
             ],
-            "openChoiceQuiz": [],
+            "openChoiceQuiz": [
+                {
+                    "question": "Finish the missing keyword: If-Else statements are used to only run specific _____ of code if a condition is true or false.",
+                    "answer": "blocks",
+                    "feedbackRight": "Correct! Blocks of code are multiple lines of code.",
+                    "feedbackWrong": "Sorry, but that's the wrong answer! The correct answer is 'blocks'. Blocks of code are multiple lines of code."
+                }
+            ],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": [],
             "tables": []
@@ -20,11 +27,18 @@
             "images": [
                 {
                     "url": "/If-Else Statements/CODE(If Statement).png",
-                    "caption": "'Example on how to create an if statement with'"
+                    "caption": "'Example on how to create an if statement'"
                 }
             ],
             "openChoiceQuiz": [],
-            "trueFalseQuiz": [],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: The condition for an if statement is specified outside of brackets.",
+                    "answer": "False",
+                    "feedbackRight": "Correct, fantastic work! The condition is in fact specified inside of the brackets directly after the if keyword.",
+                    "feedbackWrong": "Wrong! The condition is in fact specified inside of the brackets directly after the if keyword."
+                }
+            ],
             "multipleChoiceQuiz": [],
             "tables": []
         },
@@ -38,7 +52,14 @@
                 }
             ],
             "openChoiceQuiz": [],
-            "trueFalseQuiz": [],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: The else statement does not require a condition to be specified.",
+                    "answer": "True",
+                    "feedbackRight": "Correct, you're doing great! Else statements do not require conditions as they are a last resort case so they are only activated when other conditions fail.",
+                    "feedbackWrong": "Wrong! Else statements do not require conditions as they are a last resort case so they are only activated when other conditions fail."
+                }
+            ],
             "multipleChoiceQuiz": [],
             "tables": []
         },
@@ -52,7 +73,14 @@
                 }
             ],
             "openChoiceQuiz": [],
-            "trueFalseQuiz": [],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: The else-if statement can only be declared after an if statement and before an else statement.",
+                    "answer": "True",
+                    "feedbackRight": "Correct! Else-if statements are optional and if they are declared, they must be after an if statement and before an else (if there is an else clause).",
+                    "feedbackWrong": "Wrong! Else-if statements are optional and if they are declared, they must be after an if statement and before an else (if there is an else clause)."
+                }
+            ],
             "multipleChoiceQuiz": [],
             "tables": []
         },

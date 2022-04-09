@@ -9,34 +9,23 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 public class Caption {
-    private Color foreground;
     private String text;
     private JTextPane textPane;
 
-    public Caption(String text, Color foreground, JTextPane textPane) {
+    public Caption(String text, JTextPane textPane) {
         this.text = text;
-        this.foreground = foreground;
         this.textPane = textPane;
         try {
             textPane.setContentType("text/plain");
             StyledDocument document = (StyledDocument) textPane.getDocument();
             Style style = textPane.addStyle("", null);
-            if (foreground != null) {
-                StyleConstants.setForeground(style, foreground);
-            }
+            StyleConstants.setForeground(style, textPane.getForeground().darker());
             StyleConstants.setItalic(style, true);
             document.insertString(document.getLength(), "Caption: " + text, style);
             document.insertString(document.getLength(), "\n\n", null);
         } catch (BadLocationException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * @return Color return the foreground
-     */
-    public Color getForeground() {
-        return foreground;
     }
 
     /**

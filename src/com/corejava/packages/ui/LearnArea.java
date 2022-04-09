@@ -115,8 +115,7 @@ public class LearnArea extends JScrollPane {
 		for (int i = 0; i < imagesUrlList.size(); i++) {
 			Image image =
 					new Image(new File(Main.IMAGES_DIRECTORY + imagesUrlList.get(i)), textPane);
-			Caption caption =
-					new Caption((captionsList.get(i)), Main.SECONDARY_ACCENT_COLOR, textPane);
+			Caption caption = new Caption((captionsList.get(i)), textPane);
 		}
 	}
 
