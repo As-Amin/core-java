@@ -10,7 +10,14 @@
                 }
             ],
             "openChoiceQuiz": [],
-            "trueFalseQuiz": [],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: Switch statements are the same as if statements.",
+                    "answer": "False",
+                    "feedbackRight": "Correct! Switch statements and if statements are completely different even though they have some similarities in the way they function. This will be discussed further into the topic.",
+                    "feedbackWrong": "Wrong! Switch statements and if statements are completely different even though they have some similarities in the way they function. This will be discussed further into the topic."
+                }
+            ],
             "multipleChoiceQuiz": [],
             "tables": []
         },
@@ -28,7 +35,14 @@
                 }
             ],
             "openChoiceQuiz": [],
-            "trueFalseQuiz": [],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: A switch statement is better than a if statement for situations when there are many possible cases.",
+                    "answer": "True",
+                    "feedbackRight": "Correct! Switch statements are better because cases are simpler to write and cases are traversed more efficiently.",
+                    "feedbackWrong": "Wrong! Switch statements are better because cases are simpler to write and cases are traversed more efficiently."
+                }
+            ],
             "multipleChoiceQuiz": [],
             "tables": []
         },

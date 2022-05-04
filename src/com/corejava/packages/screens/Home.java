@@ -54,7 +54,7 @@ public class Home extends JFrame {
 	public static TextBox sectionTitleBox = new TextBox("", false);
 
 	// The menu bar at the top of the window - is not apart of the content pane but frame
-	private MenuBar menuBar = new MenuBar(true);
+	private MenuBar menuBar = new MenuBar();
 
 	public Home() {
 		// Topic list panel is fixed according to panel width
@@ -146,7 +146,8 @@ public class Home extends JFrame {
 		sectionTitleBox.setText("No section selected");
 		topicFeedbackArea.setText("When you answer a question, feedback will appear here!");
 		PlainText paragraph = new PlainText(
-				"To begin, select a topic from the left side topics list! You can use the arrow keys or your cursor. Hover over any part of the screen to see what each section is for.",
+				"To begin, select a topic from the left side topics list! You can use the arrow keys or your cursor."
+						+ "Hover over any part of the screen to see what each section is for.",
 				null, topicLearnArea.getTextPane());
 	}
 
@@ -281,5 +282,117 @@ public class Home extends JFrame {
 	 */
 	public void setRightPanel(JPanel rightPanel) {
 		this.rightPanel = rightPanel;
+	}
+
+	/**
+	 * @return JPanel return the searchButtonPanel
+	 */
+	public JPanel getSearchButtonPanel() {
+		return searchButtonPanel;
+	}
+
+	/**
+	 * @param searchButtonPanel the searchButtonPanel to set
+	 */
+	public void setSearchButtonPanel(JPanel searchButtonPanel) {
+		this.searchButtonPanel = searchButtonPanel;
+	}
+
+	/**
+	 * @return TextBox return the searchTopicInput
+	 */
+	public TextBox getSearchTopicInput() {
+		return searchTopicInput;
+	}
+
+	/**
+	 * @param searchTopicInput the searchTopicInput to set
+	 */
+	public void setSearchTopicInput(TextBox searchTopicInput) {
+		this.searchTopicInput = searchTopicInput;
+	}
+
+	/**
+	 * @return JButton return the searchButton
+	 */
+	public JButton getSearchButton() {
+		return searchButton;
+	}
+
+	/**
+	 * @param searchButton the searchButton to set
+	 */
+	public void setSearchButton(JButton searchButton) {
+		this.searchButton = searchButton;
+	}
+
+	/**
+	 * @return JButton return the resetButton
+	 */
+	public JButton getResetButton() {
+		return resetButton;
+	}
+
+	/**
+	 * @param resetButton the resetButton to set
+	 */
+	public void setResetButton(JButton resetButton) {
+		this.resetButton = resetButton;
+	}
+
+	/**
+	 * @return JSeparator return the buttonSeperator
+	 */
+	public JSeparator getButtonSeperator() {
+		return buttonSeperator;
+	}
+
+	/**
+	 * @param buttonSeperator the buttonSeperator to set
+	 */
+	public void setButtonSeperator(JSeparator buttonSeperator) {
+		this.buttonSeperator = buttonSeperator;
+	}
+
+	/**
+	 * @return JSeparator return the feedbackSeperator
+	 */
+	public JSeparator getFeedbackSeperator() {
+		return feedbackSeperator;
+	}
+
+	/**
+	 * @param feedbackSeperator the feedbackSeperator to set
+	 */
+	public void setFeedbackSeperator(JSeparator feedbackSeperator) {
+		this.feedbackSeperator = feedbackSeperator;
+	}
+
+	/**
+	 * @return JSeparator return the titleSeperator
+	 */
+	public JSeparator getTitleSeperator() {
+		return titleSeperator;
+	}
+
+	/**
+	 * @param titleSeperator the titleSeperator to set
+	 */
+	public void setTitleSeperator(JSeparator titleSeperator) {
+		this.titleSeperator = titleSeperator;
+	}
+
+	/**
+	 * @return JSeparator return the sectionSeperator
+	 */
+	public JSeparator getSectionSeperator() {
+		return sectionSeperator;
+	}
+
+	/**
+	 * @param sectionSeperator the sectionSeperator to set
+	 */
+	public void setSectionSeperator(JSeparator sectionSeperator) {
+		this.sectionSeperator = sectionSeperator;
 	}
 }

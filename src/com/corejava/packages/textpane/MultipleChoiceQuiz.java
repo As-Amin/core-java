@@ -35,7 +35,7 @@ public class MultipleChoiceQuiz {
             // that the button is displayed besides the multiple choice box
             JPanel panel = new JPanel();
             panel.setLayout(new MigLayout());
-            // Create a ComboBox and addd all of the options in the options list to the box
+            // Create a ComboBox and add all of the options in the options list to the box
             JComboBox<String> optionsBox = new JComboBox<String>();
             for (Object item : options) {
                 optionsBox.addItem(item.toString());

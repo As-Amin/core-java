@@ -18,14 +18,10 @@ import com.corejava.packages.screens.Home;
 public class ListFiles extends JScrollPane {
 	private ArrayList<File> allParentFiles = new ArrayList<File>();
 	private ArrayList<File> allChildFiles = new ArrayList<File>();
-
 	private String directory;
 	private char fileNumberSeperator;
-
 	private JList<String> listPanel;
-
 	private DefaultListModel<String> model = new DefaultListModel<>();
-
 	private String filterKeyword = "";
 
 	public ListFiles(String directory, char fileNumberSeperator) {
@@ -76,6 +72,8 @@ public class ListFiles extends JScrollPane {
 						Home.topicLearnArea
 								.openFile(allChildFiles.get(listPanel.getSelectedIndex()));
 					} catch (Exception e) {
+						Home.topicTitleBox.setText("Something went wrong");
+						Home.sectionTitleBox.setText("Something went wrong");
 						e.printStackTrace();
 					}
 				}

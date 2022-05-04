@@ -14,11 +14,6 @@ import com.corejava.packages.Main;
 public class MenuBar extends JMenuBar {
     private LinkedHashMap<String, JMenu> AllJMenu = new LinkedHashMap<String, JMenu>();
     private LinkedHashMap<String, JMenuItem> AllJMenuItems = new LinkedHashMap<String, JMenuItem>();
-    private Boolean isLoggedIn = false;
-
-    public MenuBar(Boolean isLoggedIn) {
-        this.isLoggedIn = isLoggedIn;
-    }
 
     public JMenuBar generate() {
         AllJMenu.put(Main.APP_CONFIG_OBJECT.getProperty("app.name").toString(),
