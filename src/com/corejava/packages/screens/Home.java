@@ -147,7 +147,7 @@ public class Home extends JFrame {
 		topicFeedbackArea.setText("When you answer a question, feedback will appear here!");
 		PlainText paragraph = new PlainText(
 				"To begin, select a topic from the left side topics list! You can use the arrow keys or your cursor."
-						+ "Hover over any part of the screen to see what each section is for.",
+						+ " Hover over any part of the screen to see what each section is for.",
 				null, topicLearnArea.getTextPane());
 	}
 

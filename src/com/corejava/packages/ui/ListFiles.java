@@ -190,4 +190,19 @@ public class ListFiles extends JScrollPane {
 		this.model = model;
 	}
 
+
+	/**
+	 * @return String return the filterKeyword
+	 */
+	public String getFilterKeyword() {
+		return filterKeyword;
+	}
+
+	/**
+	 * @param filterKeyword the filterKeyword to set
+	 */
+	public void setFilterKeyword(String filterKeyword) {
+		this.filterKeyword = filterKeyword;
+	}
+
 }
