@@ -38,7 +38,14 @@
                 }
             ],
             "openChoiceQuiz": [],
-            "trueFalseQuiz": [],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: The first statements variable must be defined as 'i'.",
+                    "answer": "False",
+                    "feedbackRight": "Correct! It does not have to be defined as 'i' however, this is a common practise in Java.",
+                    "feedbackWrong": "Wrong! The first statements variable does not have to be defined as 'i' however, this is a common practise in Java."
+                }
+            ],
             "multipleChoiceQuiz": [],
             "tables": []
         },
@@ -51,7 +58,14 @@
                     "caption": "'The second statement of a for loop'"
                 }
             ],
-            "openChoiceQuiz": [],
+            "openChoiceQuiz": [
+                {
+                    "question": "Can any opeartor be used within the second statement?",
+                    "answer": "yes",
+                    "feedbackRight": "Correct, great work! Any operator covered in the 'operators' topic can be used to define the statement.",
+                    "feedbackWrong": "Sorry, but that's the wrong answer! The correct answer is yes! Any operator covered in the 'operators' topic can be used to define the statement."
+                }
+            ],
             "trueFalseQuiz": [],
             "multipleChoiceQuiz": [],
             "tables": []
@@ -67,7 +81,28 @@
             ],
             "openChoiceQuiz": [],
             "trueFalseQuiz": [],
-            "multipleChoiceQuiz": [],
+            "multipleChoiceQuiz": [
+                {
+                    "question": "Which of the following would not be allowed as a third statement in Java?",
+                    "options": [
+                        {
+                            "option": "i++"
+                        },
+                        {
+                            "option": "k--"
+                        },
+                        {
+                            "option": "h=h+2"
+                        },
+                        {
+                            "option": "None of the above"
+                        }
+                    ],
+                    "answer": "None of the above",
+                    "feedbackRight": "Correct! All of the options are allowed as a third statement in Java.",
+                    "feedbackWrong": "Wrong! The correct answer is 'None of the above' as all of the options can be used as a third statement."
+                }
+            ],
             "tables": []
         }
     ]
