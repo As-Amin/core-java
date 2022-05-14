@@ -24,7 +24,14 @@
                 }
             ],
             "openChoiceQuiz": [],
-            "trueFalseQuiz": [],
+            "trueFalseQuiz": [
+                {
+                    "question": "True or false: While loops are less efficient than for loops.",
+                    "answer": "False",
+                    "feedbackRight": "Correct! While loops and for loops both have different use cases and efficiencies based on the parameters and length of options.",
+                    "feedbackWrong": "Wrong! While loops and for loops both have different use cases and efficiencies based on the parameters and length of options."
+                }
+            ],
             "multipleChoiceQuiz": [],
             "tables": []
         },
